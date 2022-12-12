@@ -1,0 +1,30 @@
+@import './@index.scss';
+
+.header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: $header-hight;
+    z-index: 3;
+    .header-content{
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        .netflix-logo{
+            position: fixed;
+            top: 0;
+            left: $unit-4;
+            width: 160px;
+            object-fit: contain;
+            cursor: pointer;
+        }
+        .avatar-logo{
+            position: fixed;
+            top: $unit-4;
+            right: $unit-4;
+            width: 40px;
+            object-fit: contain;
+            cursor: pointer;
+        }
+    }
+}

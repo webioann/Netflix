@@ -3,8 +3,8 @@
 
 html,body{
     font-family: 'Lato', Helvetica, sans-serif; 
-    background-color: #ffffff;
-    color: #212529;
+    background-color: #111;
+    color: #fff;
     width: 100%;
     scroll-behavior: smooth;
     height: 100%;
@@ -53,9 +53,11 @@ $unit-4: 20px;
 $unit-5: 25px;
 $unit-6: 30px;
 
+$header-hight: 90px;
+
 $button-max-size: 120px;
 $button-min-size: 90px;
-$button-big: 180px;
+$button-big: 160px;
 $max-mobile: 320px;
 $br-medium: 6px;
 // === GLOBAL CLASSES ===
