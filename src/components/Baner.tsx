@@ -7,9 +7,6 @@ const Baner: React.FC = () => {
     const[banerImage, setBanerImage] = useState<string>('https://raw.githubusercontent.com/thatanjan/netflix-clone-yt/youtube/media//banner.jpg')
     const [inputFocus, setInputFocus] = useState<boolean>(false)
 
-    const onInputFocus = (event: React.FocusEvent<HTMLImageElement>) => {
-
-    }
     return (
         <section 
             className='baner-container'
