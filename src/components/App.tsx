@@ -9,8 +9,8 @@ import Baner from './Baner'
 
 const  App: React.FC = () => {
 
-  const { data } = useFetchTrendingMoviesQuery('')
-  console.log(data);
+  // const { data } = useFetchTrendingMoviesQuery('')
+  // console.log(data);
   const defaultState = useAppSelector(state => state.redux.defaultState)
   return (
     <Container>

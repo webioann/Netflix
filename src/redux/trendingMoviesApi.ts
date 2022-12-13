@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 // import { CoinsSearchType, CoinsSearchData } from "../Types/coinsSearch.types"
 // import { CoinsType, ICoinsRequestParams } from '../Types/coins.types'
 // import { coinDetailsType } from '../Types/coinDetails.types'
-import { ITrendingMovies, IMovieData, ITrendingDataResponse } from "../types/trendigMovies.types";
+import { IMovieData, ITrendingDataResponse } from "../types/trendigMovies.types";
 
 const lang = 'en-US'
 

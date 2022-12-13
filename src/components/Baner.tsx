@@ -1,10 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useFetchNetflixOriginalsMoviesQuery } from '../redux/netflixOriginalsApi'
 import SigninForm from './SigninForm'
 import '../style/baner.scss'
 
 const Baner: React.FC = () => {
 
-    const[banerImage, setBanerImage] = useState<string>('https://raw.githubusercontent.com/thatanjan/netflix-clone-yt/youtube/media//banner.jpg')
+    const [banerImage, setBanerImage] = useState<string>('')
+    const { data: movies  } = useFetchNetflixOriginalsMoviesQuery('')
+
+    useEffect(() => {
+        if(movies) {
+            let randomNumber = Math.floor(Math.random() * movies.length - 1)
+            let pathToImage = movies[randomNumber]?.backdrop_path
+            setBanerImage(`https://image.tmdb.org/t/p/original/${pathToImage}`)
+        }
+        else{
+            setBanerImage('https://raw.githubusercontent.com/thatanjan/netflix-clone-yt/youtube/media//banner.jpg')
+        }
+    }, [movies])
+
+    console.log(banerImage);
+    console.log(movies)
 
     return (
         <section 
