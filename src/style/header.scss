@@ -6,17 +6,21 @@
     width: 100%;
     height: $header-hight;
     z-index: 3;
-    display: flex;
-    justify-content: space-between;
-    padding-right: 20px;
-    .netflix-logo{
-        width: 160px;
-        object-fit: contain;
-        cursor: pointer;
-    }
-    .avatar-logo{
-        width: 35px;
-        object-fit: contain;
-        cursor: pointer;
+    .header-wrapper{
+        max-width: 1600px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        .netflix-logo{
+            width: 200px;
+            object-fit: contain;
+            cursor: pointer;
+        }
+        .avatar-logo{
+            width: 35px;
+            object-fit: contain;
+            cursor: pointer;
+        }
+    
     }
 }
