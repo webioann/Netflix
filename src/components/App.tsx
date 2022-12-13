@@ -1,5 +1,7 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom"
+import { useFetchTrendingMoviesQuery } from '../redux/trendingMoviesApi'
+
 import { useAppSelector } from '../redux/store'
 import Container from './Container'
 import Header from './Header'
@@ -7,40 +9,15 @@ import Baner from './Baner'
 
 const  App: React.FC = () => {
 
+  const { data } = useFetchTrendingMoviesQuery('')
+  console.log(data);
   const defaultState = useAppSelector(state => state.redux.defaultState)
   return (
     <Container>
       <Header/>
       <Baner/>
       <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix ddddddddddddddddddd-- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
-      <h1>Netflix -- ${defaultState}</h1>
+      
     </Container>
   )
 }

@@ -11,6 +11,6 @@
     "isolatedModules": true,
     "esModuleInterop": true
     },
-    "include": ["**/*.ts", "**/*.tsx"],
+    "include": ["**/*.ts", "**/*.tsx", "redux/trendingMoviesApi.ts"],
     "exclude": ["node_modules"]
 }

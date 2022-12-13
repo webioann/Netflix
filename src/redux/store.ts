@@ -1,11 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useSelector,useDispatch,TypedUseSelectorHook } from "react-redux"
+import { trendingMoviesApi } from './trendingMoviesApi'
 import reduxSlice from './reduxSlice'
 
 const store = configureStore({
     reducer: {
         redux: reduxSlice,
+        [trendingMoviesApi.reducerPath]: trendingMoviesApi.reducer,
+
     },
+    middleware: getDefaultMiddleware =>  getDefaultMiddleware().concat(
+        [
+            trendingMoviesApi.middleware,
+        ]
+    ),
+
 })
 
 type reduxState = ReturnType<typeof store.getState>;
