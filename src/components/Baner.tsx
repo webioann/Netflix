@@ -19,11 +19,10 @@ const Baner: React.FC = () => {
                 <h3 className='baner-middle-title'>Смотрите где угодно. Отменить подписку можно в любое время.</h3>
                 <p className='baner-hint'>Готовы смотреть? Введите адрес электронной почты, чтобы оформить или возобновить подписку.</p>
                 <form className="baner-form">
-                    <label className={inputFocus ? 'baner-label-up' : 'baner-label'}>Адреса електронної пошти</label>
-                    <input onFocus={(event) => {
-                        event.stopPropagation()
-                        setInputFocus(true)
-                    }}
+                    <label className={inputFocus ? 'baner-label-up' : 'baner-label'}>
+                        Адреса електронної пошти
+                    </label>
+                    <input onFocus={() => setInputFocus(true)}
                         className='baner-input' 
                         type='text'/>
                     <button className='baner-button'>
