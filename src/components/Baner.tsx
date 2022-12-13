@@ -19,9 +19,6 @@ const Baner: React.FC = () => {
         }
     }, [movies])
 
-    console.log(banerImage);
-    console.log(movies)
-
     return (
         <section 
             className='baner-container'

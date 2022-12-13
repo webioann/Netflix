@@ -13,7 +13,7 @@ export const trendingMoviesApi = createApi({
         baseUrl: 'https://api.themoviedb.org/3/trending'
     }),
     endpoints: builder => ({
-        fetchTrendingMovies: builder.query<IMovieData[], string>({
+        trendingMovies: builder.query<IMovieData[], string>({
             query: () => ({
                 url: `/all/week?api_key=${process.env.TMDB_API_KEY}&language=${lang}`,
             }),
@@ -22,5 +22,5 @@ export const trendingMoviesApi = createApi({
     }), 
 })
 
-export const { useFetchTrendingMoviesQuery } = trendingMoviesApi;
+export const { useTrendingMoviesQuery } = trendingMoviesApi;
 
