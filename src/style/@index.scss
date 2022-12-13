@@ -27,8 +27,7 @@ html,body{
 }
 
 // === VARIABLES ===
-
-$big-pad: 1rem;
+$netflix-black: #111;
 $carrot: #f85904;
 $text-blue: #5388cd;
 
@@ -46,6 +45,11 @@ $text-light: #e8eaed;
 $bg-block-dark: #3c4043;
 
 // ===== sizes =====
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
 $unit-1: 5px;
 $unit-2: 10px;
 $unit-3: 15px;
@@ -75,4 +79,7 @@ $br-medium: 6px;
     color: $text-blue;
     font-weight: 700;
     cursor: pointer;
+}
+.md{
+    max-width: 768px;
 }

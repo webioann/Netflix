@@ -1,5 +1,103 @@
 @import './@index.scss';
 
 .baner-container{
-    padding-top: calc($header-hight + $unit-4);
+    background-size: cover;
+    background-position: center center;
+    object-fit: contain;
+    position: relative;
+    border: 1px solid red;
+    z-index: 1;
+    .baner-content{
+        margin: 100px auto 120px auto;
+        z-index: 10;
+        .baner-welcom-title{
+            font-size: 28px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .baner-middle-title{
+            font-size: 18px;
+            text-align: center;
+        }
+        .baner-hint{
+            text-align: center;
+            font-size: 18px;
+            padding-bottom: 40px;
+        }
+        @media (min-width: 576px) {
+            .baner-welcom-title{
+                font-size: 50px;
+            }
+            .baner-middle-title{
+                font-size: 26px;
+            }
+        }
+        @media (min-width: 1400px) {
+            .baner-welcom-title{
+                font-size: 64px;
+            }
+        }
+        .baner-form{
+            width: 100%;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            .baner-label{
+                position: absolute;
+                top: 25px;
+                left: 2rem;
+                color: #8c8c8c;
+                cursor: pointer;
+                transition: all ease 200ms;
+
+            }
+            .baner-label-up{
+                position: absolute;
+                top: 5px;
+                left: 2rem;
+                color: #8c8c8c;
+                font-size: 0.8em;
+                transition: all ease 200ms;
+
+            }
+
+            .baner-input{
+                height: 70px;
+                padding-left: 10px;
+                cursor: pointer;
+                flex: 5;
+                border-radius: 2px 0 0 2px;
+                border: 1px solid #8c8c8c;
+            }
+            .baner-button{
+                background-color: #f40612;
+                color: #fff;
+                height: 70px;
+                font-size: 30px;
+                flex: 2;
+                border-radius: 0 2px 2px 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid #8c8c8c;
+                .baner-button-arrow{
+                    margin-left: 10px;
+                    top: 3px;
+                }
+            }
+        }
+    }
+    .black-fog{
+        height: 8rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-image: linear-gradient(
+            180deg,transparent,rgba(37,37,37,0.61),$netflix-black
+        );
+    
+    }
 }
