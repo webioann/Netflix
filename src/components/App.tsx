@@ -13,6 +13,34 @@ const  App: React.FC = () => {
       <Header/>
       <Baner/>
       <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix ddddddddddddddddddd-- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
+      <h1>Netflix -- ${defaultState}</h1>
     </Container>
   )
 }
