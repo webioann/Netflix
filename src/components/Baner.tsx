@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { useFetchNetflixOriginalsMoviesQuery } from '../redux/netflixOriginalsApi'
+import { useFetchMoviesQuery } from '../redux/fetchMoviesData';
+import { requestsPath } from './requests'
 import SigninForm from './SigninForm'
 import '../style/baner.scss'
 
 const Baner: React.FC = () => {
 
     const [banerImage, setBanerImage] = useState<string>('')
-    const { data: movies  } = useFetchNetflixOriginalsMoviesQuery('')
+    const { data: movies } = useFetchMoviesQuery({request_path: requestsPath.originals})
 
+    console.log(movies)
     useEffect(() => {
         if(movies) {
             let randomNumber = Math.floor(Math.random() * movies.length - 1)

@@ -28,6 +28,7 @@ html,body{
 
 // === VARIABLES ===
 $netflix-black: #111;
+$netflix-red: #f40612;
 $carrot: #f85904;
 $text-blue: #5388cd;
 
@@ -84,3 +85,24 @@ $br-medium: 6px;
 .md{
     max-width: 768px;
 }
+/* =========== CUSTOM SCROLLBAR ========  */
+::-webkit-scrollbar{
+    width: 10px;
+    height: 4px;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.2);
+}
+::-webkit-scrollbar-thumb:horizontal{
+    border-radius: 2px; 
+    background-color: $netflix-red;
+}
+
+::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+::-webkit-scrollbar-track:horizontal{
+    background-color: rgba(0,0,0,0.2);
+}
+

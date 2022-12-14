@@ -1,26 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useSelector,useDispatch,TypedUseSelectorHook } from "react-redux"
-// import { trendingMoviesApi } from './trendingMoviesApi'
-// import { netflixOriginalsApi } from './netflixOriginalsApi'
-import { moviesApi } from './moviesApi'
+import { fetchMoviesData } from './fetchMoviesData'
 import reduxSlice from './reduxSlice'
 
 const store = configureStore({
     reducer: {
         redux: reduxSlice,
-        // [trendingMoviesApi.reducerPath]: trendingMoviesApi.reducer,
-        // [netflixOriginalsApi.reducerPath]: netflixOriginalsApi.reducer,
-        [moviesApi.reducerPath]: moviesApi.reducer,
+        [fetchMoviesData.reducerPath]: fetchMoviesData.reducer,
 
     },
     middleware: getDefaultMiddleware =>  getDefaultMiddleware().concat(
         [
-            // trendingMoviesApi.middleware,
-            // netflixOriginalsApi.middleware,
-            moviesApi.middleware,
+            fetchMoviesData.middleware,
         ]
     ),
-
 })
 
 type reduxState = ReturnType<typeof store.getState>;
