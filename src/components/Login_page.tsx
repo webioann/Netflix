@@ -32,13 +32,22 @@ const Login_page = () => {
                     setWarning={setWarning}
                 />
                 <div className='question'>
-                    <p className='question-text'>Don't have an account ?</p>
+                    <p className='question-text'>New to Netflix? </p>
                     <Link to='/signup' className='question-link'>
-                        Sign Up
+                        Sign up now.
                     </Link>
-                </div>        
+                </div>
+                <p className='captcha'>
+                    This page is protected by Google reCAPTCHA to ensure you're not a bot. 
+                    <span className='captcha-link'>Learn more.</span> 
+                </p>
             </div>
+
             <div className="--fullscreen-gradient"></div>
+            <footer className='auth-footer'>
+                
+            </footer>
+
         </div>
     )
 }

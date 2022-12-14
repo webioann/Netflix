@@ -38,6 +38,10 @@ const Signup_page = () => {
                         Login
                     </Link>
                 </div>
+                <p className='captcha'>
+                    This page is protected by Google reCAPTCHA to ensure you're not a bot. 
+                    <span className='captcha-link'>Learn more.</span> 
+                </p>        
             </div>
             <div className="--fullscreen-gradient"></div>
         </div>
