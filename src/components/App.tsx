@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useAuthStateCurrentUser } from '../hooks/useAuthStateCurrentUser'
 import { Routes, Route } from "react-router-dom"
 import { useAppSelector } from '../redux/store'
 import Container from './Container'
@@ -13,6 +14,8 @@ import MoviesSliderRow from './MoviesSliderRow'
 import { requestsPath } from '../data/requests'
 
 const  App: React.FC = () => {
+
+  useAuthStateCurrentUser();
   
   const currentUser = useAppSelector(state => state.redux.currentUser)
 
@@ -36,7 +39,6 @@ const  App: React.FC = () => {
           <Route path="*" element={<Notfound_page />} />
           { currentUser &&  <Route path="profile" element={<Profile_page />}/>}
         </Routes>
-
     </Container>
   )
 }

@@ -1,27 +1,28 @@
 @import './@index.scss';
 
 form{
-    position: relative;
     .email-box{
         margin-top: 2rem;
+        position: relative;
         label{
             padding-left: 10px;
-            font-weight: 600;
+            font-weight: 500;
         }
         .email-input-box{
-            box-shadow: $box-shadow-lt;
-            background-color: $bg-light;
+            background-color: $netflix-gray;
+            z-index: 3;
             width: 100%;
             margin-top: 10px;
             display: flex;
             align-items: center;
-            padding: 0.5rem 1rem;
-            border-radius: $br-medium;
+            padding: 16px 20px 5px;
+            border-radius: $br-main;
             position: relative;
-            input{
+            .reg-input{
                 width: 100%;
-                letter-spacing: 3px;
+                letter-spacing: 4px;
                 background-color: inherit;
+                color: $light;
             }
             .input-icon{
                 position: absolute;
@@ -35,24 +36,27 @@ form{
     .password-box{
         width: 100%;
         margin-top: 2rem;
+        position: relative;
         label{
             padding-left: 10px;
-            font-weight: 600;
+            font-weight: 500;
         }
         .password-input-box{
-            box-shadow: $box-shadow-lt;
-            background-color: $bg-light;
+            background-color: $netflix-gray;
+            z-index: 3;
             width: 100%;
             margin-top: 10px;
             display: flex;
             align-items: center;
-            padding: 0.5rem 1rem;
-            border-radius: $br-medium;
+            padding: 16px 20px 5px;
+            border-radius: $br-main;
             position: relative;
-            input{
+            .reg-input{
                 width: 100%;
-                letter-spacing: 3px;
+                letter-spacing: 4px;
                 background-color: inherit;
+                color: $light;
+
             }
             .input-icon{
                 position: absolute;
@@ -62,5 +66,27 @@ form{
                 cursor: pointer;
             }
         }
+        
     }
+    .input-label{
+        position: absolute;
+        top: 10px;
+        left: 0;
+        color: #8c8c8c;
+        cursor: pointer;
+        transition: all ease 200ms;
+        pointer-events: none;
+        z-index: 4;
+    }
+    .input-label-up{
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #8c8c8c;
+        font-size: 0.8em;
+        transition: all ease 200ms;
+        z-index: 4;
+    }
+
 }
+

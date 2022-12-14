@@ -1,0 +1,56 @@
+@import './@index.scss';
+
+.auth-page{
+    width: 100%;
+    min-height: 100vh;
+    position: fixed;
+    background-color: $netflix-black;
+    background-image: url('https://miro.medium.com/max/1400/1*5lyavS59mazOFnb55Z6znQ.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .auth-page-content{
+        position: absolute;
+        margin-top: 90px;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 450px;
+        background: rgba(0,0,0,0.6);
+        backdrop-filter: blur( 2px );
+        -webkit-backdrop-filter: blur( 2px );
+        border-radius: $br-main;
+        z-index: 3;
+        padding: 60px 68px 40px;
+        .auth-header{
+            font-weight: 600;
+        }
+        .question{
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            .question-text{
+                margin-right: 0.5rem;
+                flex: 1;
+            }
+            .question-link{
+                color: $text-blue;
+                text-decoration: underline;
+            }
+        }
+    
+    }
+    .--fullscreen-gradient{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        min-height: 100vh;
+        z-index: 2;
+        background-color: rgba(0,0,0,0.4);
+        background-image: linear-gradient(
+            to top,
+            rgba(0,0,0,0.8) 0,
+            rgba(0,0,0,0.0) 60%,
+            rgba(0,0,0,0.8) 100%
+        );
+    }
+}

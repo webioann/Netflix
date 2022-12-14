@@ -22,7 +22,7 @@ const LoginButton: React.FC<IAuthButtonProps> = ({ email, password, setWarning }
     }
 
     return (
-            <button className='auth-button' onClick={loginWithEmail}>
+            <button className='login-button' onClick={loginWithEmail}>
             Login with email
         </button>
     )

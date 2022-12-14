@@ -40,6 +40,8 @@ export const reduxSlice = createSlice({
 
 export const { 
     incremented,
+    createCurrentUser,
+    deleteCurrentUser,
 } = reduxSlice.actions;
 
 export default reduxSlice.reducer;
