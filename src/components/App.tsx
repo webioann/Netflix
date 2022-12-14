@@ -5,7 +5,7 @@ import Container from './Container'
 import Header from './Header'
 import Baner from './Baner'
 import MoviesSliderRow from './MoviesSliderRow'
-import { requestsPath } from './requests'
+import { requestsPath } from '../data/requests'
 
 const  App: React.FC = () => {
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useFetchMoviesQuery } from '../redux/fetchMoviesData';
-import { requestsPath } from './requests'
+import { requestsPath } from '../data/requests'
 import SigninForm from './SigninForm'
 import '../style/baner.scss'
 
@@ -8,12 +8,14 @@ const Baner: React.FC = () => {
 
     const [banerImage, setBanerImage] = useState<string>('')
     const { data: movies } = useFetchMoviesQuery({request_path: requestsPath.originals})
-
-    console.log(movies)
+    console.log(movies);
     useEffect(() => {
         if(movies) {
             let randomNumber = Math.floor(Math.random() * movies.length - 1)
-            let pathToImage = movies[randomNumber]?.backdrop_path
+            let pathToImage;
+            movies[randomNumber]?.backdrop_path ? 
+                pathToImage = movies[randomNumber]?.backdrop_path : 
+                pathToImage = movies[randomNumber]?.poster_path
             setBanerImage(`https://image.tmdb.org/t/p/original/${pathToImage}`)
         }
         else{

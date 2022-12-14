@@ -88,21 +88,20 @@ $br-medium: 6px;
 /* =========== CUSTOM SCROLLBAR ========  */
 ::-webkit-scrollbar{
     width: 10px;
-    height: 4px;
+    height: 5px;
 }
 ::-webkit-scrollbar-thumb{
     border-radius: 5px;
-    background-color: rgba(0,0,0,0.2);
+    background-color: $netflix-black;
 }
 ::-webkit-scrollbar-thumb:horizontal{
-    border-radius: 2px; 
+    border-radius: 2.5px; 
     background-color: $netflix-red;
 }
-
 ::-webkit-scrollbar-track{
     background-color: transparent;
 }
 ::-webkit-scrollbar-track:horizontal{
-    background-color: rgba(0,0,0,0.2);
+    background-color: $netflix-black;
 }
 
