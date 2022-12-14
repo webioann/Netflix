@@ -1,0 +1,66 @@
+@import './@index.scss';
+
+form{
+    position: relative;
+    .email-box{
+        margin-top: 2rem;
+        label{
+            padding-left: 10px;
+            font-weight: 600;
+        }
+        .email-input-box{
+            box-shadow: $box-shadow-lt;
+            background-color: $bg-light;
+            width: 100%;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: $br-medium;
+            position: relative;
+            input{
+                width: 100%;
+                letter-spacing: 3px;
+                background-color: inherit;
+            }
+            .input-icon{
+                position: absolute;
+                top: 0.5rem;
+                right: 1rem;
+                opacity: 0.9;
+                cursor: pointer;
+            }
+        }
+    }
+    .password-box{
+        width: 100%;
+        margin-top: 2rem;
+        label{
+            padding-left: 10px;
+            font-weight: 600;
+        }
+        .password-input-box{
+            box-shadow: $box-shadow-lt;
+            background-color: $bg-light;
+            width: 100%;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: $br-medium;
+            position: relative;
+            input{
+                width: 100%;
+                letter-spacing: 3px;
+                background-color: inherit;
+            }
+            .input-icon{
+                position: absolute;
+                top: 0.5rem;
+                right: 1rem;
+                opacity: 0.7;
+                cursor: pointer;
+            }
+        }
+    }
+}

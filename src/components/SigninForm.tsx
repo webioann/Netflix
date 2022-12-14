@@ -15,7 +15,8 @@ const SigninForm = () => {
             <input onFocus={() => setInputFocus(true)}
                 className='baner-input' 
                 type='text'/>
-            <button className='baner-button'>
+            <button className='baner-button'
+                onClick={(event) => event.preventDefault()}>
                 Почати
                 <IoIosArrowForward className='baner-button-arrow'/>
             </button>

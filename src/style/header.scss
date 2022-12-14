@@ -16,10 +16,15 @@
             object-fit: contain;
             cursor: pointer;
         }
-        .avatar-logo{
-            width: 35px;
-            object-fit: contain;
-            cursor: pointer;
+        .header-login-link{
+            display: inline;
+            margin-top: 20px;
+            .avatar-logo{
+                width: 35px;
+                object-fit: contain;
+                cursor: pointer;
+                
+            }
         }
     
     }

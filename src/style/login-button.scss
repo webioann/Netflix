@@ -1,0 +1,15 @@
+@import './@index.scss';
+
+.auth-button{
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: $br-medium;
+    font-weight: 600;
+    background-color: $text-blue;
+    color: $text-light;
+    position: relative;
+}

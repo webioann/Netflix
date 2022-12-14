@@ -1,0 +1,34 @@
+@import './@index.scss';
+
+.signup-page{
+    width: $max-mobile;
+    margin: 0 auto;
+    padding: 50px 1rem 2rem 1rem;
+    padding-bottom: 20px;
+    color: $text-dark;
+    background-color: $bg-light;
+    border-radius: 0.5rem;
+    z-index: 3;
+    position: relative;
+    .auth-header{
+        font-weight: 600;
+    }
+    .or-line{
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+    .question{
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        .question-text{
+            margin-right: 0.5rem;
+            flex: 1;
+        }
+        .question-link{
+            color: $text-blue;
+            text-decoration: underline;
+        }
+    }
+}
