@@ -19,12 +19,6 @@
             padding: 16px 20px 5px;
             border-radius: $br-main;
             position: relative;
-            .reg-input{
-                width: 100%;
-                letter-spacing: 4px;
-                background-color: inherit;
-                color: $light;
-            }
             .input-icon{
                 position: absolute;
                 top: 0.5rem;
@@ -52,13 +46,6 @@
             padding: 16px 20px 5px;
             border-radius: $br-main;
             position: relative;
-            .reg-input{
-                width: 100%;
-                letter-spacing: 4px;
-                background-color: inherit;
-                color: $light;
-
-            }
             .input-icon{
                 position: absolute;
                 top: 0.5rem;
@@ -69,11 +56,19 @@
         }
         
     }
+    .reg-input{
+        width: 100%;
+        letter-spacing: 4px;
+        background-color: transparent;
+        color: $light;
+        cursor: pointer;
+    }
+
     .input-label{
         position: absolute;
         top: 10px;
         left: 0;
-        color: #8c8c8c;
+        color: $netflix-gray;
         cursor: pointer;
         transition: all ease 200ms;
         pointer-events: none;
@@ -83,7 +78,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        color: #8c8c8c;
+        color: $netflix-gray;
         font-size: 0.8em;
         transition: all ease 200ms;
         z-index: 4;
