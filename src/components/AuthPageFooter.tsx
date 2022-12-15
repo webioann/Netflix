@@ -6,15 +6,16 @@ const AuthPageFooter = () => {
         <footer className='auth-footer'>
             <div className="auth-footer-content">
                 <p className="footer-top">
-                    Questions? Call 0800-509-417
+                    Questions? 
+                    <span className='g-link'>Call 0800-509-417</span>
                 </p>
                 <ul className="footer-links">
-                    <li>FAQ</li>
-                    <li>Help Center</li>
-                    <li>Terms of Use</li>
-                    <li>Privacy</li>
-                    <li>Cookie Preferences</li>
-                    <li>Corporate Information</li>
+                    <li className='g-link'>FAQ</li>
+                    <li className='g-link'>Help Center</li>
+                    <li className='g-link'>Terms of Use</li>
+                    <li className='g-link'>Privacy</li>
+                    <li className='g-link'>Cookie Preferences</li>
+                    <li className='g-link'>Corporate Information</li>
                 </ul>
                 <div className="lang-switcher-row">
                     <span className='lang-switcher'>ENG</span>

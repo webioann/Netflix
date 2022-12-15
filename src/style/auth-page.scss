@@ -34,9 +34,6 @@
             }
             .question-link{
                 color: $light;
-                &:hover{
-                    text-decoration: underline;
-                }
             }
         }
         .captcha{
@@ -46,9 +43,7 @@
             font-size: 0.8rem;
             .captcha-link{
                 color: blue;
-                margin-left: 5px;
                 font-weight: 900;
-                cursor: pointer;
             }
         } 
     }

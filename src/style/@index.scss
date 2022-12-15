@@ -71,6 +71,13 @@ $button-big: 160px;
 $max-mobile: 320px;
 $br-medium: 6px;
 // === GLOBAL CLASSES ===
+.g-link{
+    margin-left: 5px;
+    &:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
 .g-stretched{
     flex: 1;
 }

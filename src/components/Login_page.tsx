@@ -34,13 +34,13 @@ const Login_page = () => {
                 />
                 <div className='question'>
                     <p className='question-text'>New to Netflix? </p>
-                    <Link to='/signup' className='question-link'>
+                    <Link to='/signup' className='question-link g-link'>
                         Sign up now.
                     </Link>
                 </div>
                 <p className='captcha'>
                     This page is protected by Google reCAPTCHA to ensure you're not a bot. 
-                    <span className='captcha-link'>Learn more.</span> 
+                    <span className='captcha-link g-link'>Learn more.</span> 
                 </p>
             </div>
             <AuthPageFooter/>

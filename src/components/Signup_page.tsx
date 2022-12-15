@@ -35,13 +35,13 @@ const Signup_page = () => {
                 />
                 <div className='question'>
                     <p className='question-text'>Already have an account ?</p>
-                    <Link to='/login' className='question-link'>
+                    <Link to='/login' className='question-link g-link'>
                         Login
                     </Link>
                 </div>
                 <p className='captcha'>
                     This page is protected by Google reCAPTCHA to ensure you're not a bot. 
-                    <span className='captcha-link'>Learn more.</span> 
+                    <span className='captcha-link g-link'>Learn more.</span> 
                 </p>        
             </div>
             <AuthPageFooter/>

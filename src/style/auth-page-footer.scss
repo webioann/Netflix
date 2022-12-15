@@ -14,7 +14,7 @@
     .auth-footer-content{
         margin: 0 auto;
         max-width: 992px;
-        padding: 20px 0;
+        padding: 20px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -22,16 +22,26 @@
         color: $netflix-gray;
         .footer-links{
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr;
             row-gap: 10px;
             padding: 20px 0;
-            li{
-                cursor: pointer;
-                &:hover{
-                    text-decoration: underline;
-                }
+        }
+        @media (min-width: 400px) {
+            .footer-links{
+                grid-template-columns: 1fr 1fr;
             }
         }
+        @media (min-width: 580px) {
+            .footer-links{
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+        @media (min-width: 768px) {
+            .footer-links{
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+        }
+
         .lang-switcher-row{
             .lang-switcher{
                 border: 1px solid $netflix-gray;
