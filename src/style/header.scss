@@ -7,18 +7,22 @@
     height: $header-hight;
     z-index: 3;
     .header-wrapper{
-        max-width: 1600px;
+        max-width: 1800px;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
-        .netflix-logo{
-            width: 200px;
-            object-fit: contain;
-            cursor: pointer;
+        .header-logo-wrapper{
+            display: inline;
+            .netflix-logo{
+                width: 200px;
+                object-fit: contain;
+                cursor: pointer;
+            }
         }
         .header-login-link{
             display: inline;
             margin-top: 20px;
+            margin-right: 20px;
             .avatar-logo{
                 width: 35px;
                 object-fit: contain;

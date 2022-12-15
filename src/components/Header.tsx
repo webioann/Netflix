@@ -12,10 +12,10 @@ const Header = () => {
     return (
         <header className='header'>
             <div className='header-wrapper'>
-                <Link to={'/'}>
-                <img className='netflix-logo'
-                    src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png" 
-                    alt="Netflix logo"/>
+                <Link to={'/'} className='header-logo-wrapper'>
+                    <img className='netflix-logo'
+                        src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png" 
+                        alt="Netflix logo"/>
                 </Link>  
                 { currentUser && <SignoutButton/> }
                 <Link to={'/login'} className='header-login-link'>

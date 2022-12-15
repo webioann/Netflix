@@ -21,7 +21,8 @@ const RegistrationForm: React.FC<IFormPropsFunc> = ({setEmail, setPassword, emai
     }
 
     return (
-        <form onSubmit={event => event.preventDefault() }>
+        <form className='hybrid-form'
+            onSubmit={event => event.preventDefault() }>
             <div className='email-box'>
                 <label className={emailFocus || email.length > 0 ? 'input-label-up' : 'input-label'}>
                     Email
