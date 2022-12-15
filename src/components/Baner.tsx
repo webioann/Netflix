@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useFetchMoviesQuery } from '../redux/fetchMoviesData';
 import { requestsPath } from '../data/requests'
-import SigninForm from './SigninForm'
+import BanerMainForm from './BanerMainForm'
 import '../style/baner.scss'
 
 const Baner: React.FC = () => {
@@ -31,7 +31,7 @@ const Baner: React.FC = () => {
                 <h1 className='baner-welcom-title'>Фильмы, сериалы и многое другое без ограничений.</h1>
                 <h3 className='baner-middle-title'>Смотрите где угодно. Отменить подписку можно в любое время.</h3>
                 <p className='baner-hint'>Готовы смотреть? Введите адрес электронной почты, чтобы оформить или возобновить подписку.</p>
-                <SigninForm/>
+                <BanerMainForm/>
             </div>
             <div className='black-fog'/>
         </section>
