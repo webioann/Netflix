@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 import Popup from './Popup'
 import RegistrationForm from './RegistrationForm'
 import LoginButton from './LoginButton'
+import GoogleSignin from './SigninGoogle'
 import AuthPageFooter from './AuthPageFooter'
-import '../style/auth-page.scss'
+import '../style/auth-button.scss'
 
 const Login_page = () => {
 
@@ -30,6 +31,7 @@ const Login_page = () => {
                     password={password} 
                     setWarning={setWarning}
                 />
+                <GoogleSignin/>
                 <div className='question'>
                     <p className='question-text'>New to Netflix? </p>
                     <Link to='/signup' className='question-link g-link'>

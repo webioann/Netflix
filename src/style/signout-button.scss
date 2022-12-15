@@ -1,8 +1,10 @@
 @import './@index.scss';
 
 .out-button{
-    height: 30px;
+    height: 35px;
     min-width: 100%;
-    background-color: transparent;
+    // background-color: transparent;
+    background-color: $netflix-red;
     color: $light;
+    border-radius: 2px;
 }

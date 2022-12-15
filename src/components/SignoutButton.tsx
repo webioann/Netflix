@@ -14,7 +14,7 @@ const SignoutButton = () => {
     const signOutUser = async () => {
         try {
             await signOut(auth)
-            dispatch(deleteCurrentUser())
+            await dispatch(deleteCurrentUser())
             navigate("/")
         }
         catch(error) {console.log(error)}

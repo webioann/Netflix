@@ -11,7 +11,7 @@
     height: $header-hight;
     z-index: 3;
     .header-wrapper{
-        max-width: 1800px;
+        max-width: 1600px;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
@@ -23,16 +23,21 @@
                 cursor: pointer;
             }
         }
-        .header-login-link{
-            display: inline;
-            margin-top: 20px;
-            margin-right: 20px;
-            .avatar-logo{
-                width: 35px;
-                object-fit: contain;
-                cursor: pointer;
-                
+        .header-right-side{
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            padding-right: 20px;
+            .header-link{
+                margin-left: 20px;
+                .avatar-logo{
+                    width: 35px;
+                    object-fit: contain;
+                    cursor: pointer;
+                    
+                }
             }
+    
         }
     
     }

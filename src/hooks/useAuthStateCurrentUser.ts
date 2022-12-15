@@ -30,6 +30,6 @@ export const useAuthStateCurrentUser = () => {
                 dispatch(deleteCurrentUser())
             }
         })
-    }, [ auth ])
+    }, [])
 };
 
