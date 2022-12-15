@@ -1,5 +1,9 @@
 @import './@index.scss';
-
+.--test{
+    color: #fff;
+    font-weight: 900;
+    border: 1px solid red;
+}
 .header{
     position: fixed;
     top: 0;

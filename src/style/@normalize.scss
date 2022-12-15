@@ -80,7 +80,10 @@ abbr[title] {
 
 /* buttons */
 /* ==================================== */
-button{cursor: pointer;}
+button{
+    cursor: pointer;
+    border-radius: 0;
+}
 button::-moz-focus-inner {
     padding:0;border:0;
 }
