@@ -7,6 +7,7 @@ import '../style/header.scss'
 const Header = () => {
 
     const currentUser = useAppSelector(state => state.redux.currentUser)
+    const userAvatar = useAppSelector(state => state.redux.currentUser?.currentUser_PhotoURL)
     const [avatar, setAvatar] = useState<string>("https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png")
     console.log(currentUser);
 
@@ -14,7 +15,7 @@ const Header = () => {
         currentUser?.currentUser_PhotoURL ? 
         setAvatar(currentUser?.currentUser_PhotoURL) : 
         "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-    }, [currentUser])
+    }, [userAvatar])
 
     return (
         <header className='header'>
