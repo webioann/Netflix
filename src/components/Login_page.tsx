@@ -3,8 +3,9 @@ import { useAppDispatch } from '../redux/store'
 import { Link } from 'react-router-dom'
 import Popup from './Popup'
 import RegistrationForm from './RegistrationForm'
-import LoginButton from './LoginButton';
-import '../style/login-signup-page.scss'
+import LoginButton from './LoginButton'
+import AuthPageFooter from './AuthPageFooter'
+import '../style/auth-page.scss'
 
 const Login_page = () => {
 
@@ -42,12 +43,8 @@ const Login_page = () => {
                     <span className='captcha-link'>Learn more.</span> 
                 </p>
             </div>
-
+            <AuthPageFooter/>
             <div className="--fullscreen-gradient"></div>
-            <footer className='auth-footer'>
-                
-            </footer>
-
         </div>
     )
 }

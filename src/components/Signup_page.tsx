@@ -4,7 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import SignupButton from './SignupButton'
 import RegistrationForm from './RegistrationForm'
 import Popup from './Popup'
-import '../style/login-signup-page.scss'
+import AuthPageFooter from './AuthPageFooter'
+import '../style/auth-page.scss'
 
 const Signup_page = () => {
 
@@ -43,6 +44,7 @@ const Signup_page = () => {
                     <span className='captcha-link'>Learn more.</span> 
                 </p>        
             </div>
+            <AuthPageFooter/>
             <div className="--fullscreen-gradient"></div>
         </div>
     )
