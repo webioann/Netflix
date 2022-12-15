@@ -4,7 +4,6 @@ import { deleteCurrentUser } from '../redux/reduxSlice'
 import { signOut } from "firebase/auth"
 import { auth } from '../firebase.config'
 import { useNavigate } from 'react-router-dom'
-
 import '../style/signout-button.scss'
 
 const SignoutButton = () => {
@@ -20,6 +19,7 @@ const SignoutButton = () => {
         }
         catch(error) {console.log(error)}
     }
+
     return (
         <button onClick={signOutUser} 
             className='out-button'>

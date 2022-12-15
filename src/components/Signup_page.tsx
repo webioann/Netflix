@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { useAppDispatch } from '../redux/store'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import SignupButton from './SignupButton'
 import RegistrationForm from './RegistrationForm'
 import Popup from './Popup'
@@ -12,8 +11,6 @@ const Signup_page = () => {
     const [email,setEmail] = useState<string>('')
     const [password,setPassword] = useState<string>('')
     const [warning,setWarning] = useState<boolean>(false)
-    const navigate = useNavigate()
-    const dispatch = useAppDispatch()
     
     const closePopup = () => setWarning(false)
 

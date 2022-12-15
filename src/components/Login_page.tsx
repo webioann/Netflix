@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useAppDispatch } from '../redux/store'
 import { Link } from 'react-router-dom'
 import Popup from './Popup'
 import RegistrationForm from './RegistrationForm'
@@ -12,7 +11,6 @@ const Login_page = () => {
     const [email,setEmail] = useState<string>('')
     const [password,setPassword] = useState<string>('')
     const [warning,setWarning] = useState<boolean>(false)
-    const dispatch = useAppDispatch()
     
     const closePopup = () => setWarning(false)
     

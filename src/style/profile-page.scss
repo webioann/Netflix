@@ -48,6 +48,10 @@
                     padding: 10px 0;
                     display: flex;
                     justify-content: space-between;
+                    flex-wrap: wrap;
+                    & span{
+                        padding-top: 5px;
+                    }
                 }
                 .profile-user-name{
                     width: 100%;

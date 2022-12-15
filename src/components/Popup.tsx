@@ -18,5 +18,4 @@ const Popup: React.FC<closePopupType> = ({ closePopup }) => {
         </div>
     )
 }
-
 export default Popup;

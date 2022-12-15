@@ -65,5 +65,4 @@ const RegistrationForm: React.FC<IFormPropsFunc> = ({setEmail, setPassword, emai
         </form>
     )
 }
-
 export default RegistrationForm;

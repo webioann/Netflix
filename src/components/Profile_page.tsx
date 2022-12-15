@@ -28,8 +28,8 @@ const Profile_page = () => {
                             <span>{currentUser?.currentUser_Email}</span>
                         </li>
                         <li>
-                            <span>Email :</span>
-                            <span>{currentUser?.currentUser_Email}</span>
+                            <span>Use ID :</span>
+                            <span>{currentUser?.currentUser_ID}</span>
                         </li>
                         <li>
                             <span>Email :</span>

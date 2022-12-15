@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { IoIosArrowForward } from 'react-icons/io';
-
 import '../style/baner-main-form.scss'
 
 const BanerMainForm = () => {
