@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { IoIosArrowForward } from 'react-icons/io';
+import { MdOutlineArrowForwardIos } from 'react-icons/md';
 import '../style/baner-main-form.scss'
 
 const BanerMainForm = () => {
@@ -22,7 +22,7 @@ const BanerMainForm = () => {
             <button className='baner-button'
                 onClick={(event) => event.preventDefault()}>
                 Почати
-                <IoIosArrowForward className='baner-button-arrow'/>
+                <MdOutlineArrowForwardIos className='baner-button-arrow'/>
             </button>
         </form>
     )
