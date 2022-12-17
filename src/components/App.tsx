@@ -13,6 +13,8 @@ import Notfound_page from './Notfound_page'
 import MoviesSliderRow from './MoviesSliderRow'
 import { requestsPath } from '../data/requests'
 
+import TEST from './TEST'
+
 const  App: React.FC = () => {
 
   useAuthStateCurrentUser();
@@ -37,6 +39,7 @@ const  App: React.FC = () => {
           <Route path="login" element={<Login_page />}/>
           <Route path="signup" element={<Signup_page />}/>
           <Route path="*" element={<Notfound_page />} />
+          <Route path="/test" element={<TEST />} />
           { currentUser &&  <Route path="profile" element={<Profile_page />}/>}
         </Routes>
     </Container>
