@@ -13,7 +13,7 @@ import Notfound_page from './Notfound_page'
 import MoviesRow from './MoviesRow'
 import { requestsPath } from '../data/requests'
 
-import TEST from './TEST'
+// import TEST from './TEST'
 
 const  App: React.FC = () => {
 

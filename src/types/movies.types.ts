@@ -1,10 +1,8 @@
-export interface IMovieData {
-    adult: boolean
+export interface IMovie {
     backdrop_path: string
     first_air_date: string
     genre_ids: number[]
     id: number
-    media_type: string
     name: string
     origin_country: string[]
     original_language:string
@@ -15,10 +13,11 @@ export interface IMovieData {
     vote_average: number
     vote_count: number
 }
-export interface ITrendingDataResponse {
+export interface IMoviesDataResponse {
     page: number
-    results: IMovieData[]
+    results: IMovie[]
     total_pages: number
     total_results: number
 }
+
 

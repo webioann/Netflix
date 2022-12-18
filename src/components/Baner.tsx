@@ -8,7 +8,8 @@ const Baner: React.FC = () => {
 
     const [banerImage, setBanerImage] = useState<string>('')
     const { data: movies } = useFetchMoviesQuery({request_path: requestsPath.originals})
-    console.log(movies);
+    const [randomMovie, setRandomMovie] = useState({})
+
     useEffect(() => {
         if(movies) {
             let randomNumber = Math.floor(Math.random() * movies.length - 1)

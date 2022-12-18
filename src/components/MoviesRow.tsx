@@ -25,7 +25,6 @@ const MoviesRow = ({ title, request_path, isLarge }: MovieRowPropsType) => {
             rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' })
         }
     }
-    console.log(`scroll --> ${rowRef.current?.scrollLeft}`);
 
     if( movies ) {
         return (

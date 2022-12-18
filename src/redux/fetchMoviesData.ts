@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { IMovieData, ITrendingDataResponse } from "../types/trendigMovies.types";
+import { IMovie, IMoviesDataResponse } from "../types/movies.types";
 
 type paramsType = {
     request_path: string
@@ -11,14 +11,14 @@ export const fetchMoviesData = createApi({
         baseUrl: 'https://api.themoviedb.org/3'
     }),
     endpoints: builder => ({
-        fetchMovies: builder.query<IMovieData[], paramsType>({
+        fetchMovies: builder.query<IMovie[], paramsType>({
             query: (params: paramsType ) => ({
                 url: params.request_path,
                 params: {
                     url: params.request_path
                 }
             }),
-            transformResponse: (respons: ITrendingDataResponse) => respons.results,
+            transformResponse: (respons: IMoviesDataResponse) => respons.results,
         }),
     }), 
 })

@@ -9,7 +9,6 @@ const Header = () => {
     const currentUser = useAppSelector(state => state.redux.currentUser)
     const userAvatar = useAppSelector(state => state.redux.currentUser?.currentUser_PhotoURL)
     const [avatar, setAvatar] = useState<string>("https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png")
-    console.log(currentUser);
 
     useEffect(() => {
         currentUser?.currentUser_PhotoURL ? 
