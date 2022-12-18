@@ -20,4 +20,8 @@ export interface IMoviesDataResponse {
     total_results: number
 }
 
-
+export interface IBanerMovie {
+    img: string
+    name: string
+    overview: string
+}

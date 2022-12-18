@@ -4,21 +4,23 @@
     background-size: cover;
     background-position: center center;
     object-fit: contain;
+    min-height: 600px;
     position: relative;
     // DONT DELETE BORDER ==========
-    border: 1px solid $netflix-black;
+    // border: 1px solid $netflix-black;
     z-index: 1;
     .baner-content{
-        margin: 140px auto 120px auto;
+        padding-top: 10rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
         z-index: 10;
-        .baner-welcom-title{
+        .baner-movie-name{
             font-size: 28px;
-            text-align: center;
             font-weight: 700;
         }
-        .baner-middle-title{
+        .baner-overview{
             font-size: 18px;
-            text-align: center;
+            font-weight: 400px;
             padding-bottom: 2rem;
         }
         .baner-hint{
@@ -26,20 +28,36 @@
             font-size: 18px;
             padding-bottom: 40px;
         }
+        // === MEDIA QUERYS ===
         @media (min-width: 576px) {
-            .baner-welcom-title{
+            .baner-movie-name{
                 font-size: 50px;
-            }
-            .baner-middle-title{
-                font-size: 26px;
             }
         }
         @media (min-width: 1400px) {
-            .baner-welcom-title{
+            .baner-movie-name{
                 font-size: 64px;
             }
         }
     }
+    // === MEDIA QUERYS ===
+    @media (min-width: 768px) {
+        .baner-content{
+            padding-left: 2rem;
+        }
+    }
+    @media (min-width: 1024px) {
+        .baner-content{
+            padding-left: 3rem;
+        }
+    }
+
+    @media (min-width: 1400px) {
+        .baner-content{
+            padding-left: 4rem;
+        }
+    }
+    
     .black-fog{
         height: 8rem;
         position: absolute;
