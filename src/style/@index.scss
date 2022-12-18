@@ -51,11 +51,11 @@ $bg-block-dark: #3c4043;
 // ===== sizes =====
 $br-main: 4px;
 
-$sm: 576px;
+$sm: 640px;
 $md: 768px;
-$lg: 992px;
-$xl: 1200px;
-$xxl: 1400px;
+$lg: 1024px;
+$xl: 1280px;
+$xxl: 1536px;
 
 $header-hight: 90px;
 
@@ -82,7 +82,7 @@ $br-medium: 6px;
     background-color: $netflix-red;
     color: $light;
     position: relative;
-
+    cursor: pointer;
 }
 
 

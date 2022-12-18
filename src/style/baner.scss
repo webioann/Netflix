@@ -13,11 +13,12 @@
         margin: 0 auto;
         max-width: 576px;
         padding-top: 7rem;
+        padding-bottom: 5rem;
         padding-right: 1rem;
         padding-left: 1rem;
         z-index: 10;
         .baner-movie-name{
-            font-size: 28px;
+            font-size: 36px;
             font-weight: 700;
         }
         .baner-overview{
@@ -35,32 +36,30 @@
                 justify-content: space-between;
             }
         }
-        // === MEDIA QUERYS ===
-        @media (min-width: 576px) {
-            .baner-movie-name{
-                font-size: 50px;
-            }
-        }
-        @media (min-width: 1400px) {
-            .baner-movie-name{
-                font-size: 64px;
-            }
-        }
     }
     // === MEDIA QUERYS ===
-    @media (min-width: 576px) {
+    @media (min-width: $sm) {
         .baner-content{
             margin-left: 30px;
+            .baner-movie-name{
+                font-size: 46px;
+            }
         }
     }
-    @media (min-width: 768px) {
+    @media (min-width: $md) {
         .baner-content{
             margin-left: 50px;
+            .baner-movie-name{
+                font-size: 60px;
+            }
         }
     }
-    @media (min-width: 1400px) {
+    @media (min-width: $xl) {
         .baner-content{
             margin-left: 80px;
+            .baner-movie-name{
+                font-size: 72px;
+            }
         }
     }
 

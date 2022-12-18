@@ -2,8 +2,8 @@ import { createSlice,PayloadAction } from "@reduxjs/toolkit"
 import { ICurrentUser } from '../types/auth.types'
 
 type InitialStateType = {
-    defaultState: number;
     currentUser: ICurrentUser | null
+    modalIsOpen: boolean
 }
 // const storedCurrentUser = localStorage.getItem('storedCurrentUser')
 // let userFromLocalStorage
@@ -13,15 +13,14 @@ type InitialStateType = {
 // else{ userFromLocalStorage = null }
 
 const initialState: InitialStateType = {
-    defaultState: 1,
-    currentUser: null
+    currentUser: null,
+    modalIsOpen: false
 }
 
 export const reduxSlice = createSlice({
     name: "redux",
     initialState,
     reducers: {
-        incremented: (state) => {state.defaultState = state.defaultState + 1},
         createCurrentUser: (state, actions) => {
             state.currentUser = {
                 currentUser_Name: actions.payload.userName, 
@@ -35,13 +34,17 @@ export const reduxSlice = createSlice({
             state.currentUser = null
             // localStorage.removeItem('storedCurrentUser');
         },
+        openModal: (state) => { state.modalIsOpen = true },
+        closeModal: (state) => { state.modalIsOpen = false },
     }
 });
 
 export const { 
-    incremented,
     createCurrentUser,
     deleteCurrentUser,
+    openModal,
+    closeModal,
+    
 } = reduxSlice.actions;
 
 export default reduxSlice.reducer;
