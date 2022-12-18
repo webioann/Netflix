@@ -5,7 +5,7 @@ import '../style/container.scss'
 const Container: React.FC<IChildrenProps> = ({children}) => {
 
     return (
-        <div>{ children }</div>
+        <div className='container'>{ children }</div>
     )
 }
 export default Container;

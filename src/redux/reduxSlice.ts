@@ -35,7 +35,10 @@ export const reduxSlice = createSlice({
             // localStorage.removeItem('storedCurrentUser');
         },
         openModal: (state) => { state.modalIsOpen = true },
-        closeModal: (state) => { state.modalIsOpen = false },
+        closeModal: (state) => { 
+            state.modalIsOpen = false 
+            console.log("CLOSE");
+        },
     }
 });
 

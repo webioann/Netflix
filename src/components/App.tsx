@@ -11,9 +11,11 @@ import Signup_page from './Signup_page'
 import Profile_page from './Profile_page'
 import Notfound_page from './Notfound_page'
 import MoviesRow from './MoviesRow'
+import Modal from './Modal'
 import { requestsPath } from '../data/requests'
 
-// import TEST from './TEST'
+
+import TEST from './TEST'
 
 const  App: React.FC = () => {
 
@@ -24,6 +26,8 @@ const  App: React.FC = () => {
   return (
     <Container>
       <Header/>
+      
+      <Modal/>
       <Routes>
           <Route path="/" element={<Home_page>
             <Baner/>

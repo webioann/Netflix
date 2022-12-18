@@ -1,0 +1,32 @@
+@import './@index.scss';
+
+.modal-layout{
+    min-width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0,0,0,0.2);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    bottom: 0;
+    z-index: 100;
+    .modal-content{
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 1rem;
+        margin-top: 100px;
+        min-width: 320px;
+        min-height: 200px;
+        background-color: $light;
+        .modal-title{
+            color: #000;
+        }
+    }
+}
+.hidden-modal{
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    display: none;
+}
