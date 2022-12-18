@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { useAppSelector, useAppDispatch } from '../redux/store'
+import { selectTheMovie } from '../redux/reduxSlice'
 import { useFetchMoviesQuery } from '../redux/fetchMoviesData'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
 import '../style/movies-row.scss'
@@ -14,6 +16,8 @@ const MoviesRow = ({ title, request_path, isLarge }: MovieRowPropsType) => {
     const { data: movies } = useFetchMoviesQuery({request_path: request_path})
     const rowRef = useRef<HTMLDivElement>(null)
     const [isMoved, setIsMoved] = useState(false)
+    const dispatch = useAppDispatch()
+    // console.log(movies)
 
     const onArrowClick = (direct: 'left' | 'right') => {
         if( rowRef.current ) {
@@ -38,7 +42,14 @@ const MoviesRow = ({ title, request_path, isLarge }: MovieRowPropsType) => {
                             src={`https://image.tmdb.org/t/p/original/${
                                 isLarge ? movie.poster_path : movie.backdrop_path
                             }`} 
-                            alt={movie.name}/>
+                            alt={movie.name}
+                            onClick={() => {
+                                dispatch(selectTheMovie({
+                                    media_type: movie.media_type,
+                                    movie_id: movie.id
+                                }))
+                            }}
+                        />
                     ))}
                 </div>
                 <div className='arrow-icons-wrapper'>

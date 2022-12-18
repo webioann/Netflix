@@ -26,7 +26,6 @@ const  App: React.FC = () => {
   return (
     <Container>
       <Header/>
-      
       <Modal/>
       <Routes>
           <Route path="/" element={<Home_page>

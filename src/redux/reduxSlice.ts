@@ -1,9 +1,15 @@
 import { createSlice,PayloadAction } from "@reduxjs/toolkit"
 import { ICurrentUser } from '../types/auth.types'
 
+type selectedMovieData = {
+    mediaType: string
+    movieID: string
+}
+
 type InitialStateType = {
     currentUser: ICurrentUser | null
     modalIsOpen: boolean
+    selectedMovie: selectedMovieData | null
 }
 // const storedCurrentUser = localStorage.getItem('storedCurrentUser')
 // let userFromLocalStorage
@@ -14,7 +20,8 @@ type InitialStateType = {
 
 const initialState: InitialStateType = {
     currentUser: null,
-    modalIsOpen: false
+    modalIsOpen: false,
+    selectedMovie: null
 }
 
 export const reduxSlice = createSlice({
@@ -39,6 +46,12 @@ export const reduxSlice = createSlice({
             state.modalIsOpen = false 
             console.log("CLOSE");
         },
+        selectTheMovie: (state, actions) => {
+            state.selectedMovie = {
+                mediaType: actions.payload.media_type,
+                movieID: actions.payload.movie_id
+            }
+        }
     }
 });
 
@@ -47,6 +60,7 @@ export const {
     deleteCurrentUser,
     openModal,
     closeModal,
+    selectTheMovie,
     
 } = reduxSlice.actions;
 

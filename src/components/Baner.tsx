@@ -36,7 +36,7 @@ const Baner: React.FC = () => {
                 name: choosedName,
                 overview: customOverview
             })
-            console.log(movies[idx]);
+            // console.log(movies[idx]);
         }
     }, [movies])
 
