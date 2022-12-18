@@ -12,21 +12,20 @@ type MovieRowPropsType = {
 const MoviesRow = ({ title, request_path, isLarge }: MovieRowPropsType) => {
 
     const { data: movies } = useFetchMoviesQuery({request_path: request_path})
-    const [leftArrowVisibility, setLeftArrowVisibility] = useState(false)
-    const [rightArrowVisibility, setRightArrowVisibility] = useState(true)
     const rowRef = useRef<HTMLDivElement>(null)
+    const [isMoved, setIsMoved] = useState(false)
 
     const onArrowClick = (direct: 'left' | 'right') => {
         if( rowRef.current ) {
+            setIsMoved(true)
             const { scrollLeft, clientWidth } = rowRef.current
             const scrollTo = direct === 'left' 
             ? scrollLeft - clientWidth 
             : scrollLeft + clientWidth
             rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' })
-            scrollLeft > 1 ? setLeftArrowVisibility(true) : setLeftArrowVisibility(false)
-            scrollLeft == clientWidth ? setRightArrowVisibility(false) : setRightArrowVisibility(true)
         }
     }
+    console.log(`scroll --> ${rowRef.current?.scrollLeft}`);
 
     if( movies ) {
         return (
@@ -43,16 +42,18 @@ const MoviesRow = ({ title, request_path, isLarge }: MovieRowPropsType) => {
                             alt={movie.name}/>
                     ))}
                 </div>
-                <div className='arrow-icon-wrapper'>
-                        <SlArrowLeft 
-                            onClick={() => onArrowClick('left')}
-                            size={30} 
-                            className={leftArrowVisibility ? 'arrow-icon' : 'arrow-is-hidden'}/>
-                        <SlArrowRight 
-                            onClick={() => onArrowClick('right')} 
-                            size={30} 
-                            className={rightArrowVisibility ? 'arrow-icon' : 'arrow-is-hidden'}/>
-                    </div >
+                <div className='arrow-icons-wrapper'>
+                    <SlArrowLeft className={ isMoved ? 'arrow' : 'hidden-arrow' }
+                        onClick={() => onArrowClick('left')}
+                        size={30}
+                        color='#ffffff' 
+                    />
+                    <SlArrowRight className='arrow'
+                        onClick={() => onArrowClick('right')} 
+                        size={30}
+                        color='#ffffff' 
+                    />
+                </div >
             </section>
         )
     }

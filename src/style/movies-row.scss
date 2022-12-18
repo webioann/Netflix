@@ -34,29 +34,25 @@
             }
         }
     }
-    .arrow-icon-wrapper{
+    .arrow-icons-wrapper{
         position: absolute;
         top: 50%;
         left: 0;
         min-width: 100%;
-        // bottom: 0;
-        // right: 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 0 30px;
         z-index: 10;
-        .arrow-icon{
-            color: $light;
+        .arrow{
             visibility: visible;
             opacity: 1;
-            &:hover{
-                cursor: pointer;
-            }
+            cursor: pointer;
         }
-        .arrow-is-hidden{
+        .hidden-arrow{
             visibility: hidden;
             opacity: 0;
+            // cursor: none;
         }
     }
 
