@@ -1,5 +1,7 @@
 export interface IMovie {
     backdrop_path: string
+    media_type?: string
+    release_data?: string
     first_air_date: string
     genre_ids: number[]
     id: number
@@ -24,4 +26,11 @@ export interface IBanerMovie {
     img: string
     name: string
     overview: string
+}
+export interface TypeOfMovie {
+    type: 'Bloopers' | 'Featurette' |'Behind of Scenes' | 'Clip' | 'Trailer' |'Teaser'
+}
+export interface IGenres {
+    id: number
+    name: string
 }
