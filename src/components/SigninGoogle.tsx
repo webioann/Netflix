@@ -20,7 +20,7 @@ const GoogleSignin = () => {
     }
 
     return (
-        <button className='auth-button' onClick={googleRegistration}>
+        <button className='g-button auth-button' onClick={googleRegistration}>
             Signin with Google 
         </button>
     )

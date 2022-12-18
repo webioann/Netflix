@@ -3,7 +3,9 @@ import { useFetchMoviesQuery } from '../redux/fetchMoviesData';
 import { requestsPath } from '../data/requests'
 // import BanerMainForm from './BanerMainForm'
 import { IBanerMovie } from '../types/movies.types'
-import { useTextTruncate } from '../hooks/useTextTruncate';
+import { useTextTruncate } from '../hooks/useTextTruncate'
+import { HiInformationCircle } from 'react-icons/hi'
+
 import '../style/baner.scss'
 
 const Baner: React.FC = () => {
@@ -21,12 +23,16 @@ const Baner: React.FC = () => {
             let imgPath = movies[idx]?.backdrop_path
                 ? movies[idx]?.backdrop_path
                 : movies[idx]?.poster_path
+            let tempName = movies[idx]?.name
+                ? movies[idx]?.name
+                : movies[idx]?.original_name
+
             setRandomMovie({
                 img: `https://image.tmdb.org/t/p/original/${imgPath}`,
-                name: movies[idx].name,
+                name: tempName,
                 overview: movies[idx].overview
             })
-            // console.log(movies[idx]);
+            console.log(movies[idx]);
         }
     }, [movies])
 
@@ -41,11 +47,14 @@ const Baner: React.FC = () => {
                     {randomMovie.name}
                 </h1>
                 <p className='baner-overview'>
-                    {useTextTruncate(150, randomMovie.overview)}
+                    { useTextTruncate(150, randomMovie.overview) }
                 </p>
                 <div className="baner-buttons">
-                    <button>Play</button>
-                    <button>My list</button>
+                    <button className='g-button'>Play</button>
+                    <button className='baner-info-button g-button'>
+                        More info
+                        <HiInformationCircle color='#fff' size={24}/>
+                    </button>
                 </div>
             </div>
             <div className='black-fog'/>

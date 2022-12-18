@@ -57,13 +57,6 @@ $lg: 992px;
 $xl: 1200px;
 $xxl: 1400px;
 
-$unit-1: 5px;
-$unit-2: 10px;
-$unit-3: 15px;
-$unit-4: 20px;
-$unit-5: 25px;
-$unit-6: 30px;
-
 $header-hight: 90px;
 
 $button-max-size: 120px;
@@ -79,24 +72,21 @@ $br-medium: 6px;
         cursor: pointer;
     }
 }
-.g-stretched{
-    flex: 1;
-}
-.g-auth-button{
-    max-width: 120px;
-    box-shadow: $box-shadow-lt;
+.g-button{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px 10px;
-    border-radius: $br-medium;
-    color: $text-blue;
-    font-weight: 700;
-    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: $br-main;
+    font-weight: 600;
+    background-color: $netflix-red;
+    color: $light;
+    position: relative;
+
 }
-.md{
-    max-width: 768px;
-}
+
+
+
 /* =========== CUSTOM SCROLLBAR ========  */
 // ::-webkit-scrollbar{
 //     width: 10px;

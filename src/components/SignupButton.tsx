@@ -21,7 +21,7 @@ const SignupButton: React.FC<IAuthButtonProps> = ({ email, password, setWarning 
     }
 
     return (
-        <button className='auth-button' onClick={emailRegistration}>
+        <button className='g-button auth-button' onClick={emailRegistration}>
             Sign Up
         </button>
     )
