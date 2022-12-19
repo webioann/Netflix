@@ -21,7 +21,7 @@ type InitialStateType = {
 const initialState: InitialStateType = {
     currentUser: null,
     modalIsOpen: false,
-    selectedMovie: null
+    selectedMovie: null,
 }
 
 export const reduxSlice = createSlice({
@@ -42,10 +42,7 @@ export const reduxSlice = createSlice({
             // localStorage.removeItem('storedCurrentUser');
         },
         openModal: (state) => { state.modalIsOpen = true },
-        closeModal: (state) => { 
-            state.modalIsOpen = false 
-            console.log("CLOSE");
-        },
+        closeModal: (state) => { state.modalIsOpen = false },
         selectTheMovie: (state, actions) => {
             state.selectedMovie = {
                 mediaType: actions.payload.media_type,

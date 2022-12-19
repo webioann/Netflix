@@ -14,10 +14,15 @@ type MovieRowPropsType = {
 const MoviesRow = ({ title, request_path, isLarge }: MovieRowPropsType) => {
 
     const { data: movies } = useFetchMoviesQuery({request_path: request_path})
+    // const selected = useAppSelector(state => state.redux.selectedMovie?.movieID)
     const rowRef = useRef<HTMLDivElement>(null)
     const [isMoved, setIsMoved] = useState(false)
     const dispatch = useAppDispatch()
-    // console.log(movies)
+
+    // useEffect(() => {
+    //     console.log('SELECTED  ',selected)
+
+    // }, [selected])
 
     const onArrowClick = (direct: 'left' | 'right') => {
         if( rowRef.current ) {
