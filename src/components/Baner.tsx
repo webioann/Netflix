@@ -2,79 +2,51 @@ import React, { useState, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
 import { selectMovieID, openModal } from '../redux/reduxSlice';
 import { requestsPath } from '../data/requests'
-import { IBanerMovie } from '../types/movies.types'
 import { useTextTruncate } from '../hooks/useTextTruncate'
 import { HiInformationCircle } from 'react-icons/hi'
-import { IMovie, IMoviesDataResponse } from "../types/movies.types";
+import { IMovie } from "../types/movies.types";
 import { useFetchMoviesQuery } from '../redux/fetchMoviesData';
-
 import '../style/baner.scss'
 
 const Baner: React.FC = () => {
 
     const { data: movies } = useFetchMoviesQuery({request_path: requestsPath.originals})
     const dispatch = useAppDispatch()
-    const [movie, setMovie] = useState<IMovie | {}>({})
-
-    const [randomMovie, setRandomMovie] = useState<IBanerMovie>({
-        img: 'https://raw.githubusercontent.com/thatanjan/netflix-clone-yt/youtube/media//banner.jpg',
-        name: 'movie',
-        overview: 'Curvy, curly, confident Mich knows she is fabulous',
-        id: 0
-    })
+    const [movie, setMovie] = useState<IMovie[] | []>([])
+    const [imgUrl, setImgUrl] = useState('')
+    const [overview, setOverview] = useState('')
 
     useEffect(() => {
         if( movies ) {
             let idx = Math.floor(Math.random() * movies.length - 1)
             const randomMovieIndex = movies.findIndex((elem, index) => { return index === idx })
-            const rawMovie = movies.filter((elem, index) => { return index === randomMovieIndex })
-            setMovie(rawMovie[0])
+            const randomMovie = movies.filter((elem, index) => { return index === randomMovieIndex })
+            const imgPartUrl = randomMovie[0]?.backdrop_path ? randomMovie[0]?.backdrop_path : randomMovie[0]?.poster_path 
+            setImgUrl(`https://image.tmdb.org/t/p/original/${imgPartUrl}`)
+            setOverview(randomMovie[0]?.overview)
+            setMovie(randomMovie)
         }
-    }, [movies])
-    console.log(movie);
-
-    useEffect(() => {
-        if(movies) {
-            let idx = Math.floor(Math.random() * movies.length - 1)
-            let imgPath = movies[idx]?.backdrop_path
-                ? movies[idx]?.backdrop_path
-                : movies[idx]?.poster_path
-            let choosedName = movies[idx]?.name
-                ? movies[idx]?.name
-                : movies[idx]?.original_name
-            let customOverview = movies[idx]?.overview
-                ? movies[idx]?.overview
-                : 'Curvy, curly, confident Mich knows she is fabulous'
-
-            setRandomMovie({
-                img: `https://image.tmdb.org/t/p/original/${imgPath}`,
-                name: choosedName,
-                overview: customOverview,
-                id: movies[idx]?.id
-            })
-            // console.log(movies[idx]);
-        }
+        else { return }
     }, [movies])
 
-// console.log(randomMovie)
     return (
         <section 
             className='baner-container'
-            style={{backgroundImage: `url(${randomMovie.img})`}}
+            style={{backgroundImage: `url(${imgUrl})`}}
             >
             <div className="baner-content md">
                 <h1 className='baner-movie-name'>
-                    {randomMovie.name}
+                    {movie[0]?.name ? movie[0]?.name : movie[0]?.original_name}
                 </h1>
                 <p className='baner-overview'>
-                    { useTextTruncate(150, randomMovie.overview) }
+                    { useTextTruncate(150, overview) }
                 </p>
                 <div className="baner-buttons">
                     <button className='g-button'>Play</button>
                     <button className='baner-info-button g-button'
                         onClick={() => {
                             dispatch(openModal())
-                            dispatch(selectMovieID(randomMovie.id))
+                            dispatch(selectMovieID(movie[0].id))
                         }}
                     >
                         More info
