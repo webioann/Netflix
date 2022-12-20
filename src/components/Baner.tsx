@@ -13,14 +13,25 @@ import '../style/baner.scss'
 const Baner: React.FC = () => {
 
     const { data: movies } = useFetchMoviesQuery({request_path: requestsPath.originals})
-
     const dispatch = useAppDispatch()
+    const [movie, setMovie] = useState<IMovie | {}>({})
+
     const [randomMovie, setRandomMovie] = useState<IBanerMovie>({
         img: 'https://raw.githubusercontent.com/thatanjan/netflix-clone-yt/youtube/media//banner.jpg',
         name: 'movie',
         overview: 'Curvy, curly, confident Mich knows she is fabulous',
         id: 0
     })
+
+    useEffect(() => {
+        if( movies ) {
+            let idx = Math.floor(Math.random() * movies.length - 1)
+            const randomMovieIndex = movies.findIndex((elem, index) => { return index === idx })
+            const rawMovie = movies.filter((elem, index) => { return index === randomMovieIndex })
+            setMovie(rawMovie[0])
+        }
+    }, [movies])
+    console.log(movie);
 
     useEffect(() => {
         if(movies) {

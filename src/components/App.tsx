@@ -14,15 +14,16 @@ import MoviesRow from './MoviesRow'
 import Modal from './Modal'
 import { requestsPath } from '../data/requests'
 
-
 import TEST from './TEST'
 import { useGetMoviesQuery } from '../redux/fetchMoviesData'
+
 const  App: React.FC = () => {
 
   useAuthStateCurrentUser();
-
   const currentUser = useAppSelector(state => state.redux.currentUser)
-  const {data: movv} = useGetMoviesQuery('')
+
+  // ========================================
+  // const {data: movv} = useGetMoviesQuery('')
   // console.log( movv);
 
   return (
