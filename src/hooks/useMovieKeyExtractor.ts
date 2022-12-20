@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../redux/store'
-import { createCurrentUser, deleteCurrentUser } from '../redux/reduxSlice'
 import { IGenres, TypeOfMovie } from '../types/movies.types'
 
 export const useMovieKeyExtractor = () => {
@@ -8,8 +7,6 @@ export const useMovieKeyExtractor = () => {
     const [videoKey, setVideoKey] = useState('')
     const [genres, setGenres] = useState<IGenres | []>([])
     const movieID = useAppSelector(state => state.redux.movieID)
-
-    console.log(`VIDEO ID ID --> ${movieID}`);
 
     useEffect(() => {
         if( movieID === 0 ) return

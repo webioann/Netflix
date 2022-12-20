@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { selectMovieID, openModal } from '../redux/reduxSlice';
+import { selectMovie, openModal } from '../redux/reduxSlice';
 import { requestsPath } from '../data/requests'
 import { useTextTruncate } from '../hooks/useTextTruncate'
 import { HiInformationCircle } from 'react-icons/hi'
@@ -10,7 +10,7 @@ import '../style/baner.scss'
 
 const Baner: React.FC = () => {
 
-    const { data: movies } = useFetchMoviesQuery({request_path: requestsPath.originals})
+    const { data: movies } = useFetchMoviesQuery({path: requestsPath.originals})
     const dispatch = useAppDispatch()
     const [movie, setMovie] = useState<IMovie[] | []>([])
     const [imgUrl, setImgUrl] = useState('')
@@ -46,7 +46,10 @@ const Baner: React.FC = () => {
                     <button className='baner-info-button g-button'
                         onClick={() => {
                             dispatch(openModal())
-                            dispatch(selectMovieID(movie[0].id))
+                            dispatch(selectMovie({
+                                media_type: 'tv',
+                                movie_id: Number(movie[0]?.id)
+                            }))
                         }}
                     >
                         More info

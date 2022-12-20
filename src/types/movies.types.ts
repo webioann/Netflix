@@ -15,11 +15,27 @@ export interface IMovie {
     vote_average: number
     vote_count: number
 }
+export interface IVideo {
+    id: string
+    iso_639_1: string
+    iso_3166_1: string
+    key: string
+    name: string
+    official: boolean
+    published_at: string
+    site: string
+    size: number
+    type: string
+}
 export interface IMoviesDataResponse {
     page: number
     results: IMovie[]
     total_pages: number
     total_results: number
+}
+export interface IVideoDataResponse {
+    id: number
+    results: IVideo[]
 }
 
 export interface IBanerMovie {
@@ -29,7 +45,13 @@ export interface IBanerMovie {
     id: number
 }
 export interface TypeOfMovie {
-    type: 'Bloopers' | 'Featurette' |'Behind of Scenes' | 'Clip' | 'Trailer' |'Teaser'
+    type: 
+    'Bloopers' 
+    | 'Featurette' 
+    |'Behind of Scenes' 
+    | 'Clip' 
+    | 'Trailer' 
+    |'Teaser'
 }
 export interface IGenres {
     id: number

@@ -11,5 +11,4 @@ export const requestsPath = {
     documentaries: `/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=99`,
 
 
-    test: `/movie/436270/videos?api_key=${process.env.TMDB_API_KEY}&language=en-US`
 };

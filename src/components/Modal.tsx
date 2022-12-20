@@ -2,48 +2,43 @@ import React, { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
 import { closeModal } from '../redux/reduxSlice';
 import { IoClose } from 'react-icons/io5'
-import { useMovieKeyExtractor } from '../hooks/useMovieKeyExtractor';
-import { IChildrenProps } from '../types/global.types'
+// import { useMovieKeyExtractor } from '../hooks/useMovieKeyExtractor';
+// import { IChildrenProps } from '../types/global.types'
 import { IGenres, TypeOfMovie } from '../types/movies.types'
 import YouTube from 'react-youtube'
 const movieTrailer = require('movie-trailer')
+import { useLazyGetVideoDataQuery } from '../redux/fetchMoviesData'
+
 import '../style/modal.scss'
 
 const Modal = () => {
 
+    const [ fetchVideo, { data: video }] = useLazyGetVideoDataQuery()
     const dispatch = useAppDispatch()
     const modalIsOpen = useAppSelector(state => state.redux.modalIsOpen)
-    const movieID = useAppSelector(state => state.redux.movieID)
+    const movie = useAppSelector(state => state.redux.selectedMovie)
     const [trailerURL, setTrailerURL] = useState('')
-    const videoKey  = useMovieKeyExtractor()
-    const [genres, setGenres] = useState<IGenres | []>([])
 
-    // useEffect(() => {
-    //     if( movieID === 0 ) return
-    //     const keyExtractor = async () => {
-    //         const data = await fetch(
-    //             `https://api.themoviedb.org/3/movie/436270/videos?api_key=${process.env.TMDB_API_KEY}&language=en-US`
-    //         )
-    //         .then( (response) => response.json() )
-    //         .then(MOVIE => console.log(MOVIE))
-    //         .catch( (error) => console.log(error.message) )
-    //             // console.log(data)
-    //         // if( data ) {
-    //         //     const index = data.videos?.results.findIndex((element: TypeOfMovie ) => element.type === 'Trailer')
-    //         //     setTrailerURL(data.videos?.results[index]?.key)
-    //         // }
-    //         // if( data?.genres ) {
-    //         //     setGenres(data.genres)
-    //         // }
-    //         // console.log(data)
+    useEffect(() => {
+        if(movie) {
+            fetchVideo({ 
+                movie_id: Number(movie.movie_id),
+                media_type: movie.media_type
+            })
+        }
+    }, [movie])
 
-    //     }
-    //     keyExtractor();
-    // }, [movieID])
+        console.log(video)
+
+
+    useEffect(() => {
+        if( !video ) return
+        if( video.length > 0 ) {
+            const index = video.findIndex((element ) => element.type === 'Trailer')
+            setTrailerURL(video[index]?.key)
+        }
+    }, [video])
     // ==========================
-// console.log(`URL --> ${trailerURL}`);
-// console.log(`ID --> ${movieID}`);
-console.log(`VIDEO KEY --> ${JSON.stringify(videoKey)}`);
     // ==========================
     const options = {
         height: '390',
@@ -60,8 +55,8 @@ console.log(`VIDEO KEY --> ${JSON.stringify(videoKey)}`);
                     color='red'
                     size={24}/>
                 <h1 className='modal-title'>HELLO </h1>
-                { modalIsOpen && <YouTube videoId="JaV7mmc9HGw" opts={options}/> }
-                {/* { modalIsOpen && <YouTube videoId={trailerURL} opts={options}/>} */}
+                {/* { modalIsOpen && <YouTube videoId="JaV7mmc9HGw" opts={options}/> } */}
+                { modalIsOpen && <YouTube videoId={trailerURL} opts={options}/>}
             </div>
         </div>
     )

@@ -1,8 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { IMovie, IMoviesDataResponse } from "../types/movies.types";
+import { IMovie, IMoviesDataResponse, IVideo, IVideoDataResponse } from "../types/movies.types"
 
 type paramsType = {
-    request_path: string
+    path: string
+}
+type videoParams = { 
+    movie_id: number 
+    media_type: string
 }
 
 export const fetchMoviesData = createApi({
@@ -13,19 +17,23 @@ export const fetchMoviesData = createApi({
     endpoints: builder => ({
         fetchMovies: builder.query<IMovie[], paramsType>({
             query: (params: paramsType ) => ({
-                url: params.request_path,
+                url: params.path,
                 params: {
-                    url: params.request_path
+                    url: params.path
                 }
             }),
             transformResponse: (respons: IMoviesDataResponse) => respons.results,
         }),
-        getMovies: builder.query<IMovie[], string>({
-            query: () => ({
-                url: `/movie/436270/videos?api_key=${process.env.TMDB_API_KEY}&language=en-US`
+        getVideoData: builder.query<IVideo[], videoParams>({
+            query: (params: videoParams ) => ({
+                url: `/${params.media_type === 'movie' ? 'movie' : 'tv'}/${params.movie_id}/videos?api_key=${process.env.TMDB_API_KEY}&language=en-US`,
+                params: {
+                    movie_id: params.movie_id,
+                    media_type: params.media_type
+                }
             }),
+            transformResponse: (respons: IVideoDataResponse) => respons.results,
         }),
-
     }), 
 })
-export const { useFetchMoviesQuery, useGetMoviesQuery } = fetchMoviesData;
+export const { useFetchMoviesQuery, useLazyGetVideoDataQuery, useGetVideoDataQuery } = fetchMoviesData;

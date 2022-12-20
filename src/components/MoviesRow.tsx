@@ -1,19 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { selectMovieID, openModal } from '../redux/reduxSlice'
+import { selectMovie, openModal } from '../redux/reduxSlice'
 import { useFetchMoviesQuery } from '../redux/fetchMoviesData'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
 import '../style/movies-row.scss'
 
 type MovieRowPropsType = {
     title: string
-    request_path: string
+    path: string
     isLarge: boolean
+    type: 'movie' | 'tv' | 'all'
 }
 
-const MoviesRow = ({ title, request_path, isLarge }: MovieRowPropsType) => {
+const MoviesRow = ({ title, path, isLarge, type }: MovieRowPropsType) => {
 
-    const { data: movies } = useFetchMoviesQuery({request_path: request_path})
+    const { data: movies } = useFetchMoviesQuery({path: path})
     const rowRef = useRef<HTMLDivElement>(null)
     const [isMoved, setIsMoved] = useState(false)
     const dispatch = useAppDispatch()
@@ -43,9 +44,11 @@ const MoviesRow = ({ title, request_path, isLarge }: MovieRowPropsType) => {
                             }`} 
                             alt={movie.name}
                             onClick={() => {
-                                dispatch(selectMovieID( movie.id ))
+                                dispatch(selectMovie({
+                                    media_type: type,
+                                    movie_id: Number(movie.id)
+                                }))
                                 dispatch(openModal())
-                                // console.log('CLICK')
                             }}
                         />
                     ))}
