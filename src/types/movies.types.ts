@@ -26,6 +26,7 @@ export interface IBanerMovie {
     img: string
     name: string
     overview: string
+    id: number
 }
 export interface TypeOfMovie {
     type: 'Bloopers' | 'Featurette' |'Behind of Scenes' | 'Clip' | 'Trailer' |'Teaser'

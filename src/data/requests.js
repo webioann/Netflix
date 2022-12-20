@@ -9,4 +9,7 @@ export const requestsPath = {
     horrors: `/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=27`,
     romances: `/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=10749`,
     documentaries: `/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=99`,
+
+
+    test: `/movie/436270/videos?api_key=${process.env.TMDB_API_KEY}&language=en-US`
 };

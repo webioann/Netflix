@@ -16,12 +16,14 @@ import { requestsPath } from '../data/requests'
 
 
 import TEST from './TEST'
-
+import { useGetMoviesQuery } from '../redux/fetchMoviesData'
 const  App: React.FC = () => {
 
   useAuthStateCurrentUser();
-  
+
   const currentUser = useAppSelector(state => state.redux.currentUser)
+  const {data: movv} = useGetMoviesQuery('')
+  // console.log( movv);
 
   return (
     <Container>
@@ -30,9 +32,10 @@ const  App: React.FC = () => {
       <Routes>
           <Route path="/" element={<Home_page>
             <Baner/>
-            <MoviesRow title='Trending' request_path={requestsPath.trendings} isLarge={false}/>
-            {/* <MoviesRow title='Top of rates' request_path={requestsPath.topRated} isLarge={false}/>
             <MoviesRow title='Netflix originals' request_path={requestsPath.originals} isLarge={true}/>
+
+            {/* <MoviesRow title='Trending' request_path={requestsPath.trendings} isLarge={false}/> */}
+            {/* <MoviesRow title='Top of rates' request_path={requestsPath.topRated} isLarge={false}/>
             <MoviesRow title='Actions' request_path={requestsPath.actions} isLarge={false}/>
             <MoviesRow title='Comedies' request_path={requestsPath.comedies} isLarge={false}/>
             <MoviesRow title='Horrors' request_path={requestsPath.horrors} isLarge={false}/>

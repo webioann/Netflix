@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { openModal, closeModal } from '../redux/reduxSlice';
-import { useFetchMoviesQuery } from '../redux/fetchMoviesData';
+import { selectMovieID, openModal } from '../redux/reduxSlice';
 import { requestsPath } from '../data/requests'
 import { IBanerMovie } from '../types/movies.types'
 import { useTextTruncate } from '../hooks/useTextTruncate'
 import { HiInformationCircle } from 'react-icons/hi'
+import { IMovie, IMoviesDataResponse } from "../types/movies.types";
+import { useFetchMoviesQuery } from '../redux/fetchMoviesData';
 
 import '../style/baner.scss'
 
 const Baner: React.FC = () => {
-    const dispatch = useAppDispatch()
+
     const { data: movies } = useFetchMoviesQuery({request_path: requestsPath.originals})
+
+    const dispatch = useAppDispatch()
     const [randomMovie, setRandomMovie] = useState<IBanerMovie>({
         img: 'https://raw.githubusercontent.com/thatanjan/netflix-clone-yt/youtube/media//banner.jpg',
         name: 'movie',
         overview: 'Curvy, curly, confident Mich knows she is fabulous',
+        id: 0
     })
 
     useEffect(() => {
@@ -34,13 +38,14 @@ const Baner: React.FC = () => {
             setRandomMovie({
                 img: `https://image.tmdb.org/t/p/original/${imgPath}`,
                 name: choosedName,
-                overview: customOverview
+                overview: customOverview,
+                id: movies[idx]?.id
             })
             // console.log(movies[idx]);
         }
     }, [movies])
 
-
+// console.log(randomMovie)
     return (
         <section 
             className='baner-container'
@@ -56,7 +61,10 @@ const Baner: React.FC = () => {
                 <div className="baner-buttons">
                     <button className='g-button'>Play</button>
                     <button className='baner-info-button g-button'
-                        onClick={() => {dispatch(openModal())}}
+                        onClick={() => {
+                            dispatch(openModal())
+                            dispatch(selectMovieID(randomMovie.id))
+                        }}
                     >
                         More info
                         <HiInformationCircle color='#fff' size={24}/>

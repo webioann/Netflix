@@ -9,7 +9,8 @@ type selectedMovieData = {
 type InitialStateType = {
     currentUser: ICurrentUser | null
     modalIsOpen: boolean
-    selectedMovie: selectedMovieData | null
+    movieID: number
+    videoKey: string 
 }
 // const storedCurrentUser = localStorage.getItem('storedCurrentUser')
 // let userFromLocalStorage
@@ -21,7 +22,8 @@ type InitialStateType = {
 const initialState: InitialStateType = {
     currentUser: null,
     modalIsOpen: false,
-    selectedMovie: null,
+    movieID: 0,
+    videoKey: ''
 }
 
 export const reduxSlice = createSlice({
@@ -43,12 +45,8 @@ export const reduxSlice = createSlice({
         },
         openModal: (state) => { state.modalIsOpen = true },
         closeModal: (state) => { state.modalIsOpen = false },
-        selectTheMovie: (state, actions) => {
-            state.selectedMovie = {
-                mediaType: actions.payload.media_type,
-                movieID: actions.payload.movie_id
-            }
-        }
+        selectMovieID: (state, actions) => { state.movieID = actions.payload },
+        setVideoKey: (state, actions) => { state.videoKey = actions.payload },
     }
 });
 
@@ -57,7 +55,8 @@ export const {
     deleteCurrentUser,
     openModal,
     closeModal,
-    selectTheMovie,
+    selectMovieID,
+    setVideoKey,
     
 } = reduxSlice.actions;
 

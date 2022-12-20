@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { selectTheMovie } from '../redux/reduxSlice'
+import { selectMovieID, openModal } from '../redux/reduxSlice'
 import { useFetchMoviesQuery } from '../redux/fetchMoviesData'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
 import '../style/movies-row.scss'
@@ -14,15 +14,9 @@ type MovieRowPropsType = {
 const MoviesRow = ({ title, request_path, isLarge }: MovieRowPropsType) => {
 
     const { data: movies } = useFetchMoviesQuery({request_path: request_path})
-    // const selected = useAppSelector(state => state.redux.selectedMovie?.movieID)
     const rowRef = useRef<HTMLDivElement>(null)
     const [isMoved, setIsMoved] = useState(false)
     const dispatch = useAppDispatch()
-
-    // useEffect(() => {
-    //     console.log('SELECTED  ',selected)
-
-    // }, [selected])
 
     const onArrowClick = (direct: 'left' | 'right') => {
         if( rowRef.current ) {
@@ -49,10 +43,9 @@ const MoviesRow = ({ title, request_path, isLarge }: MovieRowPropsType) => {
                             }`} 
                             alt={movie.name}
                             onClick={() => {
-                                dispatch(selectTheMovie({
-                                    media_type: movie.media_type,
-                                    movie_id: movie.id
-                                }))
+                                dispatch(selectMovieID( movie.id ))
+                                dispatch(openModal())
+                                // console.log('CLICK')
                             }}
                         />
                     ))}

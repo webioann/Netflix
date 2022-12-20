@@ -20,6 +20,12 @@ export const fetchMoviesData = createApi({
             }),
             transformResponse: (respons: IMoviesDataResponse) => respons.results,
         }),
+        getMovies: builder.query<IMovie[], string>({
+            query: () => ({
+                url: `/movie/436270/videos?api_key=${process.env.TMDB_API_KEY}&language=en-US`
+            }),
+        }),
+
     }), 
 })
-export const { useFetchMoviesQuery } = fetchMoviesData;
+export const { useFetchMoviesQuery, useGetMoviesQuery } = fetchMoviesData;
