@@ -35,7 +35,6 @@ const MoviesRow = ({ title, path, isLarge, type }: MovieRowPropsType) => {
             <section className='row-container'>
                 <h2 className='row-title'>{title}</h2>
                 <div className="row-movies" ref={rowRef}>
-
                     { movies?.map(movie => (
                         <img className={isLarge ? 'large-poster' : 'poster'}
                             key={movie.id}
@@ -54,7 +53,7 @@ const MoviesRow = ({ title, path, isLarge, type }: MovieRowPropsType) => {
                         />
                     ))}
                 </div>
-                <div className='arrow-icons-wrapper'>
+                <div className="arrow-icons-wrapper">
                     <SlArrowLeft className={ isMoved ? 'arrow' : 'hidden-arrow' }
                         onClick={() => onArrowClick('left')}
                         size={30}
@@ -65,7 +64,7 @@ const MoviesRow = ({ title, path, isLarge, type }: MovieRowPropsType) => {
                         size={30}
                         color='#ffffff' 
                     />
-                </div >
+                </div>
             </section>
         )
     }

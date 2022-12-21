@@ -29,6 +29,7 @@
         }
         .baner-buttons{
             display: flex;
+            z-index: 10;
             .baner-info-button{
                 background-color: $netflix-gray;
                 margin-left: 2rem;

@@ -39,6 +39,7 @@
         }
     }
     .arrow-icons-wrapper{
+        pointer-events: none;
         position: absolute;
         top: 50%;
         left: 0;
@@ -49,6 +50,7 @@
         padding: 0 30px;
         z-index: 10;
         .arrow{
+            pointer-events: all;
             visibility: visible;
             opacity: 1;
             cursor: pointer;

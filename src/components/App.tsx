@@ -33,7 +33,7 @@ const  App: React.FC = () => {
           <Route path="/" element={<Home_page>
             <Baner/>
             <MoviesRow title='Netflix originals' path={requestsPath.originals}  type='tv' isLarge={true}/>
-            <MoviesRow title='Trending' path={requestsPath.trendings}  type='tv' isLarge={false}/>
+            {/* <MoviesRow title='Trending' path={requestsPath.trendings}  type='tv' isLarge={false}/> */}
             <MoviesRow title='Top of rates' path={requestsPath.topRated}  type='movie' isLarge={false}/>
             <MoviesRow title='Actions' path={requestsPath.actions}  type='movie' isLarge={false}/>
             <MoviesRow title='Comedies' path={requestsPath.comedies} type='movie' isLarge={false}/>

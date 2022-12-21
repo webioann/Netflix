@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { selectMovie, openModal } from '../redux/reduxSlice';
+import { selectMovie, resetMovieData, openModal } from '../redux/reduxSlice';
 import { requestsPath } from '../data/requests'
 import { useTextTruncate } from '../hooks/useTextTruncate'
 import { HiInformationCircle } from 'react-icons/hi'
@@ -45,13 +45,14 @@ const Baner: React.FC = () => {
                     <button className='g-button'>Play</button>
                     <button className='baner-info-button g-button'
                         onClick={() => {
-                            dispatch(openModal())
+                            dispatch(resetMovieData())
                             dispatch(selectMovie({
                                 media_type: 'tv',
                                 movie_id: Number(movie[0]?.id)
                             }))
-                        }}
-                    >
+                            dispatch(openModal())
+                            }}
+                        >
                         More info
                         <HiInformationCircle color='#fff' size={24}/>
                     </button>
