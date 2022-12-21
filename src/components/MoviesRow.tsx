@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { selectMovie, openModal } from '../redux/reduxSlice'
+import { selectMovie, resetMovieData, openModal } from '../redux/reduxSlice'
 import { useFetchMoviesQuery } from '../redux/fetchMoviesData'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
 import '../style/movies-row.scss'
@@ -44,6 +44,7 @@ const MoviesRow = ({ title, path, isLarge, type }: MovieRowPropsType) => {
                             }`} 
                             alt={movie.name}
                             onClick={() => {
+                                dispatch(resetMovieData())
                                 dispatch(selectMovie({
                                     media_type: type,
                                     movie_id: Number(movie.id)

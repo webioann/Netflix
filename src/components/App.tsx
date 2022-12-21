@@ -32,15 +32,14 @@ const  App: React.FC = () => {
       <Routes>
           <Route path="/" element={<Home_page>
             <Baner/>
-            {/* <MoviesRow title='Netflix originals' path={requestsPath.originals}  type='tv' isLarge={true}/> */}
-
-            {/* <MoviesRow title='Trending' path={requestsPath.trendings}  type='movie' isLarge={false}/> */}
-            {/* <MoviesRow title='Top of rates' path={requestsPath.topRated}  type='movie' isLarge={false}/> */}
-            {/* <MoviesRow title='Actions' path={requestsPath.actions}  type='movie' isLarge={false}/> */}
+            <MoviesRow title='Netflix originals' path={requestsPath.originals}  type='tv' isLarge={true}/>
+            <MoviesRow title='Trending' path={requestsPath.trendings}  type='tv' isLarge={false}/>
+            <MoviesRow title='Top of rates' path={requestsPath.topRated}  type='movie' isLarge={false}/>
+            <MoviesRow title='Actions' path={requestsPath.actions}  type='movie' isLarge={false}/>
             <MoviesRow title='Comedies' path={requestsPath.comedies} type='movie' isLarge={false}/>
-            {/* <MoviesRow title='Horrors' path={requestsPath.horrors}  type='movie' isLarge={false}/> */}
-            {/* <MoviesRow title='Romances' path={requestsPath.romances}  type='movie' isLarge={false}/> */}
-            {/* <MoviesRow title='Documentaries' path={requestsPath.documentaries} type='movie' isLarge={false}/> */}
+            <MoviesRow title='Horrors' path={requestsPath.horrors}  type='movie' isLarge={false}/>
+            <MoviesRow title='Romances' path={requestsPath.romances}  type='movie' isLarge={false}/>
+            <MoviesRow title='Documentaries' path={requestsPath.documentaries} type='movie' isLarge={false}/>
           </Home_page>} />
           <Route path="login" element={<Login_page />}/>
           <Route path="signup" element={<Signup_page />}/>

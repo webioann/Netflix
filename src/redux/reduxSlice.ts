@@ -49,7 +49,8 @@ export const reduxSlice = createSlice({
         selectMovie: (state, actions) => { state.selectedMovie = {
             media_type: actions.payload.media_type,
             movie_id: actions.payload.movie_id
-        } },
+        }},
+        resetMovieData: (state) => { state.selectedMovie = null },
     }
 });
 
@@ -60,6 +61,7 @@ export const {
     closeModal,
     selectMovieID,
     selectMovie,
+    resetMovieData,
     
 } = reduxSlice.actions;
 

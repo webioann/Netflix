@@ -26,7 +26,7 @@ export const fetchMoviesData = createApi({
         }),
         getVideoData: builder.query<IVideo[], videoParams>({
             query: (params: videoParams ) => ({
-                url: `/${params.media_type === 'movie' ? 'movie' : 'tv'}/${params.movie_id}/videos?api_key=${process.env.TMDB_API_KEY}&language=en-US`,
+                url: `/${params.media_type}/${params.movie_id}/videos?api_key=${process.env.TMDB_API_KEY}&language=en-US`,
                 params: {
                     movie_id: params.movie_id,
                     media_type: params.media_type
@@ -37,3 +37,4 @@ export const fetchMoviesData = createApi({
     }), 
 })
 export const { useFetchMoviesQuery, useLazyGetVideoDataQuery, useGetVideoDataQuery } = fetchMoviesData;
+// ${params.media_type === 'movie' ? 'movie' : 'tv'}
