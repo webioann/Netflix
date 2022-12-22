@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
 import { closeModal } from '../redux/reduxSlice';
 import { IoClose } from 'react-icons/io5'
-// import { useMovieKeyExtractor } from '../hooks/useMovieKeyExtractor';
-// import { IChildrenProps } from '../types/global.types'
 import { IGenres, TypeOfMovie } from '../types/movies.types'
 import YouTube from 'react-youtube'
 const movieTrailer = require('movie-trailer')
@@ -41,7 +39,7 @@ const Modal = () => {
     // ==========================
     // ==========================
     const options = {
-        height: '390',
+        height: '360',
         width: '100%',
         playerVars: { 
             autoplay: 1, 
@@ -54,8 +52,6 @@ const Modal = () => {
                 <IoClose onClick={() => {dispatch(closeModal())}}
                     color='red'
                     size={24}/>
-                <h1 className='modal-title'>HELLO </h1>
-                {/* { modalIsOpen && <YouTube videoId="JaV7mmc9HGw" opts={options}/> } */}
                 { modalIsOpen && <YouTube videoId={trailerURL} opts={options}/>}
             </div>
         </div>

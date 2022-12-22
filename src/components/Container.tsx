@@ -1,11 +1,23 @@
 import React from 'react'
-import { IChildrenProps } from '../types/global.types'
-import '../style/container.scss'
 
-const Container: React.FC<IChildrenProps> = ({children}) => {
+type ContainerProps = {
+    children: JSX.Element[] | JSX.Element
+    scroll: boolean
+}
+
+const Container: React.FC<ContainerProps> = ({children, scroll}) => {
+
+    document.body.style.overflow = scroll ? 'hidden' : 'scroll'
 
     return (
-        <div className='container'>{ children }</div>
+        <div style={{
+            width: '100%',
+            minHeight: '100vh',
+            position: 'relative'
+        }}
+            className='container'>
+            { children }
+        </div>
     )
 }
 export default Container;

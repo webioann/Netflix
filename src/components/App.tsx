@@ -20,13 +20,14 @@ const  App: React.FC = () => {
 
   useAuthStateCurrentUser();
   const currentUser = useAppSelector(state => state.redux.currentUser)
+  const modalIsOpen = useAppSelector(state => state.redux.modalIsOpen)
 
   // ========================================
   // const videoID = useAppSelector(state => state.redux.movieID)
   // console.log(videoID);
 
   return (
-    <Container>
+    <Container scroll={modalIsOpen}>
       <Header/>
       <Modal/>
       <Routes>
