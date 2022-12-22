@@ -60,8 +60,6 @@ const  App: React.FC = () => {
             <MoviesRow title='Horrors' path={requestsPath.horrors}  type='movie' isLarge={false}/>
             <MoviesRow title='Romances' path={requestsPath.romances}  type='movie' isLarge={false}/>
             <MoviesRow title='Documentaries' path={requestsPath.documentaries} type='movie' isLarge={false}/>
-
-
           </Home_page>} />
           <Route path="login" element={<Login_page />}/>
           <Route path="signup" element={<Signup_page />}/>

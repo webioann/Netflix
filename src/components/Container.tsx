@@ -14,8 +14,7 @@ const Container: React.FC<ContainerProps> = ({children, scroll}) => {
             width: '100%',
             minHeight: '100vh',
             position: 'relative'
-        }}
-            className='container'>
+        }}>
             { children }
         </div>
     )

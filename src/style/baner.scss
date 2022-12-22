@@ -1,15 +1,13 @@
 @import './@index.scss';
 
-.baner-container{
+.baner-container {
     background-size: cover;
     background-position: center center;
-    object-fit: contain;
-    min-height: 600px;
+    object-fit: cover;
+    min-height: 100px;
     position: relative;
-    // DONT DELETE BORDER ==========
-    // border: 1px solid $netflix-black;
     z-index: 1;
-    .baner-content{
+    .baner-content {
         margin: 0 auto;
         max-width: 576px;
         padding-top: 7rem;
@@ -17,20 +15,20 @@
         padding-right: 1rem;
         padding-left: 1rem;
         z-index: 10;
-        .baner-movie-name{
+        .baner-movie-name {
             font-size: 36px;
             font-weight: 700;
         }
-        .baner-overview{
+        .baner-overview {
             font-size: 18px;
             line-height: 1.5;
             font-weight: 400px;
             padding-bottom: 2rem;
         }
-        .baner-buttons{
+        .baner-buttons {
             display: flex;
             z-index: 10;
-            .baner-info-button{
+            .baner-info-button {
                 background-color: $netflix-gray;
                 margin-left: 2rem;
                 min-width: 120px;
@@ -40,39 +38,66 @@
     }
     // === MEDIA QUERYS ===
     @media (min-width: $sm) {
-        .baner-content{
+        .baner-content {
             margin-left: 30px;
-            .baner-movie-name{
+            .baner-movie-name {
                 font-size: 46px;
             }
         }
     }
     @media (min-width: $md) {
-        .baner-content{
+        .baner-content {
             margin-left: 50px;
-            .baner-movie-name{
+            .baner-movie-name {
                 font-size: 60px;
             }
         }
     }
     @media (min-width: $xl) {
-        .baner-content{
+        .baner-content {
             margin-left: 80px;
-            .baner-movie-name{
+            .baner-movie-name {
                 font-size: 72px;
             }
         }
     }
 
-    .black-fog{
+    .black-fog {
         height: 8rem;
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
         background-image: linear-gradient(
-            180deg,transparent,rgba(37,37,37,0.61),$netflix-black
+            180deg,
+            transparent,
+            rgba(37, 37, 37, 0.61),
+            $netflix-black
         );
-    
+    }
+}
+@media (min-width: $sm) {
+    .baner-container {
+        min-height: 200px;
+    }
+}
+@media (min-width: $md) {
+    .baner-container {
+        min-height: 300px;
+    }
+}
+@media (min-width: $lg) {
+    .baner-container {
+        min-height: 400px;
+    }
+}
+@media (min-width: $xl) {
+    .baner-container {
+        min-height: 500px;
+    }
+}
+@media (min-width: $xxl) {
+    .baner-container {
+        min-height: 600px;
     }
 }

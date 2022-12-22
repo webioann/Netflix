@@ -39,8 +39,9 @@ export const fetchMoviesData = createApi({
                 url: `/discover/tv?api_key=${process.env.TMDB_API_KEY}&with_networks=213`
             }),
             transformResponse: (respons: IMoviesDataResponse) => {
+                const withPosters = respons.results.filter((elem) => { return elem.poster_path !== null })
                 let idx = Math.floor(Math.random() * respons.results.length - 1)
-                const randomMovieIndex = respons.results.findIndex((elem, index) => { return index === idx })
+                const randomMovieIndex = withPosters.findIndex((elem, index) => { return index === idx })
                 const randomMovie = respons.results.filter((elem, index) => { return index === randomMovieIndex })
                 return ({...randomMovie[0]})
             },
