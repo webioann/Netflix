@@ -12,7 +12,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({open, data}) => {
         height: '432',
         width: '100%',
         playerVars: { 
-            autoplay: 1, 
+            autoplay: 1,
+            // fs is remove full screen button ( fs: 1 | 0 )
+            fs: 0,
         }
     }
 
