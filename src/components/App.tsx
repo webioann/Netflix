@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect , useRef} from 'react'
 import { useAuthStateCurrentUser } from '../hooks/useAuthStateCurrentUser'
 import { Routes, Route } from "react-router-dom"
 import { useAppSelector } from '../redux/store'
@@ -22,9 +22,28 @@ const  App: React.FC = () => {
   const currentUser = useAppSelector(state => state.redux.currentUser)
   const modalIsOpen = useAppSelector(state => state.redux.modalIsOpen)
 
-  // ========================================
-  // const videoID = useAppSelector(state => state.redux.movieID)
-  // console.log(videoID);
+  // const options = {
+  //   root: null,
+  //   rootMargin: '0px',
+  //   threshold: 1
+  // }
+  // const divRef = useRef<HTMLDivElement>(null)
+
+  // const func = () => {
+  //   if( divRef.current ) {
+
+  //   }
+  //   console.log('OBSERVE')
+  // }
+  
+
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(func, options)
+
+  //   if( divRef.current ) {
+  //     observer.observe(divRef.current)
+  //   }
+  // }, [])
 
   return (
     <Container scroll={modalIsOpen}>
@@ -41,6 +60,8 @@ const  App: React.FC = () => {
             <MoviesRow title='Horrors' path={requestsPath.horrors}  type='movie' isLarge={false}/>
             <MoviesRow title='Romances' path={requestsPath.romances}  type='movie' isLarge={false}/>
             <MoviesRow title='Documentaries' path={requestsPath.documentaries} type='movie' isLarge={false}/>
+
+
           </Home_page>} />
           <Route path="login" element={<Login_page />}/>
           <Route path="signup" element={<Signup_page />}/>

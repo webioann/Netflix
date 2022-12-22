@@ -22,7 +22,7 @@ const Baner = () => {
         }  
     }, [random])
 
-    console.log(random)
+    // console.log(random)
     if(random) {
         return (
             <section 
