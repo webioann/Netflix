@@ -41,6 +41,11 @@ const Modal = () => {
             <div className="modal-content">
                 <CloseButton onClose={closePlayer} color='red' size={30}/>
                 <VideoPlayer open={modalIsOpen} data={trailerURL}/>
+                <div className="modal-more-info">
+                    <p>1</p>
+                    <p>2</p>
+                    <p>3</p>
+                </div>
             </div>
         </div>
     )

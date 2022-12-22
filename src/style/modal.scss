@@ -13,8 +13,12 @@
         max-width: 768px;
         margin: 0 auto;
         margin-top: 50px;
-        // min-width: 320px;
-        // min-height: 200px;
+        .modal-more-info{
+            min-height: 100px;
+            background-color: $netflix-gray;
+            border-radius: 0 0 $br-main $br-main;
+            padding: 1rem;
+        }
     }
         // === MEDIA QUERYS ===
     @media (min-width: $sm) {
