@@ -11,19 +11,16 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({open, data}) => {
     const options = {
         height: '432',
         width: '100%',
-        playerVars: { 
-            autoplay: 1,
-            // fs is remove full screen button ( fs: 1 | 0 )
-            fs: 0,
-        }
+        playerVars: { autoplay: 1, }
     }
 
-    return (
-        <div style={{
-            width: '100%'
-        }}>
-            { open && <YouTube videoId={data} opts={options}/>}
-        </div>
-    )
+    if( open && data ) {
+        return (
+            <div style={{ width: '100%', height: '432', backgroundColor: '#111'}}>
+                <YouTube videoId={data} opts={options}/>
+            </div>
+        )
+    }
+    else  return null
 }
 export default VideoPlayer;
