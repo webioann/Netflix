@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import YouTube from 'react-youtube'
 
 type VideoPlayerProps = {
@@ -9,7 +9,7 @@ type VideoPlayerProps = {
 const VideoPlayer: React.FC<VideoPlayerProps> = ({open, data}) => {
 
     const options = {
-        height: '360',
+        height: '432',
         width: '100%',
         playerVars: { 
             autoplay: 1, 
