@@ -34,7 +34,18 @@ export const fetchMoviesData = createApi({
             }),
             transformResponse: (respons: IVideoDataResponse) => respons.results,
         }),
+        randomMovie: builder.query<IMovie, string>({
+            query: ( ) => ({
+                url: `/discover/tv?api_key=${process.env.TMDB_API_KEY}&with_networks=213`
+            }),
+            transformResponse: (respons: IMoviesDataResponse) => {
+                let idx = Math.floor(Math.random() * respons.results.length - 1)
+                const randomMovieIndex = respons.results.findIndex((elem, index) => { return index === idx })
+                const randomMovie = respons.results.filter((elem, index) => { return index === randomMovieIndex })
+                return ({...randomMovie[0]})
+            },
+        }),
+
     }), 
 })
-export const { useFetchMoviesQuery, useLazyGetVideoDataQuery, useGetVideoDataQuery } = fetchMoviesData;
-// ${params.media_type === 'movie' ? 'movie' : 'tv'}
+export const { useFetchMoviesQuery, useLazyGetVideoDataQuery, useGetVideoDataQuery, useLazyRandomMovieQuery } = fetchMoviesData;

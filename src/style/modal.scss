@@ -1,6 +1,6 @@
 @import './@index.scss';
 
-.modal-layout{
+.modal-layout {
     min-width: 100%;
     min-height: 100vh;
     background-color: $black-glass;
@@ -8,37 +8,37 @@
     position: fixed;
     bottom: 0;
     z-index: 10;
-    .modal-content{
+    .modal-content {
         width: 100%;
         max-width: 768px;
         margin: 0 auto;
         margin-top: 50px;
-        .modal-more-info{
+        .modal-more-info {
             min-height: 100px;
             background-color: $netflix-gray;
+            // background-color: rgba(0,0,0,0.5);
             border-radius: 0 0 $br-main $br-main;
             padding: 1rem;
         }
     }
-        // === MEDIA QUERYS ===
+    // === MEDIA QUERYS ===
     @media (min-width: $sm) {
-        .modal-content{
+        .modal-content {
             margin-top: 70px;
         }
     }
     @media (min-width: $md) {
-        .modal-content{
+        .modal-content {
             margin-top: 90px;
         }
     }
     @media (min-width: $xl) {
-        .modal-content{
+        .modal-content {
             margin-top: 110px;
         }
     }
-
 }
-.hidden-modal{
+.hidden-modal {
     width: 0;
     height: 0;
     visibility: hidden;
