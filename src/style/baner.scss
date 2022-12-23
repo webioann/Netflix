@@ -1,21 +1,21 @@
 @import './@index.scss';
 
 .baner-container {
+    margin-top: $header-hight;
     background-size: cover;
     background-position: center center;
     object-fit: cover;
-    min-height: 100px;
     position: relative;
     z-index: 1;
     .baner-content {
+        max-width: 1600px;
+        padding: 0 1rem;
         margin: 0 auto;
-        // max-width: 576px;
         padding-top: 7rem;
         padding-bottom: 5rem;
         padding-right: 1rem;
         padding-left: 1rem;
         z-index: 10;
-        border: 1px solid red;
         .baner-movie-name {
             font-size: 36px;
             font-weight: 700;

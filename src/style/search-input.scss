@@ -1,0 +1,67 @@
+@import './@index.scss';
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid $light;
+    min-height: 100%;
+    padding: 5px;
+    width: 250px;
+    transition: all 400ms linear;
+    .search-icon {
+        background-color: transparent;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .search-input {
+        background-color: $nav-black;
+        color: $light;
+        width: 100%;
+        opacity: 1;
+        transition: all 400ms linear;
+    }
+    .close-input {
+        width: 24px;
+        background-color: transparent;
+        opacity: 1;
+        transition: all 400ms linear;
+        transition-delay: 200ms;
+        pointer-events: all;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.shorted-search {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    border: none;
+    min-height: 100%;
+    padding: 5px;
+    width: 30px;
+    transition: all 400ms linear;
+    .search-icon {
+        background-color: transparent;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .search-input {
+        background-color: $nav-black;
+        color: $light;
+        width: 0;
+        opacity: 0;
+        transition: all 400ms linear;
+    }
+    .close-input {
+        width: 0px;
+        transition: all 400ms linear;
+        transition-delay: 200ms;
+        opacity: 0;
+        pointer-events: none;
+    }
+}

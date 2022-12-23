@@ -1,44 +1,46 @@
 @import './@index.scss';
-.--test{
+.--test {
     color: #fff;
     font-weight: 900;
     border: 1px solid red;
 }
-.header{
+.header {
+    min-height: $header-hight;
     position: fixed;
     top: 0;
     width: 100%;
-    height: $header-hight;
+    background-color: $nav-black;
     z-index: 3;
-    .header-wrapper{
+    .header-wrapper {
         max-width: 1600px;
+        padding: 0 1rem;
         margin: 0 auto;
+        gap: 1rem;
         display: flex;
+        align-items: center;
         justify-content: space-between;
-        .header-logo-wrapper{
+        .header-logo {
             display: inline;
-            .netflix-logo{
-                width: 200px;
+            .netflix-logo {
+                width: 100px;
                 object-fit: contain;
-                cursor: pointer;
-            }
-        }
-        .header-right-side{
-            display: flex;
-            justify-content: space-between;
-            padding-top: 20px;
-            padding-right: 20px;
-            .header-link{
-                margin-left: 20px;
-                .avatar-logo{
-                    width: 35px;
-                    object-fit: contain;
+                &:hover {
                     cursor: pointer;
-                    
                 }
             }
-    
         }
-    
+        .nav-link {
+            color: $light;
+            font-size: 0.85rem;
+        }
+        .header-link {
+            .avatar-logo {
+                width: 35px;
+                object-fit: contain;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
     }
 }
