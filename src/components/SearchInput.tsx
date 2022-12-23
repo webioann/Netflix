@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { GoSearch } from 'react-icons/go'
-import CloseButton from './CloseButton'
 import { IoClose } from 'react-icons/io5'
-
 import '../style/search-input.scss'
 
 const SearchInput = () => {

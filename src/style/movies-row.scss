@@ -13,15 +13,15 @@
         padding: 20px 20px 5px 20px;
         position: relative;
         .poster {
-            min-width: 300px;
+            max-height: 150px;
             object-fit: contain;
-            margin-right: 10px;
+            margin-right: 12px;
             width: 100%;
             transition: transform 400ms;
             z-index: 3;
-            cursor: pointer;
             &:hover {
-                transform: scale(1.08);
+                transform: scale(1.07);
+                cursor: pointer;
             }
         }
     }
