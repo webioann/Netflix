@@ -1,48 +1,58 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic);
 @import './@normalize.scss';
 
-html,body{
-    font-family: 'Lato', Helvetica, sans-serif; 
+html,
+body {
+    font-family: 'Lato', Helvetica, sans-serif;
     background-color: #111;
     color: #fff;
     width: 100%;
     scroll-behavior: smooth;
     height: 100%;
-	width: 100%;
-	font-size: 100%;
+    width: 100%;
+    font-size: 100%;
     font-size: 14px;
-	line-height: 1;
-	-ms-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
+    line-height: 1;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 @media (min-width: 580px) {
-    html,body{font-size: 15px;}
+    html,
+    body {
+        font-size: 15px;
+    }
 }
 @media (min-width: 768px) {
-    html,body{font-size: 16px;}
+    html,
+    body {
+        font-size: 16px;
+    }
 }
 @media (min-width: 1200px) {
-    html,body{font-size: 17px;}
+    html,
+    body {
+        font-size: 17px;
+    }
 }
 
 // === VARIABLES ===
 $netflix-black: #111;
 $netflix-red: #e50914;
-$netflix-gray: rgba(255,255,255,0.5);
-$black-glass: rgba(0,0,0,0.2);
+$netflix-gray: rgba(255, 255, 255, 0.2);
+$black-glass: rgba(0, 0, 0, 0.3);
 $light: #fff;
 $carrot: #f85904;
 $text-blue: #5388cd;
 
-$bg-hover: rgba(0,0,0,0.1);
-$bg-active: rgba(0,0,0,0.2);
+$bg-hover: rgba(0, 0, 0, 0.1);
+$bg-active: rgba(0, 0, 0, 0.2);
 
 // ===== light theme =====
 $bg-light: #ffffff;
 $text-dark: #212529;
-$box-shadow-lt: 0px 0px 10px 2px rgba(0,0,0,0.1);
-$bg-active-light: rgba(0,0,0,0.04);
+$box-shadow-lt: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+$bg-active-light: rgba(0, 0, 0, 0.04);
 // ===== dark theme =====
 $bg-dark: #2e3137;
 $text-light: #e8eaed;
@@ -50,7 +60,7 @@ $bg-block-dark: #3c4043;
 
 // ===== sizes =====
 $br-main: 4px;
-
+$xs: 425px;
 $sm: 640px;
 $md: 768px;
 $lg: 1024px;
@@ -65,27 +75,27 @@ $button-big: 160px;
 $max-mobile: 320px;
 $br-medium: 6px;
 // === GLOBAL CLASSES ===
-.g-link{
+.g-link {
     margin-left: 5px;
-    &:hover{
+    &:hover {
         text-decoration: underline;
         cursor: pointer;
     }
 }
-.g-button{
+.g-button {
     display: flex;
     justify-content: center;
+    gap: 0.5rem;
     align-items: center;
     padding: 0.5rem 1rem;
     border-radius: $br-main;
     font-weight: 600;
-    background-color: $netflix-red;
     color: $light;
     position: relative;
-    cursor: pointer;
+    &:hover {
+        cursor: pointer;
+    }
 }
-
-
 
 /* =========== CUSTOM SCROLLBAR ========  */
 // ::-webkit-scrollbar{
@@ -97,7 +107,7 @@ $br-medium: 6px;
 //     background-color: $netflix-black;
 // }
 // ::-webkit-scrollbar-thumb:horizontal{
-//     border-radius: 2.5px; 
+//     border-radius: 2.5px;
 //     background-color: $netflix-red;
 // }
 // ::-webkit-scrollbar-track{
@@ -106,4 +116,3 @@ $br-medium: 6px;
 // ::-webkit-scrollbar-track:horizontal{
 //     background-color: $netflix-black;
 // }
-

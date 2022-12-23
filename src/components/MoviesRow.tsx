@@ -8,11 +8,10 @@ import '../style/movies-row.scss'
 type MovieRowPropsType = {
     title: string
     path: string
-    isLarge: boolean
     type: 'movie' | 'tv' | 'all'
 }
 
-const MoviesRow = ({ title, path, isLarge, type }: MovieRowPropsType) => {
+const MoviesRow = ({ title, path, type }: MovieRowPropsType) => {
 
     const { data: movies } = useFetchMoviesQuery({path: path})
     const rowRef = useRef<HTMLDivElement>(null)
@@ -36,11 +35,9 @@ const MoviesRow = ({ title, path, isLarge, type }: MovieRowPropsType) => {
                 <h2 className='row-title'>{title}</h2>
                 <div className="row-movies" ref={rowRef}>
                     { movies?.map(movie => (
-                        <img className={isLarge ? 'large-poster' : 'poster'}
+                        <img className='poster'
                             key={movie.id}
-                            src={`https://image.tmdb.org/t/p/original/${
-                                isLarge ? movie.poster_path : movie.backdrop_path
-                            }`} 
+                            src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`} 
                             alt={movie.name}
                             onClick={() => {
                                 dispatch(resetMovieData())

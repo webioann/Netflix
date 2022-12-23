@@ -9,12 +9,13 @@
     z-index: 1;
     .baner-content {
         margin: 0 auto;
-        max-width: 576px;
+        // max-width: 576px;
         padding-top: 7rem;
         padding-bottom: 5rem;
         padding-right: 1rem;
         padding-left: 1rem;
         z-index: 10;
+        border: 1px solid red;
         .baner-movie-name {
             font-size: 36px;
             font-weight: 700;
@@ -25,37 +26,70 @@
             font-weight: 400px;
             padding-bottom: 2rem;
         }
-        .baner-buttons {
+        .baner-buttons-row {
             display: flex;
+            gap: 0.7rem;
             z-index: 10;
-            .baner-info-button {
-                background-color: $netflix-gray;
-                margin-left: 2rem;
-                min-width: 120px;
-                justify-content: space-between;
+            .baner-button {
+                background-color: $black-glass;
+                font-weight: 400;
+                padding: 0.5rem 0.75rem;
+                // margin-left: 2rem;
+                // justify-content: space-between;
             }
         }
     }
     // === MEDIA QUERYS ===
+    @media (min-width: $xs) {
+        .baner-content {
+            // margin-left: 30px;
+            // .baner-movie-name {
+            //     font-size: 46px;
+            //     padding-right: 30%;
+            // }
+            // .baner-overview {
+            //     padding-right: 30%;
+            // }
+            .baner-buttons-row {
+                .baner-button {
+                    padding: 0.5rem 1rem;
+                }
+            }
+        }
+    }
+
     @media (min-width: $sm) {
         .baner-content {
-            margin-left: 30px;
+            // margin-left: 30px;
             .baner-movie-name {
                 font-size: 46px;
+                padding-right: 30%;
+            }
+            .baner-overview {
+                padding-right: 30%;
+            }
+            .baner-buttons-row {
+                .baner-button {
+                    padding: 0.5rem 1.5rem;
+                }
             }
         }
     }
     @media (min-width: $md) {
         .baner-content {
-            margin-left: 50px;
+            // margin-left: 50px;
             .baner-movie-name {
                 font-size: 60px;
+                padding-right: 50%;
+            }
+            .baner-overview {
+                padding-right: 50%;
             }
         }
     }
     @media (min-width: $xl) {
         .baner-content {
-            margin-left: 80px;
+            // margin-left: 80px;
             .baner-movie-name {
                 font-size: 72px;
             }

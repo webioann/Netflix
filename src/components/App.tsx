@@ -12,7 +12,16 @@ import Profile_page from './Profile_page'
 import Notfound_page from './Notfound_page'
 import MoviesRow from './MoviesRow'
 import Modal from './Modal'
-import { requestsPath } from '../data/requests'
+import {
+  trendings,
+  originals,
+  topRated,
+  actions,
+  comedies,
+  horrors,
+  romances,
+  documentaries
+} from '../data/requests'
 
 import TEST from './TEST'
 
@@ -52,14 +61,14 @@ const  App: React.FC = () => {
       <Routes>
           <Route path="/" element={<Home_page>
             <Baner/>
-            <MoviesRow title='Netflix originals' path={requestsPath.originals}  type='tv' isLarge={true}/>
-            {/* <MoviesRow title='Trending' path={requestsPath.trendings}  type='tv' isLarge={false}/> */}
-            <MoviesRow title='Top of rates' path={requestsPath.topRated}  type='movie' isLarge={false}/>
-            <MoviesRow title='Actions' path={requestsPath.actions}  type='movie' isLarge={false}/>
-            <MoviesRow title='Comedies' path={requestsPath.comedies} type='movie' isLarge={false}/>
-            <MoviesRow title='Horrors' path={requestsPath.horrors}  type='movie' isLarge={false}/>
-            <MoviesRow title='Romances' path={requestsPath.romances}  type='movie' isLarge={false}/>
-            <MoviesRow title='Documentaries' path={requestsPath.documentaries} type='movie' isLarge={false}/>
+            <MoviesRow title='Netflix originals' path={originals}  type='tv'/>
+            {/* <MoviesRow title='Trending' path={trendings}  type='tv'/> */}
+            <MoviesRow title='Top of rates' path={topRated}  type='movie'/>
+            <MoviesRow title='Actions' path={actions}  type='movie'/>
+            <MoviesRow title='Comedies' path={comedies} type='movie'/>
+            <MoviesRow title='Horrors' path={horrors}  type='movie'/>
+            <MoviesRow title='Romances' path={romances}  type='movie'/>
+            <MoviesRow title='Documentaries' path={documentaries} type='movie'/>
           </Home_page>} />
           <Route path="login" element={<Login_page />}/>
           <Route path="signup" element={<Signup_page />}/>
