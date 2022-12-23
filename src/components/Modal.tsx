@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
 import { closeModal } from '../redux/reduxSlice';
-// import { IGenres, TypeOfMovie } from '../types/movies.types'
-// const movieTrailer = require('movie-trailer')
 import { useLazyGetVideoDataQuery } from '../redux/fetchMoviesData'
 import VideoPlayer from './VideoPlayer'
 import CloseButton from './CloseButton';
