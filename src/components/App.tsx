@@ -66,7 +66,7 @@ const  App: React.FC = () => {
           <Route path="/" element={<Home_page>
             <Baner/>
             <MoviesRow title='Netflix originals' path={originals}  type='tv'/>
-            {/* <MoviesRow title='Trending' path={trendings}  type='tv'/> */}
+            {/* <MoviesRow title='Trending' path={trendings}  type='all'/> */}
             <MoviesRow title='Top of rates' path={topRated}  type='movie'/>
             <MoviesRow title='Actions' path={actions}  type='movie'/>
             <MoviesRow title='Comedies' path={comedies} type='movie'/>

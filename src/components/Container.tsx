@@ -12,6 +12,9 @@ const Container: React.FC<ContainerProps> = ({children, scroll}) => {
     return (
         <div style={{
             width: '100%',
+            // maxWidth: '1600px',
+            // marginLeft: 'auto',
+            // marginRight: 'auto',
             minHeight: '100vh',
             position: 'relative'
         }}>

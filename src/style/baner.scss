@@ -4,7 +4,7 @@
     margin-top: $header-hight;
     background-size: cover;
     background-position: center center;
-    object-fit: cover;
+    object-fit: contain;
     position: relative;
     z-index: 1;
     .baner-content {

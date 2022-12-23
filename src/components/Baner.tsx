@@ -15,7 +15,7 @@ const Baner = () => {
 
     useEffect(() => { fetchRandomMovie('') }, [])
 
-    console.log('RANDOM', random);
+    // console.log('RANDOM', random);
     useEffect(() => { 
         if(random) {
             setImgUrl(`https://image.tmdb.org/t/p/original/${random?.backdrop_path ? random?.backdrop_path : random?.poster_path}`)
@@ -24,7 +24,6 @@ const Baner = () => {
         }  
     }, [random])
 
-    // console.log(random)
     if(random) {
         return (
             <section 

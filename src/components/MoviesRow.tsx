@@ -19,6 +19,7 @@ const MoviesRow = ({ title, path, type }: MovieRowPropsType) => {
     const { data: movies } = useFetchMoviesQuery({path: path})
     const rowRef = useRef<HTMLUListElement>(null)
     const [isMoved, setIsMoved] = useState(false)
+    const [movieName, setMovieName] = useState('')
     const dispatch = useAppDispatch()
 
     const onArrowClick = (direct: 'left' | 'right') => {
@@ -31,6 +32,7 @@ const MoviesRow = ({ title, path, type }: MovieRowPropsType) => {
             rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' })
         }
     }
+
     console.log('MOVIE', movies);
 
     if( movies ) {
@@ -63,7 +65,12 @@ const MoviesRow = ({ title, path, type }: MovieRowPropsType) => {
                                             }}
                                         />
                                     </div>
-                                    <p>{movie.name}</p>
+                                    <p>
+                                        { type === 'movie' ? 
+                                            (movie.title ? movie.title : movie.original_title) :
+                                            (movie.name ? movie.name : movie.original_name)
+                                        }
+                                    </p>
                                 </div>
 
                                 <div className="poster-controls-buttons">
