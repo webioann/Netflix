@@ -24,12 +24,16 @@ import {
 } from '../data/requests'
 
 import TEST from './TEST'
+import { useTestQuery } from '../redux/TEST_API'
 
 const  App: React.FC = () => {
 
   useAuthStateCurrentUser();
   const currentUser = useAppSelector(state => state.redux.currentUser)
   const modalIsOpen = useAppSelector(state => state.redux.modalIsOpen)
+
+  // const {data: testData } = useTestQuery('')
+  // console.log(testData)
 
   // const options = {
   //   root: null,

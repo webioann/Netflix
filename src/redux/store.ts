@@ -1,17 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useSelector,useDispatch,TypedUseSelectorHook } from "react-redux"
 import { fetchMoviesData } from './fetchMoviesData'
+import { testData } from './TEST_API'
 import reduxSlice from './reduxSlice'
 
 const store = configureStore({
     reducer: {
         redux: reduxSlice,
         [fetchMoviesData.reducerPath]: fetchMoviesData.reducer,
+        [testData.reducerPath]: testData.reducer,
 
     },
     middleware: getDefaultMiddleware =>  getDefaultMiddleware().concat(
         [
             fetchMoviesData.middleware,
+            testData.middleware,
         ]
     ),
 })

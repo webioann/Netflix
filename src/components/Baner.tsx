@@ -3,7 +3,6 @@ import { useAppSelector, useAppDispatch } from '../redux/store'
 import { selectMovie, resetMovieData, openModal } from '../redux/reduxSlice';
 import { HiInformationCircle } from 'react-icons/hi'
 import { FaPlay, FaPlus } from 'react-icons/fa'
-
 import { useLazyRandomMovieQuery } from '../redux/fetchMoviesData';
 import '../style/baner.scss'
 
@@ -16,6 +15,7 @@ const Baner = () => {
 
     useEffect(() => { fetchRandomMovie('') }, [])
 
+    console.log('RANDOM', random);
     useEffect(() => { 
         if(random) {
             setImgUrl(`https://image.tmdb.org/t/p/original/${random?.backdrop_path ? random?.backdrop_path : random?.poster_path}`)
