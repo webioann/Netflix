@@ -14,6 +14,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({open, data}) => {
                 <ReactPlayer
                     style={{ position: 'absolute', top: 0, left: 0 }}
                     url={`https://www.youtube.com/watch?v=${data}`}
+                    playing={true}
                     controls={true}
                     width='100%'
                     height='100%'/>
