@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
 import { selectMovie, resetMovieData, openModal } from '../redux/reduxSlice';
 import { HiInformationCircle } from 'react-icons/hi'
+import { FaPlay, FaPlus } from 'react-icons/fa'
+
 import { useLazyRandomMovieQuery } from '../redux/fetchMoviesData';
 import '../style/baner.scss'
 
@@ -35,19 +37,25 @@ const Baner = () => {
                     <p className='baner-overview'>
                         { trancatedOverview }
                     </p>
-                    <div className="baner-buttons">
-                        <button className='g-button'>Play</button>
-                        <button className='baner-info-button g-button'
+                    <div className="baner-buttons-row">
+                        <button className='baner-button g-button'
                             onClick={() => {
                                 dispatch(resetMovieData())
                                 dispatch(selectMovie({
                                     media_type: 'tv',
                                     movie_id: Number(random.id)}))
                                 dispatch(openModal())
-                            }}
-                        >
-                            More info
+                            }}>
+                            <FaPlay/>
+                            Play
+                        </button>
+                        <button className='baner-button g-button'>
+                            <FaPlus/>
+                            My List
+                        </button>
+                        <button className='baner-button g-button'>
                             <HiInformationCircle color='#fff' size={24}/>
+                            More info
                         </button>
                     </div>
                 </div>
