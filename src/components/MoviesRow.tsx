@@ -58,7 +58,7 @@ const MoviesRow = ({ title, path, type }: MovieRowPropsType) => {
                                             onClick={() => {
                                                 dispatch(resetMovieData())
                                                 dispatch(selectMovie({
-                                                    media_type: type,
+                                                    media_type: movie.media_type ? movie.media_type : type,
                                                     movie_id: Number(movie.id)
                                                 }))
                                                 dispatch(openModal())
@@ -66,9 +66,9 @@ const MoviesRow = ({ title, path, type }: MovieRowPropsType) => {
                                         />
                                     </div>
                                     <p>
-                                        { type === 'movie' ? 
+                                        { !movie.name || !movie.original_name ? 
                                             (movie.title ? movie.title : movie.original_title) :
-                                            (movie.name ? movie.name : movie.original_name)
+                                            (movie.name ? movie.name : movie.original_name) 
                                         }
                                     </p>
                                 </div>
