@@ -10,21 +10,13 @@ const SearchInput = () => {
     const [search, setSearch] = useState(false)
     const [value, setValue] = useState('')
 
-    const onCloseInput = () => { 
-        setValue('')
-        setSearch(false)
-    }
-
     return (
         <div className={search ? 'search' : 'shorted-search'}>
             <GoSearch 
                 size={24}
                 color='#fff'
                 className='search-icon'
-                onClick={() => {
-                    setSearch(!search)
-                    setValue('')
-                }}
+                onClick={() => setSearch(true)}
             />
             <input 
                 type='text' 
@@ -33,7 +25,10 @@ const SearchInput = () => {
                 onChange={(e) => setValue(e.target.value)}
             />
             <IoClose 
-                onClick={onCloseInput}
+                onClick={() => {
+                    setValue('')
+                    setSearch(false)
+                }}
                 className='close-input'
                 color='#fff' 
                 size={24}
