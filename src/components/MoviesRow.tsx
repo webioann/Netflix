@@ -1,11 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
 import { selectMovie, resetMovieData, openModal } from '../redux/reduxSlice'
+
+import { saveMoviesOnStorage } from '../redux/moviesStorage'
+import { useLazyFetchMoviesQuery } from '../redux/fetchMoviesData'
+
 import { useFetchMoviesQuery } from '../redux/fetchMoviesData'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
 import { FaPlay, FaPlus } from 'react-icons/fa'
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import { AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike  } from 'react-icons/ai'
+import { IMovie } from '../types/movies.types'
+import GenresList from './GenresList'
 import '../style/movies-row.scss'
 
 type MovieRowPropsType = {
@@ -19,8 +25,12 @@ const MoviesRow = ({ title, path, type }: MovieRowPropsType) => {
     const { data: movies } = useFetchMoviesQuery({path: path})
     const rowRef = useRef<HTMLUListElement>(null)
     const [isMoved, setIsMoved] = useState(false)
-    const [movieName, setMovieName] = useState('')
+    const [moviesList, setMoviesList] = useState<IMovie[] | []>([])
     const dispatch = useAppDispatch()
+    const [isShowControls, setIsShowControls] = useState(false)
+
+    const movies_storage = useAppSelector(state => state.movies_storage.movies)
+    const [ fetch, { data: newMovies } ] = useLazyFetchMoviesQuery()
 
     const onArrowClick = (direct: 'left' | 'right') => {
         if( rowRef.current ) {
@@ -33,7 +43,20 @@ const MoviesRow = ({ title, path, type }: MovieRowPropsType) => {
         }
     }
 
-    console.log('MOVIE', movies);
+    // useEffect(() => {
+    //     const getMovies = async () => {
+    //         const local_data = localStorage.getItem(`${title}`)
+    //         if( local_data === undefined ) { 
+    //             // await localStorage.removeItem(`${title}`)
+    //             await fetch({path: path})
+    //             localStorage.setItem(`${title}`, JSON.stringify(newMovies))
+    //         }
+    //         else{ return }
+    //     }
+    //     getMovies()
+    // }, [])
+
+    // console.log('MOVIE', moviesList);
 
     if( movies ) {
         return (
@@ -42,16 +65,19 @@ const MoviesRow = ({ title, path, type }: MovieRowPropsType) => {
 
                 <ul className="row-movies" ref={rowRef}>
                     { movies?.map(movie => (
-                        <li key={movie.id} className='poster-wrapper'>
+                        <li 
+                            // onMouseEnter={() => setIsShowControls(true)}
+                            // onMouseLeave={() => setIsShowControls(false)}
+                            key={movie.id} 
+                            className='poster-wrapper'>
                             <img 
                                 className='poster'
                                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`} 
                                 alt={movie.name}
                             />
-                            <div className="poster-controls">
+                            <div className={ isShowControls ? "poster-controls" : "hidden-controls"}>
                                 <div className="poster-controls-info">
-
-                                    <div className="poster-controls-play raw">
+                                    <div className="poster-play-button">
                                         <FaPlay 
                                             size={20} 
                                             color='#fff'
@@ -71,26 +97,28 @@ const MoviesRow = ({ title, path, type }: MovieRowPropsType) => {
                                             (movie.name ? movie.name : movie.original_name) 
                                         }
                                     </p>
+                                    <GenresList genres={movie?.genre_ids} font='12px'/>
                                 </div>
 
                                 <div className="poster-controls-buttons">
                                     <div className="circle">
-                                        <HiVolumeOff size={20} color='green'/>
+                                        <HiVolumeOff size={17} color='#fff'/>
                                     </div>
                                     <div className="circle">
-                                        <AiOutlineLike size={20} color='green'/>
+                                        <AiOutlineLike size={17} color='#fff'/>
                                     </div>
                                     <div className="circle">
-                                        <AiOutlineDislike size={20} color='green'/>
+                                        <AiOutlineDislike size={17} color='#fff'/>
                                     </div>
                                     <div className="circle">
-                                        <FaPlus size={20} color='green'/>
+                                        <FaPlus size={17} color='#fff'/>
                                     </div>
 
                                 </div>
                             </div>
                         </li>
-                    ))}
+                        ))
+                    }
                 </ul>
 
                 <div className="arrow-icons-wrapper">

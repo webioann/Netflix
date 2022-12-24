@@ -3,10 +3,12 @@ import { useSelector,useDispatch,TypedUseSelectorHook } from "react-redux"
 import { fetchMoviesData } from './fetchMoviesData'
 import { testData } from './TEST_API'
 import reduxSlice from './reduxSlice'
+import movies_storage from './moviesStorage'
 
 const store = configureStore({
     reducer: {
         redux: reduxSlice,
+        movies_storage: movies_storage,
         [fetchMoviesData.reducerPath]: fetchMoviesData.reducer,
         [testData.reducerPath]: testData.reducer,
 
