@@ -10,7 +10,7 @@ import Login_page from './Login_page'
 import Signup_page from './Signup_page'
 import Profile_page from './Profile_page'
 import Notfound_page from './Notfound_page'
-import MoviesRow from './MoviesRow'
+import MoviesSlider from './MoviesSlider'
 import Modal from './Modal'
 import {
   trendings,
@@ -65,14 +65,14 @@ const  App: React.FC = () => {
       <Routes>
           <Route path="/" element={<Home_page>
             <Baner/>
-            <MoviesRow title='Netflix originals' path={originals}  type='tv'/>
-            {/* <MoviesRow title='Trending' path={trendings}  type='all'/>
-            <MoviesRow title='Top of rates' path={topRated}  type='movie'/>
-            <MoviesRow title='Actions' path={actions}  type='movie'/>
-            <MoviesRow title='Comedies' path={comedies} type='movie'/>
-            <MoviesRow title='Horrors' path={horrors}  type='movie'/>
-            <MoviesRow title='Romances' path={romances}  type='movie'/>
-            <MoviesRow title='Documentaries' path={documentaries} type='movie'/> */}
+            <MoviesSlider title='Netflix originals' path={originals}  type='tv'/>
+            {/* <MoviesSlider title='Trending' path={trendings}  type='all'/>
+            <MoviesSlider title='Top of rates' path={topRated}  type='movie'/>
+            <MoviesSlider title='Actions' path={actions}  type='movie'/>
+            <MoviesSlider title='Comedies' path={comedies} type='movie'/>
+            <MoviesSlider title='Horrors' path={horrors}  type='movie'/>
+            <MoviesSlider title='Romances' path={romances}  type='movie'/>
+            <MoviesSlider title='Documentaries' path={documentaries} type='movie'/> */}
           </Home_page>} />
           <Route path="login" element={<Login_page />}/>
           <Route path="signup" element={<Signup_page />}/>

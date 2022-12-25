@@ -26,9 +26,9 @@ const Baner = () => {
 
     if(random) {
         return (
-            <section 
-                className='baner-container' 
-                style={{backgroundImage: `url(${ backgroundImageURL })`}}>
+            <section className='baner-container'
+                style={{backgroundImage: `url(${ backgroundImageURL })`}}
+                >
                 <div className="baner-content">
                     <h1 className='baner-movie-name'>
                         {random?.name ? random?.name : random?.original_name}

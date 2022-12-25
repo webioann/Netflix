@@ -12,7 +12,7 @@ import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import { AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike  } from 'react-icons/ai'
 import { IMovie } from '../types/movies.types'
 import GenresList from './GenresList'
-import '../style/movies-row.scss'
+import '../style/movies-slider.scss'
 
 type MovieRowPropsType = {
     title: string
@@ -20,14 +20,13 @@ type MovieRowPropsType = {
     type: 'movie' | 'tv' | 'all'
 }
 
-const MoviesRow = ({ title, path, type }: MovieRowPropsType) => {
+const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
 
     const { data: movies } = useFetchMoviesQuery({path: path})
     const rowRef = useRef<HTMLUListElement>(null)
     const [isMoved, setIsMoved] = useState(false)
     const [moviesList, setMoviesList] = useState<IMovie[] | []>([])
     const dispatch = useAppDispatch()
-    const [isShowControls, setIsShowControls] = useState(false)
 
     const movies_storage = useAppSelector(state => state.movies_storage.movies)
     const [ fetch, { data: newMovies } ] = useLazyFetchMoviesQuery()
@@ -43,42 +42,22 @@ const MoviesRow = ({ title, path, type }: MovieRowPropsType) => {
         }
     }
 
-    // useEffect(() => {
-    //     const getMovies = async () => {
-    //         const local_data = localStorage.getItem(`${title}`)
-    //         if( local_data === undefined ) { 
-    //             // await localStorage.removeItem(`${title}`)
-    //             await fetch({path: path})
-    //             localStorage.setItem(`${title}`, JSON.stringify(newMovies))
-    //         }
-    //         else{ return }
-    //     }
-    //     getMovies()
-    // }, [])
-
-    // console.log('MOVIE', moviesList);
-
     if( movies ) {
         return (
-            <section className='row-container'>
+            <section className='slider-container'>
                 <h2 className='row-title'>{title}</h2>
 
                 <ul className="row-movies" ref={rowRef}>
                     { movies?.map(movie => (
-                        <li 
-                            // onMouseEnter={() => setIsShowControls(true)}
-                            // onMouseLeave={() => setIsShowControls(false)}
-                            key={movie.id} 
-                            className='poster-wrapper'>
-                            <img 
-                                className='poster'
+                        <li className='movie-card' key={movie.id}>
+                            <img className='movie-card-img'
                                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`} 
                                 alt={movie.name}
                             />
-                            <div className={ isShowControls ? "poster-controls" : "hidden-controls"}>
+                            <div className="movie-card-controls">
                                 <div className="poster-controls-info">
                                     <div className="poster-play-button">
-                                        <FaPlay 
+                                        <FaPlay className='play-icon'
                                             size={20} 
                                             color='#fff'
                                             onClick={() => {
@@ -140,4 +119,30 @@ const MoviesRow = ({ title, path, type }: MovieRowPropsType) => {
         return ( <div className='--hidden-row'/> )
     } 
 }
-export default MoviesRow;
+export default MoviesSlider;
+    // useEffect(() => {
+    //     const getMovies = async () => {
+    //         const local_data = localStorage.getItem(`${title}`)
+    //         if( local_data === undefined ) { 
+    //             // await localStorage.removeItem(`${title}`)
+    //             await fetch({path: path})
+    //             localStorage.setItem(`${title}`, JSON.stringify(newMovies))
+    //         }
+    //         else{ return }
+    //     }
+    //     getMovies()
+    // }, [])
+
+    // useEffect(() => {
+    //     const getMovies = async () => {
+    //         if( moviesList.length === 0 ) { 
+    //             await fetch({path: path})
+    //             await setMoviesList(newMovies)
+    //         }
+    //         else{ return }
+    //     }
+    //     getMovies()
+    // }, [])
+
+    // console.log('MOVIE', moviesList);
+
