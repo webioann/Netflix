@@ -39,6 +39,20 @@
                 // margin-left: 2rem;
                 // justify-content: space-between;
             }
+            .circle-button {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                border: 1px solid white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: $black-glass;
+                cursor: pointer;
+                // &:hover {
+                //     cursor: pointer;
+                // }
+            }
         }
     }
     // === MEDIA QUERYS ===

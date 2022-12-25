@@ -56,7 +56,7 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
                             />
                             <div className="movie-card-controls">
                                 <div className="poster-controls-info">
-                                    <div className="poster-play-button">
+                                    <button className="poster-play-button">
                                         <FaPlay className='play-icon'
                                             size={20} 
                                             color='#fff'
@@ -69,8 +69,8 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
                                                 dispatch(openModal())
                                             }}
                                         />
-                                    </div>
-                                    <p>
+                                    </button>
+                                    <p className='movie-name'>
                                         { !movie.name || !movie.original_name ? 
                                             (movie.title ? movie.title : movie.original_title) :
                                             (movie.name ? movie.name : movie.original_name) 
@@ -80,18 +80,18 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
                                 </div>
 
                                 <div className="poster-controls-buttons">
-                                    <div className="circle">
+                                    <button className="circle">
                                         <HiVolumeOff size={17} color='#fff'/>
-                                    </div>
-                                    <div className="circle">
+                                    </button>
+                                    <button className="circle">
                                         <AiOutlineLike size={17} color='#fff'/>
-                                    </div>
-                                    <div className="circle">
+                                    </button>
+                                    <button className="circle">
                                         <AiOutlineDislike size={17} color='#fff'/>
-                                    </div>
-                                    <div className="circle">
+                                    </button>
+                                    <button className="circle">
                                         <FaPlus size={17} color='#fff'/>
-                                    </div>
+                                    </button>
 
                                 </div>
                             </div>

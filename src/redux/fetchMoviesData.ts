@@ -49,4 +49,12 @@ export const fetchMoviesData = createApi({
 
     }), 
 })
-export const { useFetchMoviesQuery, useLazyFetchMoviesQuery,useLazyGetVideoDataQuery, useGetVideoDataQuery, useLazyRandomMovieQuery } = fetchMoviesData;
+export const { 
+    useFetchMoviesQuery,
+    useLazyFetchMoviesQuery,
+    useLazyGetVideoDataQuery,
+    useGetVideoDataQuery,
+    useRandomMovieQuery,
+    useLazyRandomMovieQuery,
+    
+} = fetchMoviesData;
