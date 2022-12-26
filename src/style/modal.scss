@@ -13,12 +13,45 @@
         max-width: 768px;
         margin: 0 auto;
         margin-top: 50px;
-        .modal-more-info {
-            min-height: 100px;
+        position: relative;
+        .show-more-icon-box {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 11;
+            .show-more-icon {
+                z-index: 10;
+                opacity: 0.3;
+                transition: opacity 0.3s linear;
+                &:hover {
+                    opacity: 1;
+                    cursor: pointer;
+                }
+            }
+        }
+        .more-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            min-width: 100%;
             background-color: $netflix-gray;
-            // background-color: rgba(0,0,0,0.5);
             border-radius: 0 0 $br-main $br-main;
             padding: 1rem;
+            transition: all 0.8s linear;
+        }
+
+        .open-info {
+            opacity: 1;
+            visibility: visible;
+        }
+        .close-info {
+            opacity: 0;
+            visibility: hidden;
         }
     }
     // === MEDIA QUERYS ===
