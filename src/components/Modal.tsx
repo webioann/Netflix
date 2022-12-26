@@ -28,7 +28,7 @@ const Modal = () => {
         }
     }, [movie])
 
-console.log(movie);
+// console.log(movie);
 
     useEffect(() => {
         if( !video ) return
@@ -38,7 +38,7 @@ console.log(movie);
         }
     }, [video])
 
-    console.log(video)
+    // console.log(video)
     
     return (
         <div className={modalIsOpen ? 'modal-layout' : 'hidden-modal'}>

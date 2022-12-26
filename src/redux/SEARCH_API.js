@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { API_KEY } from '../helpers/constants';
 import {
     IMovie,
     IMoviesDataResponse,
@@ -22,7 +23,7 @@ export const searchMovie = createApi({
     endpoints: (builder) => ({
         searchMovies: builder.query({
             query: () => ({
-                url: `/search/movie=63756f8411c066007b1253c9?api_key=${process.env.TMDB_API_KEY}&language=en-US&page=1&include_adult=true`,
+                url: `/search/movie=63756f8411c066007b1253c9?api_key=${API_KEY}&language=en-US&page=1&include_adult=true`,
                 // params: {
                 //     url: params.path
                 // }

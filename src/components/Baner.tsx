@@ -34,6 +34,7 @@ const Baner = () => {
             <section className='baner-container'
                 style={{backgroundImage: `url(${ backgroundImageURL })`}}
                 >
+                    <div className="spring-div" style={{flex: 1}}/>
                 <div className="baner-content">
                     <h1 className='baner-movie-name'>
                         {random?.name ? random?.name : random?.original_name}
@@ -63,13 +64,13 @@ const Baner = () => {
                             More info
                         </button>
                         <div className="spring-div" style={{ flex: 1 }}/>
-                        <button className="circle-button">
+                        {/* <button className="circle-button">
                             <HiVolumeOff size={24} color='#fff'/>
-                        </button>
+                        </button> */}
 
                     </div>
                 </div>
-                <div className='black-fog'/>
+                {/* <div className='black-fog'/> */}
             </section>
         )
     

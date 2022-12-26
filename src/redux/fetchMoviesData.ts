@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import { IMovie, IMoviesDataResponse, IVideo, IVideoDataResponse } from "../types/movies.types"
+import { API_KEY } from '../helpers/constants';
 
 type paramsType = {
     path: string
@@ -26,7 +27,7 @@ export const fetchMoviesData = createApi({
         }),
         getVideoData: builder.query<IVideo[], videoParams>({
             query: (params: videoParams ) => ({
-                url: `/${params.media_type}/${params.movie_id}/videos?api_key=${process.env.TMDB_API_KEY}&language=en-US`,
+                url: `/${params.media_type}/${params.movie_id}/videos?api_key=${API_KEY}&language=en-US`,
                 params: {
                     movie_id: params.movie_id,
                     media_type: params.media_type
@@ -36,7 +37,7 @@ export const fetchMoviesData = createApi({
         }),
         randomMovie: builder.query<IMovie, string>({
             query: ( ) => ({
-                url: `/discover/tv?api_key=${process.env.TMDB_API_KEY}&with_networks=213`
+                url: `/discover/tv?api_key=${API_KEY}&with_networks=213`
             }),
             transformResponse: (respons: IMoviesDataResponse) => {
                 const withPosters = respons.results.filter((elem) => { return ( elem.poster_path && elem.backdrop_path ) !== null })

@@ -35,7 +35,7 @@ const  App: React.FC = () => {
   const currentUser = useAppSelector(state => state.redux.currentUser)
   const modalIsOpen = useAppSelector(state => state.redux.modalIsOpen)
 
-  const { data } = useSearchMoviesQuery('')
+  // const { data } = useSearchMoviesQuery('')
   // console.log(data)
 
   return (
