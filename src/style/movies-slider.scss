@@ -25,6 +25,7 @@
                     opacity: 1;
                     visibility: visible;
                     display: flex;
+                    background-color: $shadow;
                 }
             }
             .movie-card-img {
@@ -37,11 +38,12 @@
                 opacity: 0;
                 visibility: hidden;
                 position: absolute;
-                transition: opacity 400ms linear;
+                transition: opacity 1400ms linear;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
+                color: $less-white;
                 background-color: transparent;
                 padding: 0 0.5rem;
                 .poster-controls-info {
@@ -51,7 +53,7 @@
                         width: 40px;
                         height: 40px;
                         border-radius: 50%;
-                        border: 1px solid white;
+                        border: 1px solid $less-white;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -80,7 +82,7 @@
                         width: 30px;
                         height: 30px;
                         border-radius: 50%;
-                        border: 1px solid white;
+                        border: 1px solid $less-white;
                         display: flex;
                         justify-content: center;
                         align-items: center;

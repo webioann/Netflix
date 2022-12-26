@@ -59,7 +59,7 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
                                     <button className="poster-play-button">
                                         <FaPlay className='play-icon'
                                             size={20} 
-                                            color='#fff'
+                                            color='rgba(255, 255, 255, 0.7)'
                                             onClick={() => {
                                                 dispatch(resetMovieData())
                                                 dispatch(selectMovie({
@@ -81,16 +81,16 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
 
                                 <div className="poster-controls-buttons">
                                     <button className="circle">
-                                        <HiVolumeOff size={17} color='#fff'/>
+                                        <HiVolumeOff size={17} color='rgba(255, 255, 255, 0.7)'/>
                                     </button>
                                     <button className="circle">
-                                        <AiOutlineLike size={17} color='#fff'/>
+                                        <AiOutlineLike size={17} color='rgba(255, 255, 255, 0.7)'/>
                                     </button>
                                     <button className="circle">
-                                        <AiOutlineDislike size={17} color='#fff'/>
+                                        <AiOutlineDislike size={17} color='rgba(255, 255, 255, 0.7)'/>
                                     </button>
                                     <button className="circle">
-                                        <FaPlus size={17} color='#fff'/>
+                                        <FaPlus size={17} color='rgba(255, 255, 255, 0.7)'/>
                                     </button>
 
                                 </div>
