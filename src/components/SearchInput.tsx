@@ -17,9 +17,10 @@ const SearchInput = () => {
                 onClick={() => setSearch(true)}
             />
             <input 
+                className='search-input'
+                placeholder='Title, people, genres'
                 type='text' 
                 value={value}
-                className='search-input'
                 onChange={(e) => setValue(e.target.value)}
             />
             <IoClose 

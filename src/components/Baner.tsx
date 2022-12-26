@@ -5,6 +5,7 @@ import { HiInformationCircle } from 'react-icons/hi'
 import { FaPlay, FaPlus } from 'react-icons/fa'
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import { useLazyGetVideoDataQuery } from '../redux/fetchMoviesData'
+import GenresList from './GenresList'
 
 import { useLazyRandomMovieQuery, useRandomMovieQuery } from '../redux/fetchMoviesData';
 import '../style/baner.scss'
@@ -40,6 +41,7 @@ const Baner = () => {
                     <p className='baner-overview'>
                         { trancatedOverview }
                     </p>
+                    <GenresList genres={random.genre_ids} font={16}/>
                     <div className="baner-buttons-row">
                         <button className='baner-button g-button'
                             onClick={() => {

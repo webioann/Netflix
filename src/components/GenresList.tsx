@@ -3,7 +3,7 @@ import { genres_list } from '../data/genres'
 
 type props = {
     genres: number[] 
-    font: string
+    font: number
 }
 
 const GenresList: React.FC<props> = ({ genres, font }) => {
@@ -18,23 +18,32 @@ const GenresList: React.FC<props> = ({ genres, font }) => {
         <ul className='genres-row'
             style={{
                 display: 'flex',
-                gap: '5px',
-                fontSize: font,
-                paddingTop: '10px',
-                paddingBottom: '10px'
+                gap: `${font / 2}px`,
+                fontSize: `${font}px`,
+                paddingTop: `${font}px`,
+                paddingBottom: `${font}px`
             }}
             >
             {truncated.map((item) => (
                 <li className='genre-item'
-                    // style={{
-                    //     width: '30%',
-                    //     textOverflow: 'ellipsis'
-                    // }}
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center'
+                    }}
                     key={item} >
-                    &#183; { genres_list.filter((obj) => { return Number(obj.id) === item})[0].name }
+                        <span style={{
+                            width: `${font / 3}px`,
+                            height: `${font / 3}px`,
+                            borderRadius: '50%',
+                            // backgroundColor: 'rgba(0,0,0,0.35)',
+                            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                            marginRight: `${font / 2}px`
+                        }}/>
+                        <p>{ genres_list.filter((obj) => { return Number(obj.id) === item})[0].name }</p>
                 </li>
             ))}
         </ul>
     )
 }
 export default GenresList;
+// &#183; it is a dot simbol

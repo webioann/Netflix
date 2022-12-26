@@ -76,7 +76,7 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
                                             (movie.name ? movie.name : movie.original_name) 
                                         }
                                     </p>
-                                    <GenresList genres={movie?.genre_ids} font='12px'/>
+                                    <GenresList genres={movie?.genre_ids} font={12}/>
                                 </div>
 
                                 <div className="poster-controls-buttons">
