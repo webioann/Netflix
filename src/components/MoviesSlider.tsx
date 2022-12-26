@@ -1,10 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
 import { selectMovie, resetMovieData, openModal } from '../redux/reduxSlice'
-
-import { saveMoviesOnStorage } from '../redux/moviesStorage'
-import { useLazyFetchMoviesQuery } from '../redux/fetchMoviesData'
-
 import { useFetchMoviesQuery } from '../redux/fetchMoviesData'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
 import { FaPlay, FaPlus } from 'react-icons/fa'
@@ -25,11 +21,7 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
     const { data: movies } = useFetchMoviesQuery({path: path})
     const rowRef = useRef<HTMLUListElement>(null)
     const [isMoved, setIsMoved] = useState(false)
-    const [moviesList, setMoviesList] = useState<IMovie[] | []>([])
     const dispatch = useAppDispatch()
-
-    const movies_storage = useAppSelector(state => state.movies_storage.movies)
-    const [ fetch, { data: newMovies } ] = useLazyFetchMoviesQuery()
 
     const onArrowClick = (direct: 'left' | 'right') => {
         if( rowRef.current ) {
@@ -80,16 +72,16 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
                                 </div>
 
                                 <div className="poster-controls-buttons">
-                                    <button className="circle">
+                                    <button className="movie-slider-circle">
                                         <HiVolumeOff size={17} color='rgba(255, 255, 255, 0.7)'/>
                                     </button>
-                                    <button className="circle">
+                                    <button className="movie-slider-circle">
                                         <AiOutlineLike size={17} color='rgba(255, 255, 255, 0.7)'/>
                                     </button>
-                                    <button className="circle">
+                                    <button className="movie-slider-circle">
                                         <AiOutlineDislike size={17} color='rgba(255, 255, 255, 0.7)'/>
                                     </button>
-                                    <button className="circle">
+                                    <button className="movie-slider-circle">
                                         <FaPlus size={17} color='rgba(255, 255, 255, 0.7)'/>
                                     </button>
 

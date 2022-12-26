@@ -13,7 +13,7 @@ import '../style/baner.scss'
 const Baner = () => {
 
     const { data: random } = useRandomMovieQuery('')
-    const [ fetchVideo, { data: video, isSuccess, isLoading }] = useLazyGetVideoDataQuery()
+    // const [ fetchVideo, { data: video, isSuccess, isLoading }] = useLazyGetVideoDataQuery()
 
     const [backgroundImageURL, setImgUrl] = useState('')
     const [trancatedOverview, setTrancate] = useState('')
@@ -27,7 +27,7 @@ const Baner = () => {
         }  
     }, [random])
 
-    console.log(random);
+    // console.log(video);
 
     if(random) {
         return (

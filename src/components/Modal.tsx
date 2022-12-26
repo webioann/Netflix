@@ -28,6 +28,7 @@ const Modal = () => {
         }
     }, [movie])
 
+console.log(movie);
 
     useEffect(() => {
         if( !video ) return
@@ -36,6 +37,8 @@ const Modal = () => {
             setTrailerURL(video[index]?.key)
         }
     }, [video])
+
+    console.log(video)
     
     return (
         <div className={modalIsOpen ? 'modal-layout' : 'hidden-modal'}>

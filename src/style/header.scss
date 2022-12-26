@@ -4,6 +4,12 @@
     font-weight: 900;
     border: 1px solid red;
 }
+.active {
+    font-weight: 700;
+    transform: scale(1.1);
+    // color: $light;
+    // opacity: 1;
+}
 .header {
     min-height: $header-hight;
     position: fixed;
@@ -33,6 +39,8 @@
         .nav-link {
             color: $light;
             font-size: 0.85rem;
+            // opacity: 0.7;
+            z-index: 100;
         }
         .header-link {
             .avatar-logo {
