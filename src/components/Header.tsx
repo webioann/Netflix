@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useAppSelector } from '../redux/store'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import SignoutButton from './SignoutButton'
 import SearchInput from './SearchInput'
 import Container from './Container'
+import HumburgerMenu from './HumburgerMenu'
 import '../style/header.scss'
 
 const Header = () => {
@@ -11,6 +12,7 @@ const Header = () => {
     const currentUser = useAppSelector(state => state.redux.currentUser)
     const userAvatar = useAppSelector(state => state.redux.currentUser?.currentUser_PhotoURL)
     const [avatar, setAvatar] = useState<string>("https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png")
+    const [menu, setMenu] = useState(false)
 
     useEffect(() => {
         currentUser?.currentUser_PhotoURL ? 
@@ -18,21 +20,28 @@ const Header = () => {
         "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
     }, [userAvatar])
 
+    const switchMobileMenu = () => { setMenu(prev => !prev) }
+
     return (
-        <header className='header'>
+        <header className='header'
+            style={{ left: menu ? '0px' : '-100%'}}
+            >
             <Container width='1600px'>
                 <div className='header-wrapper'>
-                    <Link to={'/'} className='header-logo'>
-                        <img className='netflix-logo'
+                    <HumburgerMenu switcher={switchMobileMenu} menu={menu}/>
+                    <Link to={'/'} className='netflix-logo'>
+                        <img 
                             src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png" 
                             alt="Netflix logo"
                         />
                     </Link> 
-                    <NavLink className='nav-link' to={'/'}>Home</NavLink>
-                    <NavLink className='nav-link' to={'/tvshows'}>TvShows</NavLink>
-                    <NavLink className='nav-link' to={'/movies'}>Movies</NavLink>
-                    <NavLink className='nav-link' to={'/latest'}>Latest</NavLink>
-                    <NavLink className='nav-link' to={'/my_list'}>My List</NavLink>
+                    <nav>
+                        <Link className='g-link' to={'/'}>Home</Link>
+                        <Link className='g-link' to={'/tvshows'}>TvShows</Link>
+                        <Link className='g-link' to={'/movies'}>Movies</Link>
+                        <Link className='g-link' to={'/latest'}>Latest</Link>
+                        <Link className='g-link' to={'/my_list'}>My List</Link>
+                    </nav>
                     
                     <div className="spring-div" style={{ flex: 1 }}/>
 
@@ -40,18 +49,12 @@ const Header = () => {
                     { currentUser && <SignoutButton/> }
                     { !currentUser && <Link to={'/login'} className='g-button' style={{ backgroundColor: '#e50914' }}>Sign in</Link> }
                     { currentUser ? (
-                        <Link to={'/profile'} className='header-link'>
-                            <img className='avatar-logo'
-                                src={  avatar }
-                                alt="avatar logo"
-                            />
+                        <Link to={'/profile'} className='user-avatar'>
+                            <img src={  avatar } alt="user avatar"/>
                         </Link>
                         ) : (
-                        <Link to={'/login'} className='header-link'>
-                            <img className='avatar-logo'
-                                src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" 
-                                alt="avatar logo"
-                            />
+                        <Link to={'/login'} className='user-avatar'>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="user avatar"/>
                         </Link>
                         )
                     }

@@ -1,30 +1,30 @@
 @import './@index.scss';
-.--test {
-    color: #fff;
-    font-weight: 900;
-    border: 1px solid red;
-}
-.active {
-    font-weight: 700;
-    transform: scale(1.1);
-    // color: $light;
-    // opacity: 1;
-}
+// .--test {
+//     color: #fff;
+//     font-weight: 900;
+//     border: 1px solid red;
+// }
+// .active {
+//     font-weight: 700;
+//     transform: scale(1.1);
+//     // color: $light;
+//     // opacity: 1;
+// }
 .header {
     min-height: $header-hight;
     position: fixed;
     top: 0;
+    // left: -700px;
     width: 100%;
     background-color: $nav-black;
     z-index: 3;
+    transition: left 500ms linear;
     .header-wrapper {
         gap: 1rem;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        .header-logo {
-            display: inline;
-            .netflix-logo {
+        flex-direction: column;
+        .netflix-logo {
+            img {
                 width: 100px;
                 object-fit: contain;
                 &:hover {
@@ -32,14 +32,13 @@
                 }
             }
         }
-        .nav-link {
-            color: $light;
-            font-size: 0.85rem;
-            // opacity: 0.7;
-            z-index: 100;
+        nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
         }
-        .header-link {
-            .avatar-logo {
+        .user-avatar {
+            img {
                 width: 35px;
                 object-fit: contain;
                 &:hover {
@@ -47,5 +46,17 @@
                 }
             }
         }
+    }
+    @media screen and (min-width: $sm) {
+        .header-wrapper {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+}
+@media screen and (min-width: $sm) {
+    .header {
+        left: 0;
     }
 }

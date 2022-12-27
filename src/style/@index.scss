@@ -80,14 +80,17 @@ $button-big: 160px;
 $max-mobile: 320px;
 // === GLOBAL CLASSES ===
 .g-link {
-    margin-left: 5px;
+    color: $light;
+    transition: transform 300ms linear;
     &:hover {
-        text-decoration: underline;
+        font-weight: 700;
+        transform: scale(1.1);
         cursor: pointer;
     }
 }
 .g-button {
     display: flex;
+    max-width: 10rem;
     justify-content: center;
     gap: 0.5rem;
     align-items: center;

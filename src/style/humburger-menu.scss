@@ -1,0 +1,13 @@
+@import './@index.scss';
+
+.humburger {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 15;
+}
+@media screen and (min-width: 640px) {
+    .humburger {
+        display: none;
+    }
+}

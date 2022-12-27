@@ -32,12 +32,7 @@ const Baner = () => {
 
     if(random) {
         return (
-            <section className='baner-container'
-                style={{
-                    backgroundImage: `url(${ backgroundImageURL })`,
-                    backgroundColor: 'linear-gradient(to bottom, rgba(0,0,0,0) 41%, rgba(0,0,0,0.9) 100%)'
-                }}
-                >
+            <section className='baner-container' style={{ backgroundImage: `url(${ backgroundImageURL })` }}>
                 <Container width='1600px'>
                     <div className="baner-content">
                         <h1 className='baner-movie-name'>
@@ -74,8 +69,8 @@ const Baner = () => {
 
                         </div>
                     </div>
-                    <div className="black-fog"/>
                 </Container>
+                <div className="black-fog"/>
             </section>
         )
     
