@@ -6,6 +6,7 @@ import { FaPlay, FaPlus } from 'react-icons/fa'
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import { useLazyGetVideoDataQuery } from '../redux/fetchMoviesData'
 import GenresList from './GenresList'
+import Container from './Container';
 
 import { useLazyRandomMovieQuery, useRandomMovieQuery } from '../redux/fetchMoviesData';
 import '../style/baner.scss'
@@ -23,7 +24,7 @@ const Baner = () => {
         if(random) {
             setImgUrl(`https://image.tmdb.org/t/p/original/${random?.backdrop_path ? random?.backdrop_path : random?.poster_path}`)
             const overview = random?.overview ? random.overview : 'some text'
-            setTrancate(overview.length > 200 ? overview.substring(0, 200 - 1) + '...' : overview)
+            setTrancate(overview.length > 150 ? overview.substring(0, 150 - 1) + '...' : overview)
         }  
     }, [random])
 
@@ -32,45 +33,49 @@ const Baner = () => {
     if(random) {
         return (
             <section className='baner-container'
-                style={{backgroundImage: `url(${ backgroundImageURL })`}}
+                style={{
+                    backgroundImage: `url(${ backgroundImageURL })`,
+                    backgroundColor: 'linear-gradient(to bottom, rgba(0,0,0,0) 41%, rgba(0,0,0,0.9) 100%)'
+                }}
                 >
-                    <div className="spring-div" style={{flex: 1}}/>
-                <div className="baner-content">
-                    <h1 className='baner-movie-name'>
-                        {random?.name ? random?.name : random?.original_name}
-                    </h1>
-                    <p className='baner-overview'>
-                        { trancatedOverview }
-                    </p>
-                    <GenresList genres={random.genre_ids} font={16}/>
-                    <div className="baner-buttons-row">
-                        <button className='baner-button g-button'
-                            onClick={() => {
-                                dispatch(resetMovieData())
-                                dispatch(selectMovie({
-                                    media_type: 'tv',
-                                    movie_id: Number(random.id)}))
-                                dispatch(openModal())
-                            }}>
-                            <FaPlay/>
-                            Play
-                        </button>
-                        <button className='baner-button g-button'>
-                            <FaPlus/>
-                            My List
-                        </button>
-                        <button className='baner-button g-button'>
-                            <HiInformationCircle color='#fff' size={24}/>
-                            More info
-                        </button>
-                        <div className="spring-div" style={{ flex: 1 }}/>
-                        {/* <button className="circle-button">
-                            <HiVolumeOff size={24} color='#fff'/>
-                        </button> */}
+                <Container width='1600px'>
+                    <div className="baner-content">
+                        <h1 className='baner-movie-name'>
+                            {random?.name ? random?.name : random?.original_name}
+                        </h1>
+                        <p className='baner-overview'>
+                            { trancatedOverview }
+                        </p>
+                        <GenresList genres={random.genre_ids} font={16}/>
+                        <div className="baner-buttons-row">
+                            <button className='baner-button g-button'
+                                onClick={() => {
+                                    dispatch(resetMovieData())
+                                    dispatch(selectMovie({
+                                        media_type: 'tv',
+                                        movie_id: Number(random.id)}))
+                                    dispatch(openModal())
+                                }}>
+                                <FaPlay/>
+                                Play
+                            </button>
+                            <button className='baner-button g-button'>
+                                <FaPlus/>
+                                My List
+                            </button>
+                            <button className='baner-button g-button'>
+                                <HiInformationCircle color='#fff' size={24}/>
+                                More info
+                            </button>
+                            {/* <div className="spring-div" style={{ flex: 1 }}/> */}
+                            {/* <button className="circle-button">
+                                <HiVolumeOff size={24} color='#fff'/>
+                            </button> */}
 
+                        </div>
                     </div>
-                </div>
-                {/* <div className='black-fog'/> */}
+                    <div className="black-fog"/>
+                </Container>
             </section>
         )
     

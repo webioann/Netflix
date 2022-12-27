@@ -16,12 +16,8 @@
     top: 0;
     width: 100%;
     background-color: $nav-black;
-    // background-color: transparent;
     z-index: 3;
     .header-wrapper {
-        max-width: 1600px;
-        padding: 0 1rem;
-        margin: 0 auto;
         gap: 1rem;
         display: flex;
         align-items: center;

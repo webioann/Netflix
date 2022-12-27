@@ -2,31 +2,23 @@
 
 .baner-container {
     width: 100%;
-    height: 350px;
+    height: 400px;
     margin-top: $header-hight;
     background-position: center;
     background-size: cover;
     object-fit: contain;
     z-index: 1;
     position: relative;
-    border: 1px solid green;
+    border: 1px solid red;
     .baner-content {
-        border: 1px solid red;
-        max-width: 1600px;
         height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        margin: 0 auto;
-        padding: 1rem;
-        margin-top: $header-hight;
-        // background-color: transparent;
-        // display: flex;
-        // flex-direction: column;
-        // justify-content: flex-end;
+        width: 100%;
+        padding-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        z-index: 10;
         .baner-movie-name {
-            flex: 1;
             font-size: 36px;
             font-weight: 700;
         }
@@ -34,11 +26,11 @@
             font-size: 18px;
             line-height: 1.5;
             font-weight: 400px;
-            padding-bottom: 2rem;
         }
         .baner-buttons-row {
             display: flex;
-            gap: 0.7rem;
+            gap: 0.5rem;
+            z-index: 5;
             .baner-button {
                 background-color: $black-glass;
                 font-weight: 400;
@@ -57,60 +49,13 @@
             }
         }
     }
-    // === MEDIA QUERYS ===
-    @media (min-width: $xs) {
-        .baner-content {
-            .baner-buttons-row {
-                .baner-button {
-                    padding: 0.5rem 1rem;
-                }
-            }
-        }
-    }
-
-    @media (min-width: $sm) {
-        .baner-content {
-            .baner-movie-name {
-                font-size: 46px;
-                padding-right: 30%;
-            }
-            .baner-overview {
-                padding-right: 30%;
-            }
-            .baner-buttons-row {
-                .baner-button {
-                    padding: 0.5rem 1.5rem;
-                }
-            }
-        }
-    }
-    @media (min-width: $md) {
-        .baner-content {
-            // margin-left: 50px;
-            .baner-movie-name {
-                font-size: 60px;
-                padding-right: 50%;
-            }
-            .baner-overview {
-                padding-right: 50%;
-            }
-        }
-    }
-    @media (min-width: $xl) {
-        .baner-content {
-            // margin-left: 80px;
-            .baner-movie-name {
-                font-size: 72px;
-            }
-        }
-    }
-
     .black-fog {
         height: 8rem;
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
+        z-index: 2;
         background-image: linear-gradient(
             180deg,
             transparent,
@@ -122,20 +67,58 @@
 @media (min-width: $sm) {
     .baner-container {
         height: 500px;
+        .baner-content {
+            padding-bottom: 3rem;
+            .baner-movie-name {
+                font-size: 46px;
+                padding-right: 30%;
+            }
+            .baner-overview {
+                padding-right: 30%;
+            }
+            .baner-buttons-row {
+                gap: 1.5rem;
+                .baner-button {
+                    padding: 0.5rem 1.5rem;
+                }
+            }
+        }
     }
 }
 @media (min-width: $md) {
     .baner-container {
         height: 600px;
+        .baner-content {
+            padding-bottom: 4rem;
+            .baner-movie-name {
+                font-size: 56px;
+                padding-right: 50%;
+            }
+            .baner-overview {
+                padding-right: 50%;
+            }
+        }
     }
 }
 @media (min-width: $lg) {
     .baner-container {
         height: 700px;
+        .baner-content {
+            padding-bottom: 5rem;
+            .baner-movie-name {
+                font-size: 66px;
+            }
+        }
     }
 }
 @media (min-width: $xl) {
     .baner-container {
         height: 800px;
+        .baner-content {
+            padding-bottom: 6rem;
+            .baner-movie-name {
+                font-size: 76px;
+            }
+        }
     }
 }

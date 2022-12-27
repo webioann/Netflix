@@ -2,21 +2,21 @@ import React from 'react'
 
 type ContainerProps = {
     children: JSX.Element[] | JSX.Element
-    scroll: boolean
+    width: string
 }
 
-const Container: React.FC<ContainerProps> = ({children, scroll}) => {
-
-    document.body.style.overflow = scroll ? 'hidden' : 'scroll'
+const Container: React.FC<ContainerProps> = ({ width, children }) => {
 
     return (
         <div style={{
             width: '100%',
-            // maxWidth: '1600px',
-            // marginLeft: 'auto',
-            // marginRight: 'auto',
-            minHeight: '100vh',
-            position: 'relative'
+            maxWidth: width,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            paddingLeft: '1rem',
+            paddingRight: '1rem',
+            height: '100%',
+            position: 'relative',
         }}>
             { children }
         </div>

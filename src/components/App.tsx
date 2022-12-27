@@ -2,7 +2,7 @@ import React, { useState, useEffect , useRef} from 'react'
 import { useAuthStateCurrentUser } from '../hooks/useAuthStateCurrentUser'
 import { Routes, Route } from "react-router-dom"
 import { useAppSelector } from '../redux/store'
-import Container from './Container'
+import ContainerFluid from './ContainerFluid'
 import Header from './Header'
 import Baner from './Baner'
 import Home_page from './Home_page'
@@ -39,7 +39,7 @@ const  App: React.FC = () => {
   // console.log(data)
 
   return (
-    <Container scroll={modalIsOpen}>
+    <ContainerFluid scroll={modalIsOpen}>
       <Header/>
       <Modal/>
       <Routes>
@@ -63,7 +63,7 @@ const  App: React.FC = () => {
           {/* <Route path="/test" element={<TEST />} /> */}
           { currentUser &&  <Route path="profile" element={<Profile_page />}/>}
         </Routes>
-    </Container>
+    </ContainerFluid>
   )
 }
 export default App;
