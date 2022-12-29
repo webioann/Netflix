@@ -1,13 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { useAppSelector, useAppDispatch } from '../redux/store'
-import { selectMovie, resetMovieData, openModal } from '../redux/reduxSlice'
+import React, { useState, useRef } from 'react'
 import { useFetchMoviesQuery } from '../redux/fetchMoviesData'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
-import { FaPlay, FaPlus } from 'react-icons/fa'
-import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
-import { AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike  } from 'react-icons/ai'
-import { IMovie } from '../types/movies.types'
-import GenresList from './GenresList'
+import MovieCard from './MovieCard'
 import '../style/movies-slider.scss'
 
 type MovieRowPropsType = {
@@ -21,7 +15,6 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
     const { data: movies } = useFetchMoviesQuery({path: path})
     const rowRef = useRef<HTMLUListElement>(null)
     const [isMoved, setIsMoved] = useState(false)
-    const dispatch = useAppDispatch()
 
     const onArrowClick = (direct: 'left' | 'right') => {
         if( rowRef.current ) {
@@ -34,7 +27,7 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
         }
     }
 
-    console.log(movies);
+    // console.log(movies);
 
     if( movies ) {
         return (
@@ -42,56 +35,7 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
                 <h2 className='row-title'>{title}</h2>
 
                 <ul className="row-movies" ref={rowRef}>
-                    { movies?.map(movie => (
-                        <li className='movie-card' key={movie.id}>
-                            <img className='movie-card-img'
-                                src={`https://image.tmdb.org/t/p/original/${movie.poster_path ? movie.poster_path : movie.backdrop_path}`} 
-                                alt={movie.name}
-                            />
-                            <div className="movie-card-controls">
-                                <div className="poster-controls-info">
-                                    <button className="poster-play-button">
-                                        <FaPlay className='play-icon'
-                                            size={20} 
-                                            color='rgba(255, 255, 255, 0.7)'
-                                            onClick={() => {
-                                                dispatch(resetMovieData())
-                                                dispatch(selectMovie({
-                                                    media_type: type === 'all' ? movie.media_type : type,
-                                                    movie_id: Number(movie.id)
-                                                }))
-                                                dispatch(openModal())
-                                            }}
-                                        />
-                                    </button>
-                                    <p className='movie-name'>
-                                        { !movie.name || !movie.original_name ? 
-                                            (movie.title ? movie.title : movie.original_title) :
-                                            (movie.name ? movie.name : movie.original_name) 
-                                        }
-                                    </p>
-                                    <GenresList genres={movie?.genre_ids} font={12}/>
-                                </div>
-
-                                <div className="poster-controls-buttons">
-                                    <button className="movie-slider-circle">
-                                        <HiVolumeOff size={17} color='rgba(255, 255, 255, 0.7)'/>
-                                    </button>
-                                    <button className="movie-slider-circle">
-                                        <AiOutlineLike size={17} color='rgba(255, 255, 255, 0.7)'/>
-                                    </button>
-                                    <button className="movie-slider-circle">
-                                        <AiOutlineDislike size={17} color='rgba(255, 255, 255, 0.7)'/>
-                                    </button>
-                                    <button className="movie-slider-circle">
-                                        <FaPlus size={17} color='rgba(255, 255, 255, 0.7)'/>
-                                    </button>
-
-                                </div>
-                            </div>
-                        </li>
-                        ))
-                    }
+                    { movies?.map(movie => ( <MovieCard movie={movie} type={type} key={movie.id}/> ))}
                 </ul>
 
                 <div className="arrow-icons-wrapper">
@@ -114,29 +58,3 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
     } 
 }
 export default MoviesSlider;
-    // useEffect(() => {
-    //     const getMovies = async () => {
-    //         const local_data = localStorage.getItem(`${title}`)
-    //         if( local_data === undefined ) { 
-    //             // await localStorage.removeItem(`${title}`)
-    //             await fetch({path: path})
-    //             localStorage.setItem(`${title}`, JSON.stringify(newMovies))
-    //         }
-    //         else{ return }
-    //     }
-    //     getMovies()
-    // }, [])
-
-    // useEffect(() => {
-    //     const getMovies = async () => {
-    //         if( moviesList.length === 0 ) { 
-    //             await fetch({path: path})
-    //             await setMoviesList(newMovies)
-    //         }
-    //         else{ return }
-    //     }
-    //     getMovies()
-    // }, [])
-
-    // console.log('MOVIE', moviesList);
-

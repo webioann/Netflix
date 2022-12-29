@@ -45,14 +45,14 @@ const Modal = () => {
             <div className="modal-content">
                 <CloseButton onClose={closePlayer} color='red' size={30}/>
                 <VideoPlayer open={modalIsOpen} data={trailerURL}/>
-                <div className="show-more-icon-box">
+                {/* <div className="show-more-icon-box">
                     <SlArrowDown className='show-more-icon' 
                         onClick={() => setShowMoreInfo(prev => !prev)}
                         title='more info' 
                         size={40} 
                         color='red'
                     />
-                </div>
+                </div> */}
 
                 {/* <div className={ showMoreInfo ? 'open-info more-info' : 'close-info more-info'}>
                     <p>1</p>

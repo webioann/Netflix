@@ -24,7 +24,7 @@ const Baner = () => {
         if(random) {
             setImgUrl(`https://image.tmdb.org/t/p/original/${random?.backdrop_path ? random?.backdrop_path : random?.poster_path}`)
             const overview = random?.overview ? random.overview : 'some text'
-            setTrancate(overview.length > 150 ? overview.substring(0, 150 - 1) + '...' : overview)
+            setTrancate(overview.length > 200 ? overview.substring(0, 200 - 1) + '...' : overview)
         }  
     }, [random])
 
@@ -32,7 +32,8 @@ const Baner = () => {
 
     if(random) {
         return (
-            <section className='baner-container' style={{ backgroundImage: `url(${ backgroundImageURL })` }}>
+            <section className='baner-container' 
+                style={{ backgroundImage: `url(${ backgroundImageURL })` }}>
                 <Container width='1600px'>
                     <div className="baner-content">
                         <h1 className='baner-movie-name'>

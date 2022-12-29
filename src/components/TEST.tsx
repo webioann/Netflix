@@ -9,7 +9,7 @@ import { async } from '@firebase/util'
 type user = {
     name: string
     age: number
-    id: never
+    id: string
 }
 
 const FormRegistration = () => {
