@@ -34,6 +34,8 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
         }
     }
 
+    console.log(movies);
+
     if( movies ) {
         return (
             <section className='slider-container'>
@@ -43,7 +45,7 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
                     { movies?.map(movie => (
                         <li className='movie-card' key={movie.id}>
                             <img className='movie-card-img'
-                                src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`} 
+                                src={`https://image.tmdb.org/t/p/original/${movie.poster_path ? movie.poster_path : movie.backdrop_path}`} 
                                 alt={movie.name}
                             />
                             <div className="movie-card-controls">
@@ -55,7 +57,7 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
                                             onClick={() => {
                                                 dispatch(resetMovieData())
                                                 dispatch(selectMovie({
-                                                    media_type: movie.media_type ? movie.media_type : type,
+                                                    media_type: type === 'all' ? movie.media_type : type,
                                                     movie_id: Number(movie.id)
                                                 }))
                                                 dispatch(openModal())

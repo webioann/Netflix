@@ -11,10 +11,8 @@
 //     // opacity: 1;
 // }
 .header {
-    min-height: $header-hight;
     position: fixed;
     top: 0;
-    // left: -700px;
     width: 100%;
     background-color: $nav-black;
     z-index: 3;
@@ -47,16 +45,16 @@
             }
         }
     }
-    @media screen and (min-width: $sm) {
+}
+@media screen and (min-width: $sm) {
+    .header {
+        left: 0;
+        min-height: $header-hight;
+
         .header-wrapper {
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
         }
-    }
-}
-@media screen and (min-width: $sm) {
-    .header {
-        left: 0;
     }
 }

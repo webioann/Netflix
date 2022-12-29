@@ -12,7 +12,8 @@ const Header = () => {
     const currentUser = useAppSelector(state => state.redux.currentUser)
     const userAvatar = useAppSelector(state => state.redux.currentUser?.currentUser_PhotoURL)
     const [avatar, setAvatar] = useState<string>("https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png")
-    const [menu, setMenu] = useState(false)
+    const [mobile, setMenu] = useState(window.matchMedia("(max-width: 640px)").matches)
+    const [isOpen, setIsOpen] = useState(false)
 
     useEffect(() => {
         currentUser?.currentUser_PhotoURL ? 
@@ -20,15 +21,15 @@ const Header = () => {
         "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
     }, [userAvatar])
 
-    const switchMobileMenu = () => { setMenu(prev => !prev) }
+// console.log(mobile)
+// console.log(window.innerWidth);
+    const switchMobileMenu = () => { setIsOpen(prev => !prev) }
 
     return (
-        <header className='header'
-            style={{ left: menu ? '0px' : '-100%'}}
-            >
+        <header className='header'>
             <Container width='1600px'>
                 <div className='header-wrapper'>
-                    <HumburgerMenu switcher={switchMobileMenu} menu={menu}/>
+                    <HumburgerMenu switcher={switchMobileMenu} menu={isOpen}/>
                     <Link to={'/'} className='netflix-logo'>
                         <img 
                             src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png" 

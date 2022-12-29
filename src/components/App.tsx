@@ -47,13 +47,13 @@ const  App: React.FC = () => {
             <Home_page>
               <Baner/>
               <MoviesSlider title='Netflix originals' path={originals}  type='tv'/>
-              {/* <MoviesSlider title='Trending' path={trendings}  type='all'/>
+              <MoviesSlider title='Trending' path={trendings}  type='all'/>
               <MoviesSlider title='Top of rates' path={topRated}  type='movie'/>
               <MoviesSlider title='Actions' path={actions}  type='movie'/>
               <MoviesSlider title='Comedies' path={comedies} type='movie'/>
               <MoviesSlider title='Horrors' path={horrors}  type='movie'/>
               <MoviesSlider title='Romances' path={romances}  type='movie'/>
-              <MoviesSlider title='Documentaries' path={documentaries} type='movie'/> */}
+              <MoviesSlider title='Documentaries' path={documentaries} type='movie'/>
             </Home_page>} 
           />
           <Route path="my_list" element={<MyListPage />}/>
