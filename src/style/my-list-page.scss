@@ -1,0 +1,50 @@
+@import './@index.scss';
+
+.my-list-page {
+    padding-top: $header-hight;
+    width: 100%;
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    z-index: 1;
+    .my-list-content {
+        display: grid;
+        min-height: calc(100vh - $header-hight);
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        background-color: $black-glass;
+        padding: 1rem;
+        .my-list-movie {
+            // min-width: 290px;
+            max-height: 360px;
+            position: relative;
+            border: 1px solid red;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+            .my-list-movie-info {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    @media screen and (min-width: $sm) {
+        .my-list-content {
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+    }
+    @media screen and (min-width: $md) {
+        .my-list-content {
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+        }
+    }
+}

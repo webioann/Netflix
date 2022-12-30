@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { db } from '../firebase.config'
 import { collection, getDocs } from 'firebase/firestore'
 import MovieCard from './MovieCard'
+import Container from './Container'
 import { IMyList } from '../types/mylist.types'
+import { PAGE_BG_IMG } from '../helpers/constants'
+import '../style/my-list-page.scss'
 
 const MyListPage = () => {
 
@@ -22,10 +25,24 @@ const MyListPage = () => {
 
 console.log(myList)
     return (
-        <div style={{ marginTop: '100px' }}>
-            { myList.map(item => (
-                <p key={item.doc_id}>{item.movie_name}</p>
-            )) }
+        <div className='my-list-page'
+            style={{backgroundImage: `url(${PAGE_BG_IMG})`}}
+            >
+            <Container width='1600px'>
+                <ul className="my-list-content">
+                    { myList.map(item => (
+                        <li className='my-list-movie' key={item.doc_id}>
+                            <img src={`${item.image_url}`} alt={item.movie_name}/>
+                            <div className="my-list-movie-info">
+                                {item.movie_name}
+
+                            </div>
+                        </li>
+                    ))}
+
+                </ul>
+
+            </Container>
         </div>
     )
 }
