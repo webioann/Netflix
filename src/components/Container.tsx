@@ -13,8 +13,6 @@ const Container: React.FC<ContainerProps> = ({ width, children }) => {
             maxWidth: width,
             marginLeft: 'auto',
             marginRight: 'auto',
-            paddingLeft: '1rem',
-            paddingRight: '1rem',
             height: '100%',
             position: 'relative',
         }}>

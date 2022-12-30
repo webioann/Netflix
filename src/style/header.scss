@@ -18,9 +18,11 @@
     z-index: 3;
     transition: left 500ms linear;
     .header-wrapper {
+        border: 1px solid red;
         gap: 1rem;
         display: flex;
         flex-direction: column;
+        padding: 1rem;
         .netflix-logo {
             img {
                 width: 100px;

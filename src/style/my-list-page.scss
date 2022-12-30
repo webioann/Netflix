@@ -11,16 +11,20 @@
     z-index: 1;
     .my-list-content {
         display: grid;
+        width: 100%;
         min-height: calc(100vh - $header-hight);
         grid-template-columns: 1fr;
         gap: 1rem;
         background-color: $black-glass;
         padding: 1rem;
         .my-list-movie {
-            // min-width: 290px;
-            max-height: 360px;
+            max-width: 620px;
+            // min-height: 250px;
+            // max-height: 348px;
+            margin: 0 auto;
             position: relative;
-            border: 1px solid red;
+            padding: 1rem;
+            // border: 1px solid red;
             img {
                 width: 100%;
                 height: 100%;
@@ -41,7 +45,7 @@
             gap: 1rem;
         }
     }
-    @media screen and (min-width: $md) {
+    @media screen and (min-width: $lg) {
         .my-list-content {
             grid-template-columns: 1fr 1fr 1fr;
             gap: 2rem;
