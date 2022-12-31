@@ -27,18 +27,20 @@ const MovieCard: React.FC<IMovieCard> = ({movie, type}) => {
         }
         else{ movieName = movie.title ? movie.title : movie.original_title }
 
-        await addDoc(collection(db, "my list"), {
-            movie_name: movieName,
-            movie_id: movie.id,
-            media_type: type === 'all' ? movie.media_type : type,
-            genres_list: movie.genre_ids,
-            overview: movie.overview,
-            image_url: `https://image.tmdb.org/t/p/original/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`
-        })
+        // await addDoc(collection(db, "my list"), {
+        //     movie_name: movieName,
+        //     movie_id: movie.id,
+        //     media_type: type === 'all' ? movie.media_type : type,
+        //     genres_list: movie.genre_ids,
+        //     overview: movie.overview,
+        //     image_url: `https://image.tmdb.org/t/p/original/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`
+        // })
+        await addDoc(collection(db, "my list"), { ...movie, media_type: type })
+
     }
 
     return (
-        <li className='movie-card' key={movie.id}>
+        <li className='movie-card'>
             <img className='movie-card-img'
                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`} 
                 alt={movie.name}

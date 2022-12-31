@@ -27,7 +27,7 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
         }
     }
 
-    // console.log(movies);
+    console.log(movies);
 
     if( movies ) {
         return (

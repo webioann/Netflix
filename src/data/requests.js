@@ -1,4 +1,4 @@
-export const trendings = `/trending/all/week?api_key=${process.env.TMDB_API_KEY}&language=en-US`;
+export const trendings = `/trending/movie/week?api_key=${process.env.TMDB_API_KEY}&language=en-US`;
 export const originals = `/discover/tv?api_key=${process.env.TMDB_API_KEY}&with_networks=213`;
 export const topRated = `/movie/top_rated?api_key=${process.env.TMDB_API_KEY}&language=en-US`;
 export const actions = `/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=28`;
