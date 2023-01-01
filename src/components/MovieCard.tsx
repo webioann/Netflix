@@ -1,6 +1,6 @@
 import React from 'react'
-import { useAppDispatch } from '../redux/store'
-import { selectMovie, resetMovieData, openModal } from '../redux/reduxSlice'
+import { useAppDispatch, useAppSelector } from '../redux/store'
+import { selectMovie, resetMovieData, openModal,   startVideoPlayer } from '../redux/reduxSlice'
 import { FaPlay, FaPlus } from 'react-icons/fa'
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import { AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike  } from 'react-icons/ai'
@@ -13,37 +13,32 @@ import '../style/movie-card.scss'
 
 interface IMovieCard {
     movie: IMovie
-    type: 'movie' | 'tv' | 'all'
+    type: 'movie' | 'tv' | string | undefined
 }
+
 
 const MovieCard: React.FC<IMovieCard> = ({movie, type}) => {
 
     const dispatch = useAppDispatch()
 
     const saveMovieInFirestore = async () => {
-        let movieName: string | undefined = 'name';
-        if(movie.name || movie.original_name ) {
-            movieName = movie.name ? movie.name : movie.original_name
-        }
-        else{ movieName = movie.title ? movie.title : movie.original_title }
-
-        // await addDoc(collection(db, "my list"), {
-        //     movie_name: movieName,
-        //     movie_id: movie.id,
-        //     media_type: type === 'all' ? movie.media_type : type,
-        //     genres_list: movie.genre_ids,
-        //     overview: movie.overview,
-        //     image_url: `https://image.tmdb.org/t/p/original/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`
-        // })
         await addDoc(collection(db, "my list"), { ...movie, media_type: type })
+    }
 
+    const startPlayVideo = async (movie_id: number, media_type: string | undefined) => {
+        await dispatch(resetMovieData());
+        await dispatch(selectMovie({
+            media_type: media_type,
+            movie_id: Number(movie_id)
+        }))
+        dispatch(openModal())
     }
 
     return (
         <li className='movie-card'>
             <img className='movie-card-img'
                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`} 
-                alt={movie.name}
+                alt={ type === 'movie' ? movie.title : movie.name }
             />
             <div className="movie-card-controls">
                 <div className="poster-controls-info">
@@ -54,18 +49,20 @@ const MovieCard: React.FC<IMovieCard> = ({movie, type}) => {
                             onClick={() => {
                                 dispatch(resetMovieData())
                                 dispatch(selectMovie({
-                                    media_type: type === 'all' ? movie.media_type : type,
-                                    movie_id: Number(movie.id)
+                                    media_type: movie.media_type ? movie.media_type : type,
+                                    movie_id: movie.id
                                 }))
                                 dispatch(openModal())
                             }}
+                            // onClick = {() => dispatch(startVideoPlayer({
+                            //     media_type: movie.media_type ? movie.media_type : type,
+                            //     movie_id: Number(movie.id)
+                            // }))}
+                            // onClick={() => startPlayVideo(movie.id, type)}
                         />
                     </button>
                     <p className='movie-name'>
-                        { !movie.name || !movie.original_name ? 
-                            (movie.title ? movie.title : movie.original_title) :
-                            (movie.name ? movie.name : movie.original_name) 
-                        }
+                        { type === 'movie' ? movie.title : movie.name }
                     </p>
                     <GenresList genres={movie?.genre_ids} font={12}/>
                 </div>

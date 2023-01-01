@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
 import { closeModal } from '../redux/reduxSlice';
 import { useLazyGetVideoDataQuery } from '../redux/fetchMoviesData'
+import { useLazyGetTrailerVideoURLQuery } from '../redux/VIDEO_API'
 import VideoPlayer from './VideoPlayer'
 import CloseButton from './CloseButton'
 import { SlArrowDown } from 'react-icons/sl'
@@ -10,6 +11,7 @@ import '../style/modal.scss'
 const Modal = () => {
 
     const [ fetchVideo, { data: video }] = useLazyGetVideoDataQuery()
+    const [ getTrailerVideoURL, { data: trailerVideoURL } ] = useLazyGetTrailerVideoURLQuery()
     const dispatch = useAppDispatch()
     const modalIsOpen = useAppSelector(state => state.redux.modalIsOpen)
     const movie = useAppSelector(state => state.redux.selectedMovie)
@@ -22,13 +24,13 @@ const Modal = () => {
     useEffect(() => {
         if(movie) {
             fetchVideo({ 
-                movie_id: Number(movie.movie_id),
+                movie_id: movie.movie_id,
                 media_type: movie.media_type
             })
         }
     }, [movie])
 
-// console.log(movie);
+console.log(movie);
 
     useEffect(() => {
         if( !video ) return
@@ -38,7 +40,16 @@ const Modal = () => {
         }
     }, [video])
 
-    // console.log(video)
+    console.log(video)
+    useEffect(() => {
+        if(movie) {
+            getTrailerVideoURL({ 
+                movie_id: movie.movie_id,
+                media_type: movie.media_type
+            })
+        }
+    }, [movie])
+
     
     return (
         <div className={modalIsOpen ? 'modal-layout' : 'hidden-modal'}>

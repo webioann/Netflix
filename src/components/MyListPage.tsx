@@ -2,16 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { db } from '../firebase.config'
 import { collection, getDocs } from 'firebase/firestore'
 import Container from './Container'
-import GenresList from './GenresList'
 import MovieCard from './MovieCard'
-import { IMyList } from '../types/mylist.types'
 import { IMovie } from '../types/movies.types'
 import { PAGE_BG_IMG } from '../helpers/constants'
 import '../style/my-list-page.scss'
 
 const MyListPage = () => {
 
-    // const myListRef = collection(db, 'my list')
     const [myListMovies, setMyListMovies] = useState<IMovie[] | []>([])
 
     useEffect(() => {
@@ -26,6 +23,7 @@ const MyListPage = () => {
     }, [])
 
 console.log(myListMovies)
+
     return (
         <div className='my-list-page'
             style={{backgroundImage: `url(${PAGE_BG_IMG})`}}
@@ -34,7 +32,7 @@ console.log(myListMovies)
                 <h1>My List</h1>
                 <ul className="my-list-content">
                     { myListMovies.map(movie => (
-                        <MovieCard movie={movie} type='tv' key={movie.id}/>
+                        <MovieCard movie={movie} type={movie.media_type} key={movie.id}/>
                     ))}
                 </ul>
 

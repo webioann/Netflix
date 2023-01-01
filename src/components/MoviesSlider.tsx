@@ -27,8 +27,6 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
         }
     }
 
-    console.log(movies);
-
     if( movies ) {
         return (
             <section className='slider-container'>

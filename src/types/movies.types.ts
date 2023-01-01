@@ -1,6 +1,6 @@
 export interface IMovie {
     backdrop_path: string
-    media_type?: string
+    media_type?: string | undefined
     release_data?: string
     first_air_date: string
     genre_ids: number[]
@@ -17,6 +17,11 @@ export interface IMovie {
     vote_average: number
     vote_count: number
 }
+export interface IMovieCard {
+    movie: IMovie
+    type: 'movie' | 'tv' 
+}
+
 export interface IVideo {
     id: string
     iso_639_1: string
@@ -40,12 +45,12 @@ export interface IVideoDataResponse {
     results: IVideo[]
 }
 
-export interface IBanerMovie {
-    img: string
-    name: string
-    overview: string
-    id: number
-}
+// export interface IBanerMovie {
+//     img: string
+//     name: string
+//     overview: string
+//     id: number
+// }
 export interface TypeOfMovie {
     type: 
     'Bloopers' 

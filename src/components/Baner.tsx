@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { selectMovie, resetMovieData, openModal } from '../redux/reduxSlice';
+import { selectMovie, resetMovieData, openModal,   startVideoPlayer } from '../redux/reduxSlice';
 import { HiInformationCircle } from 'react-icons/hi'
 import { FaPlay, FaPlus } from 'react-icons/fa'
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
@@ -13,7 +13,7 @@ import '../style/baner.scss'
 
 const Baner = () => {
 
-    const { data: random } = useRandomMovieQuery('')
+    const { data: movie } = useRandomMovieQuery('')
     // const [ fetchVideo, { data: video, isSuccess, isLoading }] = useLazyGetVideoDataQuery()
 
     const [backgroundImageURL, setImgUrl] = useState('')
@@ -21,37 +21,54 @@ const Baner = () => {
     const dispatch = useAppDispatch()
 
     useEffect(() => { 
-        if(random) {
-            setImgUrl(`https://image.tmdb.org/t/p/original/${random?.backdrop_path ? random?.backdrop_path : random?.poster_path}`)
-            const overview = random?.overview ? random.overview : 'some text'
+        if(movie) {
+            setImgUrl(`https://image.tmdb.org/t/p/original/${movie?.backdrop_path ? movie?.backdrop_path : movie?.poster_path}`)
+            const overview = movie?.overview ? movie.overview : 'some text'
             setTrancate(overview.length > 200 ? overview.substring(0, 200 - 1) + '...' : overview)
         }  
-    }, [random])
+    }, [movie])
+
+    const startPlayVideo = async (movie_id: number, media_type: 'movie' | 'tv') => {
+        await dispatch(resetMovieData());
+        await dispatch(selectMovie({
+            media_type: media_type,
+            movie_id: Number(movie_id)
+        }))
+        dispatch(openModal())
+    }
+
 
     // console.log(video);
 
-    if(random) {
+    if(movie) {
         return (
             <section className='baner-container' 
                 style={{ backgroundImage: `url(${ backgroundImageURL })` }}>
                 <Container width='1600px'>
                     <div className="baner-content">
                         <h1 className='baner-movie-name'>
-                            {random?.name ? random?.name : random?.original_name}
+                            {movie?.name ? movie?.name : movie?.original_name}
                         </h1>
                         <p className='baner-overview'>
                             { trancatedOverview }
                         </p>
-                        <GenresList genres={random.genre_ids} font={16}/>
+                        <GenresList genres={movie.genre_ids} font={16}/>
                         <div className="baner-buttons-row">
                             <button className='baner-button g-button'
                                 onClick={() => {
                                     dispatch(resetMovieData())
                                     dispatch(selectMovie({
                                         media_type: 'tv',
-                                        movie_id: Number(random.id)}))
+                                        movie_id: movie.id
+                                    }))
                                     dispatch(openModal())
-                                }}>
+                                }}
+                                // onClick = {() => dispatch(startVideoPlayer({
+                                //     media_type: 'tv',
+                                //     movie_id: Number(movie.id)
+                                // }))}
+                                // onClick={() => startPlayVideo(movie.id, 'tv')}
+                                >
                                 <FaPlay/>
                                 Play
                             </button>

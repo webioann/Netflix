@@ -2,15 +2,15 @@ import { createSlice,PayloadAction } from "@reduxjs/toolkit"
 import { ICurrentUser } from '../types/auth.types'
 
 type selectedMovieType = {
-    media_type: string
+    media_type: 'movie' | 'tv'
     movie_id: number
 }
 
 type InitialStateType = {
     currentUser: ICurrentUser | null
     modalIsOpen: boolean
-    movieID: number | null
     selectedMovie: selectedMovieType | null
+    trailerVideoURL: string | null
 }
 // const storedCurrentUser = localStorage.getItem('storedCurrentUser')
 // let userFromLocalStorage
@@ -22,8 +22,8 @@ type InitialStateType = {
 const initialState: InitialStateType = {
     currentUser: null,
     modalIsOpen: false,
-    movieID: 0,
-    selectedMovie: null
+    selectedMovie: null,
+    trailerVideoURL: null
 }
 
 export const reduxSlice = createSlice({
@@ -45,12 +45,19 @@ export const reduxSlice = createSlice({
         },
         openModal: (state) => { state.modalIsOpen = true },
         closeModal: (state) => { state.modalIsOpen = false },
-        selectMovieID: (state, actions) => { state.movieID = actions.payload },
         selectMovie: (state, actions) => { state.selectedMovie = {
             media_type: actions.payload.media_type,
             movie_id: actions.payload.movie_id
         }},
         resetMovieData: (state) => { state.selectedMovie = null },
+        startVideoPlayer: (state, actions) => {
+            state.selectedMovie = null
+            state.modalIsOpen = true
+            state.selectedMovie = {
+                media_type: actions.payload.media_type,
+                movie_id: actions.payload.movie_id
+            }
+        }
     }
 });
 
@@ -59,9 +66,9 @@ export const {
     deleteCurrentUser,
     openModal,
     closeModal,
-    selectMovieID,
     selectMovie,
     resetMovieData,
+    startVideoPlayer
     
 } = reduxSlice.actions;
 
