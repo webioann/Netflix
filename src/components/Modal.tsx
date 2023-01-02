@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { resetMovieData } from '../redux/reduxSlice';
+import { resetMovieData, setModalVisibility } from '../redux/reduxSlice';
 import { useLazyGetTrailerVideoURLQuery } from '../redux/VIDEO_API'
-
 import VideoPlayer from './VideoPlayer'
 import CloseButton from './CloseButton'
 import { SlArrowDown } from 'react-icons/sl'
@@ -13,12 +12,13 @@ const Modal = () => {
     const dispatch = useAppDispatch()
     const movie = useAppSelector(state => state.redux.selectedMovie)
     const [trailerURL, setTrailerURL] = useState('')
-    const [modalIsOpen, setModalIOpen] = useState(false)
+    const modalIsOpen = useAppSelector(state => state.redux.modalVisibility)
+
     const [showMoreInfo, setShowMoreInfo] = useState(false)
     const [ getTrailerVideoURL, { data: trailerVideoURL } ] = useLazyGetTrailerVideoURLQuery()
 
     const closePlayer = () => { 
-        setModalIOpen(false)
+        dispatch(setModalVisibility(false))
         dispatch(resetMovieData())
     }
 
@@ -34,11 +34,10 @@ const Modal = () => {
     useEffect(() => {
         if(trailerVideoURL) {
             setTrailerURL(trailerVideoURL)
-            setModalIOpen(true)
         }
     }, [trailerVideoURL])
 
-    console.log(trailerVideoURL);
+    // console.log(trailerVideoURL);
 
     return (
         <div className={modalIsOpen ? 'modal-layout' : 'hidden-modal'}>

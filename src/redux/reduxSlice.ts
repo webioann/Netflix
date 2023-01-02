@@ -8,9 +8,8 @@ type selectedMovieType = {
 
 type InitialStateType = {
     currentUser: ICurrentUser | null
-    modalIsOpen: boolean
     selectedMovie: selectedMovieType | null
-    trailerVideoURL: string | null
+    modalVisibility: boolean
 }
 // const storedCurrentUser = localStorage.getItem('storedCurrentUser')
 // let userFromLocalStorage
@@ -21,9 +20,8 @@ type InitialStateType = {
 
 const initialState: InitialStateType = {
     currentUser: null,
-    modalIsOpen: false,
     selectedMovie: null,
-    trailerVideoURL: null
+    modalVisibility: false
 }
 
 export const reduxSlice = createSlice({
@@ -43,38 +41,21 @@ export const reduxSlice = createSlice({
             state.currentUser = null
             // localStorage.removeItem('storedCurrentUser');
         },
-        openModal: (state) => { state.modalIsOpen = true },
-        closeModal: (state) => { state.modalIsOpen = false },
         selectMovie: (state, actions) => { state.selectedMovie = {
             media_type: actions.payload.media_type,
             movie_id: actions.payload.movie_id
         }},
         resetMovieData: (state) => { state.selectedMovie = null },
-        startVideoPlayer: (state, actions) => {
-            state.selectedMovie = null
-            state.modalIsOpen = true
-            state.selectedMovie = {
-                media_type: actions.payload.media_type,
-                movie_id: actions.payload.movie_id
-            }
-        },
-
-
-        setTrailerVideoURL: (state, actions) => {
-            state.trailerVideoURL = actions.payload
-        },
+        setModalVisibility: (state, actions) => { state.modalVisibility = actions.payload }
     }
 });
 
 export const { 
     createCurrentUser,
     deleteCurrentUser,
-    openModal,
-    closeModal,
     selectMovie,
     resetMovieData,
-    startVideoPlayer,
-    setTrailerVideoURL
+    setModalVisibility
     
 } = reduxSlice.actions;
 

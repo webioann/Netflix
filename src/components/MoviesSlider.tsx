@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { useFetchMoviesQuery } from '../redux/fetchMoviesData'
+import { useFetchMoviesQuery } from '../redux/MOVIES_API'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
 import MovieCard from './MovieCard'
 import '../style/movies-slider.scss'
@@ -26,6 +26,7 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
             rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' })
         }
     }
+    console.log(movies)
 
     if( movies ) {
         return (

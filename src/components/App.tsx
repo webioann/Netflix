@@ -24,36 +24,37 @@ import {
   documentaries
 } from '../data/requests'
 
-import TEST from './TEST'
-import { useTestQuery } from '../redux/TEST_API'
+// import TEST from './TEST'
+// import { useTestQuery } from '../redux/TEST_API'
 
-import { useSearchMoviesQuery } from '../redux/SEARCH_API'
+// import { useSearchMoviesQuery } from '../redux/SEARCH_API'
+// import { useGernesListQuery } from '../redux/GERNES_API'
 
 const  App: React.FC = () => {
 
   useAuthStateCurrentUser();
   const currentUser = useAppSelector(state => state.redux.currentUser)
-  const modalIsOpen = useAppSelector(state => state.redux.modalIsOpen)
+  const modal = useAppSelector(state => state.redux.modalVisibility)
 
-  // const { data } = useSearchMoviesQuery('')
+  // const { data } = useGernesListQuery('')
   // console.log(data)
 
   return (
-    <ContainerFluid scroll={modalIsOpen}>
+    <ContainerFluid scroll={modal}>
       <Header/>
       <Modal/>
       <Routes>
           <Route path="/" element={
             <Home_page>
               <Baner/>
-              <MoviesSlider title='Netflix originals' path={originals}  type='movie'/>
-              <MoviesSlider title='Trending' path={trendings}  type='tv'/>
+              <MoviesSlider title='Netflix originals' path={originals}  type='tv'/>
+              {/* <MoviesSlider title='Trending' path={trendings}  type='tv'/>
               <MoviesSlider title='Top of rates' path={topRated}  type='movie'/>
               <MoviesSlider title='Actions' path={actions}  type='movie'/>
               <MoviesSlider title='Comedies' path={comedies} type='movie'/>
               <MoviesSlider title='Horrors' path={horrors}  type='movie'/>
               <MoviesSlider title='Romances' path={romances}  type='movie'/>
-              <MoviesSlider title='Documentaries' path={documentaries} type='movie'/>
+              <MoviesSlider title='Documentaries' path={documentaries} type='movie'/> */}
             </Home_page>} 
           />
           <Route path="my_list" element={<MyListPage />}/>

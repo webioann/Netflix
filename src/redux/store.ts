@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useSelector,useDispatch,TypedUseSelectorHook } from "react-redux"
-import { fetchMoviesData } from './fetchMoviesData'
+import { MOVIES_API } from './MOVIES_API'
+import { GERNES_API } from './GERNES_API'
 import { VIDEO_API } from './VIDEO_API'
 import { searchMovie } from './SEARCH_API'
 import { testData } from './TEST_API'
@@ -9,9 +10,10 @@ import reduxSlice from './reduxSlice'
 const store = configureStore({
     reducer: {
         redux: reduxSlice,
-        [fetchMoviesData.reducerPath]: fetchMoviesData.reducer,
+        [MOVIES_API.reducerPath]: MOVIES_API.reducer,
         [searchMovie.reducerPath]: searchMovie.reducer,
         [VIDEO_API.reducerPath]: VIDEO_API.reducer,
+        [GERNES_API.reducerPath]: GERNES_API.reducer,
 
 
         [testData.reducerPath]: testData.reducer,
@@ -19,9 +21,10 @@ const store = configureStore({
     },
     middleware: getDefaultMiddleware =>  getDefaultMiddleware().concat(
         [
-            fetchMoviesData.middleware,
+            MOVIES_API.middleware,
             searchMovie.middleware,
             VIDEO_API.middleware,
+            GERNES_API.middleware,
 
 
             testData.middleware,

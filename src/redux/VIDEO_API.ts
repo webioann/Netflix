@@ -31,6 +31,4 @@ export const VIDEO_API = createApi({
         }),
     }), 
 })
-export const { 
-    useLazyGetTrailerVideoURLQuery
-} = VIDEO_API;
+export const { useLazyGetTrailerVideoURLQuery } = VIDEO_API;

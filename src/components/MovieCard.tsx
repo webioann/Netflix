@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../redux/store'
-import { selectMovie, resetMovieData, openModal,  setTrailerVideoURL, startVideoPlayer } from '../redux/reduxSlice'
+import { selectMovie, resetMovieData, setModalVisibility } from '../redux/reduxSlice'
 import { FaPlay, FaPlus } from 'react-icons/fa'
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import { AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike  } from 'react-icons/ai'
@@ -40,6 +40,7 @@ const MovieCard: React.FC<IMovieCard> = ({movie, type}) => {
                                     media_type: movie.media_type ? movie.media_type : type,
                                     movie_id: movie.id
                                 }))
+                                dispatch(setModalVisibility(true))
                             }}
                         />
                     </button>

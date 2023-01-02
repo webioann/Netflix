@@ -11,7 +11,10 @@ const GenresList: React.FC<props> = ({ genres, font }) => {
     const [truncated, setTruncated ] = useState<number[] | []>([])
 
     useEffect(() => {
-        setTruncated(genres.slice(0,3))
+        if(genres.length > 3) {
+            setTruncated(genres.slice(0,3))
+        }
+        else{ setTruncated([...genres])}
     }, [])
 
     return (
@@ -31,15 +34,15 @@ const GenresList: React.FC<props> = ({ genres, font }) => {
                         alignItems: 'center'
                     }}
                     key={item} >
-                        <span style={{
-                            width: `${font / 3}px`,
-                            height: `${font / 3}px`,
-                            borderRadius: '50%',
-                            // backgroundColor: 'rgba(0,0,0,0.35)',
-                            backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                            marginRight: `${font / 2}px`
-                        }}/>
-                        <p>{ genres_list.filter((obj) => { return Number(obj.id) === item})[0].name }</p>
+                    <span style={{
+                        width: `${font / 3}px`,
+                        height: `${font / 3}px`,
+                        borderRadius: '50%',
+                        // backgroundColor: 'rgba(0,0,0,0.35)',
+                        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                        marginRight: `${font / 2}px`
+                    }}/>
+                    <p>{ genres_list.filter((obj) => { return Number(obj.id) === item })[0].name }</p>
                 </li>
             ))}
         </ul>

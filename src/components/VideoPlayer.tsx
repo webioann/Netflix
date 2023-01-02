@@ -2,11 +2,11 @@ import React from 'react'
 import ReactPlayer from 'react-player'
 
 type VideoPlayerProps = {
-    open: boolean
     data: string
+    open: boolean
 }
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({open, data}) => {
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ open, data }) => {
 
     if( open && data ) {
         return (

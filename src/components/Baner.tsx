@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { selectMovie, resetMovieData, openModal,   startVideoPlayer } from '../redux/reduxSlice';
+import { selectMovie, setModalVisibility } from '../redux/reduxSlice';
 import { HiInformationCircle } from 'react-icons/hi'
 import { FaPlay, FaPlus } from 'react-icons/fa'
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
-import { useLazyGetVideoDataQuery } from '../redux/fetchMoviesData'
 import GenresList from './GenresList'
 import Container from './Container';
 
-import { useLazyRandomMovieQuery, useRandomMovieQuery } from '../redux/fetchMoviesData';
+import { useLazyRandomMovieQuery, useRandomMovieQuery } from '../redux/MOVIES_API';
 import '../style/baner.scss'
 
 const Baner = () => {
 
     const { data: movie } = useRandomMovieQuery('')
-    // const [ fetchVideo, { data: video, isSuccess, isLoading }] = useLazyGetVideoDataQuery()
-
     const [backgroundImageURL, setImgUrl] = useState('')
     const [trancatedOverview, setTrancate] = useState('')
     const dispatch = useAppDispatch()
@@ -48,6 +45,7 @@ const Baner = () => {
                                         media_type: 'tv',
                                         movie_id: movie.id
                                     }))
+                                    dispatch(setModalVisibility(true))
                                 }}
                                 >
                                 <FaPlay/>
