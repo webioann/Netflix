@@ -7,7 +7,7 @@ type paramsType = {
 }
 type videoParams = { 
     movie_id: number 
-    media_type: string
+    media_type: string | undefined
 }
 
 export const VIDEO_API = createApi({

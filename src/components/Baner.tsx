@@ -28,18 +28,6 @@ const Baner = () => {
         }  
     }, [movie])
 
-    const startPlayVideo = async (movie_id: number, media_type: 'movie' | 'tv') => {
-        await dispatch(resetMovieData());
-        await dispatch(selectMovie({
-            media_type: media_type,
-            movie_id: Number(movie_id)
-        }))
-        dispatch(openModal())
-    }
-
-
-    // console.log(video);
-
     if(movie) {
         return (
             <section className='baner-container' 
@@ -56,18 +44,11 @@ const Baner = () => {
                         <div className="baner-buttons-row">
                             <button className='baner-button g-button'
                                 onClick={() => {
-                                    dispatch(resetMovieData())
                                     dispatch(selectMovie({
                                         media_type: 'tv',
                                         movie_id: movie.id
                                     }))
-                                    dispatch(openModal())
                                 }}
-                                // onClick = {() => dispatch(startVideoPlayer({
-                                //     media_type: 'tv',
-                                //     movie_id: Number(movie.id)
-                                // }))}
-                                // onClick={() => startPlayVideo(movie.id, 'tv')}
                                 >
                                 <FaPlay/>
                                 Play

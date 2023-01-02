@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../redux/store'
-import { selectMovie, resetMovieData, openModal,   startVideoPlayer } from '../redux/reduxSlice'
+import { selectMovie, resetMovieData, openModal,  setTrailerVideoURL, startVideoPlayer } from '../redux/reduxSlice'
 import { FaPlay, FaPlus } from 'react-icons/fa'
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import { AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike  } from 'react-icons/ai'
@@ -8,7 +8,6 @@ import { IMovie } from '../types/movies.types'
 import GenresList from './GenresList'
 import { collection, doc, getDocs, query, onSnapshot, addDoc, setDoc, deleteDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../firebase.config'
-
 import '../style/movie-card.scss'
 
 interface IMovieCard {
@@ -16,22 +15,12 @@ interface IMovieCard {
     type: 'movie' | 'tv' | string | undefined
 }
 
-
 const MovieCard: React.FC<IMovieCard> = ({movie, type}) => {
 
     const dispatch = useAppDispatch()
 
     const saveMovieInFirestore = async () => {
         await addDoc(collection(db, "my list"), { ...movie, media_type: type })
-    }
-
-    const startPlayVideo = async (movie_id: number, media_type: string | undefined) => {
-        await dispatch(resetMovieData());
-        await dispatch(selectMovie({
-            media_type: media_type,
-            movie_id: Number(movie_id)
-        }))
-        dispatch(openModal())
     }
 
     return (
@@ -47,18 +36,11 @@ const MovieCard: React.FC<IMovieCard> = ({movie, type}) => {
                             size={20} 
                             color='rgba(255, 255, 255, 0.7)'
                             onClick={() => {
-                                dispatch(resetMovieData())
                                 dispatch(selectMovie({
                                     media_type: movie.media_type ? movie.media_type : type,
                                     movie_id: movie.id
                                 }))
-                                dispatch(openModal())
                             }}
-                            // onClick = {() => dispatch(startVideoPlayer({
-                            //     media_type: movie.media_type ? movie.media_type : type,
-                            //     movie_id: Number(movie.id)
-                            // }))}
-                            // onClick={() => startPlayVideo(movie.id, type)}
                         />
                     </button>
                     <p className='movie-name'>

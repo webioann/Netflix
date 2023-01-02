@@ -57,7 +57,12 @@ export const reduxSlice = createSlice({
                 media_type: actions.payload.media_type,
                 movie_id: actions.payload.movie_id
             }
-        }
+        },
+
+
+        setTrailerVideoURL: (state, actions) => {
+            state.trailerVideoURL = actions.payload
+        },
     }
 });
 
@@ -68,7 +73,8 @@ export const {
     closeModal,
     selectMovie,
     resetMovieData,
-    startVideoPlayer
+    startVideoPlayer,
+    setTrailerVideoURL
     
 } = reduxSlice.actions;
 
