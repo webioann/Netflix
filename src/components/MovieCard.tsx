@@ -6,6 +6,7 @@ import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import { AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike  } from 'react-icons/ai'
 import { IMovie } from '../types/movies.types'
 import GenresList from './GenresList'
+import { IMG_BASE_URL } from '../helpers/constants'
 import { collection, doc, getDocs, query, onSnapshot, addDoc, setDoc, deleteDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import '../style/movie-card.scss'
@@ -26,7 +27,7 @@ const MovieCard: React.FC<IMovieCard> = ({movie, type}) => {
     return (
         <li className='movie-card'>
             <img className='movie-card-img'
-                src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`} 
+                src={`${IMG_BASE_URL}${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`} 
                 alt={ type === 'movie' ? movie.title : movie.name }
             />
             <div className="movie-card-controls">

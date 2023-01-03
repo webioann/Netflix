@@ -5,37 +5,59 @@ import { HiInformationCircle } from 'react-icons/hi'
 import { FaPlay, FaPlus } from 'react-icons/fa'
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import GenresList from './GenresList'
-import Container from './Container';
-
-import { useLazyRandomMovieQuery, useRandomMovieQuery } from '../redux/MOVIES_API';
+import Container from './Container'
+import { IMovie } from "../types/movies.types"
+import { IMG_BASE_URL, API_KEY } from '../helpers/constants'
+import { persistedState } from '../helpers/sessionStorage'
+import { useLazyFetchMoviesQuery, useRandomMovieQuery } from '../redux/MOVIES_API'
+import { useLazyBanerMoviesQuery } from '../redux/BANER_API'
 import '../style/baner.scss'
 
 const Baner = () => {
 
-    const { data: movie } = useRandomMovieQuery('')
-    const [backgroundImageURL, setImgUrl] = useState('')
-    const [trancatedOverview, setTrancate] = useState('')
+    const [movies, setMovies] = useState<IMovie[] | null>(null)
+    const [movie, setMovie] = useState<IMovie | null>(null)
+    // const { data: movie } = useRandomMovieQuery('')
+    const [ fetchBanerMovie, { data: banerMovies } ] = useLazyBanerMoviesQuery()
     const dispatch = useAppDispatch()
 
     useEffect(() => { 
-        if(movie) {
-            setImgUrl(`https://image.tmdb.org/t/p/original/${movie?.backdrop_path ? movie?.backdrop_path : movie?.poster_path}`)
-            const overview = movie?.overview ? movie.overview : 'some text'
-            setTrancate(overview.length > 200 ? overview.substring(0, 200 - 1) + '...' : overview)
-        }  
+        if( !movie ) {
+            const sessionStorageState: IMovie[] | null = persistedState('BANER_MOVIES')
+            if( sessionStorageState ) {
+                let idx = Math.floor(Math.random() * sessionStorageState.length - 1)
+                const randomMovie = sessionStorageState.filter((elem, index) => { return index === idx })
+                setMovie(randomMovie[0])
+                return;
+            }
+            else { 
+                fetchBanerMovie('') 
+            }
+        }
+        // else{
+        //     let idx = Math.floor(Math.random() * movies.length - 1)
+        //     const randomMovie = movies.filter((elem, index) => { return index === idx })
+        //     setMovie(randomMovie[0])
+        // }
     }, [movie])
+
+    useEffect(() => {
+        banerMovies && sessionStorage.setItem('BANER_MOVIES', JSON.stringify(banerMovies))
+    }, [banerMovies])
+
+    console.log(movie);
 
     if(movie) {
         return (
             <section className='baner-container' 
-                style={{ backgroundImage: `url(${ backgroundImageURL })` }}>
+                style={{ backgroundImage: `url(${IMG_BASE_URL}${movie?.backdrop_path})`}}>
                 <Container width='1600px'>
                     <div className="baner-content">
                         <h1 className='baner-movie-name'>
                             {movie?.name ? movie?.name : movie?.original_name}
                         </h1>
                         <p className='baner-overview'>
-                            { trancatedOverview }
+                            { movie.overview.length > 200 ? movie.overview.substring(0, 200 - 1) + '...' : movie.overview }
                         </p>
                         <GenresList genres={movie.genre_ids} font={16}/>
                         <div className="baner-buttons-row">
