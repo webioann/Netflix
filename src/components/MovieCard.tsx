@@ -52,7 +52,7 @@ const MovieCard: React.FC<IMovieCard> = ({ movie, media_type }) => {
                         className="movie-slider-circle"
                         onClick={() => saveMovieInMyList({movie, media_type: media_type})}
                         >
-                        <FaPlus size={17} color='rgba(255, 255, 255, 0.7)'/>
+                        <FaPlus size={17} color='rgba(255, 255, 255, 0.7)' title='save in My List'/>
                     </button>
 
                 </div>

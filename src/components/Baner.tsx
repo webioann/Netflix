@@ -68,7 +68,7 @@ const Baner = () => {
                                 onClick={() => saveMovieInMyList({movie, media_type: 'tv'})}
                                 className='baner-button g-button'
                                 >
-                                <FaPlus/>
+                                <FaPlus title='save in My List'/>
                                 My List
                             </button>
                             <button className='baner-button g-button'>

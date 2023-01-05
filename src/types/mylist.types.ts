@@ -9,7 +9,7 @@
 //     doc_id: string
 // }
 export interface IMyListMovies {
-    doc_id: string | undefined
+    doc_id: string
     backdrop_path: string
     media_type: 'movie' | 'tv' 
     release_data?: string
