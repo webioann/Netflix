@@ -23,22 +23,74 @@
             max-height: 280px;
             margin: 0 auto;
             position: relative;
-            border: 1px solid red;
-            img {
+            transition: transform 0.6s ease-in-out;
+            position: relative;
+            &:hover {
+                transform: scale(1.07);
+                .my-list-controls {
+                    transition: all 0.6s ease-in-out;
+                    opacity: 1;
+                    visibility: visible;
+                    background-color: $shadow;
+                }
+            }
+            .my-list-movie-img {
                 width: 100%;
                 height: 100%;
                 object-fit: contain;
-                object-position: top center;
             }
-            .my-list-movie-info {
+            .my-list-controls {
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
-                padding: 1rem;
-                .my-list-movie-name {
-                    margin-bottom: 1rem;
+                display: flex;
+                opacity: 0;
+                visibility: hidden;
+                z-index: 10;
+                color: $less-white;
+                padding: 0 0.5rem;
+                background-color: transparent;
+                transition: all 0.6s ease-in-out;
+                .controls-info {
+                    flex: 1;
+                    .play-button {
+                        margin-top: 50px;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        border: 1px solid $less-white;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding-left: 5px;
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                    .movie-name {
+                        padding-top: 10px;
+                    }
+                }
+                .my-list-buttons {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    .circle-button {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        border: 1px solid $less-white;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: $black-glass;
+                        &:hover {
+                            border: 1px solid $light;
+                            cursor: pointer;
+                        }
+                    }
                 }
             }
         }
