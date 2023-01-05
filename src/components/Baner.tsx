@@ -10,6 +10,7 @@ import { IMovie } from "../types/movies.types"
 import { IMG_BASE_URL } from '../helpers/constants'
 import { persistedState } from '../helpers/sessionStorage'
 import { useLazyBanerMoviesQuery } from '../redux/BANER_API'
+import { saveMovieInMyList } from '../firebase.config';
 import '../style/baner.scss'
 
 const Baner = () => {
@@ -65,7 +66,10 @@ const Baner = () => {
                                 <FaPlay/>
                                 Play
                             </button>
-                            <button className='baner-button g-button'>
+                            <button 
+                                onClick={() => saveMovieInMyList({movie, type: 'tv'})}
+                                className='baner-button g-button'
+                                >
                                 <FaPlus/>
                                 My List
                             </button>

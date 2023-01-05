@@ -7,22 +7,19 @@ import { AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike  } from 'rea
 import { IMovie } from '../types/movies.types'
 import GenresList from './GenresList'
 import { IMG_BASE_URL } from '../helpers/constants'
-import { collection, doc, getDocs, query, onSnapshot, addDoc, setDoc, deleteDoc, updateDoc } from 'firebase/firestore'
-import { db } from '../firebase.config'
+// import { collection, doc, getDocs, query, onSnapshot, addDoc, setDoc, deleteDoc, updateDoc } from 'firebase/firestore'
+// import { db } from '../firebase.config'
+import { saveMovieInMyList } from '../firebase.config'
 import '../style/movie-card.scss'
 
 interface IMovieCard {
     movie: IMovie
-    type: 'movie' | 'tv' | string | undefined
+    type: 'movie' | 'tv' 
 }
 
 const MovieCard: React.FC<IMovieCard> = ({movie, type}) => {
 
     const dispatch = useAppDispatch()
-
-    const saveMovieInFirestore = async () => {
-        await addDoc(collection(db, "my list"), { ...movie, media_type: type })
-    }
 
     return (
         <li className='movie-card'>
@@ -63,7 +60,7 @@ const MovieCard: React.FC<IMovieCard> = ({movie, type}) => {
                     </button>
                     <button 
                         className="movie-slider-circle"
-                        onClick={saveMovieInFirestore}
+                        onClick={() => saveMovieInMyList({movie, type: type})}
                         >
                         <FaPlus size={17} color='rgba(255, 255, 255, 0.7)'/>
                     </button>
