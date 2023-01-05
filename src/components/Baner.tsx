@@ -7,17 +7,14 @@ import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import GenresList from './GenresList'
 import Container from './Container'
 import { IMovie } from "../types/movies.types"
-import { IMG_BASE_URL, API_KEY } from '../helpers/constants'
+import { IMG_BASE_URL } from '../helpers/constants'
 import { persistedState } from '../helpers/sessionStorage'
-import { useLazyFetchMoviesQuery, useRandomMovieQuery } from '../redux/MOVIES_API'
 import { useLazyBanerMoviesQuery } from '../redux/BANER_API'
 import '../style/baner.scss'
 
 const Baner = () => {
 
-    const [movies, setMovies] = useState<IMovie[] | null>(null)
     const [movie, setMovie] = useState<IMovie | null>(null)
-    // const { data: movie } = useRandomMovieQuery('')
     const [ fetchBanerMovie, { data: banerMovies } ] = useLazyBanerMoviesQuery()
     const dispatch = useAppDispatch()
 
@@ -39,13 +36,13 @@ const Baner = () => {
         //     const randomMovie = movies.filter((elem, index) => { return index === idx })
         //     setMovie(randomMovie[0])
         // }
-    }, [movie])
+    }, [])
 
     useEffect(() => {
         banerMovies && sessionStorage.setItem('BANER_MOVIES', JSON.stringify(banerMovies))
     }, [banerMovies])
 
-    console.log(movie);
+    // console.log(movie);
 
     if(movie) {
         return (

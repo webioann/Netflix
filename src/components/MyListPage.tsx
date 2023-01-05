@@ -3,7 +3,6 @@ import { db } from '../firebase.config'
 import { collection, getDocs } from 'firebase/firestore'
 import Container from './Container'
 import MovieCard from './MovieCard'
-// import { IMovie } from '../types/movies.types'
 import { IMyListMovies } from '../types/mylist.types'
 import { PAGE_BG_IMG } from '../helpers/constants'
 import '../style/my-list-page.scss'
@@ -23,7 +22,7 @@ const MyListPage = () => {
         fetchMyList();
     }, [])
 
-console.log(myListMovies)
+// console.log(myListMovies)
 
     return (
         <div className='my-list-page'

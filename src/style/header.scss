@@ -13,33 +13,40 @@
 .header {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     background-color: $nav-black;
     z-index: 3;
-    transition: left 500ms linear;
     .header-wrapper {
-        border: 1px solid red;
+        height: $header-hight;
         gap: 1rem;
         display: flex;
-        flex-direction: column;
+        align-items: center;
         padding: 1rem;
-        .netflix-logo {
-            img {
-                width: 100px;
-                object-fit: contain;
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-        }
-        nav {
+        position: relative;
+        .navbar {
+            position: absolute;
+            top: $header-hight;
+            left: 0;
             display: flex;
             justify-content: space-between;
+            padding: 1rem;
+            width: 100%;
             gap: 1rem;
+            z-index: 12;
+            background-image: linear-gradient(
+                0deg,
+                transparent,
+                rgba(37, 37, 37, 0.61),
+                $netflix-black
+            );
         }
         .user-avatar {
+            width: 30px;
+            border-radius: $br-main;
+            overflow: hidden;
             img {
-                width: 35px;
+                width: 100%;
                 object-fit: contain;
                 &:hover {
                     cursor: pointer;
@@ -50,13 +57,13 @@
 }
 @media screen and (min-width: $sm) {
     .header {
-        left: 0;
-        min-height: $header-hight;
-
         .header-wrapper {
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
+            .navbar {
+                position: relative;
+                top: 0;
+                left: 0;
+                width: auto;
+            }
         }
     }
 }

@@ -1,13 +1,12 @@
 @import './@index.scss';
 
-.humburger {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
+.hamburger {
+    display: flex;
+    align-items: center;
     z-index: 15;
 }
 @media screen and (min-width: 640px) {
-    .humburger {
+    .hamburger {
         display: none;
     }
 }
