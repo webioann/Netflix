@@ -40,18 +40,18 @@
                 $netflix-black
             );
         }
-        .user-avatar {
-            width: 30px;
-            border-radius: $br-main;
-            overflow: hidden;
-            img {
-                width: 100%;
-                object-fit: contain;
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-        }
+        // .user-avatar {
+        //     width: 30px;
+        //     border-radius: $br-main;
+        //     overflow: hidden;
+        //     img {
+        //         width: 100%;
+        //         object-fit: contain;
+        //         &:hover {
+        //             cursor: pointer;
+        //         }
+        //     }
+        // }
     }
 }
 @media screen and (min-width: $sm) {

@@ -2,6 +2,8 @@ import React from 'react'
 import { useAppSelector } from '../redux/store'
 import AuthPageFooter from './AuthPageFooter'
 import SignoutButton from './SignoutButton'
+import UserAvatar from './UserAvatar'
+
 import { Link, useNavigate } from 'react-router-dom'
 import '../style/profile-page.scss'
 
@@ -14,10 +16,11 @@ const Profile_page = () => {
             <div className="profile-page-content">
                 <h1 className='profile-header'>Edit Profile</h1>
                 <div className='profile-info'>
-                    <img className='profile-logo'
+                    {/* <img className='profile-logo'
                         src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" 
                         alt="avatar logo"
-                    />
+                    /> */}
+                    <UserAvatar size={35} radius='4px'/>
                     <ul className="profile-main">
                         <li className='profile-user-name'>{currentUser?.currentUser_Name}</li>
                         <li className='plans-header'>

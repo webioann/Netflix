@@ -16,31 +16,26 @@ const Baner = () => {
 
     const [movie, setMovie] = useState<IMovie | null>(null)
     const [ fetchBanerMovie, { data: banerMovies } ] = useLazyBanerMoviesQuery()
+    const sessionStorageState: IMovie[] | null = persistedState('BANER_MOVIES')
+
     const dispatch = useAppDispatch()
 
     useEffect(() => { 
-        if( !movie ) {
-            const sessionStorageState: IMovie[] | null = persistedState('BANER_MOVIES')
-            if( sessionStorageState ) {
-                let idx = Math.floor(Math.random() * sessionStorageState.length - 1)
-                const randomMovie = sessionStorageState.filter((elem, index) => { return index === idx })
-                setMovie(randomMovie[0])
-                return;
-            }
-            else { 
-                fetchBanerMovie('') 
-            }
+        if( sessionStorageState ) {
+            let idx = Math.floor(Math.random() * sessionStorageState.length - 1)
+            const randomMovie = sessionStorageState.filter((elem, index) => { return index === idx })
+            setMovie(randomMovie[0])
+            return;
         }
-        // else{
-        //     let idx = Math.floor(Math.random() * movies.length - 1)
-        //     const randomMovie = movies.filter((elem, index) => { return index === idx })
-        //     setMovie(randomMovie[0])
-        // }
-    }, [])
-
-    useEffect(() => {
-        banerMovies && sessionStorage.setItem('BANER_MOVIES', JSON.stringify(banerMovies))
+        else { 
+            fetchBanerMovie('') 
+            banerMovies && sessionStorage.setItem('BANER_MOVIES', JSON.stringify(banerMovies))
+        }
     }, [banerMovies])
+
+    // useEffect(() => {
+    //     banerMovies && sessionStorage.setItem('BANER_MOVIES', JSON.stringify(banerMovies))
+    // }, [banerMovies])
 
     // console.log(movie);
 

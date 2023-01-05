@@ -9,4 +9,4 @@ export const LOGO_BIG = 'https://assets.stickpng.com/images/580b57fcd9996e24bc43
 // logo mobile
 export const LOGO_MOBILE= 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Netflix_2015_N_logo.svg/551px-Netflix_2015_N_logo.svg.png';
 // default avatar
-export const AVATAR = 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png';
+export const USER_AVATAR = 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png';

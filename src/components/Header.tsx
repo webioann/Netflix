@@ -6,7 +6,7 @@ import SearchInput from './SearchInput'
 import Container from './Container'
 import HamburgerMenu from './HamburgerMenu'
 import NetflixLogo from './NetflixLogo'
-import { AVATAR } from '../helpers/constants'
+import UserAvatar from './UserAvatar'
 import '../style/header.scss'
 
 const Header = () => {
@@ -43,7 +43,7 @@ const Header = () => {
                     } */}
                     {/* <HamburgerMenu switcher={switchMobileMenu} menu={isOpen}/> */}
                     <Link to={currentUser ? '/profile' : '/login'} className='user-avatar'>
-                        <img src={ currentUser?.currentUser_PhotoURL ? currentUser?.currentUser_PhotoURL : AVATAR } alt="user avatar"/>
+                        <UserAvatar size={35} radius='4px'/>
                     </Link>
 
                 </div>
