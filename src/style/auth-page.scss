@@ -1,6 +1,6 @@
 @import './@index.scss';
 
-.auth-page{
+.auth-page {
     width: 100%;
     min-height: 100vh;
     position: fixed;
@@ -9,57 +9,57 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    .auth-page-content{
+    .auth-page-content {
         position: absolute;
-        margin-top: 90px;
+        margin-top: 100px;
         left: 50%;
         transform: translateX(-50%);
         max-width: 450px;
-        background: rgba(0,0,0,0.6);
-        backdrop-filter: blur( 2px );
-        -webkit-backdrop-filter: blur( 2px );
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
         border-radius: $br-main;
         z-index: 3;
         padding: 60px 68px 40px;
-        .auth-header{
+        .auth-header {
             font-weight: 600;
         }
-        .question{
+        .question {
             margin-top: 3rem;
             display: flex;
             align-items: center;
-            .question-text{
+            .question-text {
                 margin-right: 0.5rem;
                 flex: 1;
             }
-            .question-link{
+            .question-link {
                 color: $light;
             }
         }
-        .captcha{
+        .captcha {
             height: 150px;
             margin-top: 1rem;
             line-height: 1.25;
             font-size: 0.8rem;
-            .captcha-link{
+            .captcha-link {
                 color: blue;
                 font-weight: 900;
             }
-        } 
+        }
     }
 
-    .--fullscreen-gradient{
+    .--fullscreen-gradient {
         position: absolute;
         top: 0;
         width: 100%;
         min-height: 100vh;
         z-index: 2;
-        background-color: rgba(0,0,0,0.4);
+        background-color: rgba(0, 0, 0, 0.4);
         background-image: linear-gradient(
             to top,
-            rgba(0,0,0,0.8) 0,
-            rgba(0,0,0,0.0) 60%,
-            rgba(0,0,0,0.8) 100%
+            rgba(0, 0, 0, 0.8) 0,
+            rgba(0, 0, 0, 0) 60%,
+            rgba(0, 0, 0, 0.8) 100%
         );
     }
 }

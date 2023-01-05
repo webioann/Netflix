@@ -12,19 +12,6 @@ import '../style/header.scss'
 const Header = () => {
 
     const currentUser = useAppSelector(state => state.redux.currentUser)
-    // const userAvatar = useAppSelector(state => state.redux.currentUser?.currentUser_PhotoURL)
-    // const [avatar, setAvatar] = useState<string>("https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png")
-    // const [isOpen, setIsOpen] = useState(false)
-
-    // useEffect(() => {
-    //     currentUser?.currentUser_PhotoURL ? 
-    //     setAvatar(currentUser?.currentUser_PhotoURL) : 
-    //     "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-    // }, [userAvatar])
-
-// console.log(mobile)
-// console.log(window.innerWidth);
-    // const switchMobileMenu = () => { setIsOpen(prev => !prev) }
 
     return (
         <header className='header'>
@@ -36,7 +23,7 @@ const Header = () => {
                         <Link className='g-link' to={'/tvshows'}>TvShows</Link>
                         <Link className='g-link' to={'/movies'}>Movies</Link>
                         <Link className='g-link' to={'/latest'}>Latest</Link>
-                        <Link className='g-link' to={'/my_list'}>My List</Link>
+                        { currentUser && <Link className='g-link' to={'/my_list'}>My List</Link> }
                     </nav>
                     
                     <div className="spring-div" style={{ flex: 1 }}/>
@@ -56,8 +43,8 @@ const Header = () => {
                     } */}
                     {/* <HamburgerMenu switcher={switchMobileMenu} menu={isOpen}/> */}
                     <Link to={currentUser ? '/profile' : '/login'} className='user-avatar'>
-                            <img src={ currentUser?.currentUser_PhotoURL ? currentUser?.currentUser_PhotoURL : AVATAR } alt="user avatar"/>
-                        </Link>
+                        <img src={ currentUser?.currentUser_PhotoURL ? currentUser?.currentUser_PhotoURL : AVATAR } alt="user avatar"/>
+                    </Link>
 
                 </div>
             </Container>
