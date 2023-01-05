@@ -7,10 +7,10 @@ import '../style/movies-slider.scss'
 type MovieRowPropsType = {
     title: string
     path: string
-    type: 'movie' | 'tv' | 'all'
+    media_type: 'movie' | 'tv' 
 }
 
-const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
+const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
 
     const { data: movies } = useFetchMoviesQuery({path: path})
     const rowRef = useRef<HTMLUListElement>(null)
@@ -34,7 +34,7 @@ const MoviesSlider = ({ title, path, type }: MovieRowPropsType) => {
                 <h2 className='row-title'>{title}</h2>
 
                 <ul className="row-movies" ref={rowRef}>
-                    { movies?.map(movie => ( <MovieCard movie={movie} type={type} key={movie.id}/> ))}
+                    { movies?.map(movie => ( <MovieCard movie={movie} media_type={media_type} key={movie.id}/> ))}
                 </ul>
 
                 <div className="arrow-icons-wrapper">

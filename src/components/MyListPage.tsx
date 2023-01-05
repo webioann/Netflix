@@ -23,7 +23,6 @@ const MyListPage = () => {
     }, [])
 
 // console.log(myListMovies)
-
     return (
         <div className='my-list-page'
             style={{backgroundImage: `url(${PAGE_BG_IMG})`}}
@@ -32,13 +31,14 @@ const MyListPage = () => {
                 <h1>My List</h1>
                 <ul className="my-list-content">
                     { myListMovies.map(movie => (
-                        <MovieCard movie={movie} type={movie.media_type} key={movie.id}/>
+                        <MovieCard movie={movie} media_type={movie.media_type} key={movie.id}/>
                     ))}
                 </ul>
 
             </Container>
         </div>
     )
+    
 }
 
 export default MyListPage

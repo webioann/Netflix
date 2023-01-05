@@ -20,8 +20,15 @@ export const provider = new GoogleAuthProvider();
 //  === save choosed movies in My List on Firebase Firestore ===
 interface ISaveMovieInMyList {
     movie: IMovie
-    type: 'movie' | 'tv'
+    media_type: 'movie' | 'tv'
 }
-export const saveMovieInMyList = async ({ movie, type }: ISaveMovieInMyList) => {
-    await addDoc(collection(db, 'my list'), { ...movie, media_type: type });
+export const saveMovieInMyList = async ({ movie, media_type }: ISaveMovieInMyList) => {
+
+    await addDoc(collection(db, 'my list'), { ...movie, media_type: media_type });
 };
+//  === delete movie (doc) from My List ===
+export const deleteMovieFromMyList = async (doc_id: string) => {
+    
+    await deleteDoc(doc(db, 'my list', doc_id));
+}
+

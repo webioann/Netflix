@@ -11,7 +11,7 @@
 export interface IMyListMovies {
     doc_id: string | undefined
     backdrop_path: string
-    media_type?: string | undefined
+    media_type: 'movie' | 'tv' 
     release_data?: string
     first_air_date: string
     genre_ids: number[]

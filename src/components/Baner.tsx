@@ -6,6 +6,7 @@ import { FaPlay, FaPlus } from 'react-icons/fa'
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import GenresList from './GenresList'
 import Container from './Container'
+import PlayVideoButtonIcon from './PlayVideoButtonIcon';
 import { IMovie } from "../types/movies.types"
 import { IMG_BASE_URL } from '../helpers/constants'
 import { persistedState } from '../helpers/sessionStorage'
@@ -54,20 +55,17 @@ const Baner = () => {
                         </p>
                         <GenresList genres={movie.genre_ids} font={16}/>
                         <div className="baner-buttons-row">
-                            <button className='baner-button g-button'
-                                onClick={() => {
-                                    dispatch(selectMovie({
-                                        media_type: 'tv',
-                                        movie_id: movie.id
-                                    }))
-                                    dispatch(setModalVisibility(true))
-                                }}
-                                >
-                                <FaPlay/>
+                            <button className='baner-button g-button'>
+                                <PlayVideoButtonIcon 
+                                    size={20} 
+                                    color='#fff' 
+                                    media_type='tv' 
+                                    movie_id={movie.id}
+                                />
                                 Play
                             </button>
                             <button 
-                                onClick={() => saveMovieInMyList({movie, type: 'tv'})}
+                                onClick={() => saveMovieInMyList({movie, media_type: 'tv'})}
                                 className='baner-button g-button'
                                 >
                                 <FaPlus/>
