@@ -12,7 +12,7 @@ export const BANER_API = createApi({
             query: () => ({
                 url: `/discover/tv?api_key=${API_KEY}&with_networks=213`,
             }),
-            transformResponse: (respons: IMoviesDataResponse) => respons.results
+            transformResponse: (respons: IMoviesDataResponse) =>  respons.results
         }),
     }), 
 })

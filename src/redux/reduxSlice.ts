@@ -11,12 +11,6 @@ type InitialStateType = {
     selectedMovie: selectedMovieType | null
     modalVisibility: boolean
 }
-// const storedCurrentUser = localStorage.getItem('storedCurrentUser')
-// let userFromLocalStorage
-// if( storedCurrentUser ) {
-//     userFromLocalStorage = JSON.parse(storedCurrentUser)
-// }
-// else{ userFromLocalStorage = null }
 
 const initialState: InitialStateType = {
     currentUser: null,

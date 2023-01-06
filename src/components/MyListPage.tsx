@@ -40,13 +40,13 @@ const MyListPage = () => {
         fetchMyList();
     }, [])
 
-console.log(myListMovies)
+console.log(myListMovies.length)
     return (
         <div className='my-list-page'
             style={{backgroundImage: `url(${PAGE_BG_IMG})`}}
             >
             <Container width='1600px'>
-                <h1>My List</h1>
+                <h1>My List { myListMovies.length === 0 ? 'is empty' : '' }</h1>
                 <ul className="my-list-content">
                     { myListMovies.map(movie => (
                         <li className='my-list-movie' key={movie.id}>
