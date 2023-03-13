@@ -16,6 +16,7 @@ import PopupVideoPlayer from './PopupVideoPlayer'
 import SearchInput from './SearchInput'
 import NetflixLogo from './NetflixLogo'
 import Navigation from './Navigation'
+import KidsLink from './KidsLink'
 import UserProfiles from './UserProfiles'
 import SpringDiv from './SpringDiv'
 
@@ -73,6 +74,7 @@ const  App: React.FC = () => {
           <Navigation/>
           <SpringDiv/>
           <SearchInput/>
+          <KidsLink/>
           <UserProfiles/>
         </NavbarPanel>
         <PopupVideoPlayer/>

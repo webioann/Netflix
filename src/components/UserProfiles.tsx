@@ -10,7 +10,7 @@ const UserProfiles  = () => {
     return (
         <div>
             <Link to={currentUser ? '/profile' : '/login'}>
-                <UserAvatar size={35} radius='4px'/>
+                <UserAvatar size={30} radius='4px'/>
             </Link>
 
         </div>
