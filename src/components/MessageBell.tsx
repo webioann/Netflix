@@ -9,7 +9,9 @@ const MessageBell = () => {
 
     return (
         <Link to={'/massege'} className='bell-wrapper'>
-            { messageCount > 0 && <span className='message-count' style={{color: '#fff'}}>{messageCount}</span>}
+            { messageCount > 0 && <span className='message-count' style={{color: '#fff'}}>
+                {messageCount}
+            </span>}
             <BsBellFill  size={20} color='#fff'/>
         </Link>
     )
