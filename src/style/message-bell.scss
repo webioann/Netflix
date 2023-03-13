@@ -1,0 +1,20 @@
+@import './@index.scss';
+
+.bell-wrapper {
+    position: relative;
+    .message-count {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: $netflix-red;
+        font-size: 12px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
