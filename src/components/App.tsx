@@ -3,7 +3,6 @@ import { useAuthStateCurrentUser } from '../hooks/useAuthStateCurrentUser'
 import { Routes, Route } from "react-router-dom"
 import { useAppSelector } from '../redux/store'
 import ContainerFluid from './ContainerFluid'
-import Header from './Header'
 import Baner from './Baner'
 import Home_page from './Home_page'
 import Login_page from './Login_page'
@@ -12,7 +11,14 @@ import Profile_page from './Profile_page'
 import Notfound_page from './Notfound_page'
 import MoviesSlider from './MoviesSlider'
 import MyListPage from './MyListPage'
+import NavbarPanel from './NavbarPanel'
 import PopupVideoPlayer from './PopupVideoPlayer'
+import SearchInput from './SearchInput'
+import NetflixLogo from './NetflixLogo'
+import Navigation from './Navigation'
+import UserProfiles from './UserProfiles'
+import SpringDiv from './SpringDiv'
+
 import {
   trendings,
   originals,
@@ -62,7 +68,13 @@ const  App: React.FC = () => {
   return (
     <ContainerFluid scroll={modal}>
       <CTX.Provider value={value}>
-        <Header/>
+        <NavbarPanel>
+          <NetflixLogo/>
+          <Navigation/>
+          <SpringDiv/>
+          <SearchInput/>
+          <UserProfiles/>
+        </NavbarPanel>
         <PopupVideoPlayer/>
         <Routes>
           <Route path="/" element={

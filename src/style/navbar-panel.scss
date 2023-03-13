@@ -1,0 +1,31 @@
+@import './@index.scss';
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: $nav-black;
+    z-index: 2;
+    .header-wrapper {
+        height: $header-hight;
+        gap: 1rem;
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        position: relative;
+    }
+}
+// @media screen and (min-width: $sm) {
+//     .header {
+//         .header-wrapper {
+//             .navbar {
+//                 position: relative;
+//                 top: 0;
+//                 left: 0;
+//                 width: auto;
+//                 background-image: none;
+//             }
+//         }
+//     }
+// }
