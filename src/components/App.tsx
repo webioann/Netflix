@@ -11,6 +11,7 @@ import Profile_page from './Profile_page'
 import Notfound_page from './Notfound_page'
 import MoviesSlider from './MoviesSlider'
 import MyListPage from './MyListPage'
+import Screen_MyList from './Screen_MyList'
 import NavbarPanel from './NavbarPanel'
 import PopupVideoPlayer from './PopupVideoPlayer'
 import SearchInput from './SearchInput'
@@ -96,7 +97,7 @@ const  App: React.FC = () => {
               <MoviesSlider title='Documentaries' path={documentaries} media_type='movie'/>  */}
             </Home_page>} 
           />
-          <Route path="my_list" element={<MyListPage />}/>
+          <Route path="my_list" element={<Screen_MyList />}/>
           <Route path="login" element={<Login_page />}/>
           <Route path="signup" element={<Signup_page />}/>
           <Route path="*" element={<Notfound_page />} />
