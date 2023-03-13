@@ -26,7 +26,7 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
             rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' })
         }
     }
-    console.log(movies)
+    // console.log(movies)
 
     if( movies ) {
         return (

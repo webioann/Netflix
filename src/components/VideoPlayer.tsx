@@ -18,7 +18,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ open, data }) => {
                     controls={true}
                     muted={false}
                     width='100%'
-                    height='100%'/>
+                    height='100%'
+                />
             </div>
         )
     }

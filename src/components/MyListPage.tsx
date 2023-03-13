@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { db } from '../firebase.config'
 import { collection, getDocs, onSnapshot, doc } from 'firebase/firestore'
 import Container from './Container'
@@ -14,9 +14,14 @@ import { IMyListMovies } from '../types/mylist.types'
 import { PAGE_BG_IMG, IMG_BASE_URL } from '../helpers/constants'
 import '../style/my-list-page.scss'
 
+import { CTX } from './App'
+
 const MyListPage = () => {
 
     const [myListMovies, setMyListMovies] = useState<IMyListMovies[] | []>([])
+
+    const  stateCTX  = useContext(CTX)
+    console.log(stateCTX.A)
 
     useEffect(() => {
         // onSnapshot(collection(db, "my list"), (snapshot) => {
@@ -40,7 +45,7 @@ const MyListPage = () => {
         fetchMyList();
     }, [])
 
-console.log(myListMovies.length)
+// console.log(myListMovies.length)
     return (
         <div className='my-list-page'
             style={{backgroundImage: `url(${PAGE_BG_IMG})`}}

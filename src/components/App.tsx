@@ -1,4 +1,4 @@
-import React, { useState, useEffect , useRef} from 'react'
+import React, { useState, useEffect , useRef, createContext} from 'react'
 import { useAuthStateCurrentUser } from '../hooks/useAuthStateCurrentUser'
 import { Routes, Route } from "react-router-dom"
 import { useAppSelector } from '../redux/store'
@@ -12,7 +12,7 @@ import Profile_page from './Profile_page'
 import Notfound_page from './Notfound_page'
 import MoviesSlider from './MoviesSlider'
 import MyListPage from './MyListPage'
-import Modal from './Modal'
+import PopupVideoPlayer from './PopupVideoPlayer'
 import {
   trendings,
   originals,
@@ -29,21 +29,42 @@ import {
 
 // import { useSearchMoviesQuery } from '../redux/SEARCH_API'
 // import { useGernesListQuery } from '../redux/GERNES_API'
+type state= {
+  count: number;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
+  A: string;
+
+}
+
+export const CTX = createContext<state>({} as state)
 
 const  App: React.FC = () => {
-
+  
+  // ===== auth listener =====
   useAuthStateCurrentUser();
+
   const currentUser = useAppSelector(state => state.redux.currentUser)
   const modal = useAppSelector(state => state.redux.modalVisibility)
 
+  const [count, setCount] = useState(0)
+  let A = 'Hello world'
+
+
   // const { data } = useGernesListQuery('')
   // console.log(data)
+  const value = {
+    count,
+    setCount,
+    A
+  }
+
 
   return (
     <ContainerFluid scroll={modal}>
-      <Header/>
-      <Modal/>
-      <Routes>
+      <CTX.Provider value={value}>
+        <Header/>
+        <PopupVideoPlayer/>
+        <Routes>
           <Route path="/" element={
             <Home_page>
               <Baner/>
@@ -64,6 +85,8 @@ const  App: React.FC = () => {
           {/* <Route path="/test" element={<TEST />} /> */}
           { currentUser &&  <Route path="profile" element={<Profile_page />}/>}
         </Routes>
+
+      </CTX.Provider>
     </ContainerFluid>
   )
 }

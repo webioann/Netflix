@@ -20,50 +20,23 @@ const Baner = () => {
     const [ fetchBanerMovie, { data: banerMovies } ] = useLazyBanerMoviesQuery()
     const sessionStorageState: IMovie[] | null = persistedState('BANER_MOVIES')
 
-    const dispatch = useAppDispatch()
-
     useEffect(() => { 
-        const onStart = async () => {
-            if( sessionStorageState ) {
-                let idx = Math.floor(Math.random() * sessionStorageState.length - 1)
-                const randomMovie = sessionStorageState.filter((elem, index) => { return index === idx })
-                setMovie(randomMovie[0])
-                return;
-            }
-            else { 
-                await fetchBanerMovie('') 
-                await banerMovies && sessionStorage.setItem('BANER_MOVIES', JSON.stringify(banerMovies))
-                if(banerMovies) {
-                    let idx = Math.floor(Math.random() * banerMovies.length - 1)
-                    const randomMovie = banerMovies.filter((elem, index) => { return index === idx })
-                    setMovie(randomMovie[0])
-                    return;
-                }
-            }
+        if( sessionStorageState ) {
+            let idx = Math.floor(Math.random() * sessionStorageState.length - 1)
+            const randomMovie = sessionStorageState.filter((elem, index) => { return index === idx })
+            setMovie(randomMovie[0])
+            return;
         }
-        onStart()
+        else { 
+            fetchBanerMovie('') 
+        }
     }, [])
 
     useEffect(() => {
         banerMovies && sessionStorage.setItem('BANER_MOVIES', JSON.stringify(banerMovies))
     }, [banerMovies])
 
-    console.log(movie);
-
-    // useEffect(() => {
-    //     // Access count value from session storage
-    //     let stored = sessionStorage.getItem('BANER_MOVIES');
-    //     if (sessionStorageState == null) {
-    //       // Initialize page views count
-    //         pageView = 1;
-    //     } else {
-    //         let idx = Math.floor(Math.random() * sessionStorageState.length - 1)
-    //         const randomMovie = sessionStorageState.filter((elem, index) => { return index === idx })
-    //         setMovie(randomMovie[0])
-    // }
-    //     sessionStorage.setItem('BANER_MOVIES', JSON.stringify(stored));
-    //     setCount(pageView);
-    // }, [])
+    // console.log(sessionStorageState);
 
     if(movie) {
         return (
