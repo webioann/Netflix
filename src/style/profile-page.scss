@@ -1,6 +1,6 @@
 @import './@index.scss';
 
-.profile-page{
+.profile-page {
     width: 100%;
     min-height: 100vh;
     position: fixed;
@@ -9,80 +9,78 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    .profile-page-content{
+    .profile-page-content {
         position: absolute;
         margin-top: 90px;
         left: 50%;
         transform: translateX(-50%);
         max-width: 450px;
-        background: rgba(0,0,0,0.6);
-        backdrop-filter: blur( 2px );
-        -webkit-backdrop-filter: blur( 2px );
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
         border-radius: $br-main;
         z-index: 3;
         padding: 60px 68px 40px;
         display: flex;
         flex-direction: column;
 
-        .profile-header{
+        .profile-header {
             font-weight: 400;
             font-size: 50px;
             border-bottom: 1px solid #282c2d;
             padding-bottom: 10px;
         }
-        .profile-info{
+        .profile-info {
             display: flex;
             align-items: flex-start;
             padding-bottom: 100px;
-            .profile-main{
+            .profile-main {
                 flex: 1;
                 margin-left: 10px;
-                & li{
+                & li {
                     font-weight: 300;
                     padding: 10px 0;
                     display: flex;
                     justify-content: space-between;
                     flex-wrap: wrap;
-                    & span{
+                    & span {
                         padding-top: 5px;
                     }
                 }
-                .profile-user-name{
+                .profile-user-name {
                     width: 100%;
                     background-color: $netflix-gray;
                     padding: 9px;
                     min-height: 35px;
                     min-width: 270px;
                 }
-                .plans-header{
+                .plans-header {
                     padding: 30px 0 10px 0;
                     border-bottom: 1px solid #282c2d;
                 }
             }
-    
         }
-        .long-button{
+        .long-button {
             width: 100%;
             height: 30px;
-            button{
+            button {
                 background-color: $netflix-red;
             }
         }
-
     }
 
-    .--fullscreen-gradient{
+    .--fullscreen-gradient {
         position: absolute;
         top: 0;
         width: 100%;
         min-height: 100vh;
         z-index: 2;
-        background-color: rgba(0,0,0,0.4);
+        background-color: rgba(0, 0, 0, 0.4);
         background-image: linear-gradient(
             to top,
-            rgba(0,0,0,0.8) 0,
-            rgba(0,0,0,0.0) 60%,
-            rgba(0,0,0,0.8) 100%
+            rgba(0, 0, 0, 0.8) 0,
+            rgba(0, 0, 0, 0) 60%,
+            rgba(0, 0, 0, 0.8) 100%
         );
     }
 }

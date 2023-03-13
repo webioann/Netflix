@@ -2,12 +2,13 @@
 
 .baner-container {
     width: 100%;
-    height: 400px;
+    height: 50vh;
     background-position: center top;
     background-size: cover;
-    object-fit: cover;
-    z-index: 1;
     position: relative;
+    // object-fit: cover;
+    z-index: 1;
+    border: 1px solid red;
     .baner-content {
         height: 100%;
         width: 100%;
@@ -23,7 +24,7 @@
         .baner-overview {
             font-size: 18px;
             line-height: 1.5;
-            font-weight: 400px;
+            font-weight: 400;
         }
         .baner-buttons-row {
             display: flex;
@@ -64,8 +65,7 @@
 }
 @media (min-width: $sm) {
     .baner-container {
-        margin-top: $header-hight;
-        height: 500px;
+        height: 55vh;
         .baner-content {
             padding-bottom: 3rem;
             .baner-movie-name {
@@ -86,7 +86,7 @@
 }
 @media (min-width: $md) {
     .baner-container {
-        height: 600px;
+        height: 65vh;
         .baner-content {
             padding-bottom: 4rem;
             .baner-movie-name {
@@ -101,7 +101,7 @@
 }
 @media (min-width: $lg) {
     .baner-container {
-        height: 700px;
+        height: 70vh;
         .baner-content {
             padding-bottom: 5rem;
             .baner-movie-name {
@@ -112,7 +112,7 @@
 }
 @media (min-width: $xl) {
     .baner-container {
-        height: 800px;
+        height: 75vh;
         .baner-content {
             padding-bottom: 6rem;
             .baner-movie-name {

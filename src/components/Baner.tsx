@@ -1,42 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { useAppSelector, useAppDispatch } from '../redux/store'
-import { selectMovie, setModalVisibility } from '../redux/reduxSlice';
 import { HiInformationCircle } from 'react-icons/hi'
 import { FaPlay, FaPlus } from 'react-icons/fa'
-import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
+// import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import GenresList from './GenresList'
 import Container from './Container'
 import PlayVideoButtonIcon from './PlayVideoButtonIcon';
-import { IMovie } from "../types/movies.types"
 import { IMG_BASE_URL } from '../helpers/constants'
-import { persistedState } from '../helpers/sessionStorage'
-import { useLazyBanerMoviesQuery } from '../redux/BANER_API'
+import { useRandomMovieQuery } from '../redux/MOVIES_API';
 import { saveMovieInMyList } from '../firebase.config';
 import '../style/baner.scss'
 
 const Baner = () => {
 
-    const [movie, setMovie] = useState<IMovie | null>(null)
-    const [ fetchBanerMovie, { data: banerMovies } ] = useLazyBanerMoviesQuery()
-    const sessionStorageState: IMovie[] | null = persistedState('BANER_MOVIES')
-
-    useEffect(() => { 
-        if( sessionStorageState ) {
-            let idx = Math.floor(Math.random() * sessionStorageState.length - 1)
-            const randomMovie = sessionStorageState.filter((elem, index) => { return index === idx })
-            setMovie(randomMovie[0])
-            return;
-        }
-        else { 
-            fetchBanerMovie('') 
-        }
-    }, [])
-
-    useEffect(() => {
-        banerMovies && sessionStorage.setItem('BANER_MOVIES', JSON.stringify(banerMovies))
-    }, [banerMovies])
-
-    // console.log(sessionStorageState);
+    const { data: movie } = useRandomMovieQuery('')
 
     if(movie) {
         return (
@@ -81,9 +57,9 @@ const Baner = () => {
                     </div>
                 </Container>
                 <div className="black-fog"/>
+
             </section>
         )
-    
     }
     else{
         return (
