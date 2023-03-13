@@ -1,18 +1,16 @@
 @import './@index.scss';
 
 .navbar {
-    // position: absolute;
-    // top: $header-hight;
-    // left: 0;
     display: flex;
-    // justify-content: space-between;
     padding: 1rem;
     width: 100%;
     gap: 1rem;
-    // background-image: linear-gradient(
-    //     0deg,
-    //     transparent,
-    //     rgba(37, 37, 37, 0.61),
-    //     $netflix-black
-    // );
+    .nav-link-active {
+        color: #fff;
+        font-weight: 900;
+    }
+    .nav-link {
+        color: #fff;
+        font-weight: 300;
+    }
 }

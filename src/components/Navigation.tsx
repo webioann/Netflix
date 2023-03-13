@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useAppSelector } from '../redux/store'
 import '../style/navigation.scss'
 
@@ -9,11 +9,11 @@ const Navigation = () => {
 
     return (
         <nav className='navbar'>
-            <Link className='g-link' to={'/'}>Home</Link>
-            <Link className='g-link' to={'/tvshows'}>TvShows</Link>
-            <Link className='g-link' to={'/movies'}>Movies</Link>
-            <Link className='g-link' to={'/latest'}>Latest</Link>
-            { currentUser && <Link className='g-link' to={'/my_list'}>My List</Link> }
+            <NavLink className={({isActive}) => isActive ? 'nav-link-active' : 'nav-link' } to={'/'}>Home</NavLink>
+            <NavLink className={({isActive}) => isActive ? 'nav-link-active' : 'nav-link' } to={'/tvshows'}>TvShows</NavLink>
+            <NavLink className={({isActive}) => isActive ? 'nav-link-active' : 'nav-link' } to={'/movies'}>Movies</NavLink>
+            <NavLink className={({isActive}) => isActive ? 'nav-link-active' : 'nav-link' } to={'/latest'}>Latest</NavLink>
+            { currentUser && <NavLink className={({isActive}) => isActive ? 'nav-link-active' : 'nav-link' } to={'/my_list'}>My List</NavLink> }
         </nav>
     )
 }
