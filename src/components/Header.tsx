@@ -7,6 +7,7 @@ import Container from './Container'
 import HamburgerMenu from './HamburgerMenu'
 import NetflixLogo from './NetflixLogo'
 import UserAvatar from './UserAvatar'
+import SpringDiv from './SpringDiv'
 import '../style/header.scss'
 
 const Header = () => {
@@ -26,7 +27,7 @@ const Header = () => {
                         { currentUser && <Link className='g-link' to={'/my_list'}>My List</Link> }
                     </nav>
                     
-                    <div className="spring-div" style={{ flex: 1 }}/>
+                    <SpringDiv/>
 
                     <SearchInput/>
                     {/* { currentUser && <SignoutButton/> } */}
