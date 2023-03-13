@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { resetMovieData, setModalVisibility } from '../redux/reduxSlice';
+import { resetMovieData, switchVideoPlayer } from '../redux/reduxSlice';
 import { useLazyGetTrailerVideoURLQuery } from '../redux/VIDEO_API'
 import VideoPlayer from './VideoPlayer'
 import CloseButton from './CloseButton'
@@ -12,13 +12,13 @@ const PopupVideoPlayer = () => {
     const dispatch = useAppDispatch()
     const movie = useAppSelector(state => state.redux.selectedMovie)
     const [trailerURL, setTrailerURL] = useState('')
-    const modalIsOpen = useAppSelector(state => state.redux.modalVisibility)
+    const startVideoPlayer = useAppSelector(state => state.redux.startVideoPlayer)
 
     const [showMoreInfo, setShowMoreInfo] = useState(false)
     const [ getTrailerVideoURL, { data: trailerVideoURL } ] = useLazyGetTrailerVideoURLQuery()
 
     const closePlayer = () => { 
-        dispatch(setModalVisibility(false))
+        dispatch(switchVideoPlayer(false))
         dispatch(resetMovieData())
     }
 
@@ -40,10 +40,10 @@ const PopupVideoPlayer = () => {
     // console.log(trailerVideoURL);
 
     return (
-        <div className={modalIsOpen ? 'popup-layout' : 'hidden-popup'}>
+        <div className={startVideoPlayer ? 'popup-layout' : 'hidden-popup'}>
             <div className="popup-content">
                 <CloseButton onClose={closePlayer} color='red' size={30}/>
-                <VideoPlayer open={modalIsOpen} data={trailerURL}/>
+                <VideoPlayer open={startVideoPlayer} data={trailerURL}/>
                 {/* <div className="show-more-icon-box">
                     <SlArrowDown className='show-more-icon' 
                         onClick={() => setShowMoreInfo(prev => !prev)}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch } from '../redux/store'
-import { selectMovie, setModalVisibility } from '../redux/reduxSlice';
+import { selectMovie, switchVideoPlayer } from '../redux/reduxSlice';
 import { FaPlay } from 'react-icons/fa'
 
 interface IPlayVideoProps {
@@ -11,6 +11,7 @@ interface IPlayVideoProps {
 }
 
 const PlayVideoButtonIcon: React.FC<IPlayVideoProps> = ({ media_type, movie_id, size, color }) => {
+
     const dispatch = useAppDispatch()
 
     return (
@@ -22,7 +23,7 @@ const PlayVideoButtonIcon: React.FC<IPlayVideoProps> = ({ media_type, movie_id, 
                     media_type: media_type,
                     movie_id: movie_id
                 }))
-                dispatch(setModalVisibility(true))
+                dispatch(switchVideoPlayer(true))
             }}
         />
     )

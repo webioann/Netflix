@@ -9,13 +9,13 @@ type selectedMovieType = {
 type InitialStateType = {
     currentUser: ICurrentUser | null
     selectedMovie: selectedMovieType | null
-    modalVisibility: boolean
+    startVideoPlayer: boolean
 }
 
 const initialState: InitialStateType = {
     currentUser: null,
     selectedMovie: null,
-    modalVisibility: false
+    startVideoPlayer: false
 }
 
 export const reduxSlice = createSlice({
@@ -40,7 +40,7 @@ export const reduxSlice = createSlice({
             movie_id: actions.payload.movie_id
         }},
         resetMovieData: (state) => { state.selectedMovie = null },
-        setModalVisibility: (state, actions) => { state.modalVisibility = actions.payload }
+        switchVideoPlayer:  (state, actions) => { state.startVideoPlayer = actions.payload }
     }
 });
 
@@ -49,7 +49,7 @@ export const {
     deleteCurrentUser,
     selectMovie,
     resetMovieData,
-    setModalVisibility
+    switchVideoPlayer
     
 } = reduxSlice.actions;
 

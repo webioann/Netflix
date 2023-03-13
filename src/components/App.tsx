@@ -53,7 +53,7 @@ const  App: React.FC = () => {
   useAuthStateCurrentUser();
 
   const currentUser = useAppSelector(state => state.redux.currentUser)
-  const modal = useAppSelector(state => state.redux.modalVisibility)
+  const startVideoPlayer = useAppSelector(state => state.redux.startVideoPlayer)
 
   const [count, setCount] = useState(0)
   let A = 'Hello world'
@@ -69,7 +69,7 @@ const  App: React.FC = () => {
 
 
   return (
-    <ContainerFluid scroll={modal}>
+    <ContainerFluid scroll={startVideoPlayer}>
       <CTX.Provider value={value}>
         <NavbarPanel>
           <NetflixLogo/>
