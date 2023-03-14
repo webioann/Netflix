@@ -1,5 +1,5 @@
-import React, { useState, useEffect , useRef, createContext} from 'react'
-import { useAuthStateCurrentUser } from '../hooks/useAuthStateCurrentUser'
+import React, { useState, createContext} from 'react'
+import { useAuthStateListener } from '../hooks/useAuthStateListener'
 import { Routes, Route } from "react-router-dom"
 import { useAppSelector } from '../redux/store'
 import ContainerFluid from './ContainerFluid'
@@ -10,7 +10,6 @@ import Signup_page from './Signup_page'
 import Profile_page from './Profile_page'
 import Notfound_page from './Notfound_page'
 import MoviesSlider from './MoviesSlider'
-import MyListPage from './MyListPage'
 import Screen_MyList from './Screen_MyList'
 import NavbarPanel from './NavbarPanel'
 import PopupVideoPlayer from './PopupVideoPlayer'
@@ -34,11 +33,6 @@ import {
   documentaries
 } from '../data/requests'
 
-// import TEST from './TEST'
-// import { useTestQuery } from '../redux/TEST_API'
-
-// import { useSearchMoviesQuery } from '../redux/SEARCH_API'
-// import { useGernesListQuery } from '../redux/GERNES_API'
 type state= {
   count: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
@@ -50,24 +44,15 @@ export const CTX = createContext<state>({} as state)
 
 const  App: React.FC = () => {
   
-  // ===== auth listener =====
-  useAuthStateCurrentUser();
+  // ===== auth state listener =====
+  useAuthStateListener();
 
   const currentUser = useAppSelector(state => state.redux.currentUser)
   const startVideoPlayer = useAppSelector(state => state.redux.startVideoPlayer)
 
   const [count, setCount] = useState(0)
   let A = 'Hello world'
-
-
-  // const { data } = useGernesListQuery('')
-  // console.log(data)
-  const value = {
-    count,
-    setCount,
-    A
-  }
-
+  const value = {count, setCount, A}
 
   return (
     <ContainerFluid scroll={startVideoPlayer}>
@@ -101,7 +86,6 @@ const  App: React.FC = () => {
           <Route path="login" element={<Login_page />}/>
           <Route path="signup" element={<Signup_page />}/>
           <Route path="*" element={<Notfound_page />} />
-          {/* <Route path="/test" element={<TEST />} /> */}
           { currentUser &&  <Route path="profile" element={<Profile_page />}/>}
         </Routes>
 

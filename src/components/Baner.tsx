@@ -57,7 +57,6 @@ const Baner = () => {
                     </div>
                 </Container>
                 <div className="black-fog"/>
-
             </section>
         )
     }

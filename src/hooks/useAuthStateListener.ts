@@ -4,7 +4,7 @@ import { createCurrentUser, deleteCurrentUser } from '../redux/reduxSlice'
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from '../firebase.config'
 
-export const useAuthStateCurrentUser = () => {
+export const useAuthStateListener = () => {
 
     const dispatch = useAppDispatch()
 
@@ -25,7 +25,6 @@ export const useAuthStateCurrentUser = () => {
                     userID: user.uid,
                     userPhotoURL: user.photoURL,
                 }))
-                console.log(user);
             }
             else{
                 dispatch(deleteCurrentUser())

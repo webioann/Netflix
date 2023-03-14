@@ -3,10 +3,9 @@ import Container from './Container'
 import SpringDiv from './SpringDiv'
 import { db } from '../firebase.config'
 import { collection, getDocs, onSnapshot, doc, deleteDoc } from 'firebase/firestore'
-import { saveMovieInMyList, deleteMovieFromMyList } from '../firebase.config'
-
+import { deleteMovieFromMyList } from '../firebase.config'
 import { IMyListMovies } from '../types/mylist.types'
-import { PAGE_BG_IMG, IMG_BASE_URL } from '../helpers/constants'
+import { IMG_BASE_URL } from '../helpers/constants'
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 import { IoClose } from 'react-icons/io5'
 
@@ -21,7 +20,6 @@ const Screen_MyList = () => {
         const fetchMyList = async () => {
             const data = await getDocs(collection(db, "my list"))
             const raw = data.docs.map((doc) => ({...doc.data(), doc_id: doc.id }))
-            console.log(raw)
             setMyListMovies(raw)
         }
         fetchMyList();
