@@ -4,6 +4,8 @@ import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import { AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike  } from 'react-icons/ai'
 import { IMovie } from '../types/movies.types'
 import GenresList from './GenresList'
+import MoviePoster from './MoviePoster'
+import MovieNameExtractor from './MovieNameExtractor'
 import PlayVideoButtonIcon from './PlayVideoButtonIcon';
 import { IMG_BASE_URL } from '../helpers/constants'
 import { saveMovieInMyList, deleteMovieFromMyList } from '../firebase.config'
@@ -16,12 +18,11 @@ interface IMovieCard {
 
 const MovieCard: React.FC<IMovieCard> = ({ movie, media_type }) => {
 
+    // console.log(movie)
+
     return (
         <li className='movie-card'>
-            <img className='movie-card-img'
-                src={`${IMG_BASE_URL}${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`} 
-                alt={ media_type === 'movie' ? movie.title : movie.name }
-            />
+            <MoviePoster movie={movie} size={290}/>
             <div className="movie-card-controls">
                 <div className="poster-controls-info">
                     <button className="poster-play-button">
@@ -32,9 +33,10 @@ const MovieCard: React.FC<IMovieCard> = ({ movie, media_type }) => {
                             movie_id={movie.id}
                         />
                     </button>
-                    <p className='movie-name'>
+                    {/* <p className='movie-name'>
                         { media_type === 'movie' ? movie.title : movie.name }
-                    </p>
+                    </p> */}
+                    <MovieNameExtractor movie={movie} fontSizeInRem={1} fontWeight={400}/>
                     <GenresList genres={movie?.genre_ids} font={12}/>
                 </div>
 

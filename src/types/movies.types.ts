@@ -1,6 +1,6 @@
 export interface IMovie {
     backdrop_path: string
-    media_type?: string | undefined
+    media_type?: 'tv' | 'movie'
     release_data?: string
     first_air_date: string
     genre_ids: number[]

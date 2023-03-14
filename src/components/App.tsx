@@ -72,14 +72,14 @@ const  App: React.FC = () => {
           <Route path="/" element={
             <Home_page>
               <Baner/>
-              <MoviesSlider title='Popular on Netflix' path={originals}  media_type='tv'/>
-              <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
-              {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
+              {/* <MoviesSlider title='Popular on Netflix' path={originals}  media_type='tv'/>
+              <MoviesSlider title='Trending' path={trendings}  media_type='tv'/>  */}
+              <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
               <MoviesSlider title='Actions' path={actions}  media_type='movie'/>
               <MoviesSlider title='Comedies' path={comedies} media_type='movie'/>
               <MoviesSlider title='Horrors' path={horrors}  media_type='movie'/>
               <MoviesSlider title='Romances' path={romances}  media_type='movie'/>
-              <MoviesSlider title='Documentaries' path={documentaries} media_type='movie'/>  */}
+              <MoviesSlider title='Documentaries' path={documentaries} media_type='movie'/> 
             </Home_page>} 
           />
           <Route path="my_list" element={<Screen_MyList />}/>

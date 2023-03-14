@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Container from './Container'
+import MoviePoster from './MoviePoster'
 import SpringDiv from './SpringDiv'
 import { db } from '../firebase.config'
 import { collection, getDocs, onSnapshot, doc, deleteDoc } from 'firebase/firestore'
 import { deleteMovieFromMyList } from '../firebase.config'
 import { IMyListMovies } from '../types/mylist.types'
-import { IMG_BASE_URL } from '../helpers/constants'
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 import { IoClose } from 'react-icons/io5'
-
 import '../style/screen-my-list.scss'
 
 const Screen_MyList = () => {
@@ -32,10 +31,7 @@ const Screen_MyList = () => {
                 <ul>
                     {myListMovies.map(movie => (
                         <li className='my-list-item' key={movie.doc_id}>
-                            <img className='my-list-item-img'
-                                src={`${IMG_BASE_URL}${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`} 
-                                alt={ movie.media_type === 'movie' ? movie.title : movie.name }
-                            />
+                            <MoviePoster movie={movie} size={160}/>
                             <p className='my-list-item-name'>{ movie.media_type === 'movie' ? movie.title : movie.name }</p>
                             <p className='item-date'>{ movie.first_air_date.substring(0,4) }</p>
                             <div className='popularity-stars'>

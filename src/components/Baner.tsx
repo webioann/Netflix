@@ -4,7 +4,8 @@ import { FaPlay, FaPlus } from 'react-icons/fa'
 // import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import GenresList from './GenresList'
 import Container from './Container'
-import PlayVideoButtonIcon from './PlayVideoButtonIcon';
+import PlayVideoButtonIcon from './PlayVideoButtonIcon'
+import MovieNameExtractor from './MovieNameExtractor'
 import { IMG_BASE_URL } from '../helpers/constants'
 import { useRandomMovieQuery } from '../redux/MOVIES_API';
 import { saveMovieInMyList } from '../firebase.config';
@@ -13,16 +14,14 @@ import '../style/baner.scss'
 const Baner = () => {
 
     const { data: movie } = useRandomMovieQuery('')
-
+    
     if(movie) {
         return (
             <section className='baner-container' 
                 style={{ backgroundImage: `url(${IMG_BASE_URL}${movie?.backdrop_path})`}}>
                 <Container width='1600px'>
                     <div className="baner-content">
-                        <h1 className='baner-movie-name'>
-                            {movie?.name ? movie?.name : movie?.original_name}
-                        </h1>
+                        <MovieNameExtractor movie={movie} fontSizeInRem={2.25} fontWeight={700}/>
                         <p className='baner-overview'>
                             { movie.overview.length > 200 ? movie.overview.substring(0, 200 - 1) + '...' : movie.overview }
                         </p>
