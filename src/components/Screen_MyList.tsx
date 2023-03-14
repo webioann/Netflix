@@ -33,7 +33,7 @@ const Screen_MyList = () => {
                         <li className='my-list-item' key={movie.doc_id}>
                             <MoviePoster movie={movie} size={160}/>
                             <p className='my-list-item-name'>{ movie.media_type === 'movie' ? movie.title : movie.name }</p>
-                            <p className='item-date'>{ movie.first_air_date.substring(0,4) }</p>
+                            <p className='item-date'>{movie.first_air_date && movie.first_air_date.substring(0,4) }</p>
                             <div className='popularity-stars'>
                                 <div className='star-row'>
                                     <BsStarFill size={20} color='#fff'/>

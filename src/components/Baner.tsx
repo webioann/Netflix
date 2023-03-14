@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { HiInformationCircle } from 'react-icons/hi'
 import { FaPlay, FaPlus } from 'react-icons/fa'
-// import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import GenresList from './GenresList'
 import Container from './Container'
-import PlayVideoButtonIcon from './PlayVideoButtonIcon'
 import MovieNameExtractor from './MovieNameExtractor'
+import PlayVideo_Button from './PlayVideo_Button'
+import SaveMovieInMyList_Button from './SaveInMyList_Button'
 import { IMG_BASE_URL } from '../helpers/constants'
 import { useRandomMovieQuery } from '../redux/MOVIES_API';
 import { saveMovieInMyList } from '../firebase.config';
@@ -26,23 +26,17 @@ const Baner = () => {
                             { movie.overview.length > 200 ? movie.overview.substring(0, 200 - 1) + '...' : movie.overview }
                         </p>
                         <GenresList genres={movie.genre_ids} font={16}/>
+
                         <div className="baner-buttons-row">
-                            <button className='baner-button g-button'>
-                                <PlayVideoButtonIcon 
-                                    size={20} 
-                                    color='#fff' 
-                                    media_type='tv' 
-                                    movie_id={movie.id}
-                                />
-                                Play
-                            </button>
-                            <button 
+                            <PlayVideo_Button ui='square' title='Play' media_type='tv' movie_id={movie.id}/>
+                            {/* <button 
                                 onClick={() => saveMovieInMyList({movie, media_type: 'tv'})}
                                 className='baner-button g-button'
                                 >
                                 <FaPlus title='save in My List'/>
                                 My List
-                            </button>
+                            </button> */}
+                            <SaveMovieInMyList_Button title='My List' ui='square' movie={movie} media_type='tv'/>
                             <button className='baner-button g-button'>
                                 <HiInformationCircle color='#fff' size={24}/>
                                 More Info

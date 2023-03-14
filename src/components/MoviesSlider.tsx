@@ -32,11 +32,9 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
         return (
             <section className='slider-container'>
                 <h2 className='row-title'>{title}</h2>
-
                 <ul className="row-movies" ref={rowRef}>
                     { movies?.map(movie => ( <MovieCard movie={movie} media_type={media_type} key={movie.id}/> ))}
                 </ul>
-
                 <div className="arrow-icons-wrapper">
                     <SlArrowLeft className={ isMoved ? 'arrow' : 'hidden-arrow' }
                         onClick={() => onArrowClick('left')}

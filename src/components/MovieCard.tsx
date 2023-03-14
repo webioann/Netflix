@@ -6,6 +6,8 @@ import { IMovie } from '../types/movies.types'
 import GenresList from './GenresList'
 import MoviePoster from './MoviePoster'
 import MovieNameExtractor from './MovieNameExtractor'
+import PlayVideo_Button from './PlayVideo_Button'
+import SaveMovieInMyList_Button from './SaveInMyList_Button'
 import PlayVideoButtonIcon from './PlayVideoButtonIcon';
 import { IMG_BASE_URL } from '../helpers/constants'
 import { saveMovieInMyList, deleteMovieFromMyList } from '../firebase.config'
@@ -25,17 +27,7 @@ const MovieCard: React.FC<IMovieCard> = ({ movie, media_type }) => {
             <MoviePoster movie={movie} size={290}/>
             <div className="movie-card-controls">
                 <div className="poster-controls-info">
-                    <button className="poster-play-button">
-                        <PlayVideoButtonIcon 
-                            size={20} 
-                            color='rgba(255, 255, 255, 0.7)' 
-                            media_type={media_type} 
-                            movie_id={movie.id}
-                        />
-                    </button>
-                    {/* <p className='movie-name'>
-                        { media_type === 'movie' ? movie.title : movie.name }
-                    </p> */}
+                    <PlayVideo_Button ui='circle' media_type={media_type} movie_id={movie.id}/>
                     <MovieNameExtractor movie={movie} fontSizeInRem={1} fontWeight={400}/>
                     <GenresList genres={movie?.genre_ids} font={12}/>
                 </div>
@@ -50,12 +42,13 @@ const MovieCard: React.FC<IMovieCard> = ({ movie, media_type }) => {
                     <button className="movie-slider-circle">
                         <AiOutlineDislike size={17} color='rgba(255, 255, 255, 0.7)'/>
                     </button>
-                    <button 
+                    {/* <button 
                         className="movie-slider-circle"
                         onClick={() => saveMovieInMyList({movie, media_type: media_type})}
                         >
                         <FaPlus size={17} color='rgba(255, 255, 255, 0.7)' title='save in My List'/>
-                    </button>
+                    </button> */}
+                    <SaveMovieInMyList_Button ui='circle' movie={movie} media_type={media_type}/>
 
                 </div>
             </div>
