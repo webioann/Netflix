@@ -22,8 +22,6 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
             const { scrollLeft, clientWidth } = rowRef.current
             const scrollTo = direct === 'left' ? scrollLeft - clientWidth : scrollLeft + clientWidth
             rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' })
-            console.log('CLICK', scrollTo)
-            console.log(rowRef.current.scrollTo)
         }
     }
 

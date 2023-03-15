@@ -26,7 +26,7 @@ const MovieCard: React.FC<IMovieCard> = ({ movie, media_type }) => {
                 <div className="poster-controls-info">
                     <PlayVideo_Button ui='circle' media_type={media_type} movie_id={movie.id}/>
                     <MovieNameExtractor movie={movie} fontSizeInRem={1} fontWeight={400}/>
-                    <GenresList genres={movie?.genre_ids} font={12}/>
+                    <GenresList genres={movie?.genre_ids} font={10}/>
                 </div>
 
                 <div className="poster-controls-buttons">

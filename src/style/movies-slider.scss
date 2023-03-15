@@ -3,14 +3,16 @@
 .slider-container {
     position: relative;
     .row-title {
+        position: absolute;
+        top: 0;
+        left: 0;
         color: #fff;
         padding: 0 20px;
     }
     .row-movies {
         display: flex;
         overflow-x: scroll;
-        padding: 20px 20px 5px 20px;
-        position: relative;
+        padding: 33px 20px 33px 20px;
     }
     .arrow-icons-wrapper {
         pointer-events: none;
@@ -22,7 +24,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 10px 20px;
-        z-index: 10;
+        z-index: 100;
         .arrow {
             pointer-events: all;
             visibility: visible;
