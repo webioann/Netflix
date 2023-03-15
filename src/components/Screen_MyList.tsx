@@ -29,7 +29,7 @@ const Screen_MyList = () => {
         <section className='my-list'>
             <Container width='1200px'>
                 <h1 className='my-list-title'>My List</h1>
-                <ul>
+                <ul className='my-list-wrapper'>
                     {myListMovies.map(movie => (
                         <li className='my-list-item' key={movie.doc_id}>
                             <MoviePoster movie={movie} size={160}/>

@@ -14,7 +14,7 @@ const ContainerFluid: React.FC<ContainerFluidProps> = ({children, scroll}) => {
             width: '100%',
             minHeight: '100vh',
             position: 'relative',
-            backgroundColor: '#111'
+            backgroundColor: '#111',
         }}>
             { children }
         </div>

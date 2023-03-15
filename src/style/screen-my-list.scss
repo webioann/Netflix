@@ -4,39 +4,41 @@
     width: 100%;
     min-height: 100vh;
     background-color: $netflix-black;
-    margin-top: $header-hight;
     .my-list-title {
-        padding: 1rem;
+        padding-top: 70px;
+        padding-bottom: 1rem;
     }
-    .my-list-item {
-        display: flex;
-        align-items: center;
-        padding: 5px 1rem;
-        border-top: 2px solid #333;
-        transition: background-color 500ms linear;
-        &:hover {
-            background-color: #202020;
-        }
-        .my-list-item-name {
-            min-width: 300px;
-            padding-left: 2rem;
-        }
-        .item-date {
-            padding: 1rem;
-        }
+    .my-list-wrapper {
+        .my-list-item {
+            display: flex;
+            align-items: center;
+            padding: 5px 1rem;
+            border-top: 2px solid #333;
+            transition: background-color 300ms linear;
+            &:hover {
+                background-color: #202020;
+            }
+            .my-list-item-name {
+                min-width: 300px;
+                padding-left: 2rem;
+            }
+            .item-date {
+                padding: 1rem;
+            }
 
-        .popularity-stars {
-            .hidden-painter {
-                position: relative;
-                border: 1px solid red;
-                .star-row {
-                    display: flex;
+            .popularity-stars {
+                .hidden-painter {
+                    position: relative;
+                    border: 1px solid red;
+                    .star-row {
+                        display: flex;
+                    }
                 }
             }
-        }
-        .remove-icon-box {
-            &:hover {
-                cursor: pointer;
+            .remove-icon-box {
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
     }
