@@ -1,7 +1,6 @@
 @import './@index.scss';
 
 .circle-button {
-    margin-top: 50px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -10,6 +9,7 @@
     justify-content: center;
     align-items: center;
     padding-left: 5px;
+    background-color: $black-glass;
     &:hover {
         cursor: pointer;
     }

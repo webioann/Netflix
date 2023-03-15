@@ -20,13 +20,12 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
         if( rowRef.current ) {
             setIsMoved(true)
             const { scrollLeft, clientWidth } = rowRef.current
-            const scrollTo = direct === 'left' 
-            ? scrollLeft - clientWidth 
-            : scrollLeft + clientWidth
+            const scrollTo = direct === 'left' ? scrollLeft - clientWidth : scrollLeft + clientWidth
             rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' })
+            console.log('CLICK', scrollTo)
+            console.log(rowRef.current.scrollTo)
         }
     }
-    // console.log(movies)
 
     if( movies ) {
         return (
@@ -39,12 +38,12 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
                     <SlArrowLeft className={ isMoved ? 'arrow' : 'hidden-arrow' }
                         onClick={() => onArrowClick('left')}
                         size={30}
-                        color='#ffffff' 
+                        color='#fff' 
                     />
                     <SlArrowRight className='arrow'
                         onClick={() => onArrowClick('right')} 
                         size={30}
-                        color='#ffffff' 
+                        color='#fff' 
                     />
                 </div>
             </section>

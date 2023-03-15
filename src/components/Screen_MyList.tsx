@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Container from './Container'
 import MoviePoster from './MoviePoster'
 import SpringDiv from './SpringDiv'
+import CloseButton from './CloseButton'
 import { db } from '../firebase.config'
 import { collection, getDocs, onSnapshot, doc, deleteDoc } from 'firebase/firestore'
 import { deleteMovieFromMyList } from '../firebase.config'
@@ -54,7 +55,6 @@ const Screen_MyList = () => {
                                     }}
                                 />
                             </span>
-
                         </li>
                     ))}
                 </ul>

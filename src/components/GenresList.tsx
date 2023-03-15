@@ -24,7 +24,6 @@ const GenresList: React.FC<props> = ({ genres, font }) => {
                 gap: `${font / 2}px`,
                 fontSize: `${font}px`,
                 paddingTop: `${font / 2}px`,
-                paddingBottom: `${font}px`
             }}
             >
             {truncated.map((item) => (

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAppDispatch } from '../redux/store'
 import { selectMovie, switchVideoPlayer } from '../redux/reduxSlice';
-import { FaPlay } from 'react-icons/fa'
+import { IoMdPlay } from 'react-icons/io'
 import '../style/buttons.scss'
 
 type PlayVideo_ButtonType = {
@@ -17,9 +17,9 @@ const PlayVideo_Button: React.FC<PlayVideo_ButtonType> = ({ ui, media_type, movi
 
     return (
         <button className={ ui === 'square' ? 'square-button g-button' : 'circle-button'}>
-            <FaPlay  
-                size={20}
-                color='fff'
+            <IoMdPlay  
+                size={23}
+                color='#e50914'
                 onClick={() => {
                     dispatch(selectMovie({
                         media_type: media_type,

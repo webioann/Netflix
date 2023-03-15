@@ -7,7 +7,7 @@
     backdrop-filter: blur(5px);
     position: fixed;
     bottom: 0;
-    z-index: 10;
+    z-index: 12;
     .popup-content {
         width: 100%;
         max-width: 768px;
@@ -22,7 +22,7 @@
             min-width: 100%;
             display: flex;
             justify-content: center;
-            z-index: 11;
+            z-index: 100;
             .show-more-icon {
                 z-index: 10;
                 opacity: 0.3;
