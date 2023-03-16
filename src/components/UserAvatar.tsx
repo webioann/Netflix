@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppSelector } from '../redux/store'
-import { USER_AVATAR } from '../helpers/constants'
+import { USER_AVATAR } from '../data/constants'
 
 type userAvatarProps = {
     size: number
@@ -22,4 +22,5 @@ const UserAvatar: React.FC<userAvatarProps> = ({ size, radius }) => {
             src={ currentUser?.currentUser_PhotoURL ? currentUser?.currentUser_PhotoURL : USER_AVATAR } alt="user avatar"/>
         )
 }
+
 export default UserAvatar;

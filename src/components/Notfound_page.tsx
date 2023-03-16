@@ -1,9 +1,12 @@
 import React from 'react'
 
-const Notfound_page = () => {
+const Notfound_Page = () => {
+    
     return (
-        <h1> ERROR 404 Notfound_page</h1>
+        <h1 style={{marginTop: '120px', marginLeft: '120px'}}> 
+            Notfound_page
+        </h1>
     )
 }
 
-export default Notfound_page
+export default Notfound_Page;

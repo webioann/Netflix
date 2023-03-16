@@ -37,7 +37,6 @@ const GenresList: React.FC<props> = ({ genres, font }) => {
                         width: `${font / 3}px`,
                         height: `${font / 3}px`,
                         borderRadius: '50%',
-                        // backgroundColor: 'rgba(0,0,0,0.35)',
                         backgroundColor: 'rgba(255, 255, 255, 0.2)',
                         marginRight: `${font / 2}px`
                     }}/>
@@ -47,5 +46,6 @@ const GenresList: React.FC<props> = ({ genres, font }) => {
         </ul>
     )
 }
+
 export default GenresList;
 // &#183; it is a dot simbol

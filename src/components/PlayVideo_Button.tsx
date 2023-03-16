@@ -32,4 +32,5 @@ const PlayVideo_Button: React.FC<PlayVideo_ButtonType> = ({ ui, media_type, movi
         </button>
     )
 }
+
 export default PlayVideo_Button;

@@ -4,15 +4,15 @@ import { Routes, Route } from "react-router-dom"
 import { useAppSelector } from '../redux/store'
 import ContainerFluid from './ContainerFluid'
 import Baner from './Baner'
-import Home_page from './Home_page'
-import Login_page from './Login_page'
-import Signup_page from './Signup_page'
-import Profile_page from './Profile_page'
-import Notfound_page from './Notfound_page'
+import Home_Page from './Home_Page'
+import MyList_Page from './MyList_Page'
+import Login_Page from './Login_Page'
+import Signup_Page from './Signup_Page'
+import Profile_Page from './Profile_Page'
+import Notfound_Page from './Notfound_Page'
 import MoviesSlider from './MoviesSlider'
-import Screen_MyList from './Screen_MyList'
 import NavbarPanel from './NavbarPanel'
-import PopupVideoPlayer from './PopupVideoPlayer'
+import VideoPlayer_Popup from './VideoPlayer_Popup'
 import SearchInput from './SearchInput'
 import NetflixLogo from './NetflixLogo'
 import Navigation from './Navigation'
@@ -67,10 +67,10 @@ const  App: React.FC = () => {
           <MessageBell/>
           <UserProfiles/>
         </NavbarPanel>
-        <PopupVideoPlayer/>
+        <VideoPlayer_Popup/>
         <Routes>
           <Route path="/" element={
-            <Home_page>
+            <Home_Page>
               <Baner/>
               <MoviesSlider title='Popular on Netflix' path={originals}  media_type='tv'/>
               <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
@@ -80,17 +80,18 @@ const  App: React.FC = () => {
               <MoviesSlider title='Horrors' path={horrors}  media_type='movie'/>
               <MoviesSlider title='Romances' path={romances}  media_type='movie'/>
               <MoviesSlider title='Documentaries' path={documentaries} media_type='movie'/>  */}
-            </Home_page>} 
+            </Home_Page>} 
           />
-          <Route path="my_list" element={<Screen_MyList />}/>
-          <Route path="login" element={<Login_page />}/>
-          <Route path="signup" element={<Signup_page />}/>
-          <Route path="*" element={<Notfound_page />} />
-          { currentUser &&  <Route path="profile" element={<Profile_page />}/>}
+          <Route path="my_list" element={<MyList_Page />}/>
+          <Route path="login" element={<Login_Page />}/>
+          <Route path="signup" element={<Signup_Page />}/>
+          <Route path="*" element={<Notfound_Page />} />
+          { currentUser &&  <Route path="profile" element={<Profile_Page />}/>}
         </Routes>
 
       </CTX.Provider>
     </ContainerFluid>
   )
 }
+
 export default App;

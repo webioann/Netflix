@@ -51,4 +51,5 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
         return ( <div className='--hidden-row'/> )
     } 
 }
+
 export default MoviesSlider;

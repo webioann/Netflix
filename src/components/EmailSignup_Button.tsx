@@ -1,17 +1,17 @@
 import React from 'react'
-import { signInWithEmailAndPassword } from "firebase/auth"
 import { useNavigate } from 'react-router-dom'
+import { createUserWithEmailAndPassword } from "firebase/auth"
 import { auth } from '../firebase.config'
 import { IAuthButtonProps } from '../types/auth.types'
 import '../style/auth-button.scss'
 
-const LoginButton: React.FC<IAuthButtonProps> = ({ email, password, setWarning }) => {
+const EmailSignup_Button: React.FC<IAuthButtonProps> = ({ email, password, setWarning }) => {
 
     const navigate = useNavigate()
 
-    const loginWithEmail = async () => {
+    const emailRegistration = async () => {
         try {
-            await signInWithEmailAndPassword(auth, email, password)
+            await createUserWithEmailAndPassword(auth, email, password)
             navigate("/")
         }
         catch(error){
@@ -21,9 +21,10 @@ const LoginButton: React.FC<IAuthButtonProps> = ({ email, password, setWarning }
     }
 
     return (
-        <button className='g-button auth-button' onClick={loginWithEmail}>
-            Login with email
+        <button className='g-button auth-button' onClick={emailRegistration}>
+            Sign Up
         </button>
     )
 }
-export default LoginButton;
+
+export default EmailSignup_Button;

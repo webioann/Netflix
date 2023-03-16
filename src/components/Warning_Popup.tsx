@@ -1,12 +1,12 @@
 import React from 'react'
 import { IoClose } from 'react-icons/io5'
-import '../style/popup.scss'
+import '../style/warning-popup.scss'
 
 type closePopupType = {
     closePopup: () => void;
 }
 
-const Popup: React.FC<closePopupType> = ({ closePopup }) => {
+const Warning_Popup: React.FC<closePopupType> = ({ closePopup }) => {
     
     return (
         <div className='popup-wrapper' onClick={closePopup}>
@@ -18,4 +18,5 @@ const Popup: React.FC<closePopupType> = ({ closePopup }) => {
         </div>
     )
 }
-export default Popup;
+
+export default Warning_Popup;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { FaCheck, FaPlus } from 'react-icons/fa'
 import { saveMovieInMyList, db } from '../firebase.config'
 import { collection, doc, getDocs, query, onSnapshot, addDoc, setDoc, deleteDoc, updateDoc } from 'firebase/firestore'

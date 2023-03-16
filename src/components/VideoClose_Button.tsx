@@ -8,7 +8,7 @@ type CloseButtonProps = {
     size: number
 }
 
-const CloseButton: React.FC<CloseButtonProps> = ({onClose, color, size}) => {
+const VideoClose_Button: React.FC<CloseButtonProps> = ({onClose, color, size}) => {
     return (
         <div className='close-button'>
             <span className='close-icon-box'
@@ -18,4 +18,5 @@ const CloseButton: React.FC<CloseButtonProps> = ({onClose, color, size}) => {
         </div>
     )
 }
-export default CloseButton;
+
+export default VideoClose_Button;

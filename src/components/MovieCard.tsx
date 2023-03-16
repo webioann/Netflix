@@ -17,8 +17,6 @@ interface IMovieCard {
 
 const MovieCard: React.FC<IMovieCard> = ({ movie, media_type }) => {
 
-    // console.log(movie)
-
     return (
         <li className='movie-card'>
             <MoviePoster movie={movie} size={290}/>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import SignupButton from './SignupButton'
+import SignupButton from './EmailSignup_Button'
 import RegistrationForm from './RegistrationForm'
-import Popup from './Popup'
+import Popup from './Warning_Popup'
 import AuthPageFooter from './AuthPageFooter'
 import '../style/auth-page.scss'
 
-const Signup_page = () => {
+const Signup_Page = () => {
 
     const [email,setEmail] = useState<string>('')
     const [password,setPassword] = useState<string>('')
@@ -46,4 +46,5 @@ const Signup_page = () => {
         </div>
     )
 }
-export default Signup_page;
+
+export default Signup_Page;

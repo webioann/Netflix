@@ -20,4 +20,5 @@ const ContainerFluid: React.FC<ContainerFluidProps> = ({children, scroll}) => {
         </div>
     )
 }
+
 export default ContainerFluid;

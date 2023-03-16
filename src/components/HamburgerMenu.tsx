@@ -16,10 +16,5 @@ const HamburgerMenu: React.FC<IHamburgerProps> = ({ switcher, menu }) => {
         </div>
     )
 }
+
 export default HamburgerMenu;
-// style={{
-//     position: 'absolute',
-//     top: '1rem',
-//     right: '1rem',
-//     zIndex: 15,
-// }}

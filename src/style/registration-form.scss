@@ -1,16 +1,16 @@
 @import './@index.scss';
 
-.hybrid-form{
+.hybrid-form {
     width: 314px;
     padding-bottom: 2rem;
-    .email-box{
+    .email-box {
         margin-top: 2rem;
         position: relative;
-        label{
+        label {
             padding-left: 10px;
             font-weight: 500;
         }
-        .email-input-box{
+        .email-input-box {
             background-color: $netflix-gray;
             z-index: 3;
             width: 100%;
@@ -20,7 +20,7 @@
             padding: 16px 20px 5px;
             border-radius: $br-main;
             position: relative;
-            .input-icon{
+            .input-icon {
                 position: absolute;
                 top: 0.5rem;
                 right: 1rem;
@@ -29,15 +29,15 @@
             }
         }
     }
-    .password-box{
+    .password-box {
         width: 100%;
         margin-top: 2rem;
         position: relative;
-        label{
+        label {
             padding-left: 10px;
             font-weight: 500;
         }
-        .password-input-box{
+        .password-input-box {
             background-color: $netflix-gray;
             z-index: 3;
             width: 100%;
@@ -47,7 +47,7 @@
             padding: 16px 20px 5px;
             border-radius: $br-main;
             position: relative;
-            .input-icon{
+            .input-icon {
                 position: absolute;
                 top: 0.5rem;
                 right: 1rem;
@@ -55,9 +55,8 @@
                 cursor: pointer;
             }
         }
-        
     }
-    .reg-input{
+    .reg-input {
         width: 100%;
         letter-spacing: 4px;
         background-color: transparent;
@@ -65,7 +64,7 @@
         cursor: pointer;
     }
 
-    .input-label{
+    .input-label {
         position: absolute;
         top: 10px;
         left: 0;
@@ -75,7 +74,7 @@
         pointer-events: none;
         z-index: 4;
     }
-    .input-label-up{
+    .input-label-up {
         position: absolute;
         top: 0;
         left: 0;
@@ -84,6 +83,4 @@
         transition: all ease 200ms;
         z-index: 4;
     }
-
 }
-

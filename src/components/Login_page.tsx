@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Popup from './Popup'
+import Warning_Popup from './Warning_Popup'
 import RegistrationForm from './RegistrationForm'
-import LoginButton from './LoginButton'
-import GoogleSignin from './SigninGoogle'
+import EmailLogin_Button from './EmailLogin_Button'
+import GoogleSignin_Button from './GoogleSignin_Button'
 import AuthPageFooter from './AuthPageFooter'
 import '../style/auth-button.scss'
 
-const Login_page = () => {
+const Login_Page = () => {
 
     const [email,setEmail] = useState<string>('')
     const [password,setPassword] = useState<string>('')
@@ -19,19 +19,19 @@ const Login_page = () => {
         <div className={`auth-page`}>
             <div className='auth-page-content'>
                 <h1 className='auth-header'>Login</h1>
-                { warning && <Popup closePopup={closePopup}/>}
+                { warning && <Warning_Popup closePopup={closePopup}/>}
                 <RegistrationForm 
                     setEmail={setEmail} 
                     email={email} 
                     setPassword={setPassword} 
                     password={password}
                 />
-                <LoginButton 
+                <EmailLogin_Button 
                     email={email}
                     password={password} 
                     setWarning={setWarning}
                 />
-                <GoogleSignin/>
+                <GoogleSignin_Button/>
                 <div className='question'>
                     <p className='question-text'>New to Netflix? </p>
                     <Link to='/signup' className='question-link g-link'>
@@ -48,4 +48,5 @@ const Login_page = () => {
         </div>
     )
 }
-export default Login_page;
+
+export default Login_Page;

@@ -5,7 +5,6 @@ import { GERNES_API } from './GERNES_API'
 import { VIDEO_API } from './VIDEO_API'
 import { BANER_API } from './BANER_API'
 import { searchMovie } from './SEARCH_API'
-import { testData } from './TEST_API'
 import reduxSlice from './reduxSlice'
 
 const store = configureStore({
@@ -16,10 +15,6 @@ const store = configureStore({
         [VIDEO_API.reducerPath]: VIDEO_API.reducer,
         [GERNES_API.reducerPath]: GERNES_API.reducer,
         [BANER_API.reducerPath]: BANER_API.reducer,
-
-
-        [testData.reducerPath]: testData.reducer,
-
     },
     middleware: getDefaultMiddleware =>  getDefaultMiddleware().concat(
         [
@@ -28,9 +23,6 @@ const store = configureStore({
             VIDEO_API.middleware,
             GERNES_API.middleware,
             BANER_API.middleware,
-
-
-            testData.middleware,
         ]
     ),
 })
@@ -40,5 +32,4 @@ type AppDispatch = typeof store.dispatch;
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<reduxState> = useSelector;
-
 export default store;

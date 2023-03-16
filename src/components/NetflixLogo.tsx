@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { LOGO_BIG, LOGO_MOBILE } from '../helpers/constants'
+import { LOGO_BIG, LOGO_MOBILE } from '../data/constants'
 import '../style/netflix-logo.scss'
 
 const NetflixLogo = () => {
@@ -14,4 +14,5 @@ const NetflixLogo = () => {
         </>
     )
 }
+
 export default NetflixLogo;

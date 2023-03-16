@@ -5,8 +5,7 @@ import { auth, provider } from '../firebase.config';
 import { signInWithPopup } from "firebase/auth"
 import '../style/auth-button.scss'
 
-
-const GoogleSignin = () => {
+const GoogleSignin_Button = () => {
 
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
@@ -26,4 +25,4 @@ const GoogleSignin = () => {
     )
 }
 
-export default GoogleSignin;
+export default GoogleSignin_Button;

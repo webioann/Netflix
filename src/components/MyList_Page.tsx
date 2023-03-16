@@ -2,16 +2,15 @@ import React, { useEffect, useState } from 'react'
 import Container from './Container'
 import MoviePoster from './MoviePoster'
 import SpringDiv from './SpringDiv'
-import CloseButton from './CloseButton'
 import { db } from '../firebase.config'
 import { collection, getDocs, onSnapshot, doc, deleteDoc } from 'firebase/firestore'
 import { deleteMovieFromMyList } from '../firebase.config'
 import { IMyListMovies } from '../types/mylist.types'
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 import { IoClose } from 'react-icons/io5'
-import '../style/screen-my-list.scss'
+import '../style/my-list-page.scss'
 
-const Screen_MyList = () => {
+const MyList_Page = () => {
 
     const [myListMovies, setMyListMovies] = useState<IMyListMovies[] | []>([])
     const [listChange, setListChange] = useState(false)
@@ -63,4 +62,4 @@ const Screen_MyList = () => {
     )
 }
 
-export default Screen_MyList;
+export default MyList_Page;

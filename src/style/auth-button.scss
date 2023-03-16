@@ -5,3 +5,11 @@
     margin-top: 1rem;
     background-color: $netflix-red;
 }
+.out-button {
+    height: 35px;
+    min-width: 100px;
+    // background-color: transparent;
+    background-color: $netflix-red;
+    color: $light;
+    border-radius: 2px;
+}

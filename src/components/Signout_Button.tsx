@@ -4,9 +4,9 @@ import { deleteCurrentUser } from '../redux/reduxSlice'
 import { signOut } from "firebase/auth"
 import { auth } from '../firebase.config'
 import { useNavigate } from 'react-router-dom'
-import '../style/signout-button.scss'
+import '../style/auth-button.scss'
 
-const SignoutButton = () => {
+const Signout_Button = () => {
 
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
@@ -27,4 +27,5 @@ const SignoutButton = () => {
         </button>
     )
 }
-export default SignoutButton;
+
+export default Signout_Button;

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { HiInformationCircle } from 'react-icons/hi'
 import GenresList from './GenresList'
 import Container from './Container'
 import MovieNameExtractor from './MovieNameExtractor'
 import PlayVideo_Button from './PlayVideo_Button'
 import SaveMovieInMyList_Button from './SaveInMyList_Button'
-import { IMG_BASE_URL } from '../helpers/constants'
+import { IMG_BASE_URL } from '../data/constants'
 import { useRandomMovieQuery } from '../redux/MOVIES_API';
 import '../style/baner.scss'
 
@@ -50,4 +50,5 @@ const Baner = () => {
         )
     }
 }
+
 export default Baner;

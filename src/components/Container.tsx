@@ -20,4 +20,5 @@ const Container: React.FC<ContainerProps> = ({ width, children }) => {
         </div>
     )
 }
+
 export default Container;

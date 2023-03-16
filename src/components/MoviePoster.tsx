@@ -1,6 +1,6 @@
 import React from 'react'
 import { IMovie } from '../types/movies.types';
-import { IMG_BASE_URL } from '../helpers/constants'
+import { IMG_BASE_URL } from '../data/constants'
 
 type MoviePosterType = {
     movie: IMovie

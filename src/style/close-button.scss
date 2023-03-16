@@ -17,20 +17,3 @@
         }
     }
 }
-.close-button {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    background-color: transparent;
-    .close-icon-box {
-        border-radius: 50%;
-        background-color: inherit;
-        padding: 5px;
-        overflow: hidden;
-        transition: all 0.3 linear;
-        &:hover {
-            background-color: $black-glass;
-            cursor: pointer;
-        }
-    }
-}

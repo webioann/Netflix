@@ -25,5 +25,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ open, data }) => {
     }
     else  return null
 }
+
 export default VideoPlayer;
 

@@ -2,6 +2,7 @@ import React from 'react'
 import '../style/auth-page-footer.scss'
 
 const AuthPageFooter = () => {
+    
     return (
         <footer className='auth-footer'>
             <div className="auth-footer-content">
@@ -24,4 +25,5 @@ const AuthPageFooter = () => {
         </footer>
     )
 }
+
 export default AuthPageFooter;

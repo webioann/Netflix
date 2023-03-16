@@ -1,13 +1,11 @@
 import React from 'react'
 import { useAppSelector } from '../redux/store'
 import AuthPageFooter from './AuthPageFooter'
-import SignoutButton from './SignoutButton'
+import Signout_Button from './Signout_Button'
 import UserAvatar from './UserAvatar'
-
-import { Link, useNavigate } from 'react-router-dom'
 import '../style/profile-page.scss'
 
-const Profile_page = () => {
+const Profile_Page = () => {
 
     const currentUser = useAppSelector(state => state.redux.currentUser)
 
@@ -46,7 +44,7 @@ const Profile_page = () => {
                     </ul>
                 </div>
                 <div className="long-button">
-                    <SignoutButton/>
+                    <Signout_Button/>
                 </div>
             </div>
             <AuthPageFooter/>
@@ -54,4 +52,5 @@ const Profile_page = () => {
         </div>
     )
 }
-export default Profile_page;
+
+export default Profile_Page;
