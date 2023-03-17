@@ -1,5 +1,6 @@
 import React, { useState, createContext} from 'react'
 import { useAuthStateListener } from '../hooks/useAuthStateListener'
+import { useMyListStateListenertsts } from '../hooks/useMyListStateListener'
 import { Routes, Route } from "react-router-dom"
 import { useAppSelector } from '../redux/store'
 import ContainerFluid from './ContainerFluid'
@@ -46,6 +47,7 @@ const  App: React.FC = () => {
   
   // ===== auth state listener =====
   useAuthStateListener();
+  useMyListStateListenertsts();
 
   const currentUser = useAppSelector(state => state.redux.currentUser)
   const startVideoPlayer = useAppSelector(state => state.redux.startVideoPlayer)

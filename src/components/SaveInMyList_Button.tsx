@@ -10,30 +10,26 @@ interface ISaveMovieInMyList {
     media_type: 'movie' | 'tv'
     ui: 'square' | 'circle'
     title?: string
+    saved: boolean
 }
 interface IParamsOnSave {
     movie: IMovie
     media_type: 'movie' | 'tv'
 }
 
-const SaveMovieInMyList_Button: React.FC<ISaveMovieInMyList> = ({ movie, media_type, ui, title }) => {
-
-    const [isSaved, setIsSaved] = useState(false)
+const SaveMovieInMyList_Button: React.FC<ISaveMovieInMyList> = ({ movie, media_type, ui, title, saved }) => {
 
     const saveMovieInMyList = async ({ movie, media_type }: IParamsOnSave) => {
-        if(!isSaved) {
-            await addDoc(collection(db, 'my list'), { ...movie, media_type: media_type });
-            setIsSaved(true)
-        }
-        else return
+        await setDoc(doc(db, 'my list', movie.id.toString()), { ...movie, media_type: media_type });
     }
+
     
     return (
         <button 
             onClick={() => saveMovieInMyList({movie, media_type: media_type})}
             className={ ui === 'square' ? 'square-button g-button' : 'small-circle-button'}
             >
-            <i>{ isSaved ? <FaCheck size={15} color='#fff' title='you save thise movie'/> : <FaPlus size={15} color='#fff' title='save in My List'/> }</i>
+            <i>{ saved ? <FaCheck size={15} color='#fff' title='you save thise movie'/> : <FaPlus size={15} color='#fff' title='save in My List'/> }</i>
             { title }
         </button>
     )

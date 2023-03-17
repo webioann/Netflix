@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useAppSelector } from '../redux/store'
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import { AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike  } from 'react-icons/ai'
 import { IMovie } from '../types/movies.types'
@@ -17,6 +18,15 @@ interface IMovieCard {
 
 const MovieCard: React.FC<IMovieCard> = ({ movie, media_type }) => {
 
+    const idList = useAppSelector(state => state.redux.myListState)
+    const [savedInMyList, setSavedInMyList] = useState(false)
+
+    useEffect(() => {        
+        setSavedInMyList(idList.includes(movie.id.toString()))
+    }, [idList])
+
+    console.log(movie)
+
     return (
         <li className='movie-card'>
             <MoviePoster movie={movie} size={290}/>
@@ -34,7 +44,7 @@ const MovieCard: React.FC<IMovieCard> = ({ movie, media_type }) => {
                     <button className="small-circle-button">
                         <AiOutlineDislike size={15} color='#fff'/>
                     </button>
-                    <SaveInMyList_Button ui='circle' movie={movie} media_type={media_type}/>
+                    <SaveInMyList_Button ui='circle' movie={movie} media_type={media_type} saved={savedInMyList}/>
                 </div>
             </div>
         </li>

@@ -6,23 +6,28 @@ import { db } from '../firebase.config'
 import { collection, getDocs, onSnapshot, doc, deleteDoc } from 'firebase/firestore'
 import { deleteMovieFromMyList } from '../firebase.config'
 import { IMyListMovies } from '../types/mylist.types'
+import { setMyListState } from '../redux/reduxSlice'
+import { useAppDispatch } from '../redux/store'
+
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 import { IoClose } from 'react-icons/io5'
 import '../style/my-list-page.scss'
 
 const MyList_Page = () => {
 
-    const [myListMovies, setMyListMovies] = useState<IMyListMovies[] | []>([])
-    const [listChange, setListChange] = useState(false)
+    const dispatch = useAppDispatch()
+    const [myListMovies, setMyListMovies] = useState<IMyListMovies[]>([] as IMyListMovies[])
+    // const [listChange, setListChange] = useState(false)
+
+    // const [idList, setIdList] = useState<string[]>([])
 
     useEffect(() => {
         const fetchMyList = async () => {
             const data = await getDocs(collection(db, "my list"))
-            const raw = data.docs.map((doc) => ({...doc.data(), doc_id: doc.id }))
-            setMyListMovies(raw)
+            setMyListMovies(data.docs.map((doc) => ({...doc.data(), doc_id: doc.id})))
         }
         fetchMyList();
-    }, [listChange])
+    }, [])
 
     return (
         <section className='my-list'>
@@ -30,7 +35,7 @@ const MyList_Page = () => {
                 <h1 className='my-list-title'>My List</h1>
                 <ul className='my-list-wrapper'>
                     {myListMovies.map(movie => (
-                        <li className='my-list-item' key={movie.doc_id}>
+                        <li className='my-list-item' key={movie.id}>
                             <MoviePoster movie={movie} size={160}/>
                             <p className='my-list-item-name'>{ movie.media_type === 'movie' ? movie.title : movie.name }</p>
                             <p className='item-date'>{movie.first_air_date && movie.first_air_date.substring(0,4) }</p>
@@ -50,7 +55,6 @@ const MyList_Page = () => {
                                     color='#fff' 
                                     onClick={() => {
                                         deleteMovieFromMyList(movie.doc_id)
-                                        setListChange(!listChange)
                                     }}
                                 />
                             </span>
