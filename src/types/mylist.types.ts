@@ -1,4 +1,4 @@
-export interface IMyListMovies {
+export interface IMyListMovie {
     doc_id: string 
     backdrop_path: string
     media_type: 'movie' | 'tv' 

@@ -3,7 +3,6 @@ import { useSelector,useDispatch,TypedUseSelectorHook } from "react-redux"
 import { MOVIES_API } from './MOVIES_API'
 import { GERNES_API } from './GERNES_API'
 import { VIDEO_API } from './VIDEO_API'
-import { BANER_API } from './BANER_API'
 import { searchMovie } from './SEARCH_API'
 import reduxSlice from './reduxSlice'
 
@@ -14,7 +13,6 @@ const store = configureStore({
         [searchMovie.reducerPath]: searchMovie.reducer,
         [VIDEO_API.reducerPath]: VIDEO_API.reducer,
         [GERNES_API.reducerPath]: GERNES_API.reducer,
-        [BANER_API.reducerPath]: BANER_API.reducer,
     },
     middleware: getDefaultMiddleware =>  getDefaultMiddleware().concat(
         [
@@ -22,7 +20,6 @@ const store = configureStore({
             searchMovie.middleware,
             VIDEO_API.middleware,
             GERNES_API.middleware,
-            BANER_API.middleware,
         ]
     ),
 })

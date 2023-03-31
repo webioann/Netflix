@@ -28,9 +28,9 @@ const Baner = () => {
                         <div className="baner-buttons-row">
                             <PlayVideo_Button ui='square' title='Play' media_type='tv' movie_id={movie.id}/>
                             <SaveMovieInMyList_Button title='My List' ui='square' movie={movie} media_type='tv'/>
-                            <button className='baner-button g-button'>
+                            <button className='more-info-button g-button'>
                                 <HiInformationCircle color='#fff' size={24}/>
-                                More Info
+                                <span className='more-info-button-text'>More Info</span>
                             </button>
                             {/* <div className="spring-div" style={{ flex: 1 }}/> */}
                             {/* <button className="circle-button">

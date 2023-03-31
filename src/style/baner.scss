@@ -24,13 +24,21 @@
         }
         .baner-buttons-row {
             display: flex;
-            padding-top: 1rem;
             gap: 0.5rem;
+            padding-top: 1rem;
             z-index: 5;
-            .baner-button {
+            .more-info-button {
                 background-color: $black-glass;
                 font-weight: 400;
                 padding: 0.5rem 0.75rem;
+                .more-info-button-text {
+                    display: none;
+                }
+                @media (min-width: 425px) {
+                    .more-info-button-text {
+                        display: block;
+                    }
+                }
             }
             .circle-button {
                 width: 40px;
@@ -45,6 +53,7 @@
             }
         }
     }
+
     .black-fog {
         height: 8rem;
         position: absolute;

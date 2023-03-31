@@ -4,30 +4,31 @@ import MoviePoster from './MoviePoster'
 import SpringDiv from './SpringDiv'
 import { db } from '../firebase.config'
 import { collection, getDocs, onSnapshot, doc, deleteDoc } from 'firebase/firestore'
-import { deleteMovieFromMyList } from '../firebase.config'
-import { IMyListMovies } from '../types/mylist.types'
-import { setMyListState } from '../redux/reduxSlice'
-
+import { IMyListMovie } from '../types/mylist.types'
 import { useAppDispatch, useAppSelector } from '../redux/store'
-
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 import { IoClose } from 'react-icons/io5'
 import '../style/my-list-page.scss'
 
+type myListMovieType = {
+
+}
+
 const MyList_Page = () => {
 
     const dispatch = useAppDispatch()
-    const [myListMovies, setMyListMovies] = useState<IMyListMovies[]>([] as IMyListMovies[])
-    // const [listChange, setListChange] = useState(false)
-
-    // const [idList, setIdList] = useState<string[]>([])
-    const my_list = useAppSelector(state => state.redux.myListState)
+    const [myListMovies, setMyListMovies] = useState<IMyListMovie[] | []>([] as IMyListMovie[])
 
     useEffect(() => {
         const fetchMyListMovies = async () => {
             const data = await getDocs(collection(db, "my list"))
-            setMyListMovies(data.docs.map((doc) => ({...doc.data(), doc_id: doc.id})))
-            // dispatch(setMyListState(data.docs.map((doc) => doc.id )))
+            let raw = data.docs.map((doc) => ({...doc.data(), doc_id: doc.id}))
+            console.log(raw)
+            setMyListMovies(raw)
+
+            // setMyListMovies(data.docs.map((doc) => ({...doc.data(), doc_id: doc.id})))
+            // let raw = (data.forEach((doc) => { console.log(doc.data(), doc.id ) }))
+
         }
         fetchMyListMovies();
     }, [])
@@ -36,10 +37,7 @@ const MyList_Page = () => {
         await deleteDoc(doc(db, 'my list', doc_id))
         let filtered = myListMovies.filter((item) => { return item.doc_id !== doc_id})
         setMyListMovies(filtered)
-        dispatch(setMyListState(my_list.filter((item) => { return item !== doc_id})))
-
     }
-
 
     return (
         <section className='my-list'>
