@@ -1,5 +1,6 @@
 import { createSlice,PayloadAction } from "@reduxjs/toolkit"
 import { ICurrentUser } from '../types/auth.types'
+// import { IMyListMovies } from '../types/mylist.types'
 
 type selectedMovieType = {
     media_type: 'movie' | 'tv'
@@ -17,7 +18,7 @@ const initialState: InitialStateType = {
     currentUser: null,
     selectedMovie: null,
     startVideoPlayer: false,
-    myListState: ['0']
+    myListState: ['0'],
 }
 
 export const reduxSlice = createSlice({
@@ -43,7 +44,7 @@ export const reduxSlice = createSlice({
         }},
         resetMovieData: (state) => { state.selectedMovie = null },
         switchVideoPlayer:  (state, actions) => { state.startVideoPlayer = actions.payload },
-        setMyListState: (state, actions) => { state.myListState = actions.payload }
+        setMyListState: (state, actions) => { state.myListState = actions.payload },
     }
 });
 
@@ -53,7 +54,8 @@ export const {
     selectMovie,
     resetMovieData,
     switchVideoPlayer,
-    setMyListState
+    setMyListState,
+    
 } = reduxSlice.actions;
 
 export default reduxSlice.reducer;

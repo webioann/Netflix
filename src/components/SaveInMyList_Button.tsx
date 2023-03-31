@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useAppDispatch, useAppSelector } from '../redux/store'
+import { setMyListState } from '../redux/reduxSlice'
 import { FaCheck, FaPlus } from 'react-icons/fa'
-import { saveMovieInMyList, db } from '../firebase.config'
+import { db } from '../firebase.config'
 import { collection, doc, getDocs, query, onSnapshot, addDoc, setDoc, deleteDoc, updateDoc } from 'firebase/firestore'
 import { IMovie } from '../types/movies.types'
 import '../style/buttons.scss'
@@ -10,29 +12,34 @@ interface ISaveMovieInMyList {
     media_type: 'movie' | 'tv'
     ui: 'square' | 'circle'
     title?: string
-    saved: boolean
 }
 interface IParamsOnSave {
     movie: IMovie
     media_type: 'movie' | 'tv'
 }
 
-const SaveMovieInMyList_Button: React.FC<ISaveMovieInMyList> = ({ movie, media_type, ui, title, saved }) => {
+const SaveMovieInMyList_Button: React.FC<ISaveMovieInMyList> = ({ movie, media_type, ui, title }) => {
+
+    const dispatch = useAppDispatch()
+    const myListId = useAppSelector(state => state.redux.myListState)
 
     const saveMovieInMyList = async ({ movie, media_type }: IParamsOnSave) => {
-        await setDoc(doc(db, 'my list', movie.id.toString()), { ...movie, media_type: media_type });
+        await setDoc(doc(db, 'my list', movie.id.toString()), { ...movie, media_type: media_type })
+        dispatch(setMyListState(movie.id.toString()))
     }
-
     
     return (
         <button 
             onClick={() => saveMovieInMyList({movie, media_type: media_type})}
             className={ ui === 'square' ? 'square-button g-button' : 'small-circle-button'}
             >
-            <i>{ saved ? <FaCheck size={15} color='#fff' title='you save thise movie'/> : <FaPlus size={15} color='#fff' title='save in My List'/> }</i>
+            <i>{ myListId.includes(movie.id.toString()) ? <FaCheck size={15} color='#fff' title='you save thise movie'/> : <FaPlus size={15} color='#fff' title='save in My List'/> }</i>
             { title }
         </button>
     )
 }
 
 export default SaveMovieInMyList_Button;
+// saved ? <FaCheck size={15} color='#fff' title='you save thise movie'/> : 
+// await setDoc(doc(db, 'my list', movie.id.toString()), { ...movie, media_type: media_type });
+// 

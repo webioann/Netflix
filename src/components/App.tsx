@@ -74,7 +74,7 @@ const  App: React.FC = () => {
           <Route path="/" element={
             <Home_Page>
               <Baner/>
-              <MoviesSlider title='Popular on Netflix' path={originals}  media_type='tv'/>
+              <MoviesSlider title='Popular on Netflix' path={originals}  media_type='movie'/>
               <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
               {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
               <MoviesSlider title='Actions' path={actions}  media_type='movie'/>
