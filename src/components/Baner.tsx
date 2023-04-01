@@ -12,6 +12,7 @@ import '../style/baner.scss'
 const Baner = () => {
 
     const { data: movie } = useRandomMovieQuery('')
+    console.log(movie)
     
     if(movie) {
         return (

@@ -10,10 +10,6 @@ import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 import { IoClose } from 'react-icons/io5'
 import '../style/my-list-page.scss'
 
-type myListMovieType = {
-
-}
-
 const MyList_Page = () => {
 
     const dispatch = useAppDispatch()
@@ -22,12 +18,12 @@ const MyList_Page = () => {
     useEffect(() => {
         const fetchMyListMovies = async () => {
             const data = await getDocs(collection(db, "my list"))
-            let raw = data.docs.map((doc) => ({...doc.data(), doc_id: doc.id}))
-            console.log(raw)
-            setMyListMovies(raw)
+            // let raw: IMyListMovie = data.docs.map((doc) => ({...doc.data(), doc_id: doc.id}))
+            // console.log(raw)
 
-            // setMyListMovies(data.docs.map((doc) => ({...doc.data(), doc_id: doc.id})))
-            // let raw = (data.forEach((doc) => { console.log(doc.data(), doc.id ) }))
+            setMyListMovies(data.docs.map((doc) => ({...doc.data(), doc_id: doc.id})))
+            // let raw = data.forEach((doc) => ({ ...doc.data(), doc_id: doc.id  }))
+            // setMyListMovies(raw)
 
         }
         fetchMyListMovies();
@@ -42,11 +38,11 @@ const MyList_Page = () => {
     return (
         <section className='my-list'>
             <Container width='1200px'>
-                <h1 className='my-list-title'>My List</h1>
+                <h1 className='my-list-title'>My List {myListMovies.length < 1 ? 'is empty' : ''}</h1>
                 <ul className='my-list-wrapper'>
                 {myListMovies.map(movie => (
                         <li className='my-list-item' key={movie.id}>
-                            <MoviePoster movie={movie} size={160}/>
+                            <MoviePoster movie={movie} size={260}/>
                             <p className='my-list-item-name'>{ movie.media_type === 'movie' ? movie.title : movie.name }</p>
                             <p className='item-date'>{movie.first_air_date && movie.first_air_date.substring(0,4) }</p>
                             <div className='popularity-stars'>
@@ -61,8 +57,9 @@ const MyList_Page = () => {
                             <SpringDiv/>
                             <span className='remove-icon-box'>
                                 <IoClose 
-                                    size={25} 
-                                    color='#fff' 
+                                    size={40} 
+                                    color='#e50914' 
+                                    title='remove from My List'
                                     onClick={() => { deleteDocFromMyList(movie.doc_id) }}
                                 />
                             </span>

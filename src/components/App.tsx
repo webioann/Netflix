@@ -65,7 +65,7 @@ const  App: React.FC = () => {
           <SpringDiv/>
           <SearchInput/>
           <KidsLink/>
-          <GiftLink/>
+          {/* <GiftLink/> */}
           <MessageBell/>
           <UserProfiles/>
         </NavbarPanel>
@@ -90,7 +90,6 @@ const  App: React.FC = () => {
           <Route path="*" element={<Notfound_Page />} />
           { currentUser &&  <Route path="profile" element={<Profile_Page />}/>}
         </Routes>
-
       </CTX.Provider>
     </ContainerFluid>
   )
