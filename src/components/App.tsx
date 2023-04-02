@@ -54,7 +54,7 @@ const  App: React.FC = () => {
 
   const [count, setCount] = useState(0)
   let A = 'Hello world'
-  const value = {count, setCount, A}
+  const value = {count, setCount, A};
 
   return (
     <ContainerFluid scroll={startVideoPlayer}>

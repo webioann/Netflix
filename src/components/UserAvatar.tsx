@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAppSelector } from '../redux/store'
+import { useAppSelector } from "../redux/store"
 import { USER_AVATAR } from '../data/constants'
 
 type userAvatarProps = {
