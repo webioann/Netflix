@@ -1,12 +1,12 @@
 @import './@index.scss';
 
-.header {
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 2;
-    .header-wrapper {
+    .navbar-wrapper {
         height: $header-hight;
         gap: 1rem;
         display: flex;

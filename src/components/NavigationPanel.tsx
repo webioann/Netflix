@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Container from './Container'
-import '../style/navbar-panel.scss'
+import '../style/navigation-panel.scss'
 
 type ChildrenProps = { children: JSX.Element[] | JSX.Element }
 
-const NavbarPanel: React.FC<ChildrenProps> = ({ children }) => {
+const NavigationPanel: React.FC<ChildrenProps> = ({ children }) => {
 
     const [fadedNavbar, setFadedNavbar] = useState(true)
 
@@ -23,9 +23,9 @@ const NavbarPanel: React.FC<ChildrenProps> = ({ children }) => {
     }, [])
     
     return (
-        <section className={fadedNavbar ? 'header nav-faded' : 'header nav-black'}>
+        <section className={fadedNavbar ? 'navbar nav-faded' : 'navbar nav-black'}>
             <Container width='1600px'>
-                <div className='header-wrapper'>
+                <div className='navbar-wrapper'>
                     {children}
                 </div>
             </Container>
@@ -33,4 +33,4 @@ const NavbarPanel: React.FC<ChildrenProps> = ({ children }) => {
     )
 }
 
-export default NavbarPanel;
+export default NavigationPanel;

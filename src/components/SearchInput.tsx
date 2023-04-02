@@ -9,7 +9,7 @@ const SearchInput = () => {
     const [value, setValue] = useState('')
 
     return (
-        <div className={search ? 'search' : 'shorted-search'}>
+        <div className={search ? 'search-bar' : 'shorted-search'}>
             <GoSearch 
                 size={24}
                 color='#fff'

@@ -12,7 +12,7 @@ import Signup_Page from './Signup_Page'
 import Profile_Page from './Profile_Page'
 import Notfound_Page from './Notfound_Page'
 import MoviesSlider from './MoviesSlider'
-import NavbarPanel from './NavbarPanel'
+import NavigationPanel from './NavigationPanel'
 import VideoPlayer_Popup from './VideoPlayer_Popup'
 import SearchInput from './SearchInput'
 import NetflixLogo from './NetflixLogo'
@@ -52,7 +52,7 @@ const  App: React.FC = () => {
 
   return (
     <ContainerFluid scroll={startVideoPlayer}>
-        <NavbarPanel>
+        <NavigationPanel>
           <NetflixLogo/>
           <Navigation/>
           <SpringDiv/>
@@ -61,7 +61,7 @@ const  App: React.FC = () => {
           {/* <GiftLink/> */}
           <MessageBell/>
           <UserProfiles/>
-        </NavbarPanel>
+        </NavigationPanel>
         <VideoPlayer_Popup/>
         <Routes>
           <Route path="/" element={

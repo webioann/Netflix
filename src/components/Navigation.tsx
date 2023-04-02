@@ -8,7 +8,7 @@ const Navigation = () => {
     const currentUser = useAppSelector(state => state.redux.currentUser)
 
     return (
-        <nav className='navbar'>
+        <nav className='nav'>
             <NavLink className={({isActive}) => isActive ? 'nav-link-active' : 'nav-link' } to={'/'}>Home</NavLink>
             <NavLink className={({isActive}) => isActive ? 'nav-link-active' : 'nav-link' } to={'/tvshows'}>TV Shows</NavLink>
             <NavLink className={({isActive}) => isActive ? 'nav-link-active' : 'nav-link' } to={'/movies'}>Movies</NavLink>
