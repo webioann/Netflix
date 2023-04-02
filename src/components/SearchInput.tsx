@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { GoSearch } from 'react-icons/go'
 import { IoClose } from 'react-icons/io5'
-import '../style/search-input.scss'
+import '../style/search-bar.scss'
 
 const SearchInput = () => {
 
@@ -9,7 +9,7 @@ const SearchInput = () => {
     const [value, setValue] = useState('')
 
     return (
-        <div className={search ? 'search-bar' : 'shorted-search'}>
+        <div className={search ? 'search-bar' : 'shorted-search-bar'}>
             <GoSearch 
                 size={24}
                 color='#fff'
