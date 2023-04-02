@@ -1,4 +1,4 @@
-import React, { useState, createContext} from 'react'
+import React from 'react'
 import { useAuthStateListener } from '../hooks/useAuthStateListener'
 import { useMyListStateListenertsts } from '../hooks/useMyListStateListener'
 import { Routes, Route } from "react-router-dom"
@@ -41,8 +41,6 @@ type state= {
 
 }
 
-export const CTX = createContext<state>({} as state)
-
 const  App: React.FC = () => {
   
   // ===== auth state listener =====
@@ -52,13 +50,8 @@ const  App: React.FC = () => {
   const currentUser = useAppSelector(state => state.redux.currentUser)
   const startVideoPlayer = useAppSelector(state => state.redux.startVideoPlayer)
 
-  const [count, setCount] = useState(0)
-  let A = 'Hello world'
-  const value = {count, setCount, A};
-
   return (
     <ContainerFluid scroll={startVideoPlayer}>
-      <CTX.Provider value={value}>
         <NavbarPanel>
           <NetflixLogo/>
           <Navigation/>
@@ -90,7 +83,6 @@ const  App: React.FC = () => {
           <Route path="*" element={<Notfound_Page />} />
           { currentUser &&  <Route path="profile" element={<Profile_Page />}/>}
         </Routes>
-      </CTX.Provider>
     </ContainerFluid>
   )
 }
