@@ -1,7 +1,11 @@
 @import './@index.scss';
 
 .nav {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
     display: flex;
+    justify-content: space-between;
     padding: 1rem;
     width: 100%;
     gap: 1rem;
@@ -12,5 +16,13 @@
     .nav-link {
         color: #fff;
         font-weight: 300;
+    }
+}
+@media (min-width: $sm) {
+    .nav {
+        position: relative;
+        justify-content: flex-start;
+        bottom: 0;
+        left: 0;
     }
 }
