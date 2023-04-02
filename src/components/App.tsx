@@ -14,7 +14,7 @@ import Notfound_Page from './Notfound_Page'
 import MoviesSlider from './MoviesSlider'
 import NavigationPanel from './NavigationPanel'
 import VideoPlayer_Popup from './VideoPlayer_Popup'
-import SearchInput from './SearchInput'
+import SearchBar from './SearchBar'
 import NetflixLogo from './NetflixLogo'
 import Navigation from './Navigation'
 import KidsLink from './KidsLink'
@@ -56,7 +56,7 @@ const  App: React.FC = () => {
           <NetflixLogo/>
           <Navigation/>
           <SpringDiv/>
-          <SearchInput/>
+          <SearchBar/>
           <KidsLink/>
           {/* <GiftLink/> */}
           <MessageBell/>

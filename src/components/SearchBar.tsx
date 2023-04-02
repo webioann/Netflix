@@ -3,7 +3,7 @@ import { GoSearch } from 'react-icons/go'
 import { IoClose } from 'react-icons/io5'
 import '../style/search-bar.scss'
 
-const SearchInput = () => {
+const SearchBar = () => {
 
     const [search, setSearch] = useState(false)
     const [value, setValue] = useState('')
@@ -36,4 +36,4 @@ const SearchInput = () => {
     )
 }
 
-export default SearchInput;
+export default SearchBar;
