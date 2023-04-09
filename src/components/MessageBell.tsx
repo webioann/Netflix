@@ -12,7 +12,7 @@ const MessageBell = () => {
             { messageCount > 0 && <span className='message-count' style={{color: '#fff'}}>
                 {messageCount}
             </span>}
-            <BsBellFill  size={20} color='#fff'/>
+            <BsBellFill  size={16} color='#fff'/>
         </Link>
     )
 }

@@ -2,6 +2,7 @@
 
 .slider-container {
     position: relative;
+
     .row-title {
         position: absolute;
         top: 0;
@@ -17,7 +18,7 @@
     .arrow-icons-wrapper {
         pointer-events: none;
         position: absolute;
-        top: 50%;
+        top: 40%;
         left: 0;
         min-width: 100%;
         display: flex;

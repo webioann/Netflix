@@ -6,7 +6,7 @@ const GiftLink = () => {
     
     return (
         <Link to={'/gifts'}>
-            <BiGift  size={20} color='#fff'/>
+            <BiGift  size={16} color='#fff'/>
         </Link>
     )
 }

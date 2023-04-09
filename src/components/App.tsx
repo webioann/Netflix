@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useAuthStateListener } from '../hooks/useAuthStateListener'
 import { useMyListStateListenertsts } from '../hooks/useMyListStateListener'
 import { Routes, Route } from "react-router-dom"
@@ -58,7 +58,7 @@ const  App: React.FC = () => {
           <SpringDiv/>
           <SearchBar/>
           <KidsLink/>
-          {/* <GiftLink/> */}
+          <GiftLink/>
           <MessageBell/>
           <UserProfiles/>
         </NavigationPanel>

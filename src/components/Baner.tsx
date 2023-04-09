@@ -12,7 +12,7 @@ import '../style/baner.scss'
 const Baner = () => {
 
     const { data: movie } = useRandomMovieQuery('')
-    console.log(movie)
+    // console.log(movie)
     
     if(movie) {
         return (
@@ -22,7 +22,7 @@ const Baner = () => {
                     <div className="baner-content">
                         <MovieNameExtractor movie={movie} fontSizeInRem={2.25} fontWeight={700}/>
                         <p className='baner-overview'>
-                            { movie.overview.length > 200 ? movie.overview.substring(0, 200 - 1) + '...' : movie.overview }
+                            { movie.overview.length > 150 ? movie.overview.substring(0, 150 - 1) + '...' : movie.overview }
                         </p>
                         <GenresList genres={movie.genre_ids} font={16}/>
 

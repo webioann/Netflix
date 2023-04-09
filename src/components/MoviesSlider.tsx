@@ -19,7 +19,10 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
     const onArrowClick = (direct: 'left' | 'right') => {
         if( rowRef.current ) {
             setIsMoved(true)
-            const { scrollLeft, clientWidth } = rowRef.current
+            const { scrollLeft, clientWidth, getBoundingClientRect } = rowRef.current
+
+            console.log(getBoundingClientRect)
+
             const scrollTo = direct === 'left' ? scrollLeft - clientWidth : scrollLeft + clientWidth
             rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' })
         }
@@ -31,6 +34,7 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
                 <h2 className='row-title'>{title}</h2>
                 <ul className="row-movies" ref={rowRef}>
                     { movies?.map(movie => ( <MovieCard movie={movie} media_type={media_type} key={movie.id}/> ))}
+
                 </ul>
                 <div className="arrow-icons-wrapper">
                     <SlArrowLeft className={ isMoved ? 'arrow' : 'hidden-arrow' }
@@ -44,6 +48,7 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
                         color='#fff' 
                     />
                 </div>
+
             </section>
         )
     }
@@ -53,3 +58,15 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
 }
 
 export default MoviesSlider;
+
+// const handleDirection = (direction) => {
+//     let distance = listRef.current.getBoundingClientRect().x - 70;
+//     if (direction === "left" && sliderPosition > 0) {
+//       listRef.current.style.transform = `translateX(${230 + distance}px)`;
+//       setSliderPosition(sliderPosition - 1);
+//     }
+//     if (direction === "right" && sliderPosition < 4) {
+//       listRef.current.style.transform = `translateX(${-230 + distance}px)`;
+//       setSliderPosition(sliderPosition + 1);
+//     }
+//   };
