@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { HiInformationCircle } from 'react-icons/hi'
 import GenresList from './GenresList'
 import Container from './Container'
@@ -12,7 +12,14 @@ import '../style/baner.scss'
 const Baner = () => {
 
     const { data: movie } = useRandomMovieQuery('')
-    // console.log(movie)
+    const [overview, setOverview] = useState('')
+
+    useEffect(() => {
+        if(movie?.overview) {
+            movie.overview.length > 150 ? setOverview(movie.overview.substring(0, 150 - 1) + '...') : setOverview(movie.overview) 
+        }
+        else { setOverview('') }
+    }, [movie])
     
     if(movie) {
         return (
@@ -21,9 +28,7 @@ const Baner = () => {
                 <Container width='1600px'>
                     <div className="baner-content">
                         <MovieNameExtractor movie={movie} fontSizeInRem={2.25} fontWeight={700}/>
-                        <p className='baner-overview'>
-                            { movie.overview.length > 150 ? movie.overview.substring(0, 150 - 1) + '...' : movie.overview }
-                        </p>
+                        <p className='baner-overview'>{ overview }</p>
                         <GenresList genres={movie.genre_ids} font={16}/>
 
                         <div className="baner-buttons-row">
