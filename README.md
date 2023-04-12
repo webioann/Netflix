@@ -9,14 +9,7 @@
 ![webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=flat&logo=webpack&logoColor=black)&nbsp;
 ![yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=flat&logo=yarn&logoColor=white)&nbsp;
 
-### used technologis 🚀
+### used technologies :
 
 -   [TMDB movies API](https://www.themoviedb.org)
--   JWT auth with :star: Email and Google use [Firebase SDK](https://firebase.google.com)
-
-<!-- ------------ LINKS ---------------------------------------->
-
-[A]: https://webioann.github.io/random_users// 'visite random_users app'
-[B]: https://img.shields.io/static/v1?label=random_users&message=https://webioann.github.io/random_users&color=gold
-[C]: https://img.shields.io/badge/random_users-%231572B6.svg?style=?style=for-the-badge&logo=github&logoColor=white
-[D]: https://github.com/webioann/random_users 'view code random_users app'
+-   JWT-auth with email and Google use [Firebase SDK :fire:](https://firebase.google.com)
