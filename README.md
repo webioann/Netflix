@@ -9,8 +9,8 @@
 ![webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=flat&logo=webpack&logoColor=black)&nbsp;
 ![yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=flat&logo=yarn&logoColor=white)&nbsp;
 
-## Used technologies :
+### Used technologies :
 
--   ### [TMDB movies :movie_camera: API](https://www.themoviedb.org)
--   ### JWT-auth with email and Google use [Firebase :fire: SDK](https://firebase.google.com)
--   ### fullstack for My List with Firestore from [Firebase data base](https://firebase.google.com)
+-   #### [TMDB movies :movie_camera: API](https://www.themoviedb.org)
+-   #### JWT-auth with email and Google use [Firebase :fire: SDK](https://firebase.google.com)
+-   #### fullstack for My List with Firestore from [Firebase data base](https://firebase.google.com)
