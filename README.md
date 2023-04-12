@@ -11,5 +11,5 @@
 
 ### used technologies :
 
--   [TMDB movies API :movie_camera:](https://www.themoviedb.org)
--   JWT-auth with email and Google use [Firebase SDK :fire:](https://firebase.google.com)
+-   [TMDB movies :movie_camera: API](https://www.themoviedb.org)
+-   JWT-auth with email and Google use [Firebase :fire: SDK](https://firebase.google.com)
