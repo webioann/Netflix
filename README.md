@@ -13,3 +13,4 @@
 
 -   ### [TMDB movies :movie_camera: API](https://www.themoviedb.org)
 -   ### JWT-auth with email and Google use [Firebase :fire: SDK](https://firebase.google.com)
+-   ### fullstack for My List with Firestore from [Firebase data base](https://firebase.google.com)
