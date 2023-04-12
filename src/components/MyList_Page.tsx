@@ -14,23 +14,19 @@ const MyList_Page = () => {
 
     const dispatch = useAppDispatch()
     const [myListMovies, setMyListMovies] = useState<IMyListMovie[] | []>([] as IMyListMovie[])
+    const currentUser = useAppSelector(state => state.redux.currentUser)
 
     useEffect(() => {
         const fetchMyListMovies = async () => {
-            const data = await getDocs(collection(db, "my list"))
-            // let raw: IMyListMovie = data.docs.map((doc) => ({...doc.data(), doc_id: doc.id}))
-            // console.log(raw)
-
+            const data = await getDocs(collection(db, `my list-${currentUser?.currentUser_Email}`))
             setMyListMovies(data.docs.map((doc) => ({...doc.data(), doc_id: doc.id})))
-            // let raw = data.forEach((doc) => ({ ...doc.data(), doc_id: doc.id  }))
-            // setMyListMovies(raw)
-
         }
         fetchMyListMovies();
-    }, [])
+    }, [currentUser])
+    
     //  === delete movie (doc) from My List ===
     const deleteDocFromMyList = async (doc_id: string) => {
-        await deleteDoc(doc(db, 'my list', doc_id))
+        await deleteDoc(doc(db, `my list-${currentUser?.currentUser_Email}`, doc_id))
         let filtered = myListMovies.filter((item) => { return item.doc_id !== doc_id})
         setMyListMovies(filtered)
     }

@@ -22,10 +22,12 @@ const SaveMovieInMyList_Button: React.FC<ISaveMovieInMyList> = ({ movie, media_t
 
     const dispatch = useAppDispatch()
     const myListId = useAppSelector(state => state.redux.myListState)
+    const currentUser = useAppSelector(state => state.redux.currentUser)
 
     const saveMovieInMyList = async ({ movie, media_type }: IParamsOnSave) => {
-        await setDoc(doc(db, 'my list', movie.id.toString()), { ...movie, media_type: media_type })
-        dispatch(setMyListState(movie.id.toString()))
+        currentUser &&    
+            await setDoc(doc(db, `my list-${currentUser.currentUser_Email}`, movie.id.toString()), { ...movie, media_type: media_type })
+            dispatch(setMyListState(movie.id.toString()))
     }
     
     return (
