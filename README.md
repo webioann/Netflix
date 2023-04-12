@@ -12,5 +12,5 @@
 ### Used technologies :
 
 -   #### [TMDB movies :movie_camera: API](https://www.themoviedb.org)
--   #### JWT-auth with email and Google use [Firebase :fire: SDK](https://firebase.google.com)
--   #### fullstack for My List with [Firebase firestore](https://firebase.google.com)
+-   #### JWT-auth with email and Google use [Firebase SDK :fire:](https://firebase.google.com)
+-   #### fullstack for My List with [Firebase firestore :fire:](https://firebase.google.com)
