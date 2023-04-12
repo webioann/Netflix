@@ -1,4 +1,4 @@
-# :star: [Netflix clone](https://netflix-clone-7f556.web.app/)
+# [Netflix clone](https://netflix-clone-7f556.web.app/) :rocket:
 
 ![react](https://img.shields.io/badge/react-blue.svg?style=flat&logo=react&logoColor=white)&nbsp;
 ![typescript](https://img.shields.io/badge/typescript-%231572B6.svg?style=flat&logo=typescript&logoColor=white)&nbsp;
