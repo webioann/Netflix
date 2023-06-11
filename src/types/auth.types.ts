@@ -9,5 +9,7 @@ export interface ICurrentUser {
     currentUser_Email: string | null
     currentUser_ID: string | null
     currentUser_PhotoURL: string | null
+    currentUser_List: string | null
+
 }
 

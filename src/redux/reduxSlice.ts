@@ -18,7 +18,7 @@ const initialState: InitialStateType = {
     currentUser: null,
     selectedMovie: null,
     startVideoPlayer: false,
-    myListState: ['0'],
+    myListState: [],
 }
 
 export const reduxSlice = createSlice({
@@ -31,6 +31,7 @@ export const reduxSlice = createSlice({
                 currentUser_Email: actions.payload.email,
                 currentUser_ID: actions.payload.userID,
                 currentUser_PhotoURL: actions.payload.userPhotoURL,
+                currentUser_List: `${actions.payload.userName}_my list`,
             }
             // localStorage.setItem("storedCurrentUser", JSON.stringify(state.currentUser));
         },

@@ -24,11 +24,14 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_t
     const dispatch = useAppDispatch()
     const myListId = useAppSelector(state => state.redux.myListState)
     const currentUser = useAppSelector(state => state.redux.currentUser)
+    const currentUserMyListRef = useAppSelector(state => state.redux.currentUser?.currentUser_List)
+
 
     const saveMovieInMyList = async ({ movie, media_type }: IParamsOnSave) => {
-        currentUser &&    
-            await setDoc(doc(db, `my list-${currentUser.currentUser_Email}`, movie.id.toString()), { ...movie, media_type: media_type })
+        if(currentUserMyListRef) {
+            await setDoc(doc(db, currentUserMyListRef, movie.id.toString()), { ...movie, media_type: media_type })
             dispatch(setMyListState(movie.id.toString()))
+        }
     }
     
     return (
@@ -38,7 +41,8 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_t
             >
             <i>{ myListId.includes(movie.id.toString()) && currentUser 
                 ? <AiOutlineCheck size={10} color='#fff' title='you save thise movie'/> 
-                : <AiOutlinePlus size={12} color='#fff' title='save in My List'/> }</i>
+                : <AiOutlinePlus size={12} color='#fff' title='save in My List'/>}
+            </i>
             { title }
         </button>
     )

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { setMyListState } from '../redux/reduxSlice'
+
 import Container from './Container'
 import MoviePoster from './MoviePoster'
 import SpringDiv from './SpringDiv'
@@ -15,14 +17,18 @@ const MyList_Page = () => {
     const dispatch = useAppDispatch()
     const [myListMovies, setMyListMovies] = useState<IMyListMovie[] | []>([] as IMyListMovie[])
     const currentUser = useAppSelector(state => state.redux.currentUser)
+    const currentUserMyListRef = useAppSelector(state => state.redux.currentUser?.currentUser_List)
+
 
     useEffect(() => {
         const fetchMyListMovies = async () => {
-            const data = await getDocs(collection(db, `my list-${currentUser?.currentUser_Email}`))
-            setMyListMovies(data.docs.map((doc) => ({...doc.data(), doc_id: doc.id})))
+            if(currentUserMyListRef) {
+                const data = await getDocs(collection(db, currentUserMyListRef))
+                setMyListMovies(data.docs.map((doc) => ({...doc.data(), doc_id: doc.id})))
+            }
         }
         fetchMyListMovies();
-    }, [currentUser])
+    }, [currentUserMyListRef])
     
     //  === delete movie (doc) from My List ===
     const deleteDocFromMyList = async (doc_id: string) => {
