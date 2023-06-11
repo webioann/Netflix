@@ -6,7 +6,7 @@ import MoviePoster from './MoviePoster'
 import SpringDiv from './SpringDiv'
 import { db } from '../firebase.config'
 import { collection, getDocs, onSnapshot, doc, deleteDoc } from 'firebase/firestore'
-import { IMyListMovie } from '../types/mylist.types'
+import { IMyListMovie, IEmptyMyList } from '../types/mylist.types'
 import { useAppDispatch, useAppSelector } from '../redux/store'
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 import { IoClose } from 'react-icons/io5'
@@ -15,7 +15,7 @@ import '../style/my-list-page.scss'
 const MyList_Page = () => {
 
     const dispatch = useAppDispatch()
-    const [myListMovies, setMyListMovies] = useState<IMyListMovie[] | []>([] as IMyListMovie[])
+    const [myListMovies, setMyListMovies] = useState<IMyListMovie[]>([] as IMyListMovie[])
     const user = useAppSelector(state => state.redux.user?.name)
     const my_list = useAppSelector(state => state.redux.myList)
 
@@ -23,8 +23,9 @@ const MyList_Page = () => {
         const fetchMyListMovies = async () => {
             if(user) {
                 const data = await getDocs(collection(db, `${user} my list`))
-                setMyListMovies(data.docs.map((doc) => ({...doc.data(), doc_id: doc.id})))
-                console.log(my_list)
+                let raw = await data.docs.map((doc) => ({...doc.data(), doc_id: doc.id}))
+                console.log(raw)
+                setMyListMovies(raw)
             }
         }
         fetchMyListMovies();
@@ -33,7 +34,9 @@ const MyList_Page = () => {
     //  === delete movie (doc) from My List ===
     const deleteDocFromMyList = async (doc_id: string) => {
         if(user) {
+            // remove doc from server
             await deleteDoc(doc(db, `${user} my list`, doc_id))
+            // remove doc from local state
             let filtered = myListMovies.filter((item) => { return item.doc_id !== doc_id})
             setMyListMovies(filtered)
         }
@@ -72,7 +75,6 @@ const MyList_Page = () => {
                 </ul>
             </Container>
         </section>
-
     )
 }
 

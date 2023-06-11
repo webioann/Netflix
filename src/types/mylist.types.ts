@@ -18,3 +18,6 @@ export interface IMyListMovie {
     vote_average: number
     vote_count: number
 };
+export interface IEmptyMyList {
+    doc_id: string
+}

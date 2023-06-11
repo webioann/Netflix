@@ -24,16 +24,25 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_t
     const dispatch = useAppDispatch()
     const myListId = useAppSelector(state => state.redux.myListState)
     const user = useAppSelector(state => state.redux.user?.name)
+    const collectionRef = collection(db, `${user} my list`)
 
+    // const saveMovieInMyList = async ({ movie, media_type }: IParamsOnSave) => {
+    //     if(user) {
+    //         await setDoc(doc(db, `${user} my list`, movie.id.toString()), { ...movie, media_type: media_type })
+    //         dispatch(createMyList(movie))
+
+    //         dispatch(setMyListState(movie.id.toString()))
+    //     }
+    // }
     const saveMovieInMyList = async ({ movie, media_type }: IParamsOnSave) => {
         if(user) {
-            await setDoc(doc(db, `${user} my list`, movie.id.toString()), { ...movie, media_type: media_type })
+            await addDoc(collectionRef, { ...movie, media_type: media_type })
             dispatch(createMyList(movie))
 
             dispatch(setMyListState(movie.id.toString()))
         }
     }
-    
+
     return (
         <button 
             onClick={() => saveMovieInMyList({movie, media_type: media_type})}
