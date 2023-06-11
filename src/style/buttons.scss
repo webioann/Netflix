@@ -17,7 +17,18 @@
 .square-button {
     background-color: $black-glass;
     font-weight: 400;
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    max-width: 10rem;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+    border-radius: $br-main;
+    color: $light;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
 }
 .small-circle-button {
     width: 30px;
@@ -31,5 +42,13 @@
     &:hover {
         border: 1px solid $light;
         cursor: pointer;
+    }
+}
+.more-info-button-text {
+    display: none;
+}
+@media (min-width: $xs) {
+    .more-info-button-text {
+        display: block;
     }
 }

@@ -17,7 +17,7 @@ const PlayVideo_Button: React.FC<PlayVideo_ButtonType> = ({ ui, media_type, movi
 
     return (
         <button 
-            className={ ui === 'square' ? 'square-button g-button' : 'circle-button'}
+            className={ ui === 'square' ? 'square-button' : 'circle-button'}
             onClick={() => {
                 dispatch(selectMovie({
                     media_type: media_type,
@@ -26,10 +26,7 @@ const PlayVideo_Button: React.FC<PlayVideo_ButtonType> = ({ ui, media_type, movi
                 dispatch(switchVideoPlayer(true))
             }}
             >
-            <FaPlay  
-                size={20}
-                color='#fff'
-            />
+            <FaPlay color='#fff'/>
             { title }
         </button>
     )

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { MdInfoOutline } from 'react-icons/md'
 import GenresList from './GenresList'
 import Container from './Container'
 import MovieNameExtractor from './MovieNameExtractor'
+import Button_MoreInfo from './Button_MoreInfo'
 import PlayVideo_Button from './PlayVideo_Button'
 import SaveMovieInMyList_Button from './SaveInMyList_Button'
 import { IMG_BASE_URL } from '../data/constants'
@@ -34,10 +34,7 @@ const Baner = () => {
                         <div className="baner-buttons-row">
                             <PlayVideo_Button ui='square' title='Play' media_type='tv' movie_id={movie.id}/>
                             <SaveMovieInMyList_Button title='My List' ui='square' movie={movie} media_type='tv'/>
-                            <button className='more-info-button g-button'>
-                                <MdInfoOutline color='#fff' size={24}/>
-                                <span className='more-info-button-text'>More Info</span>
-                            </button>
+                            <Button_MoreInfo/>
                             {/* <div className="spring-div" style={{ flex: 1 }}/> */}
                             {/* <button className="circle-button">
                                 <HiVolumeOff size={24} color='#fff'/>
