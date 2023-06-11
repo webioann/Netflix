@@ -16,17 +16,19 @@ const PlayVideo_Button: React.FC<PlayVideo_ButtonType> = ({ ui, media_type, movi
     const dispatch = useAppDispatch()
 
     return (
-        <button className={ ui === 'square' ? 'square-button g-button' : 'circle-button'}>
+        <button 
+            className={ ui === 'square' ? 'square-button g-button' : 'circle-button'}
+            onClick={() => {
+                dispatch(selectMovie({
+                    media_type: media_type,
+                    movie_id: movie_id
+                }))
+                dispatch(switchVideoPlayer(true))
+            }}
+            >
             <IoMdPlay  
                 size={23}
                 color='#e50914'
-                onClick={() => {
-                    dispatch(selectMovie({
-                        media_type: media_type,
-                        movie_id: movie_id
-                    }))
-                    dispatch(switchVideoPlayer(true))
-                }}
             />
             { title }
         </button>
