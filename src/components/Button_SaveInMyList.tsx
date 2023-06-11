@@ -2,6 +2,7 @@ import React from 'react'
 import { useAppDispatch, useAppSelector } from '../redux/store'
 import { setMyListState } from '../redux/reduxSlice'
 import { FaCheck, FaPlus } from 'react-icons/fa'
+import { AiOutlinePlus, AiOutlineCheck } from 'react-icons/ai'
 import { db } from '../firebase.config'
 import { collection, doc, getDocs, query, onSnapshot, addDoc, setDoc, deleteDoc, updateDoc } from 'firebase/firestore'
 import { IMovie } from '../types/movies.types'
@@ -36,8 +37,8 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_t
             className={ ui === 'square' ? 'square-button' : 'small-circle circle-button'}
             >
             <i>{ myListId.includes(movie.id.toString()) && currentUser 
-                ? <FaCheck size={10} color='#fff' title='you save thise movie'/> 
-                : <FaPlus size={10} color='#fff' title='save in My List'/> }</i>
+                ? <AiOutlineCheck size={10} color='#fff' title='you save thise movie'/> 
+                : <AiOutlinePlus size={12} color='#fff' title='save in My List'/> }</i>
             { title }
         </button>
     )
