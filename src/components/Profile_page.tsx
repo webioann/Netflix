@@ -7,7 +7,7 @@ import '../style/profile-page.scss'
 
 const Profile_Page = () => {
 
-    const currentUser = useAppSelector(state => state.redux.currentUser)
+    const user = useAppSelector(state => state.redux.user)
 
     return (
         <div className={`profile-page`}>
@@ -20,25 +20,25 @@ const Profile_Page = () => {
                     /> */}
                     <UserAvatar size={35} radius='4px'/>
                     <ul className="profile-main">
-                        <li className='profile-user-name'>{currentUser?.currentUser_Name}</li>
+                        <li className='profile-user-name'>{user?.name}</li>
                         <li className='plans-header'>
                             {`Plans (currentPlan: premium)`}
                         </li>
                         <li>
                             <span>Email :</span>
-                            <span>{currentUser?.currentUser_Email}</span>
+                            <span>{user?.email}</span>
                         </li>
                         <li>
                             <span>Use ID :</span>
-                            <span>{currentUser?.currentUser_ID}</span>
+                            <span>{user?.user_id}</span>
                         </li>
                         <li>
                             <span>User nikname :</span>
-                            <span>{currentUser?.currentUser_Name}</span>
+                            <span>{user?.name}</span>
                         </li>
                         <li>
                             <span>Email :</span>
-                            <span>{currentUser?.currentUser_Email}</span>
+                            <span>{user?.email}</span>
                         </li>
 
                     </ul>

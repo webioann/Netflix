@@ -5,11 +5,9 @@ export interface IAuthButtonProps {
     setWarning: (param: boolean) => void
 }
 export interface ICurrentUser {
-    currentUser_Name: string | null
-    currentUser_Email: string | null
-    currentUser_ID: string | null
-    currentUser_PhotoURL: string | null
-    currentUser_List: string | null
-
+    name: string | null
+    email: string | null
+    user_id: string | null
+    photoURL: string | null
 }
 

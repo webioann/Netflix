@@ -1,6 +1,6 @@
 import { createSlice,PayloadAction } from "@reduxjs/toolkit"
 import { ICurrentUser } from '../types/auth.types'
-// import { IMyListMovies } from '../types/mylist.types'
+import { IMovie } from '../types/movies.types'
 
 type selectedMovieType = {
     media_type: 'movie' | 'tv'
@@ -8,17 +8,19 @@ type selectedMovieType = {
 }
 
 type InitialStateType = {
-    currentUser: ICurrentUser | null
+    user: ICurrentUser | null
     selectedMovie: selectedMovieType | null
     startVideoPlayer: boolean
     myListState: string[]
+    myList: IMovie[] | []
 }
 
 const initialState: InitialStateType = {
-    currentUser: null,
+    user: null,
     selectedMovie: null,
     startVideoPlayer: false,
     myListState: [],
+    myList: []
 }
 
 export const reduxSlice = createSlice({
@@ -26,18 +28,17 @@ export const reduxSlice = createSlice({
     initialState,
     reducers: {
         createCurrentUser: (state, actions) => {
-            state.currentUser = {
-                currentUser_Name: actions.payload.userName, 
-                currentUser_Email: actions.payload.email,
-                currentUser_ID: actions.payload.userID,
-                currentUser_PhotoURL: actions.payload.userPhotoURL,
-                currentUser_List: `${actions.payload.userName}_my list`,
+            state.user = {
+                name: actions.payload.userName, 
+                email: actions.payload.email,
+                user_id: actions.payload.userID,
+                photoURL: actions.payload.userPhotoURL,
             }
-            // localStorage.setItem("storedCurrentUser", JSON.stringify(state.currentUser));
+            // localStorage.setItem("storedUser", JSON.stringify(state.user));
         },
         deleteCurrentUser: (state) => {
-            state.currentUser = null
-            // localStorage.removeItem('storedCurrentUser');
+            state.user = null
+            // localStorage.removeItem('storedUser');
         },
         selectMovie: (state, actions) => { state.selectedMovie = {
             media_type: actions.payload.media_type,
@@ -46,6 +47,7 @@ export const reduxSlice = createSlice({
         resetMovieData: (state) => { state.selectedMovie = null },
         switchVideoPlayer:  (state, actions) => { state.startVideoPlayer = actions.payload },
         setMyListState: (state, actions) => { state.myListState = actions.payload },
+        createMyList: (state, actions) => { state.myList = actions.payload },
     }
 });
 
@@ -56,7 +58,7 @@ export const {
     resetMovieData,
     switchVideoPlayer,
     setMyListState,
-    
+    createMyList
 } = reduxSlice.actions;
 
 export default reduxSlice.reducer;

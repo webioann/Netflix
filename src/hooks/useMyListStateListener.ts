@@ -7,19 +7,17 @@ import { setMyListState } from '../redux/reduxSlice'
 export const useMyListStateListenertsts = () => {
 
     const dispatch = useAppDispatch()
-    const myListId = useAppSelector(state => state.redux.myListState)
-    const currentUserMyListRef = useAppSelector(state => state.redux.currentUser?.currentUser_List)
+    const user = useAppSelector(state => state.redux.user?.name)
 
     useEffect(() => {
         const fetchMyList = async () => {
-            if(currentUserMyListRef) {
-                const data = await getDocs(collection(db, currentUserMyListRef))
+            if(user) {
+                const data = await getDocs(collection(db, `${user} my list`))
                 dispatch(setMyListState(data.docs.map((doc) => doc.id.toString() )))
-                console.log(myListId)
             }
         }
         fetchMyList();
-    }, [myListId])
+    }, [])
 };
 // const unsub = onSnapshot(doc(db, "cities", "SF"), (doc) => {
 //     console.log("Current data: ", doc.data());

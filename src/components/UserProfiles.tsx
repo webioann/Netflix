@@ -6,12 +6,12 @@ import { IoMdArrowDropdown } from 'react-icons/io'
 
 const UserProfiles  = () => {
 
-    const currentUser = useAppSelector(state => state.redux.currentUser)
+    const user = useAppSelector(state => state.redux.user)
 
     return (
         <div>
             <Link 
-                to={currentUser ? '/profile' : '/login'} 
+                to={user ? '/profile' : '/login'} 
                 style={{display: 'flex', alignItems: 'center'}}
                 >
                 <UserAvatar size={30} radius='4px'/>

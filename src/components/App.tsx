@@ -47,7 +47,7 @@ const  App: React.FC = () => {
   useAuthStateListener();
   useMyListStateListenertsts();
 
-  const currentUser = useAppSelector(state => state.redux.currentUser)
+  const user = useAppSelector(state => state.redux.user)
   const startVideoPlayer = useAppSelector(state => state.redux.startVideoPlayer)
 
   return (
@@ -81,7 +81,7 @@ const  App: React.FC = () => {
           <Route path="login" element={<Login_Page />}/>
           <Route path="signup" element={<Signup_Page />}/>
           <Route path="*" element={<Notfound_Page />} />
-          { currentUser &&  <Route path="profile" element={<Profile_Page />}/>}
+          { user &&  <Route path="profile" element={<Profile_Page />}/>}
         </Routes>
     </ContainerFluid>
   )

@@ -6,7 +6,7 @@ import MovieNameExtractor from './MovieNameExtractor'
 import Button_PlayVideo from './Button_PlayVideo'
 import Button_VolumeOff from './Button_VolumeOff'
 import Button_Like from './Button_Like'
-import Button_Dislike from './Button_DisLike'
+import Button_Dislike from './Button_Dislike'
 import Button_SaveInMyList from './Button_SaveInMyList'
 import '../style/movie-card.scss'
 
