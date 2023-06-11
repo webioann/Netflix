@@ -3,7 +3,7 @@ import { useAppSelector, useAppDispatch } from '../redux/store'
 import { resetMovieData, switchVideoPlayer } from '../redux/reduxSlice';
 import { useLazyGetTrailerVideoURLQuery } from '../redux/VIDEO_API'
 import VideoPlayer from './VideoPlayer'
-import VideoClose_Button from './VideoClose_Button'
+import Button_CloseVideo from './Button_CloseVideo'
 import { SlArrowDown } from 'react-icons/sl'
 import '../style/video-player-popup.scss'
 
@@ -40,7 +40,7 @@ const VideoPlayer_Popup = () => {
     return (
         <div className={startVideoPlayer ? 'popup-layout' : 'hidden-popup'}>
             <div className="popup-content">
-                <VideoClose_Button onClose={closePlayer} color='red' size={30}/>
+                <Button_CloseVideo onClose={closePlayer} color='red' size={30}/>
                 <VideoPlayer open={startVideoPlayer} data={trailerURL}/>
                 {/* <div className="show-more-icon-box">
                     <SlArrowDown className='show-more-icon' 

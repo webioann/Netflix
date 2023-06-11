@@ -18,7 +18,7 @@ interface IParamsOnSave {
     media_type: 'movie' | 'tv'
 }
 
-const SaveMovieInMyList_Button: React.FC<ISaveMovieInMyList> = ({ movie, media_type, ui, title }) => {
+const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_type, ui, title }) => {
 
     const dispatch = useAppDispatch()
     const myListId = useAppSelector(state => state.redux.myListState)
@@ -35,13 +35,15 @@ const SaveMovieInMyList_Button: React.FC<ISaveMovieInMyList> = ({ movie, media_t
             onClick={() => saveMovieInMyList({movie, media_type: media_type})}
             className={ ui === 'square' ? 'square-button' : 'small-circle-button'}
             >
-            <i>{ myListId.includes(movie.id.toString()) && currentUser ? <FaCheck size={15} color='#fff' title='you save thise movie'/> : <FaPlus size={15} color='#fff' title='save in My List'/> }</i>
+            <i>{ myListId.includes(movie.id.toString()) && currentUser 
+                ? <FaCheck size={12} color='#fff' title='you save thise movie'/> 
+                : <FaPlus size={12} color='#fff' title='save in My List'/> }</i>
             { title }
         </button>
     )
 }
 
-export default SaveMovieInMyList_Button;
+export default Button_SaveMovieInMyList;
 // saved ? <FaCheck size={15} color='#fff' title='you save thise movie'/> : 
 // await setDoc(doc(db, 'my list', movie.id.toString()), { ...movie, media_type: media_type });
 // 

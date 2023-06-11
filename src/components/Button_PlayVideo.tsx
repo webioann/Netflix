@@ -11,7 +11,7 @@ type PlayVideo_ButtonType = {
     title?: string
 }
 
-const PlayVideo_Button: React.FC<PlayVideo_ButtonType> = ({ ui, media_type, movie_id, title }) => {
+const Button_PlayVideo: React.FC<PlayVideo_ButtonType> = ({ ui, media_type, movie_id, title }) => {
 
     const dispatch = useAppDispatch()
 
@@ -32,4 +32,4 @@ const PlayVideo_Button: React.FC<PlayVideo_ButtonType> = ({ ui, media_type, movi
     )
 }
 
-export default PlayVideo_Button;
+export default Button_PlayVideo;
