@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { useAppSelector } from '../redux/store'
-import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
-import { AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike  } from 'react-icons/ai'
 import { IMovie } from '../types/movies.types'
 import GenresList from './GenresList'
 import MoviePoster from './MoviePoster'
 import MovieNameExtractor from './MovieNameExtractor'
 import PlayVideo_Button from './PlayVideo_Button'
+import Button_VolumeOff from './Button_VolumeOff'
+import Button_Like from './Button_Like'
+import Button_Dislike from './Button_DisLike'
 import SaveInMyList_Button from './SaveInMyList_Button'
 import '../style/movie-card.scss'
-import '../style/buttons.scss'
 
 interface IMovieCard {
     movie: IMovie
@@ -29,12 +28,9 @@ const MovieCard: React.FC<IMovieCard> = ({ movie, media_type }) => {
                 </div>
 
                 <div className="poster-controls-buttons">
-                    <button className="small-circle-button">
-                        <HiVolumeOff size={15} color='#fff'/>
-                    </button>
-                    <button className="small-circle-button">
-                        <AiOutlineDislike size={15} color='#fff'/>
-                    </button>
+                    <Button_VolumeOff/>
+                    <Button_Like/>
+                    <Button_Dislike/>
                     <SaveInMyList_Button ui='circle' movie={movie} media_type={media_type}/>
                 </div>
             </div>
