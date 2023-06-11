@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAppDispatch } from '../redux/store'
 import { selectMovie, switchVideoPlayer } from '../redux/reduxSlice';
-import { IoMdPlay } from 'react-icons/io'
+import { FaPlay } from 'react-icons/fa'
 import '../style/buttons.scss'
 
 type PlayVideo_ButtonType = {
@@ -26,9 +26,9 @@ const PlayVideo_Button: React.FC<PlayVideo_ButtonType> = ({ ui, media_type, movi
                 dispatch(switchVideoPlayer(true))
             }}
             >
-            <IoMdPlay  
-                size={23}
-                color='#e50914'
+            <FaPlay  
+                size={20}
+                color='#fff'
             />
             { title }
         </button>

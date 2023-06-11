@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { HiInformationCircle } from 'react-icons/hi'
+import { MdInfoOutline } from 'react-icons/md'
 import GenresList from './GenresList'
 import Container from './Container'
 import MovieNameExtractor from './MovieNameExtractor'
@@ -35,7 +35,7 @@ const Baner = () => {
                             <PlayVideo_Button ui='square' title='Play' media_type='tv' movie_id={movie.id}/>
                             <SaveMovieInMyList_Button title='My List' ui='square' movie={movie} media_type='tv'/>
                             <button className='more-info-button g-button'>
-                                <HiInformationCircle color='#fff' size={24}/>
+                                <MdInfoOutline color='#fff' size={24}/>
                                 <span className='more-info-button-text'>More Info</span>
                             </button>
                             {/* <div className="spring-div" style={{ flex: 1 }}/> */}
