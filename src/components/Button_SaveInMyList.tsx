@@ -33,11 +33,11 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_t
     return (
         <button 
             onClick={() => saveMovieInMyList({movie, media_type: media_type})}
-            className={ ui === 'square' ? 'square-button' : 'small-circle-button'}
+            className={ ui === 'square' ? 'square-button' : 'small-circle circle-button'}
             >
             <i>{ myListId.includes(movie.id.toString()) && currentUser 
-                ? <FaCheck size={12} color='#fff' title='you save thise movie'/> 
-                : <FaPlus size={12} color='#fff' title='save in My List'/> }</i>
+                ? <FaCheck size={10} color='#fff' title='you save thise movie'/> 
+                : <FaPlus size={10} color='#fff' title='save in My List'/> }</i>
             { title }
         </button>
     )

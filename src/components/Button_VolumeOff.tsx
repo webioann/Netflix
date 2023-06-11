@@ -4,8 +4,8 @@ import '../style/buttons.scss'
 
 const Button_VolumeOff = () => {
     return (
-        <button className="small-circle-button">
-            <HiVolumeOff size={12} color='#fff'/>
+        <button className="small-circle circle-button">
+            <HiVolumeOff size={10} color='#fff'/>
         </button>
     )
 }

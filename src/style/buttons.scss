@@ -1,18 +1,26 @@
 @import './@index.scss';
 
 .circle-button {
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
     border: 1px solid $less-white;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 5px;
     background-color: $black-glass;
     &:hover {
+        border: 1px solid $light;
         cursor: pointer;
     }
+}
+.big-circle{
+    width: 30px;
+    height: 30px;
+    padding-left: 3px;
+}
+.small-circle{
+    width: 20px;
+    height: 20px;
+    // padding-left: 3px;
 }
 .square-button {
     background-color: $black-glass;
@@ -27,20 +35,6 @@
     color: $light;
     position: relative;
     &:hover {
-        cursor: pointer;
-    }
-}
-.small-circle-button {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 1px solid $less-white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $black-glass;
-    &:hover {
-        border: 1px solid $light;
         cursor: pointer;
     }
 }
