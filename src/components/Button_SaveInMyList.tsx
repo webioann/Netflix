@@ -4,7 +4,7 @@ import { setMyListState, createMyList } from '../redux/reduxSlice'
 import { FaCheck, FaPlus } from 'react-icons/fa'
 import { AiOutlinePlus, AiOutlineCheck } from 'react-icons/ai'
 import { db } from '../firebase.config'
-import { collection, doc, getDocs, query, onSnapshot, addDoc, setDoc, deleteDoc, updateDoc } from 'firebase/firestore'
+import { collection, doc, getDocs, query, onSnapshot, addDoc, setDoc, deleteDoc, updateDoc, arrayUnion } from 'firebase/firestore'
 import { IMovie } from '../types/movies.types'
 import '../style/buttons.scss'
 
@@ -23,20 +23,11 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_t
 
     const dispatch = useAppDispatch()
     const myListId = useAppSelector(state => state.redux.myListState)
-    const user = useAppSelector(state => state.redux.user?.name)
-    const collectionRef = collection(db, `${user} my list`)
+    const user = useAppSelector(state => state.redux.user?.email)
 
-    // const saveMovieInMyList = async ({ movie, media_type }: IParamsOnSave) => {
-    //     if(user) {
-    //         await setDoc(doc(db, `${user} my list`, movie.id.toString()), { ...movie, media_type: media_type })
-    //         dispatch(createMyList(movie))
-
-    //         dispatch(setMyListState(movie.id.toString()))
-    //     }
-    // }
     const saveMovieInMyList = async ({ movie, media_type }: IParamsOnSave) => {
         if(user) {
-            await addDoc(collectionRef, { ...movie, media_type: media_type })
+            await setDoc(doc(db, `${user}`, movie.id.toString()), { ...movie, media_type: media_type })
             dispatch(createMyList(movie))
 
             dispatch(setMyListState(movie.id.toString()))
@@ -58,6 +49,3 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_t
 }
 
 export default Button_SaveMovieInMyList;
-// saved ? <FaCheck size={15} color='#fff' title='you save thise movie'/> : 
-// await setDoc(doc(db, 'my list', movie.id.toString()), { ...movie, media_type: media_type });
-// 

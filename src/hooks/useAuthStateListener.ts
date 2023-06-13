@@ -2,7 +2,8 @@ import { useEffect } from 'react'
 import { useAppDispatch } from '../redux/store'
 import { createCurrentUser, deleteCurrentUser } from '../redux/reduxSlice'
 import { onAuthStateChanged } from "firebase/auth"
-import { auth } from '../firebase.config'
+import { auth, db } from '../firebase.config'
+import { doc, setDoc} from 'firebase/firestore'
 
 export const useAuthStateListener = () => {
 
@@ -25,6 +26,7 @@ export const useAuthStateListener = () => {
                     userID: user.uid,
                     userPhotoURL: user.photoURL,
                 }))
+                // setDoc(doc(db, `${user.email}`, 'my list'), {})
             }
             else{
                 dispatch(deleteCurrentUser())
