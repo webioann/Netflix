@@ -1,18 +1,18 @@
 import React, { useState, useRef } from 'react'
-import { useFetchMoviesQuery } from '../redux/allMovies_api'
+import { useGetMoviesByGenreQuery } from '../redux/moviesByGenre_api'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
 import MovieCard from './MovieCard'
 import '../style/movies-slider.scss'
 
 type MovieRowPropsType = {
     title: string
-    path: string
-    media_type: 'movie' | 'tv' 
+    media: 'tv' | 'movie'
+    genre: number
 }
 
-const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
+const Slider = ({ title, media, genre }: MovieRowPropsType) => {
 
-    const { data: movies } = useFetchMoviesQuery({path: path})
+    const { data: movies } = useGetMoviesByGenreQuery({ media: media, genre: genre })
     const rowRef = useRef<HTMLUListElement>(null)
     const [isMoved, setIsMoved] = useState(false)
 
@@ -25,12 +25,14 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
         }
     }
 
+    // movies && console.log(movies[1])
+
     if( movies ) {
         return (
             <section className='slider-container'>
                 <h2 className='row-title'>{title}</h2>
                 <ul className="row-movies" ref={rowRef}>
-                    { movies?.map(movie => ( <MovieCard movie={movie} media_type={media_type} key={movie.id}/> ))}
+                    { movies?.map(movie => ( <MovieCard movie={movie} media_type={media} key={movie.id}/> ))}
                 </ul>
                 <div className="arrow-icons-wrapper">
                     <SlArrowLeft className={ isMoved ? 'arrow' : 'hidden-arrow' }
@@ -52,5 +54,5 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
     } 
 }
 
-export default MoviesSlider;
+export default Slider;
 

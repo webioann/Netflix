@@ -6,7 +6,7 @@ import Button_MoreInfo from './Button_MoreInfo'
 import Button_PlayVideo from './Button_PlayVideo'
 import Button_SaveInMyList from './Button_SaveInMyList'
 import { IMG_BASE_URL } from '../data/constants'
-import { useRandomMovieQuery, useBanerRandomMovieQuery } from '../redux/MOVIES_API';
+import { useRandomMovieQuery } from '../redux/randomMovie_api';
 import '../style/baner.scss'
 
 type BanerProps = { media: 'tv' | 'movie' }
@@ -14,7 +14,7 @@ type BanerProps = { media: 'tv' | 'movie' }
 const Baner: React.FC<BanerProps> = ({ media }) => {
 
     // const { data: movie } = useRandomMovieQuery('')
-    const { data: movie } = useBanerRandomMovieQuery({media: media})
+    const { data: movie } = useRandomMovieQuery({media: media})
     const [overview, setOverview] = useState('')
 
     useEffect(() => {

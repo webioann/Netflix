@@ -13,6 +13,7 @@ import UserRegistration_Page from '../pages/UserRegistration_Page'
 import Profile_Page from '../pages/Profile_Page'
 import Notfound_Page from '../pages/Notfound_Page'
 import MoviesSlider from './MoviesSlider'
+import Slider from './Slider'
 import NavigationPanel from './NavigationPanel'
 import VideoPlayer_Popup from './VideoPlayer_Popup'
 import SearchBar from './SearchBar'
@@ -68,7 +69,8 @@ const  App: React.FC = () => {
             <PageWrapper>
               <Baner media='tv'/>
               <MoviesSlider title='Popular on Netflix' path={originals}  media_type='movie'/>
-              <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
+              <Slider title='Actions' media='movie' genre={10402 }/>
+              {/* <MoviesSlider title='Trending' path={trendings}  media_type='tv'/>  */}
               {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
               <MoviesSlider title='Actions' path={actions}  media_type='movie'/>
               <MoviesSlider title='Comedies' path={comedies} media_type='movie'/>
