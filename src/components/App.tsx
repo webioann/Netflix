@@ -5,6 +5,7 @@ import { useAppSelector } from '../redux/store'
 import ContainerFluid from './ContainerFluid'
 import Baner from './Baner'
 import Home_Page from '../pages/Home_Page'
+import PageWrapper from '../pages/PageWrapper'
 import MyList_Page from '../pages/MyList_Page'
 import Login_Page from '../trush/Login_Page'
 import Signup_Page from '../trush/Signup_Page'
@@ -64,8 +65,8 @@ const  App: React.FC = () => {
         <VideoPlayer_Popup/>
         <Routes>
           <Route path="/" element={
-            <Home_Page>
-              <Baner/>
+            <PageWrapper>
+              <Baner media='tv'/>
               <MoviesSlider title='Popular on Netflix' path={originals}  media_type='movie'/>
               <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
               {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
@@ -74,10 +75,34 @@ const  App: React.FC = () => {
               <MoviesSlider title='Horrors' path={horrors}  media_type='movie'/>
               <MoviesSlider title='Romances' path={romances}  media_type='movie'/>
               <MoviesSlider title='Documentaries' path={documentaries} media_type='movie'/>  */}
-            </Home_Page>} 
+            </PageWrapper>} 
           />
-          <Route path="tv_shows" element={<MyList_Page />}/>
-          <Route path="movies" element={<MyList_Page />}/>
+          <Route path="tv_shows" element={
+            <PageWrapper>
+              <Baner media='tv'/>
+              <MoviesSlider title='Popular on Netflix' path={originals}  media_type='movie'/>
+              <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
+              {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
+              <MoviesSlider title='Actions' path={actions}  media_type='movie'/>
+              <MoviesSlider title='Comedies' path={comedies} media_type='movie'/>
+              <MoviesSlider title='Horrors' path={horrors}  media_type='movie'/>
+              <MoviesSlider title='Romances' path={romances}  media_type='movie'/>
+              <MoviesSlider title='Documentaries' path={documentaries} media_type='movie'/>  */}
+            </PageWrapper>} 
+          />
+          <Route path="movies" element={
+            <PageWrapper>
+              <Baner media='movie'/>
+              <MoviesSlider title='Popular on Netflix' path={originals}  media_type='movie'/>
+              <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
+              {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
+              <MoviesSlider title='Actions' path={actions}  media_type='movie'/>
+              <MoviesSlider title='Comedies' path={comedies} media_type='movie'/>
+              <MoviesSlider title='Horrors' path={horrors}  media_type='movie'/>
+              <MoviesSlider title='Romances' path={romances}  media_type='movie'/>
+              <MoviesSlider title='Documentaries' path={documentaries} media_type='movie'/>  */}
+            </PageWrapper>} 
+          />
           <Route path="my_list" element={<MyList_Page />}/>
           <Route path="login" element={<UserRegistration_Page  variant='login'/>}/>
           <Route path="signup" element={<UserRegistration_Page  variant='signup'/>}/>

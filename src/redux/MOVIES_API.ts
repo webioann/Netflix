@@ -4,6 +4,9 @@ import { IMovie, IMoviesDataResponse } from "../types/movies.types"
 type paramsType = {
     path: string
 }
+type mediaTypes = {
+    media: 'tv' | 'movie'
+}
 
 export const MOVIES_API = createApi({
     reducerPath: 'movies',
@@ -32,6 +35,21 @@ export const MOVIES_API = createApi({
                 return ({...randomMovie[0]})
             },
         }),
+        banerRandomMovie: builder.query<IMovie, mediaTypes>({
+            query: (params: mediaTypes ) => ({
+                url: `/discover/${params.media}?api_key=${process.env.TMDB_API_KEY}&with_networks=213`,
+                params: {
+                    media: params.media
+                }
+            }),
+            transformResponse: (respons: IMoviesDataResponse) => {
+                const withPosters = respons.results.filter((elem) => { return ( elem.poster_path && elem.backdrop_path ) !== null })
+                let idx = Math.floor(Math.random() * respons.results.length - 1)
+                const randomMovieIndex = withPosters.findIndex((elem, index) => { return index === idx })
+                const randomMovie = respons.results.filter((elem, index) => { return index === randomMovieIndex })
+                return ({...randomMovie[0]})
+            },
+        }),
 
     }), 
 })
@@ -40,5 +58,6 @@ export const {
     useLazyFetchMoviesQuery,
     useRandomMovieQuery,
     useLazyRandomMovieQuery,
-    
+    useBanerRandomMovieQuery,
+
 } = MOVIES_API;

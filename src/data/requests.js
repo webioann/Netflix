@@ -1,5 +1,5 @@
 export const originals = `/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_networks=&adult=true`;
-export const trendings = `/trending/tv/week?api_key=${process.env.TMDB_API_KEY}&language=en-US`;
+export const trendings = `/trending/movie/week?api_key=${process.env.TMDB_API_KEY}&language=en-US`;
 export const topRated = `/movie/top_rated?api_key=${process.env.TMDB_API_KEY}&language=en-US`;
 export const actions = `/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=28`;
 export const comedies = `/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=35`;
