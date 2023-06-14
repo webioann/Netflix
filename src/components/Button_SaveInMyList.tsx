@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../redux/store'
-import { setMyListState, createMyList } from '../redux/reduxSlice'
+import { useMyListWatcher } from '../hooks/useMyListWatcher'
+import { changeMyList } from '../redux/reduxSlice';
+
 import { FaCheck, FaPlus } from 'react-icons/fa'
 import { AiOutlinePlus, AiOutlineCheck } from 'react-icons/ai'
 import { db } from '../firebase.config'
@@ -21,16 +23,23 @@ interface IParamsOnSave {
 
 const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_type, ui, title }) => {
 
-    const dispatch = useAppDispatch()
-    const myListId = useAppSelector(state => state.redux.myListState)
     const user = useAppSelector(state => state.redux.user?.email)
+    const changes = useAppSelector(state => state.redux.myListIsChanged)
+    const dispatch = useAppDispatch()
+
+    const [isSaved, setIsSaved] = useState(false)
+    const { IDSavedMovies } = useMyListWatcher()
+
+    useEffect(() => {
+        let result = IDSavedMovies.filter(id => id === movie.id.toString())
+        result.length > 0  ? setIsSaved(true) : setIsSaved(false)
+        // IDSavedMovies.includes(movie.id.toString()) ? setIsSaved(true) : setIsSaved(false)
+    }, [IDSavedMovies])
 
     const saveMovieInMyList = async ({ movie, media_type }: IParamsOnSave) => {
+        dispatch(changeMyList())
         if(user) {
             await setDoc(doc(db, `${user}`, movie.id.toString()), { ...movie, media_type: media_type })
-            dispatch(createMyList(movie))
-
-            dispatch(setMyListState(movie.id.toString()))
         }
     }
 
@@ -39,7 +48,7 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_t
             onClick={() => saveMovieInMyList({movie, media_type: media_type})}
             className={ ui === 'square' ? 'square-button' : 'small-circle circle-button'}
             >
-            <i>{ myListId.includes(movie.id.toString()) && user 
+            <i>{ isSaved
                 ? <AiOutlineCheck size={10} color='#fff' title='you save thise movie'/> 
                 : <AiOutlinePlus size={12} color='#fff' title='save in My List'/>}
             </i>

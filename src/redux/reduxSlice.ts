@@ -11,16 +11,14 @@ type InitialStateType = {
     user: ICurrentUser | null
     selectedMovie: selectedMovieType | null
     startVideoPlayer: boolean
-    myListState: string[]
-    myList: IMovie[] | []
+    myListIsChanged: boolean
 }
 
 const initialState: InitialStateType = {
     user: null,
     selectedMovie: null,
     startVideoPlayer: false,
-    myListState: [],
-    myList: []
+    myListIsChanged: false
 }
 
 export const reduxSlice = createSlice({
@@ -46,8 +44,7 @@ export const reduxSlice = createSlice({
         }},
         resetMovieData: (state) => { state.selectedMovie = null },
         switchVideoPlayer:  (state, actions) => { state.startVideoPlayer = actions.payload },
-        setMyListState: (state, actions) => { state.myListState = actions.payload },
-        createMyList: (state, actions) => { state.myList = actions.payload },
+        changeMyList: (state) => { state.myListIsChanged = !state.myListIsChanged }
     }
 });
 
@@ -57,8 +54,7 @@ export const {
     selectMovie,
     resetMovieData,
     switchVideoPlayer,
-    setMyListState,
-    createMyList
+    changeMyList
 } = reduxSlice.actions;
 
 export default reduxSlice.reducer;

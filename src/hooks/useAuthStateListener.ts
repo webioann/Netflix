@@ -9,6 +9,8 @@ export const useAuthStateListener = () => {
 
     const dispatch = useAppDispatch()
 
+    useEffect(() => {dispatch(deleteCurrentUser())}, [])
+
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if( user ) {
@@ -26,12 +28,11 @@ export const useAuthStateListener = () => {
                     userID: user.uid,
                     userPhotoURL: user.photoURL,
                 }))
-                // setDoc(doc(db, `${user.email}`, 'my list'), {})
             }
             else{
                 dispatch(deleteCurrentUser())
             }
         })
-    }, [])
+    }, [auth])
 };
 

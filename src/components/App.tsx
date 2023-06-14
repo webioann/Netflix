@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useAuthStateListener } from '../hooks/useAuthStateListener'
-import { useMyListStateListenertsts } from '../hooks/useMyListStateListener'
 import { Routes, Route } from "react-router-dom"
 import { useAppSelector } from '../redux/store'
 import ContainerFluid from './ContainerFluid'
@@ -45,11 +44,19 @@ const  App: React.FC = () => {
   
   // ===== auth state listener =====
   useAuthStateListener();
-  useMyListStateListenertsts();
+  // ===== my list on firebase db listener =====
 
   const user = useAppSelector(state => state.redux.user)
   const startVideoPlayer = useAppSelector(state => state.redux.startVideoPlayer)
 
+  // TODO: remove this late ==========
+  let RENDER = useRef(1)
+  useEffect(()  => {
+    console.log(`RENDER WAS = ${RENDER.current + 1} TIMES`)
+  })
+  // console.log(`RENDER WAS = ${RENDER.current} TIMES`)
+  // ==================================
+  
   return (
     <ContainerFluid scroll={startVideoPlayer}>
         <NavigationPanel>
