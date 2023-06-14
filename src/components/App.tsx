@@ -6,8 +6,9 @@ import ContainerFluid from './ContainerFluid'
 import Baner from './Baner'
 import Home_Page from '../pages/Home_Page'
 import MyList_Page from '../pages/MyList_Page'
-import Login_Page from '../pages/Login_Page'
-import Signup_Page from '../pages/Signup_Page'
+import Login_Page from '../trush/Login_Page'
+import Signup_Page from '../trush/Signup_Page'
+import UserRegistration_Page from '../pages/UserRegistration_Page'
 import Profile_Page from '../pages/Profile_Page'
 import Notfound_Page from '../pages/Notfound_Page'
 import MoviesSlider from './MoviesSlider'
@@ -78,8 +79,8 @@ const  App: React.FC = () => {
           <Route path="tv_shows" element={<MyList_Page />}/>
           <Route path="movies" element={<MyList_Page />}/>
           <Route path="my_list" element={<MyList_Page />}/>
-          <Route path="login" element={<Login_Page />}/>
-          <Route path="signup" element={<Signup_Page />}/>
+          <Route path="login" element={<UserRegistration_Page  variant='login'/>}/>
+          <Route path="signup" element={<UserRegistration_Page  variant='signup'/>}/>
           <Route path="*" element={<Notfound_Page />} />
           { user &&  <Route path="profile" element={<Profile_Page />}/>}
         </Routes>
