@@ -11,10 +11,13 @@ const GenresList: React.FC<props> = ({ genres, font }) => {
     const [truncated, setTruncated ] = useState<number[] | []>([])
 
     useEffect(() => {
-        if(genres.length > 3) {
-            setTruncated(genres.slice(0,3))
+        if(genres) {
+            if(genres.length > 3) {
+                setTruncated(genres.slice(0,3))
+            }
+            else{ setTruncated([...genres])}
         }
-        else{ setTruncated([...genres])}
+        else return
     }, [])
 
     return (

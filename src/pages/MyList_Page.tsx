@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import Container from './Container'
-import MoviePoster from './MoviePoster'
-import SpringDiv from './SpringDiv'
+import Container from '../components/Container'
+import MoviePoster from '../components/MoviePoster'
+import SpringDiv from '../components/SpringDiv'
 import { db } from '../firebase.config'
-import { collection, getDocs, onSnapshot, doc, deleteDoc } from 'firebase/firestore'
+import { doc, deleteDoc } from 'firebase/firestore'
 import { IMovie } from '../types/movies.types';
 import { useMyListWatcher } from '../hooks/useMyListWatcher'
 import { useAppDispatch, useAppSelector } from '../redux/store'
 import { changeMyList } from '../redux/reduxSlice';
-
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 import { IoClose } from 'react-icons/io5'
 import '../style/my-list-page.scss'
@@ -19,8 +18,7 @@ const MyList_Page = () => {
     const dispatch = useAppDispatch()
     const [myListMovies, setMyListMovies] = useState<IMovie[] | []>([])
     const user = useAppSelector(state => state.redux.user?.email)
-    const changes = useAppSelector(state => state.redux.myListIsChanged)
-    const { IDSavedMovies, savedMovies } = useMyListWatcher()
+    const { savedMovies } = useMyListWatcher()
 
     useEffect(() => {
         setMyListMovies(savedMovies)
@@ -75,6 +73,3 @@ const MyList_Page = () => {
 }
 
 export default MyList_Page;
-// onClick={() => {
-//     deleteMovieFromMyList(movie.doc_id)
-// }}

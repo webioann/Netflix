@@ -85,6 +85,20 @@ $max-mobile: 320px;
         cursor: pointer;
     }
 }
+.g-button {
+    padding: 0.5rem 1rem;
+    display: flex;
+    max-width: 10rem;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+    border-radius: $br-main;
+    color: $light;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
 
 /* =========== CUSTOM SCROLLBAR ========  */
 // ::-webkit-scrollbar{

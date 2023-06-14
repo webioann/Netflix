@@ -1,8 +1,8 @@
 import React from 'react'
 import { useAppSelector } from '../redux/store'
-import AuthPageFooter from './AuthPageFooter'
-import Signout_Button from './Signout_Button'
-import UserAvatar from './UserAvatar'
+import AuthPageFooter from '../components/AuthPageFooter'
+import Signout_Button from '../components/Signout_Button'
+import UserAvatar from '../components/UserAvatar'
 import '../style/profile-page.scss'
 
 const Profile_Page = () => {

@@ -4,12 +4,12 @@ import { Routes, Route } from "react-router-dom"
 import { useAppSelector } from '../redux/store'
 import ContainerFluid from './ContainerFluid'
 import Baner from './Baner'
-import Home_Page from './Home_Page'
-import MyList_Page from './MyList_Page'
-import Login_Page from './Login_Page'
-import Signup_Page from './Signup_Page'
-import Profile_Page from './Profile_Page'
-import Notfound_Page from './Notfound_Page'
+import Home_Page from '../pages/Home_Page'
+import MyList_Page from '../pages/MyList_Page'
+import Login_Page from '../pages/Login_Page'
+import Signup_Page from '../pages/Signup_Page'
+import Profile_Page from '../pages/Profile_Page'
+import Notfound_Page from '../pages/Notfound_Page'
 import MoviesSlider from './MoviesSlider'
 import NavigationPanel from './NavigationPanel'
 import VideoPlayer_Popup from './VideoPlayer_Popup'
@@ -44,18 +44,9 @@ const  App: React.FC = () => {
   
   // ===== auth state listener =====
   useAuthStateListener();
-  // ===== my list on firebase db listener =====
 
   const user = useAppSelector(state => state.redux.user)
   const startVideoPlayer = useAppSelector(state => state.redux.startVideoPlayer)
-
-  // TODO: remove this late ==========
-  let RENDER = useRef(1)
-  useEffect(()  => {
-    console.log(`RENDER WAS = ${RENDER.current + 1} TIMES`)
-  })
-  // console.log(`RENDER WAS = ${RENDER.current} TIMES`)
-  // ==================================
   
   return (
     <ContainerFluid scroll={startVideoPlayer}>
@@ -84,6 +75,8 @@ const  App: React.FC = () => {
               <MoviesSlider title='Documentaries' path={documentaries} media_type='movie'/>  */}
             </Home_Page>} 
           />
+          <Route path="tv_shows" element={<MyList_Page />}/>
+          <Route path="movies" element={<MyList_Page />}/>
           <Route path="my_list" element={<MyList_Page />}/>
           <Route path="login" element={<Login_Page />}/>
           <Route path="signup" element={<Signup_Page />}/>

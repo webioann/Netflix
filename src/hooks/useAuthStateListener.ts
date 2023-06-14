@@ -2,13 +2,12 @@ import { useEffect } from 'react'
 import { useAppDispatch } from '../redux/store'
 import { createCurrentUser, deleteCurrentUser } from '../redux/reduxSlice'
 import { onAuthStateChanged } from "firebase/auth"
-import { auth, db } from '../firebase.config'
-import { doc, setDoc} from 'firebase/firestore'
+import { auth } from '../firebase.config'
 
 export const useAuthStateListener = () => {
 
     const dispatch = useAppDispatch()
-
+    // ===== reset user on app start for remove previos user =====
     useEffect(() => {dispatch(deleteCurrentUser())}, [])
 
     useEffect(() => {

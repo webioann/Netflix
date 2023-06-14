@@ -8,7 +8,6 @@ import GiftLink from './GiftLink'
 import MessageBell from './MessageBell'
 import UserProfiles from './UserProfiles'
 import SpringDiv from './SpringDiv'
-
 import '../style/navigation-panel.scss'
 
 type ChildrenProps = { children: JSX.Element[] | JSX.Element }
