@@ -24,7 +24,17 @@ const Slider = ({ title, media, genre }: MovieRowPropsType) => {
             rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' })
         }
     }
-
+    const moveSliderCards = (direct: 'left' | 'right') => {
+        if(rowRef.current) {
+            setIsMoved(true)
+            if(direct === 'left') {
+                rowRef.current.style.transform = `translateX(${290}px)`
+            }
+            if(direct === 'right') {
+                rowRef.current.style.transform = `translateX(${-290}px)`
+            }
+        }
+    }
     // movies && console.log(movies[1])
 
     if( movies ) {
@@ -36,12 +46,12 @@ const Slider = ({ title, media, genre }: MovieRowPropsType) => {
                 </ul>
                 <div className="arrow-icons-wrapper">
                     <SlArrowLeft className={ isMoved ? 'arrow' : 'hidden-arrow' }
-                        onClick={() => onArrowClick('left')}
+                        onClick={() => moveSliderCards('left')}
                         size={30}
                         color='#fff' 
                     />
                     <SlArrowRight className='arrow'
-                        onClick={() => onArrowClick('right')} 
+                        onClick={() => moveSliderCards('right')} 
                         size={30}
                         color='#fff' 
                     />

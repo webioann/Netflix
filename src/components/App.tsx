@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom"
 import { useAppSelector } from '../redux/store'
 import ContainerFluid from './ContainerFluid'
 import Baner from './Baner'
-import Home_Page from '../pages/Home_Page'
 import PageWrapper from '../pages/PageWrapper'
 import MyList_Page from '../pages/MyList_Page'
 import Login_Page from '../trush/Login_Page'

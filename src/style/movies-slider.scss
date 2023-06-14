@@ -2,7 +2,6 @@
 
 .slider-container {
     position: relative;
-
     .row-title {
         position: absolute;
         top: 0;
@@ -13,7 +12,9 @@
     .row-movies {
         display: flex;
         overflow-x: scroll;
-        padding: 33px 20px 33px 20px;
+        padding: 30px 20px 30px 20px;
+        transform: translateX(0px);
+        transition: all 0.8s ease;
     }
     .arrow-icons-wrapper {
         pointer-events: none;
