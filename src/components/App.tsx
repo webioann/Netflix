@@ -68,7 +68,7 @@ const  App: React.FC = () => {
             <PageWrapper>
               <Baner media='tv'/>
               <MoviesSlider title='Popular on Netflix' path={originals}  media_type='movie'/>
-              <Slider title='Actions' media='movie' genre={10402 }/>
+              {/* <Slider title='Actions' media='movie' genre={14}/> */}
               {/* <MoviesSlider title='Trending' path={trendings}  media_type='tv'/>  */}
               {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
               <MoviesSlider title='Actions' path={actions}  media_type='movie'/>

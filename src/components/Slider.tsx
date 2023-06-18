@@ -1,8 +1,21 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useGetMoviesByGenreQuery } from '../redux/moviesByGenre_api'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
 import MovieCard from './MovieCard'
 import '../style/movies-slider.scss'
+
+import {
+    trendings,
+    originals,
+    topRated,
+    actions,
+    comedies,
+    horrors,
+    romances,
+    documentaries
+} from '../data/requests'
+import { useFetchMoviesQuery } from '../redux/allMovies_api'
+
 
 type MovieRowPropsType = {
     title: string
@@ -12,30 +25,58 @@ type MovieRowPropsType = {
 
 const Slider = ({ title, media, genre }: MovieRowPropsType) => {
 
-    const { data: movies } = useGetMoviesByGenreQuery({ media: media, genre: genre })
+    // const { data: movies } = useGetMoviesByGenreQuery({ media: media, genre: genre })
+    const { data: movies } = useFetchMoviesQuery({path: originals})
+
     const rowRef = useRef<HTMLUListElement>(null)
     const [isMoved, setIsMoved] = useState(false)
 
-    const onArrowClick = (direct: 'left' | 'right') => {
-        if( rowRef.current ) {
-            setIsMoved(true)
-            const { scrollLeft, clientWidth, getBoundingClientRect } = rowRef.current
-            const scrollTo = direct === 'left' ? scrollLeft - clientWidth : scrollLeft + clientWidth
-            rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' })
+    const [moveLeft, setMoveLeft] = useState(false)
+    const [moveRight, setMoveRight] = useState(true)
+    const [clientWidth, setClientWidth] = useState(0)
+    const dataSize: number = 0
+
+    // ==== need create prop 'movie_card_width' ====
+    const width = 290;
+
+    useEffect(() => {
+        let wid = 0
+        movies && console.log('render'+`${movies.length}`)
+        if(rowRef.current) {
+            const { clientWidth, getBoundingClientRect } = rowRef.current
+            setClientWidth(clientWidth)
+            wid = clientWidth
         }
-    }
-    const moveSliderCards = (direct: 'left' | 'right') => {
+    })
+
+    const moveSliderCards = (direct: 'left' | 'right') => { 
         if(rowRef.current) {
             setIsMoved(true)
             if(direct === 'left') {
-                rowRef.current.style.transform = `translateX(${290}px)`
+                setMoveLeft(true)
+                rowRef.current.style.transform = `translateX(${width}px)`
             }
             if(direct === 'right') {
-                rowRef.current.style.transform = `translateX(${-290}px)`
+                rowRef.current.style.transform = `translateX(${-width}px)`
             }
         }
     }
-    // movies && console.log(movies[1])
+    const toLeft = () => {
+        if(rowRef.current) {
+            const { scrollLeft, clientWidth, getBoundingClientRect } = rowRef.current
+
+            setIsMoved(true)
+            setMoveLeft(true)
+            rowRef.current.style.transform = `translateX(${width}px)`
+        }
+    }
+    const toRight = () => {
+        if(rowRef.current) {
+            const { scrollLeft, clientWidth, getBoundingClientRect } = rowRef.current
+            setMoveRight(true)
+            rowRef.current.style.transform = `translateX(${-width}px)`
+        }
+    }
 
     if( movies ) {
         return (
