@@ -5,8 +5,7 @@ import SpringDiv from '../components/SpringDiv'
 import { db } from '../firebase.config'
 import { doc, deleteDoc, getDocs, collection } from 'firebase/firestore'
 import { IMovie } from '../types/movies.types'
-import { useAppSelector, useAppDispatch } from '../redux/store'
-import { changeMyList } from '../redux/reduxSlice'
+import { useAppSelector } from '../redux/store'
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 import { IoClose } from 'react-icons/io5'
 import '../style/my-list-page.scss'
@@ -15,8 +14,6 @@ const MyList_Page = () => {
 
     const [myListMovies, setMyListMovies] = useState<IMovie[]>([])
     const user = useAppSelector(state => state.redux.user?.email)
-    const isChanged = useAppSelector(state => state.redux.myListChanged)
-    const dispatch = useAppDispatch()
 
     useEffect(() => {
         const fetchMyList = async () => {
@@ -29,11 +26,10 @@ const MyList_Page = () => {
                     localState.push(raw[i].id)
                 }
                 localStorage.setItem('watch_list', JSON.stringify(localState))
-                console.log(raw.length)
                 }
             }
             fetchMyList();
-    },[isChanged])
+    },[])
 
     //  === delete movie (doc) from My List ===
     const deleteMovieFromMyList = async (doc_id: string) => {
@@ -43,9 +39,6 @@ const MyList_Page = () => {
             // remove doc from local state
             let filtered = myListMovies.filter((item) => { return item.id.toString() !== doc_id})
             setMyListMovies(filtered)
-            dispatch(changeMyList())
-            // remove from localstorage
-            // localStorage.removeItem(doc_id.toString())
         }
     }
 
