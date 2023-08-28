@@ -10,7 +10,7 @@ type MoviePosterType = {
 const MoviePoster: React.FC<MoviePosterType> = ({ movie, size }) => {
     
     return (
-        <img className='my-list-item-img'
+        <img 
             style={{width: `${size}px`, height: `${size * 0.5625}px`, objectFit: 'cover' }}
             src={`${IMG_BASE_URL}${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`} 
             alt={ movie.media_type === 'movie' ? movie.title : movie.name }
