@@ -23,9 +23,9 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_t
     const [isSaved, setIsSaved] = useState(false)
 
     useEffect(() => {
-        let storage = localStorage.getItem('watch_list')
-        if(storage) {
-            let data = JSON.parse(storage)
+        let watch_list = localStorage.getItem('watch_list')
+        if(watch_list !== null) {
+            let data = JSON.parse(watch_list)
             setIsSaved((data as number[]).includes(movie.id))
         }
     }, [])
@@ -35,6 +35,13 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_t
             let id = movie.id.toString();
             await setDoc(doc(db, `${user}`, id), { ...movie, media_type: media_type })
             setIsSaved(true)
+            // save movie id in localStorage array
+            let watch_list = localStorage.getItem('watch_list')
+            if(watch_list !== null && !isSaved) {
+                let data: number[] = JSON.parse(watch_list)
+                data.push(movie.id)
+                localStorage.setItem('watch_list', JSON.stringify(data))
+            }
         }
     }
 

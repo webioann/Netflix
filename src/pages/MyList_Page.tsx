@@ -21,11 +21,13 @@ const MyList_Page = () => {
                 const data = await getDocs(collection(db, `${user}`))
                 let raw = data.docs.map((doc) => ({...doc.data()}))
                 setMyListMovies(raw as IMovie[])
-                let localState = []
+                console.log(raw)
+                // save movie id in localStorage array
+                let rawArray = []
                 for(let i=0; i < raw.length; i++) {
-                    localState.push(raw[i].id)
+                    rawArray.push(raw[i].id)
                 }
-                localStorage.setItem('watch_list', JSON.stringify(localState))
+                localStorage.setItem('watch_list', JSON.stringify(rawArray))
                 }
             }
             fetchMyList();
@@ -39,6 +41,13 @@ const MyList_Page = () => {
             // remove doc from local state
             let filtered = myListMovies.filter((item) => { return item.id.toString() !== doc_id})
             setMyListMovies(filtered)
+            // 
+            let watch_list = localStorage.getItem('watch_list')
+            if(watch_list !== null) {
+                let data: number[] = JSON.parse(watch_list)
+                let filteredArray = data.filter(item => item !== Number(doc_id))
+                localStorage.setItem('watch_list', JSON.stringify(filteredArray))
+            }
         }
     }
 
