@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../redux/store'
-import { useMyListWatcher } from '../hooks/useMyListWatcher'
-import { changeMyList } from '../redux/reduxSlice';
+import { useMyListWatcher } from '../trush/useMyListWatcher'
 import { AiOutlinePlus, AiOutlineCheck } from 'react-icons/ai'
 import { db } from '../firebase.config'
 import { collection, doc, getDocs, query, onSnapshot, addDoc, setDoc, deleteDoc, updateDoc, arrayUnion } from 'firebase/firestore'
@@ -22,22 +21,17 @@ interface IParamsOnSave {
 const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_type, ui, title }) => {
 
     const user = useAppSelector(state => state.redux.user?.email)
-    const changes = useAppSelector(state => state.redux.myListIsChanged)
-    const dispatch = useAppDispatch()
-
     const [isSaved, setIsSaved] = useState(false)
-    const { IDSavedMovies } = useMyListWatcher()
 
     useEffect(() => {
-        let result = IDSavedMovies.filter(id => id === movie.id.toString())
-        result.length > 0  ? setIsSaved(true) : setIsSaved(false)
-        // IDSavedMovies.includes(movie.id.toString()) ? setIsSaved(true) : setIsSaved(false)
-    }, [IDSavedMovies])
+        let a = localStorage.getItem(movie.id.toString())
+        a !== null ? setIsSaved(true) : setIsSaved(false)
+    },[])
 
     const saveMovieInMyList = async ({ movie, media_type }: IParamsOnSave) => {
-        dispatch(changeMyList())
         if(user) {
             await setDoc(doc(db, `${user}`, movie.id.toString()), { ...movie, media_type: media_type })
+            setIsSaved(true)
         }
     }
 
@@ -46,7 +40,7 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_t
             onClick={() => saveMovieInMyList({movie, media_type: media_type})}
             className={ ui === 'square' ? 'square-button' : 'small-circle circle-button'}
             >
-            <i>{ isSaved
+            <i>{ isSaved && user
                 ? <AiOutlineCheck size={12} color='#fff' title='you save thise movie'/> 
                 : <AiOutlinePlus size={12} color='#fff' title='save in My List'/>}
             </i>

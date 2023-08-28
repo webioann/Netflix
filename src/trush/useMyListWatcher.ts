@@ -7,21 +7,19 @@ import { IMovie } from '../types/movies.types';
 export const useMyListWatcher = () => {
 
     const user = useAppSelector(state => state.redux.user?.email)
-    const changes = useAppSelector(state => state.redux.myListIsChanged)
-    const [savedMovies, setSavedMovies] = useState<IMovie[] | []>([])
-    const [IDSavedMovies, setIDSavedMovies] = useState<string[]>([])
+    const [savedMovies, setSavedMovies] = useState<IMovie[]>([] as IMovie[])
 
     useEffect(() => {
         const fetchMyList = async () => {
             if(user) {
                 const data = await getDocs(collection(db, `${user}`))
-                setIDSavedMovies(data.docs.map((doc) => doc.id.toString()))
+                localStorage.setItem((data.docs.map((doc) => doc.id)).toString(), 'true')
                 let raw = data.docs.map((doc) => ({...doc.data()}))
-                setSavedMovies(raw)
+                setSavedMovies(raw as IMovie[])
             }
         }
         fetchMyList();
-    }, [changes])
+    },[])
 
-    return { savedMovies, IDSavedMovies }
+    return { savedMovies }
 };

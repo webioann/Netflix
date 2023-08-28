@@ -3,26 +3,31 @@ import Container from '../components/Container'
 import MoviePoster from '../components/MoviePoster'
 import SpringDiv from '../components/SpringDiv'
 import { db } from '../firebase.config'
-import { doc, deleteDoc } from 'firebase/firestore'
+import { doc, deleteDoc, getDocs, collection } from 'firebase/firestore'
 import { IMovie } from '../types/movies.types';
-import { useMyListWatcher } from '../hooks/useMyListWatcher'
-import { useAppDispatch, useAppSelector } from '../redux/store'
-import { changeMyList } from '../redux/reduxSlice';
+import { useAppSelector } from '../redux/store'
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 import { IoClose } from 'react-icons/io5'
 import '../style/my-list-page.scss'
 
-
 const MyList_Page = () => {
 
-    const dispatch = useAppDispatch()
-    const [myListMovies, setMyListMovies] = useState<IMovie[] | []>([])
+    const [myListMovies, setMyListMovies] = useState<IMovie[]>([])
     const user = useAppSelector(state => state.redux.user?.email)
-    const { savedMovies } = useMyListWatcher()
 
     useEffect(() => {
-        setMyListMovies(savedMovies)
-    }, [savedMovies])
+        const fetchMyList = async () => {
+            if(user) {
+                localStorage.clear()
+                const data = await getDocs(collection(db, `${user}`))
+                let raw = data.docs.map((doc) => ({...doc.data()}))
+                setMyListMovies(raw as IMovie[])
+                localStorage.setItem((data.docs.map((doc) => doc.id)).toString(), 'true')
+            }
+        }
+        fetchMyList();
+    },[])
+
 
     //  === delete movie (doc) from My List ===
     const deleteMovieFromMyList = async (doc_id: string) => {
@@ -32,7 +37,8 @@ const MyList_Page = () => {
             // remove doc from local state
             let filtered = myListMovies.filter((item) => { return item.id.toString() !== doc_id})
             setMyListMovies(filtered)
-            dispatch(changeMyList())
+            // remove from localstorage
+            localStorage.removeItem(doc_id)
         }
     }
 
