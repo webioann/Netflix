@@ -5,20 +5,20 @@ import '../style/search-bar.scss'
 
 const SearchBar = () => {
 
-    const [search, setSearch] = useState(false)
+    const [barIsActive, setBarIsActive] = useState(false)
     const [value, setValue] = useState('')
 
     return (
-        <div className={search ? 'search-bar' : 'shorted-search-bar'}>
+        <div className={barIsActive ? 'search-bar' : 'shorted-search-bar'}>
             <GoSearch 
                 size={24}
                 color='#fff'
                 className='search-icon'
-                onClick={() => setSearch(true)}
+                onClick={() => setBarIsActive(true)}
             />
             <input 
                 className='search-input'
-                placeholder='Title, people, genres'
+                placeholder='Movies, people, genres...'
                 type='text' 
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
@@ -26,7 +26,7 @@ const SearchBar = () => {
             <IoClose 
                 onClick={() => {
                     setValue('')
-                    setSearch(false)
+                    setBarIsActive(false)
                 }}
                 className='close-input'
                 color='#fff' 

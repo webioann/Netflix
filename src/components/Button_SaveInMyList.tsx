@@ -28,7 +28,7 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_t
             let data = JSON.parse(watch_list)
             setIsSaved((data as number[]).includes(movie.id))
         }
-    }, [])
+    }, [isSaved])
 
     const saveMovieInMyList = async ({ movie, media_type }: IParamsOnSave) => {
         if(user) {

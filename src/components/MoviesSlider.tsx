@@ -23,11 +23,6 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
     useEffect(() => {
         if( rowRef.current && movies) {
             const { scrollLeft, clientWidth } = rowRef.current
-            console.log('first'+scrollLeft)
-            // const a = rowRef.current.getBoundingClientRect().x
-            // const b = rowRef.current.getBoundingClientRect().width
-            // console.log(a, b)
-
         }
     }, [])
 
@@ -38,10 +33,7 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
             const { scrollLeft, clientWidth, getBoundingClientRect } = rowRef.current
             const scrollTo = direct === 'left' ? scrollLeft - clientWidth - width : scrollLeft + clientWidth - width
             rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' })
-            // console.log(scrollLeft + clientWidth)
-            // console.log(`Wid ${movies.length * width}`)
             if(scrollLeft + clientWidth === movies.length * (width + 2 + 2) + 20 * 2) {
-                console.log('END')
                 setRightSliderEnd(true)
             }
 

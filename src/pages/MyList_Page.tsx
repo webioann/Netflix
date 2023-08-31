@@ -21,7 +21,6 @@ const MyList_Page = () => {
                 const data = await getDocs(collection(db, `${user}`))
                 let raw = data.docs.map((doc) => ({...doc.data()}))
                 setMyListMovies(raw as IMovie[])
-                console.log(raw)
                 // save movie id in localStorage array
                 let rawArray = []
                 for(let i=0; i < raw.length; i++) {
