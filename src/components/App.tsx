@@ -6,13 +6,10 @@ import ContainerFluid from './ContainerFluid'
 import Baner from './Baner'
 import PageWrapper from '../pages/PageWrapper'
 import MyList_Page from '../pages/MyList_Page'
-import Login_Page from '../trush/Login_Page'
-import Signup_Page from '../trush/Signup_Page'
 import UserRegistration_Page from '../pages/UserRegistration_Page'
 import Profile_Page from '../pages/Profile_Page'
 import Notfound_Page from '../pages/Notfound_Page'
 import MoviesSlider from './MoviesSlider'
-import Slider from './Slider'
 import NavigationPanel from './NavigationPanel'
 import VideoPlayer_Popup from './VideoPlayer_Popup'
 import SearchBar from './SearchBar'
@@ -34,13 +31,6 @@ import {
   romances,
   documentaries
 } from '../data/requests'
-
-type state= {
-  count: number;
-  setCount: React.Dispatch<React.SetStateAction<number>>;
-  A: string;
-
-}
 
 const  App: React.FC = () => {
   

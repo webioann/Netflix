@@ -10,11 +10,12 @@ import UserProfiles from './UserProfiles'
 import SpringDiv from './SpringDiv'
 import '../style/navigation-panel.scss'
 
+
 type ChildrenProps = { children: JSX.Element[] | JSX.Element }
 
 const NavBar: React.FC<ChildrenProps> = ({ children }) => {
 
-    const [fadedNavbar, setFadedNavbar] = useState(true)
+    const [fadedNavbar, setFadedNavbar] = useState(true)    
 
     const fadeNavbarBg = () => {
         if(window.scrollY > 70) {
@@ -31,7 +32,7 @@ const NavBar: React.FC<ChildrenProps> = ({ children }) => {
     }, [])
     
     return (
-        <nav className={fadedNavbar ? 'navbar nav-faded' : 'navbar nav-black'}>
+    <nav className={fadedNavbar ? 'navbar nav-faded' : 'navbar nav-black'}>
             <Container width='1600px'>
                 <div className='navbar-wrapper'>
                 <NetflixLogo/>

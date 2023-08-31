@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useGetMoviesByGenreQuery } from '../redux/moviesByGenre_api'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
-import MovieCard from './MovieCard'
+import MovieCard from '../components/MovieCard'
 import '../style/movies-slider.scss'
 
 import {

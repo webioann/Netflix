@@ -23,7 +23,7 @@ const UserRegistration_Page: React.FC<AuthPageProps> = ({ variant }) => {
     return (
         <div className={`auth-page`}>
             <div className='auth-page-content'>
-                <h1 className='auth-header'>Login</h1>
+                <h1 className='auth-header'>{ variant === 'login' ? 'Login' : 'Signup'}</h1>
                 { warning && <Warning_Popup closePopup={closePopup}/>}
                 <RegistrationForm 
                     setEmail={setEmail} 
@@ -46,9 +46,10 @@ const UserRegistration_Page: React.FC<AuthPageProps> = ({ variant }) => {
                     <p className='question-text'>
                         { variant === 'login' ? 'New to Netflix?' : 'Already have an account ?'} 
                     </p>
-                    <Link to={ variant === 'login' ? '/signup' : 'login'} className='question-link g-link'>
-                        { variant === 'login' ? 'Sign up now.' : 'Login now.'} 
-                    </Link>
+                    { variant === 'login' 
+                        ? <Link to={"/signup"} className='question-link g-link'>Sign up now.</Link> 
+                        : <Link to={"/login"} className='question-link g-link'>Login now.</Link>
+                    }
                 </div>
                 <p className='captcha'>
                     This page is protected by Google reCAPTCHA to ensure you're not a bot. 
