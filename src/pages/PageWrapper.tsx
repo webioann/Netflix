@@ -1,7 +1,7 @@
 import React from 'react'
-import { IChildrenProps } from '../types/global.types'
+import { childrenType } from '../types/global.types'
 
-const PageWrapper: React.FC<IChildrenProps> = ({children}) => {
+const PageWrapper: React.FC<childrenType> = ({children}) => {
     return (
         <div>{ children }</div>
     )

@@ -40,7 +40,7 @@ export const reduxSlice = createSlice({
             media_type: actions.payload.media_type,
             movie_id: actions.payload.movie_id
         }},
-        resetMovieData: (state) => { state.selectedMovie = null },
+        resetSelectedMovie: (state) => { state.selectedMovie = null },
         switchVideoPlayer:  (state, actions) => { state.startVideoPlayer = actions.payload },
     }
 });
@@ -49,7 +49,7 @@ export const {
     createCurrentUser,
     deleteCurrentUser,
     selectMovie,
-    resetMovieData,
+    resetSelectedMovie,
     switchVideoPlayer,
     
 } = reduxSlice.actions;

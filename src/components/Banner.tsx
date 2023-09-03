@@ -15,7 +15,7 @@ const Banner: React.FC<BannerProps> = ({ media }) => {
 
     const { data: movie } = useBannerMovieQuery({media: media})
 
-    if(movie && media) {
+    if(movie) {
         return (
             <section className='banner-container' 
                 style={{ backgroundImage: `url(${IMG_BASE_URL}${movie?.backdrop_path})`}}>

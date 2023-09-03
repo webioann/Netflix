@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { resetMovieData, switchVideoPlayer } from '../redux/reduxSlice';
+import { resetSelectedMovie, switchVideoPlayer } from '../redux/reduxSlice';
 import { useLazyGetTrailerVideoURLQuery } from '../redux/VIDEO_API'
 import VideoPlayer from './VideoPlayer'
 import Button_CloseVideo from './Button_CloseVideo'
@@ -19,7 +19,7 @@ const VideoPlayer_Popup = () => {
 
     const closePlayer = () => { 
         dispatch(switchVideoPlayer(false))
-        dispatch(resetMovieData())
+        dispatch(resetSelectedMovie())
     }
 
     useEffect(() => {
@@ -28,6 +28,7 @@ const VideoPlayer_Popup = () => {
                 movie_id: selectedMovie.movie_id,
                 media_type: selectedMovie.media_type
             })
+            dispatch(resetSelectedMovie())
         }
     }, [selectedMovie])
 
