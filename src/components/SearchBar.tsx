@@ -13,13 +13,8 @@ const SearchBar = () => {
 
     const moch = 'barbi'
     const [ startSearch, { data: search_result }] = useLazyMultiSearchQuery()
+    // console.log(search_result)
     
-    useEffect(() =>{
-        startSearch({ search: moch })
-    }, [])
-    console.log(search_result)
-
-
     return (
         <div className={barIsActive ? 'search-bar' : 'shorted-search-bar'}>
             <GoSearch 
@@ -28,12 +23,12 @@ const SearchBar = () => {
                 className='search-icon'
                 onClick={() => {
                     setBarIsActive(true)
-
+                    startSearch({ search: moch })
                 }}
             />
             <input 
                 className='search-input'
-                placeholder='Movies, people, genres...'
+                placeholder='Title, people, genres...'
                 type='text' 
                 value={value}
                 onChange={(e) => setValue(e.target.value)}

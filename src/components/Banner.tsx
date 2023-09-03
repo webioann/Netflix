@@ -7,34 +7,25 @@ import Button_PlayVideo from './Button_PlayVideo'
 import Button_SaveInMyList from './Button_SaveInMyList'
 import { IMG_BASE_URL } from '../data/constants'
 import { useRandomMovieQuery } from '../redux/randomMovie_api';
-import '../style/baner.scss'
+import '../style/banner.scss'
 
-type BanerProps = { media: 'tv' | 'movie' }
+type BannerProps = { media: 'tv' | 'movie' }
 
-const Baner: React.FC<BanerProps> = ({ media }) => {
+const Banner: React.FC<BannerProps> = ({ media }) => {
 
-    // const { data: movie } = useRandomMovieQuery('')
     const { data: movie } = useRandomMovieQuery({media: media})
-    const [overview, setOverview] = useState('')
-
-    useEffect(() => {
-        if(movie?.overview) {
-            movie.overview.length > 150 ? setOverview(movie.overview.substring(0, 150 - 1) + '...') : setOverview(movie.overview) 
-        }
-        else { setOverview('') }
-    }, [movie])
     
     if(movie) {
         return (
-            <section className='baner-container' 
+            <section className='banner-container' 
                 style={{ backgroundImage: `url(${IMG_BASE_URL}${movie?.backdrop_path})`}}>
                 <Container width='1600px'>
-                    <div className="baner-content">
+                    <div className="banner-content">
                         <MovieNameExtractor movie={movie} fontSizeInRem={2.25} fontWeight={700}/>
-                        <p className='baner-overview'>{ overview }</p>
+                        <p className='banner-overview'>{ movie.overview.length > 150 ? movie.overview.substring(0, 150 - 1) + '...' : movie.overview }</p>
                         <GenresList genres={movie.genre_ids} font={16}/>
 
-                        <div className="baner-buttons-row">
+                        <div className="banner-buttons-row">
                             <Button_PlayVideo ui='square' title='Play' media_type='tv' movie_id={movie.id}/>
                             <Button_SaveInMyList title='My List' ui='square' movie={movie} media_type='tv'/>
                             <Button_MoreInfo/>
@@ -57,4 +48,4 @@ const Baner: React.FC<BanerProps> = ({ media }) => {
     }
 }
 
-export default Baner;
+export default Banner;

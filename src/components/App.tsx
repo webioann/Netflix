@@ -3,7 +3,7 @@ import { useAuthStateListener } from '../hooks/useAuthStateListener'
 import { Routes, Route } from "react-router-dom"
 import { useAppSelector } from '../redux/store'
 import ContainerFluid from './ContainerFluid'
-import Baner from './Baner'
+import Banner from './Banner'
 import PageWrapper from '../pages/PageWrapper'
 import MyList_Page from '../pages/MyList_Page'
 import UserRegistration_Page from '../pages/UserRegistration_Page'
@@ -56,7 +56,7 @@ const  App: React.FC = () => {
         <Routes>
           <Route path="/" element={
             <PageWrapper>
-              <Baner media='tv'/>
+              <Banner media='tv'/>
               <MoviesSlider title='Popular on Netflix' path={originals}  media_type='movie'/>
               {/* <Slider title='Actions' media='movie' genre={14}/> */}
               {/* <MoviesSlider title='Trending' path={trendings}  media_type='tv'/>  */}
@@ -70,7 +70,7 @@ const  App: React.FC = () => {
           />
           <Route path="tv_shows" element={
             <PageWrapper>
-              <Baner media='tv'/>
+              <Banner media='tv'/>
               <MoviesSlider title='Popular on Netflix' path={originals}  media_type='movie'/>
               <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
               {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
@@ -83,7 +83,7 @@ const  App: React.FC = () => {
           />
           <Route path="movies" element={
             <PageWrapper>
-              <Baner media='movie'/>
+              <Banner media='movie'/>
               <MoviesSlider title='Popular on Netflix' path={originals}  media_type='movie'/>
               <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
               {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
