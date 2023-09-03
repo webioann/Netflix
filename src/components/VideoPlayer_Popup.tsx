@@ -10,7 +10,7 @@ import '../style/video-player-popup.scss'
 const VideoPlayer_Popup = () => {
 
     const dispatch = useAppDispatch()
-    const movie = useAppSelector(state => state.redux.selectedMovie)
+    const selectedMovie = useAppSelector(state => state.redux.selectedMovie)
     const [trailerURL, setTrailerURL] = useState('')
     const startVideoPlayer = useAppSelector(state => state.redux.startVideoPlayer)
 
@@ -23,13 +23,13 @@ const VideoPlayer_Popup = () => {
     }
 
     useEffect(() => {
-        if(movie) {
+        if(selectedMovie) {
             getTrailerVideoURL({ 
-                movie_id: movie.movie_id,
-                media_type: movie.media_type
+                movie_id: selectedMovie.movie_id,
+                media_type: selectedMovie.media_type
             })
         }
-    }, [movie])
+    }, [selectedMovie])
 
     useEffect(() => {
         if(trailerVideoURL) {
