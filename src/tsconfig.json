@@ -11,6 +11,6 @@
     "isolatedModules": true,
     "esModuleInterop": true
     },
-    "include": ["**/*.ts", "**/*.tsx", "redux/trendingMoviesApi.ts", "redux/netflixOriginalsApi.ts", "components/TEST.tsx", "redux/SEARCH_API.js", "components/MyListPage.tsx"],
+    "include": ["**/*.ts", "**/*.tsx", "redux/trendingMoviesApi.ts", "redux/netflixOriginalsApi.ts", "components/TEST.tsx", "redux/SEARCH_API.ts", "components/MyListPage.tsx"],
     "exclude": ["node_modules"]
 }

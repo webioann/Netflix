@@ -5,12 +5,9 @@ import Signout_Button from '../components/Signout_Button'
 import UserAvatar from '../components/UserAvatar'
 import '../style/profile-page.scss'
 
-import { useUser_Context } from '../context/User_Context_API'
-
 const Profile_Page = () => {
 
     const user = useAppSelector(state => state.redux.user)
-    const moch_user = useUser_Context()
 
     return (
         <div className={`profile-page`}>
@@ -43,12 +40,6 @@ const Profile_Page = () => {
                             <span>Email :</span>
                             <span>{user?.email}</span>
                         </li>
-{/* ============================= REMOVE THIS LATER ================= */}
-                        <li>
-                            <span>Email :</span>
-                            <span>{moch_user.title}</span>
-                        </li>
-{/* ======================================================= */}
                     </ul>
                 </div>
                 <div className="long-button">
