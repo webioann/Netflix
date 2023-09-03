@@ -36,7 +36,6 @@ const VideoPlayer_Popup = () => {
             setTrailerURL(trailerVideoURL)
         }
     }, [trailerVideoURL])
-    console.log(trailerVideoURL)
 
     return (
         <div className={startVideoPlayer ? 'popup-layout' : 'hidden-popup'}>

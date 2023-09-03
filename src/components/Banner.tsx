@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import GenresList from './GenresList'
 import Container from './Container'
 import MovieNameExtractor from './MovieNameExtractor'
@@ -9,12 +9,18 @@ import { IMG_BASE_URL } from '../data/constants'
 import { useBannerMovieQuery } from '../redux/BANNE_MOVIE_API';
 import '../style/banner.scss'
 
+import { PageContext } from '../pages/Movies_Page_Wrapper'
+
 type BannerProps = { media: 'tv' | 'movie' }
 
 const Banner: React.FC<BannerProps> = ({ media }) => {
 
     const { data: movie } = useBannerMovieQuery({media: media})
     console.log(movie)
+
+    const media_type = useContext(PageContext)
+    // console.log(`CONTEXT ${media_type}`)
+
     
     if(movie) {
         return (
@@ -27,8 +33,8 @@ const Banner: React.FC<BannerProps> = ({ media }) => {
                         <GenresList genres={movie.genre_ids} font={16}/>
 
                         <div className="banner-buttons-row">
-                            <Button_PlayVideo ui='square' title='Play' media_type='tv' movie_id={movie.id}/>
-                            <Button_SaveInMyList title='My List' ui='square' movie={movie} media_type='tv'/>
+                            <Button_PlayVideo ui='square' title='Play' media_type={media} movie_id={movie.id}/>
+                            <Button_SaveInMyList title='My List' ui='square' movie={movie} media_type={media}/>
                             <Button_MoreInfo/>
                             {/* <div className="spring-div" style={{ flex: 1 }}/> */}
                             {/* <button className="circle-button">

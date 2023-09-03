@@ -13,7 +13,7 @@ export const BANNE_MOVIE_API = createApi({
     endpoints: builder => ({
         bannerMovie: builder.query<IMovie, mediaTypes>({
             query: (params: mediaTypes ) => ({
-                url: `/discover/${params.media}?api_key=${process.env.TMDB_API_KEY}&sort_by=popularity.desc&language=en-US&page=1&with_genres=35`,
+                url: `/discover/${params.media}?api_key=${process.env.TMDB_API_KEY}&sort_by=popularity.desc&language=en-US&page=1&with_genres=80`,
                 params: {
                     media: params.media
                 }
