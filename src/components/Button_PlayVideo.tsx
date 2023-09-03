@@ -5,13 +5,13 @@ import { FaPlay } from 'react-icons/fa'
 import '../style/buttons.scss'
 
 type PlayVideo_ButtonType = {
-    media_type: 'tv' | 'movie'
+    media: 'tv' | 'movie'
     movie_id: number
     ui: 'square' | 'circle'
     title?: string
 }
 
-const Button_PlayVideo: React.FC<PlayVideo_ButtonType> = ({ ui, media_type, movie_id, title }) => {
+const Button_PlayVideo: React.FC<PlayVideo_ButtonType> = ({ ui, media, movie_id, title }) => {
 
     const dispatch = useAppDispatch()
 
@@ -20,7 +20,7 @@ const Button_PlayVideo: React.FC<PlayVideo_ButtonType> = ({ ui, media_type, movi
             className={ ui === 'square' ? 'square-button' : 'big-circle circle-button'}
             onClick={() => {
                 dispatch(selectMovie({
-                    media_type: media_type,
+                    media_type: media,
                     movie_id: movie_id
                 }))
                 dispatch(switchVideoPlayer(true))

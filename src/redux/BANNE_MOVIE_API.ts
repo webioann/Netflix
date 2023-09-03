@@ -39,6 +39,6 @@ export const BANNE_MOVIE_API = createApi({
         }),
     }), 
 })
-export const { useBannerMovieQuery, } = BANNE_MOVIE_API;
+export const { useBannerMovieQuery, useLazyBannerMovieQuery } = BANNE_MOVIE_API;
 
 // &with_networks=213

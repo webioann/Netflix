@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useAppSelector } from '../redux/store'
 import { AiOutlinePlus, AiOutlineCheck } from 'react-icons/ai'
 import { db } from '../firebase.config'
@@ -8,7 +8,7 @@ import '../style/buttons.scss'
 
 interface ISaveMovieInMyList {
     movie: IMovie
-    media_type: 'movie' | 'tv'
+    media: 'movie' | 'tv'
     ui: 'square' | 'circle'
     title?: string
 }
@@ -17,7 +17,7 @@ interface IParamsOnSave {
     media_type: 'movie' | 'tv'
 }
 
-const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_type, ui, title }) => {
+const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, ui, title, media }) => {
 
     const user = useAppSelector(state => state.redux.user?.email)
     const [isSaved, setIsSaved] = useState(false)
@@ -31,9 +31,9 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_t
     }, [isSaved])
 
     const saveMovieInMyList = async ({ movie, media_type }: IParamsOnSave) => {
-        if(user) {
+        if(user && media_type) {
             let id = movie.id.toString();
-            await setDoc(doc(db, `${user}`, id), { ...movie, media_type: media_type })
+            await setDoc(doc(db, `${user}`, id), { ...movie, media_type: media })
             setIsSaved(true)
             // save movie id in localStorage array
             let watch_list = localStorage.getItem('watch_list')
@@ -47,7 +47,7 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, media_t
 
     return (
         <button 
-            onClick={() => saveMovieInMyList({movie, media_type: media_type})}
+            onClick={() => saveMovieInMyList({movie, media_type: media})}
             className={ ui === 'square' ? 'square-button' : 'small-circle circle-button'}
             >
             <i>{ isSaved && user

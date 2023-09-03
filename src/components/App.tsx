@@ -5,7 +5,6 @@ import { useAppSelector } from '../redux/store'
 import ContainerFluid from './ContainerFluid'
 import Banner from './Banner'
 import PageWrapper from '../pages/PageWrapper'
-import Movies_Page from '../pages/Movies_Page'
 import MyList_Page from '../pages/MyList_Page'
 import UserRegistration_Page from '../pages/UserRegistration_Page'
 import Profile_Page from '../pages/Profile_Page'
@@ -89,7 +88,7 @@ const  App: React.FC = () => {
             </PageWrapper>} 
           />
           <Route path="movies" element={
-            <Movies_Page>
+            <PageWrapper>
               <Banner media='movie'/>
               <MoviesSlider title='Popular on Netflix' path={originals}  media_type='movie'/>
               <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
@@ -99,7 +98,7 @@ const  App: React.FC = () => {
               <MoviesSlider title='Horrors' path={horrors}  media_type='movie'/>
               <MoviesSlider title='Romances' path={romances}  media_type='movie'/>
               <MoviesSlider title='Documentaries' path={documentaries} media_type='movie'/>  */}
-            </Movies_Page>} 
+            </PageWrapper>} 
           />
           <Route path="my_list" element={<MyList_Page />}/>
           <Route path="login" element={<UserRegistration_Page  variant='login'/>}/>
