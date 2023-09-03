@@ -14,6 +14,7 @@ type BannerProps = { media: 'tv' | 'movie' }
 const Banner: React.FC<BannerProps> = ({ media }) => {
 
     const { data: movie } = useRandomMovieQuery({media: media})
+    console.log(movie)
     
     if(movie) {
         return (

@@ -13,7 +13,7 @@ export const randomMovie_api = createApi({
     endpoints: builder => ({
         randomMovie: builder.query<IMovie, mediaTypes>({
             query: (params: mediaTypes ) => ({
-                url: `/discover/${params.media}?api_key=${process.env.TMDB_API_KEY}&sort_by=popularity.desc&language=en-US&page=1`,
+                url: `/discover/${params.media}?api_key=${process.env.TMDB_API_KEY}&sort_by=popularity.desc&language=en-US&page=1&with_genres=35`,
                 params: {
                     media: params.media
                 }
@@ -31,7 +31,6 @@ export const randomMovie_api = createApi({
                 }
                 else { reserveIndex = randomMovieIndex - 1 }
                 const reserveMovie = respons.results.filter((elem, index) => { return index === reserveIndex })
-                console.log(randomMovieIndex)
                 if(randomMovie) {
                     return ({ ...randomMovie[0] })
                 }
@@ -43,16 +42,3 @@ export const randomMovie_api = createApi({
 export const { useRandomMovieQuery, } = randomMovie_api;
 
 // &with_networks=213
-
-// const options = {
-//     method: 'GET',
-//     headers: {
-//       accept: 'application/json',
-//       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NzFjZTk4ZmFiY2RjYTMwYjQxNmM1ZmVkY2U0ODJmNSIsInN1YiI6IjYzOTg4ZmQyYTFhOWJhMDA3ZGZhMjBkYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Xg85CVPHncUhXP7dsfllqMbNMn5tP73-vbyPAi7Blbk'
-//     }
-//   };
-  
-//   fetch('https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc', options)
-//     .then(response => response.json())
-//     .then(response => console.log(response))
-//     .catch(err => console.error(err));

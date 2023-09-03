@@ -21,6 +21,8 @@ import MessageBell from './MessageBell'
 import UserProfiles from './UserProfiles'
 import SpringDiv from './SpringDiv'
 
+import { useGernesListQuery } from '../redux/GENRES_API'
+
 import {
   trendings,
   originals,
@@ -39,6 +41,10 @@ const  App: React.FC = () => {
 
   const user = useAppSelector(state => state.redux.user)
   const startVideoPlayer = useAppSelector(state => state.redux.startVideoPlayer)
+
+  const { data: genresList } = useGernesListQuery({media_type: 'movie'})
+  const { data: genresList2 } = useGernesListQuery({media_type: 'tv'})
+  console.log(genresList, genresList2)
   
   return (
     <ContainerFluid scroll={startVideoPlayer}>
