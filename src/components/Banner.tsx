@@ -9,7 +9,7 @@ import { IMG_BASE_URL } from '../data/constants'
 import { useBannerMovieQuery } from '../redux/BANNE_MOVIE_API';
 import '../style/banner.scss'
 
-import { PageContext } from '../pages/Movies_Page_Wrapper'
+import { PageContext } from '../context/Context_API'
 
 type BannerProps = { media: 'tv' | 'movie' }
 
