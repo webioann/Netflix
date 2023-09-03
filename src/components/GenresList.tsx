@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { genres_list } from '../data/genres' 
+import { genres_list } from '../data/genres_list' 
 
 type props = {
     genres: number[] 

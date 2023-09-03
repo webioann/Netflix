@@ -6,14 +6,14 @@ import Button_MoreInfo from './Button_MoreInfo'
 import Button_PlayVideo from './Button_PlayVideo'
 import Button_SaveInMyList from './Button_SaveInMyList'
 import { IMG_BASE_URL } from '../data/constants'
-import { useRandomMovieQuery } from '../redux/randomMovie_api';
+import { useBannerMovieQuery } from '../redux/BANNE_MOVIE_API';
 import '../style/banner.scss'
 
 type BannerProps = { media: 'tv' | 'movie' }
 
 const Banner: React.FC<BannerProps> = ({ media }) => {
 
-    const { data: movie } = useRandomMovieQuery({media: media})
+    const { data: movie } = useBannerMovieQuery({media: media})
     console.log(movie)
     
     if(movie) {

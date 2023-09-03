@@ -5,13 +5,13 @@ type mediaTypes = {
     media: 'tv' | 'movie'
 }
 
-export const randomMovie_api = createApi({
+export const BANNE_MOVIE_API = createApi({
     reducerPath: 'random_movie',
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://api.themoviedb.org/3'
     }),
     endpoints: builder => ({
-        randomMovie: builder.query<IMovie, mediaTypes>({
+        bannerMovie: builder.query<IMovie, mediaTypes>({
             query: (params: mediaTypes ) => ({
                 url: `/discover/${params.media}?api_key=${process.env.TMDB_API_KEY}&sort_by=popularity.desc&language=en-US&page=1&with_genres=35`,
                 params: {
@@ -39,6 +39,6 @@ export const randomMovie_api = createApi({
         }),
     }), 
 })
-export const { useRandomMovieQuery, } = randomMovie_api;
+export const { useBannerMovieQuery, } = BANNE_MOVIE_API;
 
 // &with_networks=213

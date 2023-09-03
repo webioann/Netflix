@@ -27,4 +27,3 @@ export const genres_list = [
     {id: 10767, name: 'Talk'},
     {id: 10768, name: 'War & Politics'},
 ];
-

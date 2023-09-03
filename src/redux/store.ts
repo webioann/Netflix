@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useSelector,useDispatch,TypedUseSelectorHook } from "react-redux"
 import { allMovies_api } from './allMovies_api'
-import { randomMovie_api } from './randomMovie_api'
+import { BANNE_MOVIE_API } from './BANNE_MOVIE_API'
 import { moviesByGenre_api } from './moviesByGenre_api'
 import { GENRES_LIST_API } from './GENRES_API'
 import { VIDEO_API } from './VIDEO_API'
@@ -12,7 +12,7 @@ const store = configureStore({
     reducer: {
         redux: reduxSlice,
         [allMovies_api.reducerPath]: allMovies_api.reducer,
-        [randomMovie_api.reducerPath]: randomMovie_api.reducer,
+        [BANNE_MOVIE_API.reducerPath]: BANNE_MOVIE_API.reducer,
         [moviesByGenre_api.reducerPath]: moviesByGenre_api.reducer,
         [searchMovie.reducerPath]: searchMovie.reducer,
         [VIDEO_API.reducerPath]: VIDEO_API.reducer,
@@ -21,7 +21,7 @@ const store = configureStore({
     middleware: getDefaultMiddleware =>  getDefaultMiddleware().concat(
         [
             allMovies_api.middleware,
-            randomMovie_api.middleware,
+            BANNE_MOVIE_API.middleware,
             moviesByGenre_api.middleware,
             searchMovie.middleware,
             VIDEO_API.middleware,

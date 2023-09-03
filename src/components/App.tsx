@@ -41,10 +41,10 @@ const  App: React.FC = () => {
 
   const user = useAppSelector(state => state.redux.user)
   const startVideoPlayer = useAppSelector(state => state.redux.startVideoPlayer)
-
-  const { data: genresList } = useGernesListQuery({media_type: 'movie'})
-  const { data: genresList2 } = useGernesListQuery({media_type: 'tv'})
-  console.log(genresList, genresList2)
+  // get list of genres for movie and tv shows
+  // const { data: genresList } = useGernesListQuery({media_type: 'movie'})
+  // const { data: genresList2 } = useGernesListQuery({media_type: 'tv'})
+  // console.log(genresList, genresList2)
   
   return (
     <ContainerFluid scroll={startVideoPlayer}>
