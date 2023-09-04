@@ -28,13 +28,14 @@ const VideoPlayer_Popup = () => {
                 movie_id: selectedMovie.movie_id,
                 media_type: selectedMovie.media_type
             })
-            dispatch(resetSelectedMovie())
         }
     }, [selectedMovie])
 
     useEffect(() => {
         if(trailerVideoURL) {
             setTrailerURL(trailerVideoURL)
+            // reset redux store selectedMovie on null
+            dispatch(resetSelectedMovie())
         }
     }, [trailerVideoURL])
 

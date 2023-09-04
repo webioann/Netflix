@@ -64,40 +64,40 @@ const  App: React.FC = () => {
           <Route path="/" element={
             <Container_Page media_type='tv'>
               <Banner />
-              <MoviesSlider title='Popular on Netflix' path={originals}  media_type='tv'/>
-              <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
-              {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
-              <MoviesSlider title='Actions' path={actions}  media_type='movie'/>
-              <MoviesSlider title='Comedies' path={comedies} media_type='movie'/>
-              <MoviesSlider title='Horrors' path={horrors}  media_type='movie'/>
-              <MoviesSlider title='Romances' path={romances}  media_type='movie'/>
-              <MoviesSlider title='Documentaries' path={documentaries} media_type='movie'/>  */}
+              <MoviesSlider title='Popular on Netflix' path={originals} />
+              <MoviesSlider title='Trending' path={trendings} /> 
+              {/* <MoviesSlider title='Top of rates' path={topRated} />
+              <MoviesSlider title='Actions' path={actions} />
+              <MoviesSlider title='Comedies' path={comedies} />
+              <MoviesSlider title='Horrors' path={horrors} />
+              <MoviesSlider title='Romances' path={romances} />
+              <MoviesSlider title='Documentaries' path={documentaries} />  */}
             </Container_Page>} 
           />
           <Route path="tv_shows" element={
             <Container_Page media_type='tv'>
               <Banner />
-              <MoviesSlider title='Popular on Netflix' path={originals}  media_type='tv'/>
-              <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
-              {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
-              <MoviesSlider title='Actions' path={actions}  media_type='movie'/>
-              <MoviesSlider title='Comedies' path={comedies} media_type='movie'/>
-              <MoviesSlider title='Horrors' path={horrors}  media_type='movie'/>
-              <MoviesSlider title='Romances' path={romances}  media_type='movie'/>
-              <MoviesSlider title='Documentaries' path={documentaries} media_type='movie'/>  */}
+              <MoviesSlider title='Popular on Netflix' path={originals} />
+              <MoviesSlider title='Trending' path={trendings} /> 
+              {/* <MoviesSlider title='Top of rates' path={topRated} />
+              <MoviesSlider title='Actions' path={actions} />
+              <MoviesSlider title='Comedies' path={comedies} />
+              <MoviesSlider title='Horrors' path={horrors} />
+              <MoviesSlider title='Romances' path={romances} />
+              <MoviesSlider title='Documentaries' path={documentaries} />  */}
             </Container_Page>} 
           />
           <Route path="movies" element={
             <Container_Page media_type='movie'>
               <Banner />
-              <MoviesSlider title='Popular on Netflix' path={originals}  media_type='tv'/>
-              <MoviesSlider title='Trending' path={trendings}  media_type='movie' /> 
-              {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
-              <MoviesSlider title='Actions' path={actions}  media_type='movie'/>
-              <MoviesSlider title='Comedies' path={comedies} media_type='movie'/>
-              <MoviesSlider title='Horrors' path={horrors}  media_type='movie'/>
-              <MoviesSlider title='Romances' path={romances}  media_type='movie'/>
-              <MoviesSlider title='Documentaries' path={documentaries} media_type='movie'/>  */}
+              <MoviesSlider title='Popular on Netflix' path={originals} />
+              <MoviesSlider title='Trending' path={trendings}  /> 
+              {/* <MoviesSlider title='Top of rates' path={topRated} />
+              <MoviesSlider title='Actions' path={actions} />
+              <MoviesSlider title='Comedies' path={comedies} />
+              <MoviesSlider title='Horrors' path={horrors} />
+              <MoviesSlider title='Romances' path={romances} />
+              <MoviesSlider title='Documentaries' path={documentaries} />  */}
             </Container_Page>} 
           />
           <Route path="my_list" element={<MyList_Page />}/>
