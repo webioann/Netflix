@@ -26,6 +26,10 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
         }
     }, [])
 
+    useEffect(() => {
+        movies && console.log(movies[18])
+    })
+
 
     const onArrowClick = (direct: 'left' | 'right') => {
         if( rowRef.current && movies) {
@@ -39,7 +43,6 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
 
         }
     }
-
     if( movies ) {
         return (
             <section className='slider-container'>

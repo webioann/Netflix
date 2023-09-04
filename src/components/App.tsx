@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom"
 import { useAppSelector } from '../redux/store'
 import ContainerFluid from './ContainerFluid'
 import Banner from './Banner'
+import Container_Page from '../pages/Container_Page'
 import PageWrapper from '../pages/PageWrapper'
 import MyList_Page from '../pages/MyList_Page'
 import UserRegistration_Page from '../pages/UserRegistration_Page'
@@ -61,23 +62,22 @@ const  App: React.FC = () => {
         <VideoPlayer_Popup/>
         <Routes>
           <Route path="/" element={
-            <PageWrapper>
+            <Container_Page media_type='tv'>
               <Banner media='tv'/>
-              <MoviesSlider title='Popular on Netflix' path={originals}  media_type='movie'/>
-              {/* <Slider title='Actions' media='movie' genre={14}/> */}
-              {/* <MoviesSlider title='Trending' path={trendings}  media_type='tv'/>  */}
+              <MoviesSlider title='Popular on Netflix' path={originals}  media_type='tv'/>
+              <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
               {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
               <MoviesSlider title='Actions' path={actions}  media_type='movie'/>
               <MoviesSlider title='Comedies' path={comedies} media_type='movie'/>
               <MoviesSlider title='Horrors' path={horrors}  media_type='movie'/>
               <MoviesSlider title='Romances' path={romances}  media_type='movie'/>
               <MoviesSlider title='Documentaries' path={documentaries} media_type='movie'/>  */}
-            </PageWrapper>} 
+            </Container_Page>} 
           />
           <Route path="tv_shows" element={
-            <PageWrapper>
+            <Container_Page media_type='tv'>
               <Banner media='tv'/>
-              <MoviesSlider title='Popular on Netflix' path={originals}  media_type='movie'/>
+              <MoviesSlider title='Popular on Netflix' path={originals}  media_type='tv'/>
               <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
               {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
               <MoviesSlider title='Actions' path={actions}  media_type='movie'/>
@@ -85,20 +85,20 @@ const  App: React.FC = () => {
               <MoviesSlider title='Horrors' path={horrors}  media_type='movie'/>
               <MoviesSlider title='Romances' path={romances}  media_type='movie'/>
               <MoviesSlider title='Documentaries' path={documentaries} media_type='movie'/>  */}
-            </PageWrapper>} 
+            </Container_Page>} 
           />
           <Route path="movies" element={
-            <PageWrapper>
+            <Container_Page media_type='movie'>
               <Banner media='movie'/>
-              <MoviesSlider title='Popular on Netflix' path={originals}  media_type='movie'/>
-              <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
+              <MoviesSlider title='Popular on Netflix' path={originals}  media_type='tv'/>
+              <MoviesSlider title='Trending' path={trendings}  media_type='movie' /> 
               {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
               <MoviesSlider title='Actions' path={actions}  media_type='movie'/>
               <MoviesSlider title='Comedies' path={comedies} media_type='movie'/>
               <MoviesSlider title='Horrors' path={horrors}  media_type='movie'/>
               <MoviesSlider title='Romances' path={romances}  media_type='movie'/>
               <MoviesSlider title='Documentaries' path={documentaries} media_type='movie'/>  */}
-            </PageWrapper>} 
+            </Container_Page>} 
           />
           <Route path="my_list" element={<MyList_Page />}/>
           <Route path="login" element={<UserRegistration_Page  variant='login'/>}/>

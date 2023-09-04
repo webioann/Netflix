@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { PageContext } from '../pages/Container_Page';
+
 import { useAppDispatch } from '../redux/store'
 import { selectMovie, switchVideoPlayer } from '../redux/reduxSlice';
 import { FaPlay } from 'react-icons/fa'
@@ -14,13 +16,14 @@ type PlayVideo_ButtonType = {
 const Button_PlayVideo: React.FC<PlayVideo_ButtonType> = ({ ui, media, movie_id, title }) => {
 
     const dispatch = useAppDispatch()
+    const { media_type } = useContext(PageContext)
 
     return (
         <button 
             className={ ui === 'square' ? 'square-button' : 'big-circle circle-button'}
             onClick={() => {
                 dispatch(selectMovie({
-                    media_type: media,
+                    media_type: media_type,
                     movie_id: movie_id
                 }))
                 dispatch(switchVideoPlayer(true))
