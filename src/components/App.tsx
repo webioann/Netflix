@@ -63,7 +63,7 @@ const  App: React.FC = () => {
         <Routes>
           <Route path="/" element={
             <Container_Page media_type='tv'>
-              <Banner media='tv'/>
+              <Banner />
               <MoviesSlider title='Popular on Netflix' path={originals}  media_type='tv'/>
               <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
               {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
@@ -76,7 +76,7 @@ const  App: React.FC = () => {
           />
           <Route path="tv_shows" element={
             <Container_Page media_type='tv'>
-              <Banner media='tv'/>
+              <Banner />
               <MoviesSlider title='Popular on Netflix' path={originals}  media_type='tv'/>
               <MoviesSlider title='Trending' path={trendings}  media_type='tv'/> 
               {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>
@@ -89,7 +89,7 @@ const  App: React.FC = () => {
           />
           <Route path="movies" element={
             <Container_Page media_type='movie'>
-              <Banner media='movie'/>
+              <Banner />
               <MoviesSlider title='Popular on Netflix' path={originals}  media_type='tv'/>
               <MoviesSlider title='Trending' path={trendings}  media_type='movie' /> 
               {/* <MoviesSlider title='Top of rates' path={topRated}  media_type='movie'/>

@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import { IMovie, IMoviesDataResponse } from "../types/movies.types"
 
 type mediaTypes = {
-    media: 'tv' | 'movie'
+    media_type: 'tv' | 'movie'
 }
 
 export const BANNE_MOVIE_API = createApi({
@@ -13,9 +13,9 @@ export const BANNE_MOVIE_API = createApi({
     endpoints: builder => ({
         bannerMovie: builder.query<IMovie, mediaTypes>({
             query: (params: mediaTypes ) => ({
-                url: `/discover/${params.media}?api_key=${process.env.TMDB_API_KEY}&sort_by=popularity.desc&language=en-US&page=1&with_genres=80`,
+                url: `/discover/${params.media_type}?api_key=${process.env.TMDB_API_KEY}&sort_by=popularity.desc&language=en-US&page=1&with_genres=80`,
                 params: {
-                    media: params.media
+                    media_type: params.media_type
                 }
             }),
             transformResponse: (respons: IMoviesDataResponse) => {
