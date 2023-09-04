@@ -7,10 +7,9 @@ import '../style/movies-slider.scss'
 type MovieRowPropsType = {
     title: string
     path: string
-    media_type: 'movie' | 'tv' 
 }
 
-const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
+const MoviesSlider = ({ title, path }: MovieRowPropsType) => {
 
     const { data: movies } = useFetchMoviesQuery({path: path})
     const rowRef = useRef<HTMLUListElement>(null)
@@ -25,11 +24,6 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
             const { scrollLeft, clientWidth } = rowRef.current
         }
     }, [])
-
-    useEffect(() => {
-        movies && console.log(movies[18])
-    })
-
 
     const onArrowClick = (direct: 'left' | 'right') => {
         if( rowRef.current && movies) {
@@ -48,7 +42,7 @@ const MoviesSlider = ({ title, path, media_type }: MovieRowPropsType) => {
             <section className='slider-container'>
                 <h2 className='row-title'>{title}</h2>
                 <ul className="row-movies" ref={rowRef}>
-                    { movies?.map(movie => ( <MovieCard movie={movie} media_type={media_type} key={movie.id}/> ))}
+                    { movies?.map(movie => ( <MovieCard movie={movie} key={movie.id}/> ))}
                 </ul>
                 <div className="arrow-icons-wrapper">
                     <SlArrowLeft className={ isMoved ? 'arrow' : 'hidden-arrow' }
