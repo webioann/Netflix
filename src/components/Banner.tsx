@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+// import { useAppSelector } from '../redux/store'
 import { PageContext } from '../pages/Container_Page';
 import GenresList from './GenresList'
 import Container from './Container'
@@ -14,6 +15,7 @@ const Banner = () => {
 
     const { media_type } = useContext(PageContext)
     const { data: movie } = useBannerMovieQuery({media_type: media_type})
+    // const reStarter = useAppSelector(state => state.redux.bannerReStarter)
 
     if(movie) {
         return (
