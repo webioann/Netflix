@@ -3,7 +3,7 @@
 .nav {
     display: flex;
     width: 100%;
-    gap: 1rem;
+    gap: 0.5rem;
     .nav-link-active {
         color: #fff;
         font-weight: 900;
@@ -11,13 +11,17 @@
     .nav-link {
         color: #fff;
         font-weight: 300;
+        min-width: max-content;
+    }
+    .home-link{
+        display: none;
     }
 }
-// @media (min-width: $sm) {
-//     .nav {
-//         position: relative;
-//         justify-content: flex-start;
-//         bottom: 0;
-//         left: 0;
-//     }
-// }
+@media (min-width: $xs) {
+    .nav{
+        gap: 1rem;
+        .home-link{
+            display: block;
+        }
+    }
+}

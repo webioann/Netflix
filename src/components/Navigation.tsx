@@ -9,7 +9,7 @@ const Navigation = () => {
 
     return (
         <nav className='nav'>
-            <NavLink className={({isActive}) => isActive ? 'nav-link-active' : 'nav-link' } to={'/'}>Home</NavLink>
+            <NavLink className={({isActive}) => isActive ? 'nav-link-active home-link' : 'nav-link home-link' } to={'/'}>Home</NavLink>
             <NavLink className={({isActive}) => isActive ? 'nav-link-active' : 'nav-link' } to={'/tv_shows'}>TV Shows</NavLink>
             <NavLink className={({isActive}) => isActive ? 'nav-link-active' : 'nav-link' } to={'/movies'}>Movies</NavLink>
             {/* <NavLink className={({isActive}) => isActive ? 'nav-link-active' : 'nav-link' } to={'/latest'}>Latest</NavLink> */}
