@@ -20,6 +20,12 @@ const Banner = () => {
         restartBannerMovie({ media_type: media_type })
     }, [location.key])
 
+    useEffect(() => {
+        if(!movie?.overview ) {
+            restartBannerMovie({ media_type: media_type })
+        }
+    }, [movie])
+
     if(movie) {
         return (
             <section className='banner-container' 

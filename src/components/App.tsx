@@ -9,7 +9,7 @@ import UserRegistration_Page from '../pages/UserRegistration_Page'
 import Profile_Page from '../pages/Profile_Page'
 import Notfound_Page from '../pages/Notfound_Page'
 import MoviesSlider from './MoviesSlider'
-import NavigationPanel from './NavigationPanel'
+import Header from './Header'
 import VideoPlayer_Modal from './VideoPlayer_Modal'
 import SearchBar from './SearchBar'
 import NetflixLogo from './NetflixLogo'
@@ -44,7 +44,7 @@ const  App: React.FC = () => {
   return (
     <ContainerFluid scroll={videoIsPlaying}>
       <USER_CONTEXT_PROVIDER>
-        <NavigationPanel>
+        <Header>
           <NetflixLogo/>
           <Navigation/>
           <SpringDiv/>
@@ -53,7 +53,7 @@ const  App: React.FC = () => {
           <GiftLink/>
           <MessageBell/>
           <UserProfiles/>
-        </NavigationPanel>
+        </Header>
         <VideoPlayer_Modal/>
         <Routes>
           <Route path="/" element={

@@ -4,7 +4,7 @@ import '../style/navigation-panel.scss'
 
 type ChildrenProps = { children: JSX.Element[] | JSX.Element }
 
-const NavigationPanel: React.FC<ChildrenProps> = ({ children }) => {
+const Header: React.FC<ChildrenProps> = ({ children }) => {
 
     const [fadedNavbar, setFadedNavbar] = useState(true)
 
@@ -33,4 +33,4 @@ const NavigationPanel: React.FC<ChildrenProps> = ({ children }) => {
     )
 }
 
-export default NavigationPanel;
+export default Header;
