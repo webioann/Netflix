@@ -1,0 +1,30 @@
+@import './@index.scss';
+
+.search-results{
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-weight: normal;
+    color: $text-light;
+    width: 100%;
+    display: flex;
+    background-color: $netflix-black;
+    margin-top: $header-hight;
+    z-index: 3;
+    padding: 1rem;
+    .search-results-title{
+        margin-right: 1rem;
+        min-width: max-content;
+    }
+    .search-results-list{
+        display: inline-block;
+        .one-search-result{
+            list-style: none;
+            display: inline-block;
+            padding: 5px;
+            font-size: 14px;
+        }
+    }
+}
+
+

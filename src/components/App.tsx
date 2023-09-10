@@ -12,6 +12,7 @@ import MoviesSlider from './MoviesSlider'
 import Header from './Header'
 import VideoPlayer_Modal from './VideoPlayer_Modal'
 import SearchBar from './SearchBar'
+import SearchResults from './SearchResults'
 import NetflixLogo from './NetflixLogo'
 import Navigation from './Navigation'
 import KidsLink from './KidsLink'
@@ -55,6 +56,7 @@ const  App: React.FC = () => {
           <UserProfiles/>
         </Header>
         <VideoPlayer_Modal/>
+        <SearchResults/>
         <Routes>
           <Route path="/" element={
             <Container_Page media_type='tv'>

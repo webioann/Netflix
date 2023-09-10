@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Container from './Container'
-import '../style/navigation-panel.scss'
+import '../style/header.scss'
 
 type ChildrenProps = { children: JSX.Element[] | JSX.Element }
 

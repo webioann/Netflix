@@ -16,6 +16,7 @@ const Banner = () => {
     const { media_type } = useContext(PageContext)
     const [ restartBannerMovie, { data: movie } ] = useLazyBannerMovieQuery()
     let location = useLocation(); 
+    
     useEffect(() => {
         restartBannerMovie({ media_type: media_type })
     }, [location.key])
