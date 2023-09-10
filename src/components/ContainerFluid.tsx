@@ -6,12 +6,8 @@ type ContainerFluidProps = {
 }
 
 const ContainerFluid: React.FC<ContainerFluidProps> = ({children, scroll}) => {
-
+    // remove scroll if video player is play selected video
     document.body.style.overflow = scroll ? 'hidden' : 'scroll'
-
-    useEffect(() => {
-        console.log(`SCROLL => ${scroll}`)
-    })
 
     return (
         <div style={{

@@ -1,6 +1,6 @@
 @import './@index.scss';
 
-.popup-layout {
+.modal-layout {
     min-width: 100%;
     min-height: 100vh;
     background-color: $black-glass;
@@ -8,7 +8,7 @@
     position: fixed;
     bottom: 0;
     z-index: 12;
-    .popup-content {
+    .modal-content {
         width: 100%;
         max-width: 768px;
         margin: 0 auto;
@@ -56,22 +56,22 @@
     }
     // === MEDIA QUERYS ===
     @media (min-width: $sm) {
-        .popup-content {
+        .modal-content {
             margin-top: 70px;
         }
     }
     @media (min-width: $md) {
-        .popup-content {
+        .modal-content {
             margin-top: 90px;
         }
     }
     @media (min-width: $xl) {
-        .popup-content {
+        .modal-content {
             margin-top: 110px;
         }
     }
 }
-.hidden-popup {
+.hidden-modal {
     width: 0;
     height: 0;
     visibility: hidden;

@@ -5,9 +5,9 @@ import { useLazyGetTrailerVideoURLQuery } from '../redux/VIDEO_API'
 import VideoPlayer from './VideoPlayer'
 import Button_CloseVideo from './Button_CloseVideo'
 // import { SlArrowDown } from 'react-icons/sl'
-import '../style/video-player-popup.scss'
+import '../style/video-player-modal.scss'
 
-const VideoPlayer_Popup = () => {
+const VideoPlayer_Modal = () => {
 
     const dispatch = useAppDispatch()
     const selectedMovie = useAppSelector(state => state.redux.selectedMovie)
@@ -32,12 +32,11 @@ const VideoPlayer_Popup = () => {
         // reset redux store selectedMovie on null
         dispatch(resetSelectedMovie())
     }, [selectedMovie])
-    console.log(trailerVideoURL)
 
     if( trailerVideoURL  && videoIsPlaying ) {
         return (
-            <div className={ videoIsPlaying ? 'popup-layout' : 'hidden-popup'}>
-                <div className="popup-content">
+            <div className={ videoIsPlaying ? 'modal-layout' : 'hidden-modal'}>
+                <div className="modal-content">
                     <Button_CloseVideo onClose={closePlayer} color='red' size={30}/>
                     <VideoPlayer data={trailerVideoURL}/>
                     {/* <div className="show-more-icon-box">
@@ -62,4 +61,4 @@ const VideoPlayer_Popup = () => {
 
 }
 
-export default VideoPlayer_Popup;
+export default VideoPlayer_Modal;

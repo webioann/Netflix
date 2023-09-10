@@ -10,7 +10,7 @@ import Profile_Page from '../pages/Profile_Page'
 import Notfound_Page from '../pages/Notfound_Page'
 import MoviesSlider from './MoviesSlider'
 import NavigationPanel from './NavigationPanel'
-import VideoPlayer_Popup from './VideoPlayer_Popup'
+import VideoPlayer_Modal from './VideoPlayer_Modal'
 import SearchBar from './SearchBar'
 import NetflixLogo from './NetflixLogo'
 import Navigation from './Navigation'
@@ -38,9 +38,8 @@ const  App: React.FC = () => {
   
   const videoIsPlaying = useAppSelector(state => state.redux.videoIsPlaying)
   // get list of genres for movie and tv shows
-  // const { data: genresList } = useGernesListQuery({media_type: 'movie'})
-  // const { data: genresList2 } = useGernesListQuery({media_type: 'tv'})
-  // console.log(genresList, genresList2)
+  // const { data: genresList } = useGernesListQuery({media_type: 'tv'})
+  // console.log(genresList)
   
   return (
     <ContainerFluid scroll={videoIsPlaying}>
@@ -55,7 +54,7 @@ const  App: React.FC = () => {
           <MessageBell/>
           <UserProfiles/>
         </NavigationPanel>
-        <VideoPlayer_Popup/>
+        <VideoPlayer_Modal/>
         <Routes>
           <Route path="/" element={
             <Container_Page media_type='tv'>
