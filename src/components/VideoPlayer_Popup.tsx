@@ -1,26 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { resetSelectedMovie, switchVideoPlayer } from '../redux/reduxSlice';
+import { resetSelectedMovie } from '../redux/reduxSlice';
 import { useLazyGetTrailerVideoURLQuery } from '../redux/VIDEO_API'
 import VideoPlayer from './VideoPlayer'
 import Button_CloseVideo from './Button_CloseVideo'
-import { SlArrowDown } from 'react-icons/sl'
+// import { SlArrowDown } from 'react-icons/sl'
 import '../style/video-player-popup.scss'
 
 const VideoPlayer_Popup = () => {
 
     const dispatch = useAppDispatch()
     const selectedMovie = useAppSelector(state => state.redux.selectedMovie)
-    // const [trailerURL, setTrailerURL] = useState('')
-    const startVideoPlayer = useAppSelector(state => state.redux.startVideoPlayer)
-
-    const [showMoreInfo, setShowMoreInfo] = useState(false)
+    // const [showMoreInfo, setShowMoreInfo] = useState(false)
     const [ getTrailerVideoURL, { data: trailerVideoURL } ] = useLazyGetTrailerVideoURLQuery()
 
     const closePlayer = () => { 
         // reset redux store selectedMovie on null
         dispatch(resetSelectedMovie())
-        dispatch(switchVideoPlayer(false))
     }
 
     useEffect(() => {
@@ -34,20 +30,11 @@ const VideoPlayer_Popup = () => {
         dispatch(resetSelectedMovie())
     }, [selectedMovie])
 
-    // useEffect(() => {
-    //     if(!trailerVideoURL && selectedMovie) {
-    //         getTrailerVideoURL({ 
-    //             movie_id: selectedMovie.movie_id,
-    //             media_type: selectedMovie.media_type
-    //         })
-    //     }
-    // }, [trailerVideoURL])
-
     return (
-        <div className={startVideoPlayer ? 'popup-layout' : 'hidden-popup'}>
+        <div className={selectedMovie ? 'popup-layout' : 'hidden-popup'}>
             <div className="popup-content">
                 <Button_CloseVideo onClose={closePlayer} color='red' size={30}/>
-                { trailerVideoURL && <VideoPlayer open={startVideoPlayer} data={trailerVideoURL}/>}
+                { trailerVideoURL && <VideoPlayer data={trailerVideoURL}/>}
                 {/* <div className="show-more-icon-box">
                     <SlArrowDown className='show-more-icon' 
                         onClick={() => setShowMoreInfo(prev => !prev)}

@@ -8,13 +8,11 @@ type selectedMovieType = {
 
 type InitialStateType = {
     selectedMovie: selectedMovieType | null
-    startVideoPlayer: boolean
     bannerReStarter: boolean
 }
 
 const initialState: InitialStateType = {
     selectedMovie: null,
-    startVideoPlayer: false,
     bannerReStarter: false
 }
 
@@ -27,7 +25,6 @@ export const reduxSlice = createSlice({
             movie_id: actions.payload.movie_id
         }},
         resetSelectedMovie: (state) => { state.selectedMovie = null },
-        switchVideoPlayer:  (state, actions) => { state.startVideoPlayer = actions.payload },
         reStartBanner: state => { state.bannerReStarter = !state.bannerReStarter }
     }
 });
@@ -35,7 +32,6 @@ export const reduxSlice = createSlice({
 export const { 
     selectMovie,
     resetSelectedMovie,
-    switchVideoPlayer,
     reStartBanner,
     
 } = reduxSlice.actions;

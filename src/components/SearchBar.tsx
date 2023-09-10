@@ -13,7 +13,7 @@ const SearchBar = () => {
 
     const moch = 'barbi'
     const [ startSearch, { data: search_result }] = useLazyMultiSearchQuery()
-    // console.log(search_result)
+    console.log(search_result)
     
     return (
         <div className={barIsActive ? 'search-bar' : 'shorted-search-bar'}>

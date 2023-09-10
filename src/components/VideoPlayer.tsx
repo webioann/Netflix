@@ -3,12 +3,11 @@ import ReactPlayer from 'react-player'
 
 type VideoPlayerProps = {
     data: string
-    open: boolean
 }
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({ open, data }) => {
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ data }) => {
 
-    if( open && data ) {
+    if( data ) {
         return (
             <div style={{ position: 'relative', paddingTop: '56.25%', backgroundColor: '#111'}}>
                 <ReactPlayer
