@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-// import { useAppSelector } from '../redux/store'
+import React, { useContext, useEffect } from 'react'
 import { PageContext } from '../pages/Container_Page';
 import GenresList from './GenresList'
 import Container from './Container'
@@ -8,14 +7,20 @@ import Button_MoreInfo from './Button_MoreInfo'
 import Button_PlayVideo from './Button_PlayVideo'
 import Button_SaveInMyList from './Button_SaveInMyList'
 import { IMG_BASE_URL } from '../data/constants'
-import { useBannerMovieQuery } from '../redux/BANNE_MOVIE_API';
+import { useLazyBannerMovieQuery } from '../redux/BANNE_MOVIE_API';
 import '../style/banner.scss'
+import { useLocation } from 'react-router-dom';
 
 const Banner = () => {
 
     const { media_type } = useContext(PageContext)
-    const { data: movie } = useBannerMovieQuery({media_type: media_type})
-    // const reStarter = useAppSelector(state => state.redux.bannerReStarter)
+    const [ restartBannerMovie, { data: movie } ] = useLazyBannerMovieQuery()
+    let location = useLocation(); 
+    // restarting fetching data for Banner after  transition between pages
+    useEffect(() => {
+        restartBannerMovie({ media_type: media_type })
+    }, [location.key])
+
 
     if(movie) {
         return (
