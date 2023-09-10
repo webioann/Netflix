@@ -36,14 +36,14 @@ import {
 
 const  App: React.FC = () => {
   
-  const startVideoPlayer = useAppSelector(state => state.redux.selectedMovie)
+  const videoIsPlaying = useAppSelector(state => state.redux.videoIsPlaying)
   // get list of genres for movie and tv shows
   // const { data: genresList } = useGernesListQuery({media_type: 'movie'})
   // const { data: genresList2 } = useGernesListQuery({media_type: 'tv'})
   // console.log(genresList, genresList2)
   
   return (
-    <ContainerFluid scroll={startVideoPlayer ? true : false}>
+    <ContainerFluid scroll={videoIsPlaying}>
       <USER_CONTEXT_PROVIDER>
         <NavigationPanel>
           <NetflixLogo/>

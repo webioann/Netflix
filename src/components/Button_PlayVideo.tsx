@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { PageContext } from '../pages/Container_Page';
 import { useAppDispatch } from '../redux/store'
-import { selectMovie } from '../redux/reduxSlice';
+import { selectMovie, startPlayVideo } from '../redux/reduxSlice';
 import { FaPlay } from 'react-icons/fa'
 import '../style/buttons.scss'
 
@@ -23,6 +23,7 @@ const Button_PlayVideo: React.FC<PlayVideo_ButtonType> = ({ movie_id, title }) =
                     media_type: media_type,
                     movie_id: movie_id
                 }))
+                dispatch(startPlayVideo())
             }}
             >
             <FaPlay color='#fff' size={13}/>

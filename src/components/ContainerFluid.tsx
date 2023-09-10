@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 type ContainerFluidProps = {
     children: JSX.Element[] | JSX.Element
@@ -8,6 +8,10 @@ type ContainerFluidProps = {
 const ContainerFluid: React.FC<ContainerFluidProps> = ({children, scroll}) => {
 
     document.body.style.overflow = scroll ? 'hidden' : 'scroll'
+
+    useEffect(() => {
+        console.log(`SCROLL => ${scroll}`)
+    })
 
     return (
         <div style={{
