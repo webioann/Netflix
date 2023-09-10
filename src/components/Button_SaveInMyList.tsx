@@ -34,7 +34,10 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, title }
     const saveMovieInMyList = async ({ movie, media_type }: IParamsOnSave) => {
         if(user && media_type) {
             let id = movie.id.toString();
-            await setDoc(doc(db, `${user}`, id), { ...movie, media_type: media_type })
+            await setDoc(doc(db, `${user.email}`, id), { 
+                ...movie,
+                media_type: media_type,
+            })
             setIsSaved(true)
             // save movie id in localStorage array
             let watch_list = localStorage.getItem('watch_list')
@@ -48,7 +51,7 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, title }
 
     return (
         <button 
-            onClick={() => saveMovieInMyList({movie, media_type: media_type})}
+            onClick={() => saveMovieInMyList({ movie, media_type })}
             className={ title ? 'square-button' : 'small-circle circle-button'}
             >
             <i>{ isSaved && user

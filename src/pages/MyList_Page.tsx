@@ -6,7 +6,6 @@ import SpringDiv from '../components/SpringDiv'
 import { db } from '../firebase.config'
 import { doc, deleteDoc, getDocs, collection } from 'firebase/firestore'
 import { IMovie } from '../types/movies.types'
-import { useAppSelector } from '../redux/store'
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 import { IoClose } from 'react-icons/io5'
 import '../style/my-list-page.scss'
@@ -15,11 +14,12 @@ const MyList_Page = () => {
 
     const [myListMovies, setMyListMovies] = useState<IMovie[]>([])
     const user = useContext(UserContext)
+    const myListRef = user?.email
 
     useEffect(() => {
         const fetchMyList = async () => {
             if(user) {
-                const data = await getDocs(collection(db, `${user}`))
+                const data = await getDocs(collection(db, `${myListRef}`))
                 let raw = data.docs.map((doc) => ({...doc.data()}))
                 setMyListMovies(raw as IMovie[])
                 // save movie id in localStorage array
@@ -37,7 +37,7 @@ const MyList_Page = () => {
     const deleteMovieFromMyList = async (doc_id: string) => {
         if(user) {
             // remove doc from server
-            await deleteDoc(doc(db, `${user}`, doc_id))
+            await deleteDoc(doc(db, `${myListRef}`, doc_id))
             // remove doc from local state
             let filtered = myListMovies.filter((item) => { return item.id.toString() !== doc_id})
             setMyListMovies(filtered)
@@ -70,6 +70,7 @@ const MyList_Page = () => {
                                     <BsStar size={20} color='#fff'/>
                                 </div>
                             </div>
+                            {/* <p>{movie.saving_date ? new Date(movie.saving_date).toLocaleString() : 1222 }</p> */}
                             <SpringDiv/>
                             <span className='remove-icon-box'>
                                 <IoClose 
