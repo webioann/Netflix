@@ -24,7 +24,10 @@ const Banner = () => {
                 <Container width='1600px'>
                     <div className="banner-content">
                         <MovieNameExtractor movie={movie} fontSizeInRem={2.25} fontWeight={700}/>
-                        <p className='banner-overview'>{ movie.overview.length > 150 ? movie.overview.substring(0, 150 - 1) + '...' : movie.overview }</p>
+                        { movie.overview 
+                            ? <p className='banner-overview'>{ movie.overview.length > 150 ? movie.overview.substring(0, 150 - 1) + '...' : movie.overview }</p> 
+                            : <p>Overview not founded</p>
+                        }
                         <GenresList genres={movie.genre_ids} font={16}/>
 
                         <div className="banner-buttons-row">
