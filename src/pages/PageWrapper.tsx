@@ -1,5 +1,8 @@
 import React from 'react'
-import { childrenType } from '../types/global.types'
+
+type childrenType = {
+    children: JSX.Element[] | JSX.Element 
+}
 
 const PageWrapper: React.FC<childrenType> = ({children}) => {
     return (

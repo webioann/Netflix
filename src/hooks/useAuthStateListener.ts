@@ -8,7 +8,9 @@ export const useAuthStateListener = () => {
 
     const dispatch = useAppDispatch()
     // ===== reset user on app start for remove previos user =====
-    useEffect(() => {dispatch(deleteCurrentUser())}, [])
+    useEffect(() => {
+        dispatch(deleteCurrentUser())
+    }, [])
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {

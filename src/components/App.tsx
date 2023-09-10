@@ -1,11 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react'
-import { useAuthStateListener } from '../hooks/useAuthStateListener'
+import React from 'react'
 import { Routes, Route } from "react-router-dom"
 import { useAppSelector } from '../redux/store'
 import ContainerFluid from './ContainerFluid'
 import Banner from './Banner'
 import Container_Page from '../pages/Container_Page'
-import PageWrapper from '../pages/PageWrapper'
 import MyList_Page from '../pages/MyList_Page'
 import UserRegistration_Page from '../pages/UserRegistration_Page'
 import Profile_Page from '../pages/Profile_Page'
@@ -21,8 +19,9 @@ import GiftLink from './GiftLink'
 import MessageBell from './MessageBell'
 import UserProfiles from './UserProfiles'
 import SpringDiv from './SpringDiv'
+import USER_CONTEXT_PROVIDER from '../hooks/USER_CONTEXT_PROVIDER'
 
-import { useGernesListQuery } from '../redux/GENRES_API'
+// import { useGernesListQuery } from '../redux/GENRES_API'
 
 import {
   trendings,
@@ -37,10 +36,6 @@ import {
 
 const  App: React.FC = () => {
   
-  // ===== auth state listener =====
-  useAuthStateListener();
-
-  const user = useAppSelector(state => state.redux.user)
   const startVideoPlayer = useAppSelector(state => state.redux.startVideoPlayer)
   // get list of genres for movie and tv shows
   // const { data: genresList } = useGernesListQuery({media_type: 'movie'})
@@ -49,6 +44,7 @@ const  App: React.FC = () => {
   
   return (
     <ContainerFluid scroll={startVideoPlayer}>
+      <USER_CONTEXT_PROVIDER>
         <NavigationPanel>
           <NetflixLogo/>
           <Navigation/>
@@ -104,8 +100,9 @@ const  App: React.FC = () => {
           <Route path="login" element={<UserRegistration_Page  variant='login'/>}/>
           <Route path="signup" element={<UserRegistration_Page  variant='signup'/>}/>
           <Route path="*" element={<Notfound_Page />} />
-          { user &&  <Route path="profile" element={<Profile_Page />}/>}
+          <Route path="profile" element={<Profile_Page />}/>
         </Routes>
+      </USER_CONTEXT_PROVIDER>
     </ContainerFluid>
   )
 }

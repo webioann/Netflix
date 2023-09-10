@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
 import { NavLink } from 'react-router-dom'
-import { useAppSelector } from '../redux/store'
 import '../style/navigation.scss'
 
 const Navigation = () => {
 
-    const user = useAppSelector(state => state.redux.user)
+    const user = useContext(UserContext)
 
     return (
         <nav className='nav'>

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
 import Container from '../components/Container'
 import MoviePoster from '../components/MoviePoster'
 import SpringDiv from '../components/SpringDiv'
@@ -13,7 +14,7 @@ import '../style/my-list-page.scss'
 const MyList_Page = () => {
 
     const [myListMovies, setMyListMovies] = useState<IMovie[]>([])
-    const user = useAppSelector(state => state.redux.user?.email)
+    const user = useContext(UserContext)
 
     useEffect(() => {
         const fetchMyList = async () => {

@@ -1,5 +1,5 @@
-import React from 'react'
-import { useAppSelector } from "../redux/store"
+import React, { useContext } from 'react'
+import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
 import { USER_AVATAR } from '../data/constants'
 
 type userAvatarProps = {
@@ -9,7 +9,7 @@ type userAvatarProps = {
 
 const UserAvatar: React.FC<userAvatarProps> = ({ size, radius }) => {
 
-    const user = useAppSelector(state => state.redux.user)
+    const user = useContext(UserContext)
 
     return (
         <img 

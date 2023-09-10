@@ -1,6 +1,4 @@
 import React from 'react'
-import { useAppDispatch } from '../redux/store'
-import { deleteCurrentUser } from '../redux/reduxSlice'
 import { signOut } from "firebase/auth"
 import { auth } from '../firebase.config'
 import { useNavigate } from 'react-router-dom'
@@ -8,13 +6,11 @@ import '../style/auth-button.scss'
 
 const Signout_Button = () => {
 
-    const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
     const signOutUser = async () => {
         try {
             await signOut(auth)
-            await dispatch(deleteCurrentUser())
             navigate("/")
         }
         catch(error) {console.log(error)}

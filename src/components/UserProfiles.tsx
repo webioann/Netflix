@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { useAppSelector } from '../redux/store'
+import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
 import UserAvatar from './UserAvatar'
 import { IoMdArrowDropdown } from 'react-icons/io'
 
 const UserProfiles  = () => {
 
-    const user = useAppSelector(state => state.redux.user)
+    const user = useContext(UserContext)
 
     return (
         <div>
