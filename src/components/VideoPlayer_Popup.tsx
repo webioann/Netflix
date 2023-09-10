@@ -12,11 +12,13 @@ const VideoPlayer_Popup = () => {
     const dispatch = useAppDispatch()
     const selectedMovie = useAppSelector(state => state.redux.selectedMovie)
     // const [showMoreInfo, setShowMoreInfo] = useState(false)
+    const [ playerIsActive, setPlayerIsActive ] = useState(false)
     const [ getTrailerVideoURL, { data: trailerVideoURL } ] = useLazyGetTrailerVideoURLQuery()
 
     const closePlayer = () => { 
         // reset redux store selectedMovie on null
         dispatch(resetSelectedMovie())
+        setPlayerIsActive(false)
     }
 
     useEffect(() => {
@@ -28,30 +30,36 @@ const VideoPlayer_Popup = () => {
         }
         // reset redux store selectedMovie on null
         dispatch(resetSelectedMovie())
+        setPlayerIsActive(true)
     }, [selectedMovie])
+    console.log(trailerVideoURL)
 
-    return (
-        <div className={selectedMovie ? 'popup-layout' : 'hidden-popup'}>
-            <div className="popup-content">
-                <Button_CloseVideo onClose={closePlayer} color='red' size={30}/>
-                { trailerVideoURL && <VideoPlayer data={trailerVideoURL}/>}
-                {/* <div className="show-more-icon-box">
-                    <SlArrowDown className='show-more-icon' 
-                        onClick={() => setShowMoreInfo(prev => !prev)}
-                        title='more info' 
-                        size={40} 
-                        color='red'
-                    />
-                </div> */}
-
-                {/* <div className={ showMoreInfo ? 'open-info more-info' : 'close-info more-info'}>
-                    <p>1</p>
-                    <p>2</p>
-                    <p>3</p>
-                </div> */}
+    if( trailerVideoURL !== undefined ) {
+        return (
+            <div className={ playerIsActive ? 'popup-layout' : 'hidden-popup'}>
+                <div className="popup-content">
+                    <Button_CloseVideo onClose={closePlayer} color='red' size={30}/>
+                    { trailerVideoURL && <VideoPlayer data={trailerVideoURL}/>}
+                    {/* <div className="show-more-icon-box">
+                        <SlArrowDown className='show-more-icon' 
+                            onClick={() => setShowMoreInfo(prev => !prev)}
+                            title='more info' 
+                            size={40} 
+                            color='red'
+                        />
+                    </div> */}
+    
+                    {/* <div className={ showMoreInfo ? 'open-info more-info' : 'close-info more-info'}>
+                        <p>1</p>
+                        <p>2</p>
+                        <p>3</p>
+                    </div> */}
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
+    else return null
+
 }
 
 export default VideoPlayer_Popup;

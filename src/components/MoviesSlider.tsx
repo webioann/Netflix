@@ -14,7 +14,7 @@ const MoviesSlider = ({ title, path }: MovieRowPropsType) => {
     const { data: movies } = useFetchMoviesQuery({path: path})
     const rowRef = useRef<HTMLUListElement>(null)
     const [isMoved, setIsMoved] = useState(false)
-    const [rightSliderEnd, setRightSliderEnd] = useState(false)
+    const [rightSliderEnd, setRightSliderEnd] = useState(false) 
 
     // ==== need create prop 'movie_card_width' ====
     const width: number = 290;
