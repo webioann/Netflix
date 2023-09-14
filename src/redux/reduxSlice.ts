@@ -9,14 +9,12 @@ type selectedMovieType = {
 
 type InitialStateType = {
     selectedMovie: selectedMovieType | null;
-    bannerReStarter: boolean;
     videoIsPlaying: boolean;
     searchResults: IMovie[] | null
 }
 
 const initialState: InitialStateType = {
     selectedMovie: null,
-    bannerReStarter: false,
     videoIsPlaying: false,
     searchResults: null
 }
@@ -30,7 +28,6 @@ export const reduxSlice = createSlice({
             movie_id: actions.payload.movie_id
         }},
         resetSelectedMovie: (state) => { state.selectedMovie = null },
-        reStartBanner: state => { state.bannerReStarter = !state.bannerReStarter },
         startPlayVideo: state => { state.videoIsPlaying = true },
         stopPlayVideo: state => { state.videoIsPlaying = false },
         setSearchResults: (state, actions) => { state.searchResults = actions.payload }
@@ -40,7 +37,6 @@ export const reduxSlice = createSlice({
 export const { 
     selectMovie,
     resetSelectedMovie,
-    reStartBanner,
     startPlayVideo,
     stopPlayVideo,
     setSearchResults
