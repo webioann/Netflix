@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
-import { useAppSelector, useAppDispatch } from '../redux/store'
+import { useAppDispatch } from '../redux/store'
 import { createWatchList } from '../redux/redux'
 import Container from '../components/Container'
 import MoviePoster from '../components/MoviePoster'
@@ -40,8 +40,6 @@ const MyList_Page = () => {
         // === reset data in redux watchList
         dispatch(createWatchList(filtered))
     }
-    // ==============================>
-    console.log(myListMovies)
 
     return (
         <section className='my-list'>

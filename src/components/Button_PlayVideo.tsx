@@ -20,7 +20,6 @@ const Button_PlayVideo: React.FC<PlayVideoParam> = ({ videoParam, title }) => {
             onClick={() => {
                 dispatch(selectMovie(videoParam))
                 dispatch(startPlayVideo())
-                console.log(videoParam)
             }}
             >
             <FaPlay color='#fff' size={13}/>

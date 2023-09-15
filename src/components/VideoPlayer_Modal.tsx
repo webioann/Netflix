@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
 import { resetSelectedMovie, stopPlayVideo } from '../redux/redux';
 import { useLazyGetTrailerVideoURLQuery } from '../redux/VIDEO_API'
 import VideoPlayer from './VideoPlayer'
 import Button_CloseVideo from './Button_CloseVideo'
-// import { SlArrowDown } from 'react-icons/sl'
 import '../style/video-player-modal.scss'
 
 const VideoPlayer_Modal = () => {
@@ -12,8 +11,6 @@ const VideoPlayer_Modal = () => {
     const dispatch = useAppDispatch()
     const selectedMovie = useAppSelector(state => state.redux.selectedMovie)
     const videoIsPlaying = useAppSelector(state => state.redux.videoIsPlaying)
-    // const [showMoreInfo, setShowMoreInfo] = useState(false)
-    const [ playerIsActive, setPlayerIsActive ] = useState(false)
     const [ getTrailerVideoURL, { data: trailerVideoURL } ] = useLazyGetTrailerVideoURLQuery()
 
     const closePlayer = () => { 
@@ -21,9 +18,6 @@ const VideoPlayer_Modal = () => {
         dispatch(resetSelectedMovie())
         dispatch(stopPlayVideo())
     }
-
-
-    console.log(selectedMovie)
 
     useEffect(() => {
         if(selectedMovie) {
