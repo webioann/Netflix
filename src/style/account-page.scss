@@ -1,0 +1,45 @@
+@import './@index.scss';
+
+.account-page{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #F4F3F4;
+    margin-top: $header-hight;
+    // color: #A9D0FF;
+    color: $bg-dark;
+    .account{
+        margin: 0 auto;
+        padding-top: 50px;
+        max-width: $md;
+        border: 1px solid #ccc;
+        h1{
+            letter-spacing: 2px;
+            padding: 1rem 0;
+        }
+        .cancel{
+            margin-top: 1rem;
+            padding: 10px 20px;
+            border-radius: 2px;
+            background-color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .section-row{
+            border-top: 2px solid #ccc;
+            padding: 1rem 0;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+
+            min-height: 20vh;
+            .left-part{
+                .section-title{
+                    text-transform: capitalize;
+                }
+            }
+            .right-part{
+
+            }
+        }
+    }
+}

@@ -11,7 +11,7 @@ const UserProfiles  = () => {
     return (
         <div>
             <Link 
-                to={user ? '/profile' : '/login'} 
+                to={user ? '/account' : '/login'} 
                 style={{display: 'flex', alignItems: 'center'}}
                 >
                 <UserAvatar size={30} radius='4px'/>
