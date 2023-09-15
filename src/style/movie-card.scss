@@ -3,7 +3,7 @@
 .movie-card {
     margin-right: 2px;
     margin-left: 2px;
-    transition: all 0.4s linear 0.1s;
+    transition: all 0.5s linear 0.4s;
     position: relative;
     z-index: 10;
     &:hover {
@@ -45,4 +45,7 @@
             justify-content: flex-end;
         }
     }
+}
+@keyframes onMovieHover {
+    
 }
