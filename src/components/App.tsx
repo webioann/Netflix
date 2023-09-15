@@ -59,7 +59,7 @@ const  App: React.FC = () => {
         <SearchResults/>
         <Routes>
           <Route path="/" element={
-            <Container_Page media_type='tv'>
+            <Container_Page media='tv'>
               <Banner />
               <MoviesSlider title='Popular on Netflix' path={originals} />
               <MoviesSlider title='Trending' path={trendings} /> 
@@ -72,7 +72,7 @@ const  App: React.FC = () => {
             </Container_Page>} 
           />
           <Route path="tv_shows" element={
-            <Container_Page media_type='tv'>
+            <Container_Page media='tv'>
               <Banner />
               <MoviesSlider title='Popular on Netflix' path={originals} />
               <MoviesSlider title='Trending' path={trendings} /> 
@@ -85,7 +85,7 @@ const  App: React.FC = () => {
             </Container_Page>} 
           />
           <Route path="movies" element={
-            <Container_Page media_type='movie'>
+            <Container_Page media='movie'>
               <Banner />
               <MoviesSlider title='Popular on Netflix' path={originals} />
               <MoviesSlider title='Trending' path={trendings}  /> 

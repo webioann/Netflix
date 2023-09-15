@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { PageContext } from '../pages/Container_Page';
+import { PageContext } from '../pages/Container_Page'
 import GenresList from './GenresList'
 import Container from './Container'
 import MovieNameExtractor from './MovieNameExtractor'
@@ -7,23 +7,23 @@ import Button_MoreInfo from './Button_MoreInfo'
 import Button_PlayVideo from './Button_PlayVideo'
 import Button_SaveInMyList from './Button_SaveInMyList'
 import { IMG_BASE_URL } from '../data/constants'
-import { useLazyBannerMovieQuery } from '../redux/BANNE_MOVIE_API';
+import { useLazyBannerMovieQuery } from '../redux/BANNER_API';
 import '../style/banner.scss'
 import { useLocation } from 'react-router-dom';
 
 const Banner = () => {
     // restarting fetching data for Banner after  transition between pages
-    const { media_type } = useContext(PageContext)
+    const { media } = useContext(PageContext)
     const [ restartBannerMovie, { data: movie } ] = useLazyBannerMovieQuery()
     let location = useLocation(); 
-    
+
     useEffect(() => {
-        restartBannerMovie({ media_type: media_type })
+        restartBannerMovie({ media_type: media })
     }, [location.key])
 
     useEffect(() => {
         if(!movie?.overview ) {
-            restartBannerMovie({ media_type: media_type })
+            restartBannerMovie({ media_type: media })
         }
     }, [movie])
 
@@ -40,7 +40,7 @@ const Banner = () => {
                         }
                         <GenresList genres={movie.genre_ids} font={16}/>
                         <div className="banner-buttons-row">
-                            <Button_PlayVideo title='Play' movie_id={movie.id} />
+                            <Button_PlayVideo title='Play' videoParam={{movie_id: movie.id, media_type: media}} />
                             <Button_SaveInMyList title='My List' movie={movie} />
                             <Button_MoreInfo/>
                             {/* <div className="spring-div" style={{ flex: 1 }}/> */}

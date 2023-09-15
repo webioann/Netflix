@@ -5,7 +5,7 @@ type mediaTypes = {
     media_type: 'tv' | 'movie'
 }
 
-export const BANNE_MOVIE_API = createApi({
+export const BANNER_API = createApi({
     reducerPath: 'random_movie',
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://api.themoviedb.org/3'
@@ -39,6 +39,6 @@ export const BANNE_MOVIE_API = createApi({
         }),
     }), 
 })
-export const { useBannerMovieQuery, useLazyBannerMovieQuery } = BANNE_MOVIE_API;
+export const { useBannerMovieQuery, useLazyBannerMovieQuery } = BANNER_API;
 
 // &with_networks=213

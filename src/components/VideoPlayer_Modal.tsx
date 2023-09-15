@@ -22,6 +22,9 @@ const VideoPlayer_Modal = () => {
         dispatch(stopPlayVideo())
     }
 
+
+    console.log(selectedMovie)
+
     useEffect(() => {
         if(selectedMovie) {
             getTrailerVideoURL({ 

@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { IMovie } from '../types/movies.types'
+import React, { useContext } from 'react'
+import { PageContext } from '../pages/Container_Page';
+import { useObjectCompleter } from '../hooks/useObjectCompleter';
+import { IMovie } from '../types/movies.types';
 import GenresList from './GenresList'
 import MoviePoster from './MoviePoster'
 import MovieNameExtractor from './MovieNameExtractor'
@@ -15,13 +17,16 @@ interface IMovieCard {
 }
 
 const MovieCard: React.FC<IMovieCard> = ({ movie }) => {
-
+    
+    const { media } = useContext(PageContext)
+    const { videoParam, newMovie } = useObjectCompleter(movie, media)
+    
     return (
         <li className='movie-card'>
             <MoviePoster movie={movie} size={290}/>
             <div className="movie-card-controls">
                 <div className="poster-controls-info">
-                    <Button_PlayVideo movie_id={movie.id}/>
+                    <Button_PlayVideo videoParam={videoParam}/>
                     <MovieNameExtractor movie={movie} fontSizeInRem={1} fontWeight={400}/>
                     <GenresList genres={movie?.genre_ids} font={10}/>
                 </div>
@@ -29,7 +34,7 @@ const MovieCard: React.FC<IMovieCard> = ({ movie }) => {
                     <Button_VolumeOff/>
                     <Button_Like/>
                     <Button_Dislike/>
-                    <Button_SaveInMyList movie={movie} />
+                    <Button_SaveInMyList movie={newMovie} />
                 </div>
             </div>
         </li>
@@ -37,3 +42,32 @@ const MovieCard: React.FC<IMovieCard> = ({ movie }) => {
 }
 
 export default MovieCard;
+    // const [videoParam, setVideoParams] = useState<IVideoParams>({
+    //     movie_id: movie.id,
+    //     media_type: media
+    // })
+    // const [ suppMovie, setSuppMovie ] = useState<IMovie>(movie)
+
+    // useEffect(() => {
+    //     let objKeyArray = Object.keys(movie)
+    //     let hasOwnMediaType = objKeyArray.some((item) => item === 'media_type')
+    //     if( hasOwnMediaType === true && movie.media_type) {
+    //         setVideoParams({
+    //             movie_id: movie.id,
+    //             media_type: movie.media_type
+    //         })
+    //         setSuppMovie({
+    //             ...movie
+    //         })
+    //     }
+    //     else{
+    //         setVideoParams({
+    //             movie_id: movie.id,
+    //             media_type: media
+    //         })
+    //         setSuppMovie({
+    //             ...movie,
+    //             media_type: media
+    //         })
+    //     }
+    // }, [])

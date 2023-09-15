@@ -1,12 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { IVideoDataResponse } from "../types/movies.types"
+import { IVideoDataResponse, IVideoParams } from "../types/video.types"
 
 type paramsType = {
     path: string
-}
-type videoParams = { 
-    movie_id: number 
-    media_type: string | undefined
 }
 
 export const VIDEO_API = createApi({
@@ -15,8 +11,8 @@ export const VIDEO_API = createApi({
         baseUrl: 'https://api.themoviedb.org/3'
     }),
     endpoints: builder => ({
-        getTrailerVideoURL: builder.query<string, videoParams>({
-            query: (params: videoParams ) => ({
+        getTrailerVideoURL: builder.query<string, IVideoParams>({
+            query: (params: IVideoParams ) => ({
                 url: `/${params.media_type}/${params.movie_id}/videos?api_key=${process.env.TMDB_API_KEY}&language=en-US`,
                 params: {
                     movie_id: params.movie_id,

@@ -40,6 +40,8 @@ const MyList_Page = () => {
         // === reset data in redux watchList
         dispatch(createWatchList(filtered))
     }
+    // ==============================>
+    console.log(myListMovies)
 
     return (
         <section className='my-list'>
@@ -49,7 +51,7 @@ const MyList_Page = () => {
                 {myListMovies.map(movie => (
                         <li className='my-list-item' key={movie.id}>
                             <MoviePoster movie={movie} size={260}/>
-                            <p className='my-list-item-name'>{ movie.media_type === 'movie' ? movie.title : movie.name }</p>
+                            <p className='my-list-item-name'>{ movie.media_type === 'movie' ? movie.original_title : movie.name }</p>
                             <p className='item-date'>{movie.first_air_date && movie.first_air_date.substring(0,4) }</p>
                             <div className='popularity-stars'>
                                 <div className='star-row'>
