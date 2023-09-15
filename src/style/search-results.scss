@@ -18,6 +18,9 @@
     }
     .search-results-list{
         display: inline-block;
+        opacity: 0;
+        margin-left: -50px;
+        animation: dawnResults 400ms linear 200ms 1 forwards;
         .one-search-result{
             list-style: none;
             display: inline-block;
@@ -25,6 +28,16 @@
             font-size: 14px;
             cursor: pointer;
         }
+    }
+}
+@keyframes dawnResults {
+    from{
+        opacity: 0;
+        margin-left: -50px;
+    }
+    to{
+        opacity: 1;
+        margin-left: 0;
     }
 }
 
