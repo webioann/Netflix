@@ -43,7 +43,7 @@ const  App: React.FC = () => {
   // console.log(genresList)
   
   return (
-    <ContainerFluid scroll={videoIsPlaying}>
+    <ContainerFluid scrolling={videoIsPlaying}>
       <USER_CONTEXT_PROVIDER>
         <Header>
           <NetflixLogo/>

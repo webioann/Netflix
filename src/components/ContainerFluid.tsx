@@ -2,12 +2,12 @@ import React, { useEffect } from 'react'
 
 type ContainerFluidProps = {
     children: JSX.Element[] | JSX.Element
-    scroll: boolean
+    scrolling: boolean
 }
 
-const ContainerFluid: React.FC<ContainerFluidProps> = ({children, scroll}) => {
+const ContainerFluid: React.FC<ContainerFluidProps> = ({children, scrolling}) => {
     // remove scroll if video player is play selected video
-    document.body.style.overflow = scroll ? 'hidden' : 'scroll'
+    document.body.style.overflow = scrolling ? 'hidden' : 'scroll'
 
     return (
         <div style={{
