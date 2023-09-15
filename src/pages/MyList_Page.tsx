@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
+import { useAppSelector, useAppDispatch } from '../redux/store'
+import { createWatchList } from '../redux/redux'
 import Container from '../components/Container'
 import MoviePoster from '../components/MoviePoster'
 import SpringDiv from '../components/SpringDiv'
@@ -14,65 +16,30 @@ const MyList_Page = () => {
 
     const [myListMovies, setMyListMovies] = useState<IMovie[]>([])
     const user = useContext(UserContext)
+    const dispatch = useAppDispatch()
     const myListRef = user?.email
-    let localWatchList = localStorage.getItem('watch_list')
 
-    // useEffect(() => {
-    //     const fetchMyList = async () => {
-    //         let localWatchList = localStorage.getItem('watch_list')
-    //         // console.log(localWatchList)
-    //         if( user ) {
-    //             const data = await getDocs(collection(db, `${myListRef}`))
-    //             let raw = data.docs.map((doc) => ({...doc.data()}))
-    //             setMyListMovies(raw as IMovie[])
-    //             // save movie id in localStorage array
-    //             let rawArray = []
-    //             for(let i=0; i < raw.length; i++) {
-    //                 rawArray.push(raw[i].id)
-    //             }
-    //             localStorage.setItem('watch_list', JSON.stringify(raw))
-    //         }
-    //     }
-    //         fetchMyList();
-    // },[])
-    // =================================================\\\\\\\\\\\\\\\\
-    // useEffect(() => {
-    //     const fetchMyList = async () => {
-    //         if( localWatchList && user ) {
-    //             setMyListMovies(JSON.parse(localWatchList))
-    //         }
-    //         if( localWatchList === null && user ) {
-    //             const data = await getDocs(collection(db, `${myListRef}`))
-    //             let raw = data.docs.map((doc) => ({...doc.data()}))
-    //             setMyListMovies(raw as IMovie[])
-    //             // save movie id in localStorage array
-    //             localStorage.setItem('watch_list', JSON.stringify(raw))
-    //         }
-    //         else{ setMyListMovies([]) }
-    //     }
-    //     fetchMyList();
-    // }, [])
-
+    // === set MyList_Page state in page first render ===
     useEffect(() => {
         const fetchMyList = async () => {
-                const data = await getDocs(collection(db, `${myListRef}`))
-                let raw = data.docs.map((doc) => ({...doc.data()}))
-                setMyListMovies(raw as IMovie[])
-            }
+            const data = await getDocs(collection(db, `${myListRef}`))
+            let raw = data.docs.map((doc) => ({...doc.data()}))
+            setMyListMovies(raw as IMovie[])
+            // === save data on redux watchList
+            dispatch(createWatchList(raw))
+        }
         fetchMyList();
     }, [])
 
-    //  === delete movie (doc) from My List ===
     const deleteMovieFromMyList = async (doc_id: string) => {
-        if(user) {
-            // remove doc from server
-            await deleteDoc(doc(db, `${myListRef}`, doc_id))
-            // remove doc from local state
-            let filtered = myListMovies.filter((item) => { return item.id.toString() !== doc_id})
-            setMyListMovies(filtered)
-            // localStorage.setItem('watch_list', JSON.stringify(filtered))
-            }
-        }
+        // remove doc from server
+        await deleteDoc(doc(db, `${myListRef}`, doc_id))
+        // remove movie from MyList_Page state
+        let filtered = myListMovies.filter((item) => { return item.id.toString() !== doc_id})
+        setMyListMovies(filtered)
+        // === reset data in redux watchList
+        dispatch(createWatchList(filtered))
+    }
 
     return (
         <section className='my-list'>

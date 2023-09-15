@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
+import { useAppSelector, useAppDispatch } from '../redux/store'
+import { createWatchList } from '../redux/redux'
 import { PageContext } from '../pages/Container_Page';
 import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
 import { AiOutlinePlus, AiOutlineCheck } from 'react-icons/ai'
@@ -19,41 +21,25 @@ interface IParamsOnSave {
 const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, title }) => {
 
     const [isSaved, setIsSaved] = useState(false)
+    const dispatch = useAppDispatch()
+    const watch_list = useAppSelector(state => state.redux.watchList)
     //  ===== contexts =====
     const { media_type } = useContext(PageContext)
     const user = useContext(UserContext)
-    let watch_list = localStorage.getItem('watch_list')
 
+    // if this movie in redux state watchList will set "checkbox"
     useEffect(() => {
-        if(watch_list !== null) {
-            const list = JSON.parse(watch_list)
-            let listLength = list.length
-            if( listLength > 0 ) {
-                let data = JSON.parse(watch_list)
-                setIsSaved((data as IMovie[]).some(dataMovie =>  dataMovie.id === movie.id))
-            }
-            else{setIsSaved(false)}
-        }
-         
-    }, [isSaved])
+        watch_list && setIsSaved(watch_list.some((item) => item.id === movie.id))
+    }, [watch_list])
 
     const saveMovieInMyList = async ({ movie, media_type }: IParamsOnSave) => {
         if(user && media_type) {
-            let id = movie.id.toString();
-            await setDoc(doc(db, `${user.email}`, id), { 
-                ...movie,
-                media_type: media_type,
-            })
+            let id = movie.id.toString()
+            const dataForSave = { ...movie, media_type: media_type }
+            await setDoc( doc(db, `${user.email}`, id), dataForSave )
             setIsSaved(true)
-            // save movie id in localStorage array
-            // if(watch_list !== null && !isSaved) {
-            //     // let data: number[] = JSON.parse(watch_list)
-            //     // data.push(movie.id)
-            //     localStorage.setItem('watch_list', JSON.stringify({
-            //         ...movie,
-            //         media_type: media_type,
-            //     }))
-            // }
+            // save new movie in redux watchList
+            watch_list && dispatch(createWatchList([ ...watch_list, dataForSave ]))
         }
     }
 

@@ -11,6 +11,8 @@ type InitialStateType = {
     selectedMovie: selectedMovieType | null;
     videoIsPlaying: boolean;
     searchResults: IMovie[] | null;
+
+    IDsList: number[];
     watchList: IMovie[] | null;
 }
 
@@ -18,6 +20,8 @@ const initialState: InitialStateType = {
     selectedMovie: null,
     videoIsPlaying: false,
     searchResults: null,
+
+    IDsList: [],
     watchList: null,
 }
 
