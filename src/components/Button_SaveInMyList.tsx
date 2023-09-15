@@ -22,13 +22,19 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, title }
     //  ===== contexts =====
     const { media_type } = useContext(PageContext)
     const user = useContext(UserContext)
+    let watch_list = localStorage.getItem('watch_list')
 
     useEffect(() => {
-        let watch_list = localStorage.getItem('watch_list')
         if(watch_list !== null) {
-            let data = JSON.parse(watch_list)
-            setIsSaved((data as number[]).includes(movie.id))
+            const list = JSON.parse(watch_list)
+            let listLength = list.length
+            if( listLength > 0 ) {
+                let data = JSON.parse(watch_list)
+                setIsSaved((data as IMovie[]).some(dataMovie =>  dataMovie.id === movie.id))
+            }
+            else{setIsSaved(false)}
         }
+         
     }, [isSaved])
 
     const saveMovieInMyList = async ({ movie, media_type }: IParamsOnSave) => {
@@ -40,12 +46,14 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, title }
             })
             setIsSaved(true)
             // save movie id in localStorage array
-            let watch_list = localStorage.getItem('watch_list')
-            if(watch_list !== null && !isSaved) {
-                let data: number[] = JSON.parse(watch_list)
-                data.push(movie.id)
-                localStorage.setItem('watch_list', JSON.stringify(data))
-            }
+            // if(watch_list !== null && !isSaved) {
+            //     // let data: number[] = JSON.parse(watch_list)
+            //     // data.push(movie.id)
+            //     localStorage.setItem('watch_list', JSON.stringify({
+            //         ...movie,
+            //         media_type: media_type,
+            //     }))
+            // }
         }
     }
 

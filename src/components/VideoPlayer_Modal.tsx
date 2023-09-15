@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { resetSelectedMovie, stopPlayVideo } from '../redux/reduxSlice';
+import { resetSelectedMovie, stopPlayVideo } from '../redux/redux';
 import { useLazyGetTrailerVideoURLQuery } from '../redux/VIDEO_API'
 import VideoPlayer from './VideoPlayer'
 import Button_CloseVideo from './Button_CloseVideo'

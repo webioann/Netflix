@@ -6,11 +6,11 @@ import { moviesByGenre_api } from './moviesByGenre_api'
 import { GENRES_LIST_API } from './GENRES_API'
 import { VIDEO_API } from './VIDEO_API'
 import { searchMovie } from './SEARCH_API'
-import reduxSlice from './reduxSlice'
+import redux from './redux'
 
 const store = configureStore({
     reducer: {
-        redux: reduxSlice,
+        redux: redux,
         [allMovies_api.reducerPath]: allMovies_api.reducer,
         [BANNE_MOVIE_API.reducerPath]: BANNE_MOVIE_API.reducer,
         [moviesByGenre_api.reducerPath]: moviesByGenre_api.reducer,

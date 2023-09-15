@@ -8,7 +8,7 @@ const SearchResults = () => {
     const searchResults = useAppSelector(state => state.redux.searchResults)
     
     // remove later
-    console.log(searchResults)
+    // console.log(searchResults)
 
     if(searchResults) {
         return (

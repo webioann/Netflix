@@ -15,23 +15,52 @@ const MyList_Page = () => {
     const [myListMovies, setMyListMovies] = useState<IMovie[]>([])
     const user = useContext(UserContext)
     const myListRef = user?.email
+    let localWatchList = localStorage.getItem('watch_list')
+
+    // useEffect(() => {
+    //     const fetchMyList = async () => {
+    //         let localWatchList = localStorage.getItem('watch_list')
+    //         // console.log(localWatchList)
+    //         if( user ) {
+    //             const data = await getDocs(collection(db, `${myListRef}`))
+    //             let raw = data.docs.map((doc) => ({...doc.data()}))
+    //             setMyListMovies(raw as IMovie[])
+    //             // save movie id in localStorage array
+    //             let rawArray = []
+    //             for(let i=0; i < raw.length; i++) {
+    //                 rawArray.push(raw[i].id)
+    //             }
+    //             localStorage.setItem('watch_list', JSON.stringify(raw))
+    //         }
+    //     }
+    //         fetchMyList();
+    // },[])
+    // =================================================\\\\\\\\\\\\\\\\
+    // useEffect(() => {
+    //     const fetchMyList = async () => {
+    //         if( localWatchList && user ) {
+    //             setMyListMovies(JSON.parse(localWatchList))
+    //         }
+    //         if( localWatchList === null && user ) {
+    //             const data = await getDocs(collection(db, `${myListRef}`))
+    //             let raw = data.docs.map((doc) => ({...doc.data()}))
+    //             setMyListMovies(raw as IMovie[])
+    //             // save movie id in localStorage array
+    //             localStorage.setItem('watch_list', JSON.stringify(raw))
+    //         }
+    //         else{ setMyListMovies([]) }
+    //     }
+    //     fetchMyList();
+    // }, [])
 
     useEffect(() => {
         const fetchMyList = async () => {
-            if(user) {
                 const data = await getDocs(collection(db, `${myListRef}`))
                 let raw = data.docs.map((doc) => ({...doc.data()}))
                 setMyListMovies(raw as IMovie[])
-                // save movie id in localStorage array
-                let rawArray = []
-                for(let i=0; i < raw.length; i++) {
-                    rawArray.push(raw[i].id)
-                }
-                localStorage.setItem('watch_list', JSON.stringify(rawArray))
-                }
             }
-            fetchMyList();
-    },[])
+        fetchMyList();
+    }, [])
 
     //  === delete movie (doc) from My List ===
     const deleteMovieFromMyList = async (doc_id: string) => {
@@ -41,20 +70,14 @@ const MyList_Page = () => {
             // remove doc from local state
             let filtered = myListMovies.filter((item) => { return item.id.toString() !== doc_id})
             setMyListMovies(filtered)
-            // 
-            let watch_list = localStorage.getItem('watch_list')
-            if(watch_list !== null) {
-                let data: number[] = JSON.parse(watch_list)
-                let filteredArray = data.filter(item => item !== Number(doc_id))
-                localStorage.setItem('watch_list', JSON.stringify(filteredArray))
+            // localStorage.setItem('watch_list', JSON.stringify(filtered))
             }
         }
-    }
 
     return (
         <section className='my-list'>
             <Container width='1200px'>
-                <h1 className='my-list-title'>My List {myListMovies.length < 1 ? 'is empty' : ''}</h1>
+                <h1 className='my-list-title'>My List {myListMovies.length == 0 ? 'is empty' : ''}</h1>
                 <ul className='my-list-wrapper'>
                 {myListMovies.map(movie => (
                         <li className='my-list-item' key={movie.id}>

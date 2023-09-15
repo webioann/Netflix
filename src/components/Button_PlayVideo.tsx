@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { PageContext } from '../pages/Container_Page';
 import { useAppDispatch } from '../redux/store'
-import { selectMovie, startPlayVideo } from '../redux/reduxSlice';
+import { selectMovie, startPlayVideo } from '../redux/redux';
 import { FaPlay } from 'react-icons/fa'
 import '../style/buttons.scss'
 

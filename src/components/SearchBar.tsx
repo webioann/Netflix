@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
 import { useLazyMultiSearchQuery } from '../redux/SEARCH_API'
-import { setSearchResults } from '../redux/reduxSlice'
+import { setSearchResults } from '../redux/redux'
 import { useLocation } from 'react-router-dom';
 
 import { GoSearch } from 'react-icons/go'

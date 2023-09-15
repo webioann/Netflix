@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useAppDispatch } from '../redux/store'
-import { createCurrentUser, deleteCurrentUser } from '../redux/reduxSlice'
+import { createCurrentUser, deleteCurrentUser } from '../redux/redux'
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from '../firebase.config'
 

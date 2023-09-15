@@ -10,16 +10,18 @@ type selectedMovieType = {
 type InitialStateType = {
     selectedMovie: selectedMovieType | null;
     videoIsPlaying: boolean;
-    searchResults: IMovie[] | null
+    searchResults: IMovie[] | null;
+    watchList: IMovie[] | null;
 }
 
 const initialState: InitialStateType = {
     selectedMovie: null,
     videoIsPlaying: false,
-    searchResults: null
+    searchResults: null,
+    watchList: null,
 }
 
-export const reduxSlice = createSlice({
+export const redux = createSlice({
     name: "redux",
     initialState,
     reducers: {
@@ -30,7 +32,9 @@ export const reduxSlice = createSlice({
         resetSelectedMovie: (state) => { state.selectedMovie = null },
         startPlayVideo: state => { state.videoIsPlaying = true },
         stopPlayVideo: state => { state.videoIsPlaying = false },
-        setSearchResults: (state, actions) => { state.searchResults = actions.payload }
+        setSearchResults: (state, actions) => { state.searchResults = actions.payload },
+        createWatchList: (state, actions) => { state.watchList = actions.payload },
+        deleteWatchList: state => { state.watchList = null },
     }
 });
 
@@ -39,9 +43,10 @@ export const {
     resetSelectedMovie,
     startPlayVideo,
     stopPlayVideo,
-    setSearchResults
+    setSearchResults,
+    createWatchList,
+    deleteWatchList
 
+} = redux.actions;
 
-} = reduxSlice.actions;
-
-export default reduxSlice.reducer;
+export default redux.reducer;
