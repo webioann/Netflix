@@ -19,7 +19,7 @@
     .search-results-list{
         display: inline-block;
         opacity: 0;
-        margin-left: -50px;
+        margin-left: -20px;
         animation: dawnResults 400ms linear 200ms 1 forwards;
         .one-search-result{
             list-style: none;
@@ -33,7 +33,7 @@
 @keyframes dawnResults {
     from{
         opacity: 0;
-        margin-left: -50px;
+        margin-left: -20px;
     }
     to{
         opacity: 1;

@@ -3,7 +3,6 @@ import { useAppSelector, useAppDispatch } from '../redux/store'
 import { useLazyMultiSearchQuery } from '../redux/SEARCH_API'
 import { setSearchResults } from '../redux/redux'
 import { useLocation } from 'react-router-dom';
-
 import { GoSearch } from 'react-icons/go'
 import { IoClose } from 'react-icons/io5'
 
@@ -29,19 +28,20 @@ const SearchBar = () => {
         // on second click with not empty input field
         if(  value.length >= 3 ) {
             startSearching({ search: value })
-            setBarIsActive(false)
+            // setBarIsActive(false)
             setValue('')
         }
     }
 
     useEffect(() => {
         search_results && dispatch(setSearchResults(search_results))
-        setBarIsActive(false)
+        // setBarIsActive(false)
     }, [search_results])
 
     useEffect(() => {
         dispatch(setSearchResults(null))
         setValue('')
+        setBarIsActive(false)
     }, [location.key])
 
 
