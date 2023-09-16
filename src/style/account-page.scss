@@ -4,41 +4,96 @@
     width: 100%;
     min-height: 100vh;
     background-color: #F4F3F4;
-    margin-top: $header-hight;
-    // color: #A9D0FF;
-    color: $bg-dark;
     .account{
         margin: 0 auto;
-        padding-top: 50px;
+        margin-top: $header-hight;
+        padding-top: 20px;
         max-width: $md;
-        border: 1px solid #ccc;
-        h1{
+        color: $black-glass;
+        h2{
             letter-spacing: 2px;
             padding: 1rem 0;
+            font-weight: 600;
+            color: $shadow;
         }
         .cancel{
             margin-top: 1rem;
             padding: 10px 20px;
             border-radius: 2px;
-            background-color: #ccc;
+            background-color: #E2E0E2;
+            -webkit-box-shadow: inset 0px -1px 1px 0px rgba(0,0,0,0.3);
+            -moz-box-shadow: inset 0px -1px 1px 0px rgba(0,0,0,0.3);
+            box-shadow: inset 0px -1px 1px 0px rgba(0,0,0,0.3);
             display: flex;
             align-items: center;
             justify-content: center;
+            color: $shadow;
+            font-weight: 700;
+        }
+        .with-border{
+            border-bottom: 2px solid $black-glass;
+            margin-bottom: 0.5rem;
+        }
+        .bolder{
+            color: rgba(0,0,0,0.7);
+            font-weight: 600;
+        }
+        .hd-video{
+            border: 2px solid $black-glass;
+            border-radius: 3px;
+            padding: 0px 5px;
+            margin-left: 10px;
+        }
+        .mock-link{
+            color: #34bdeb;
+            cursor: pointer;
+            padding-bottom: 0.5rem;
+        }
+        .link-stack{
+            display: flex;
+            flex-direction: column;
+        }
+        .avatar{
+            display: flex;
+            align-items: center;
+            span{
+                margin-left: 1rem;
+                font-weight: 600;
+            }
+        }
+        .like-footer{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
         }
         .section-row{
-            border-top: 2px solid #ccc;
-            padding: 1rem 0;
+            border-top: 2px solid $black-glass;
+            color: $black-glass;
+            font-weight: 500;
+            padding: 0.7rem 0;
             display: grid;
             grid-template-columns: 1fr 2fr;
-
-            min-height: 20vh;
             .left-part{
                 .section-title{
                     text-transform: capitalize;
                 }
             }
-            .right-part{
-
+            .details-part{
+                display: flex;
+                flex-direction: column;
+                .block{
+                    width: 100%;
+                    display: flex;
+                    padding-bottom: 0.3rem;
+                }
+                .full{
+                    justify-content: space-between;
+                }
+                .half-right{
+                    justify-content: flex-end;
+                }
+                .half-left{
+                    justify-content: flex-start;
+                }
             }
         }
     }
