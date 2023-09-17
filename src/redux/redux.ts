@@ -7,8 +7,9 @@ type InitialStateType = {
     selectedMovie: IVideoParams | null;
     videoIsPlaying: boolean;
     searchResults: IMovie[] | null;
-    searchQuery: string | null;
+    searchQuery: string | null; 
     watchList: IMovie[] | null;
+    IDList: number[]
 }
 
 const initialState: InitialStateType = {
@@ -17,6 +18,7 @@ const initialState: InitialStateType = {
     searchResults: null,
     searchQuery: null,
     watchList: null,
+    IDList: [],
 }
 
 export const redux = createSlice({
@@ -40,6 +42,9 @@ export const redux = createSlice({
         // === creating, updating and deleting My List ===
         createWatchList: (state, actions) => { state.watchList = actions.payload },
         deleteWatchList: state => { state.watchList = null },
+
+        // === put id in array or clear his
+        fillIDList: (state, actions) => { state.IDList = actions.payload },
     }
 });
 
@@ -52,7 +57,7 @@ export const {
     createWatchList,
     deleteWatchList,
     setSearchQuery,
-    
+    fillIDList
 
 } = redux.actions;
 

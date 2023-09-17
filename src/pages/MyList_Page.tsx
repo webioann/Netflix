@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
-import { useAppDispatch } from '../redux/store'
-import { createWatchList } from '../redux/redux'
 import Container from '../components/Container'
 import MoviePoster from '../components/MoviePoster'
 import SpringDiv from '../components/SpringDiv'
@@ -16,29 +14,29 @@ const MyList_Page = () => {
 
     const [myListMovies, setMyListMovies] = useState<IMovie[]>([])
     const user = useContext(UserContext)
-    const dispatch = useAppDispatch()
     const myListRef = user?.email
 
-    // === set MyList_Page state in page first render ===
     useEffect(() => {
-        const fetchMyList = async () => {
-            const data = await getDocs(collection(db, `${myListRef}`))
-            let raw = data.docs.map((doc) => ({...doc.data()}))
-            setMyListMovies(raw as IMovie[])
-            // === save data on redux watchList
-            dispatch(createWatchList(raw))
+        const localMyList = localStorage.getItem('myList')
+        if( localMyList === null) {
+            const fetchMyList = async () => {
+                const data = await getDocs(collection(db, `${myListRef}`))
+                let raw = data.docs.map((doc) => ({...doc.data()}))
+                localStorage.setItem('myList', JSON.stringify(raw))
+                setMyListMovies(raw as IMovie[])
+            }
+            fetchMyList();
         }
-        fetchMyList();
+        if( localMyList ) {
+            setMyListMovies(JSON.parse(localMyList))
+        }
     }, [])
 
     const deleteMovieFromMyList = async (doc_id: string) => {
-        // remove doc from server
         await deleteDoc(doc(db, `${myListRef}`, doc_id))
-        // remove movie from MyList_Page state
         let filtered = myListMovies.filter((item) => { return item.id.toString() !== doc_id})
+        localStorage.setItem('myList', JSON.stringify(filtered))
         setMyListMovies(filtered)
-        // === reset data in redux watchList
-        dispatch(createWatchList(filtered))
     }
 
     return (
