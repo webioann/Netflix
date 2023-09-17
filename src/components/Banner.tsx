@@ -26,7 +26,7 @@ const Banner = () => {
             restartBannerMovie({ media_type: media })
         }
     }, [movie])
-
+    console.log(movie?.id)
     if(movie) {
         return (
             <section className='banner-container' 

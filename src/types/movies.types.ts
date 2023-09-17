@@ -37,3 +37,9 @@ export interface IGenres {
     id: number
     name: string
 }
+
+export interface IErrorServerResponse {
+    success: boolean
+    status_code: number
+    status_message: string
+}
