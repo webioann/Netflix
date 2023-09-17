@@ -30,7 +30,9 @@ const OutputtingSearchedMovies = () => {
     if( movies ) {
         return (
             <section className='slider-container'>
-                <h3 className='row-title'>Results on request {searchQuery}</h3>
+                <h3 className='row-title with-border'>Results on request 
+                    <span>{searchQuery}</span>
+                </h3>
                 <ul className="row-movies" ref={rowRef}>
                     { movies?.map(movie => ( <MovieCard movie={movie} key={movie.id}/> ))}
                 </ul>
