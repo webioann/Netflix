@@ -15,6 +15,11 @@
             color: $text-blue;
         }
     }
+    .results{
+        text-decoration: underline;
+        letter-spacing: 3px;
+
+    }
     .row-movies {
         display: flex;
         overflow-x: scroll;

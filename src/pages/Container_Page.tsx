@@ -18,7 +18,7 @@ const Container_Page: React.FC<pagePropsType> = ({ children, media }) => {
 
     return (
         <PageContext.Provider value={pageInnerState}>
-            <div>
+            <div style={{ position: 'relative' }}>
                 { children }
             </div>
         </PageContext.Provider>

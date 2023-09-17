@@ -4,7 +4,7 @@ import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
 import MovieCard from './MovieCard'
 import '../style/movies-slider.scss'
 
-const OutputtingSearchedMovies = () => {
+const SearchResultsOutput = () => {
 
     const searchQuery = useAppSelector(state => state.redux.searchQuery)
     const movies = useAppSelector(state => state.redux.searchResults)
@@ -30,7 +30,7 @@ const OutputtingSearchedMovies = () => {
     if( movies ) {
         return (
             <section className='slider-container'>
-                <h3 className='row-title with-border'>Results on request 
+                <h3 className='row-title results'>Movies and TV shows search results by word
                     <span>{searchQuery}</span>
                 </h3>
                 <ul className="row-movies" ref={rowRef}>
@@ -54,5 +54,5 @@ const OutputtingSearchedMovies = () => {
     else{ return null } 
 }
 
-export default OutputtingSearchedMovies;
+export default SearchResultsOutput;
 

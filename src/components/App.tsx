@@ -14,7 +14,7 @@ import Header from './Header'
 import VideoPlayer_Modal from './VideoPlayer_Modal'
 import SearchBar from './SearchBar'
 import SearchResults from './SearchResults'
-import OutputtingSearchedMovies from './OutputtingSearchedMovies'
+import SearchResultsOutput from './SearchResultsOutput'
 import NetflixLogo from './NetflixLogo'
 import Navigation from './Navigation'
 import KidsLink from './KidsLink'
@@ -63,6 +63,8 @@ const  App: React.FC = () => {
           <Route path="/" element={
             <Container_Page media='tv'>
               <Banner />
+              <SearchResultsOutput/>
+
               <MoviesSlider title='Popular on Netflix' path={originals} />
               <MoviesSlider title='Trending' path={trendings} /> 
               {/* <MoviesSlider title='Top of rates' path={topRated} />
@@ -76,6 +78,8 @@ const  App: React.FC = () => {
           <Route path="tv_shows" element={
             <Container_Page media='tv'>
               <Banner />
+              <SearchResultsOutput/>
+
               <MoviesSlider title='Popular on Netflix' path={originals} />
               <MoviesSlider title='Trending' path={trendings} /> 
               {/* <MoviesSlider title='Top of rates' path={topRated} />
@@ -89,7 +93,8 @@ const  App: React.FC = () => {
           <Route path="movies" element={
             <Container_Page media='movie'>
               <Banner />
-              <OutputtingSearchedMovies/>
+              <SearchResultsOutput/>
+
               <MoviesSlider title='Popular on Netflix' path={originals} />
               <MoviesSlider title='Trending' path={trendings}  /> 
               {/* <MoviesSlider title='Top of rates' path={topRated} />
