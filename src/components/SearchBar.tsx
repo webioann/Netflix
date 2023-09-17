@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useAppSelector, useAppDispatch } from '../redux/store'
-import { useLazyMultiSearchQuery } from '../redux/SEARCH_API'
-import { setSearchResults } from '../redux/redux'
+import { useAppDispatch } from '../redux/store'
+import { useLazySearchMovieQuery } from '../redux/SEARCH_API'
+import { setSearchResults, setSearchQuery } from '../redux/redux'
 import { useLocation } from 'react-router-dom';
 import { GoSearch } from 'react-icons/go'
 import { IoClose } from 'react-icons/io5'
-
 import '../style/search-bar.scss'
 
 const SearchBar = () => {
@@ -13,37 +12,39 @@ const SearchBar = () => {
     const [barIsActive, setBarIsActive] = useState(false)
     const [value, setValue] = useState('')
     const dispatch = useAppDispatch()
-    const [ startSearching, { data: search_results }] = useLazyMultiSearchQuery()
+    const [ fetchSearchMovies, { data: movies } ] = useLazySearchMovieQuery()
     let location = useLocation(); 
-    // 
     const inputRef = useRef<HTMLInputElement>(null)
 
     const onClickSearchIcon = () => {
         // on first click by icon button
         if(  value.length < 3 ) {
             setBarIsActive(true)
-            // reset searchResults before new searching
+            // reseting searchResults before new searching
             dispatch(setSearchResults(null))
+            // reseting search query before insert new search query
+            dispatch(setSearchQuery(null))
         }
         // on second click with not empty input field
         if(  value.length >= 3 ) {
-            startSearching({ search: value })
+            // start searching ({ search: value })
+            fetchSearchMovies({ search: value })
+            // save search qury on redux
+            dispatch(setSearchQuery(value))
             // setBarIsActive(false)
             setValue('')
         }
     }
 
     useEffect(() => {
-        search_results && dispatch(setSearchResults(search_results))
-        // setBarIsActive(false)
-    }, [search_results])
+        movies && dispatch(setSearchResults(movies))
+    }, [movies])
 
     useEffect(() => {
         dispatch(setSearchResults(null))
         setValue('')
         setBarIsActive(false)
     }, [location.key])
-
 
     return (
         <div className={barIsActive ? 'search-bar' : 'shorted-search-bar'}>
@@ -65,7 +66,7 @@ const SearchBar = () => {
                 onClick={() => {
                     setValue('')
                     setBarIsActive(false)
-                    dispatch(setSearchResults(null))
+                    // dispatch(setSearchResults(null))
                 }}
                 className='close-input'
                 color='#fff' 

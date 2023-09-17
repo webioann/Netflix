@@ -14,6 +14,7 @@ import Header from './Header'
 import VideoPlayer_Modal from './VideoPlayer_Modal'
 import SearchBar from './SearchBar'
 import SearchResults from './SearchResults'
+import OutputtingSearchedMovies from './OutputtingSearchedMovies'
 import NetflixLogo from './NetflixLogo'
 import Navigation from './Navigation'
 import KidsLink from './KidsLink'
@@ -88,6 +89,7 @@ const  App: React.FC = () => {
           <Route path="movies" element={
             <Container_Page media='movie'>
               <Banner />
+              <OutputtingSearchedMovies/>
               <MoviesSlider title='Popular on Netflix' path={originals} />
               <MoviesSlider title='Trending' path={trendings}  /> 
               {/* <MoviesSlider title='Top of rates' path={topRated} />

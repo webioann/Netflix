@@ -18,7 +18,20 @@ export const searchMovie = createApi({
             }),
             transformResponse: (respons: IMoviesDataResponse) => respons.results,
         }),
+        searchMovie: builder.query({
+            query: (params: search_type) => ({
+                url: `/search/multi?query=${params.search}&api_key=${process.env.TMDB_API_KEY}&include_adult=false&language=en-US&page=1`,
+                params: {
+                    search: params.search
+                }
+            }),
+            transformResponse: (respons: IMoviesDataResponse) => {
+                let withoutPersons = respons.results.filter((obj) => obj.media_type !== 'person' && ( obj.backdrop_path || obj.poster_path ) )
+                return withoutPersons
+            },
+        }),
+
     }),
 });
 
-export const { useLazyMultiSearchQuery } = searchMovie;
+export const { useLazyMultiSearchQuery, useLazySearchMovieQuery } = searchMovie;

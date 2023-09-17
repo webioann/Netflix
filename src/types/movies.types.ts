@@ -1,6 +1,6 @@
 export interface IMovie {
     backdrop_path: string
-    media_type?: 'tv' | 'movie'
+    media_type?: 'tv' | 'movie' | 'person'
     release_data?: string
     first_air_date: string
     genre_ids: number[]
@@ -42,4 +42,16 @@ export interface IErrorServerResponse {
     success: boolean
     status_code: number
     status_message: string
+}
+export interface IWrongPersonResponse {
+    adult: boolean
+    genre: number
+    id: number
+    known_for: IMovie[]
+    known_for_department: string
+    media_type: 'person'
+    name: string
+    original_name: string
+    popularity: number
+    profile_path: string | null
 }

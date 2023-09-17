@@ -35,8 +35,7 @@ export const redux = createSlice({
         setSearchResults: (state, actions) => { state.searchResults = actions.payload },
 
         // === search query saving and reseting ===
-        getSerchQuery: (state, actions) => { state.searchQuery = actions.payload },
-        resetSerchQuery: (state) => { state.searchQuery = null },
+        setSearchQuery: (state, actions) => { state.searchQuery = actions.payload },
         
         // === creating, updating and deleting My List ===
         createWatchList: (state, actions) => { state.watchList = actions.payload },
@@ -52,8 +51,7 @@ export const {
     setSearchResults,
     createWatchList,
     deleteWatchList,
-    getSerchQuery,
-    resetSerchQuery,
+    setSearchQuery,
     
 
 } = redux.actions;
