@@ -17,9 +17,14 @@ const SearchBar = () => {
     const inputRef = useRef<HTMLInputElement>(null)
 
     const onClickSearchIcon = () => {
+        if( value.length == 0 ) {
+            dispatch(setSearchResults(null))
+            dispatch(setSearchQuery(null))
+        }
         // on first click by icon button
         if(  value.length < 3 ) {
             setBarIsActive(true)
+            inputRef.current?.focus()
             // reseting searchResults before new searching
             dispatch(setSearchResults(null))
             // reseting search query before insert new search query
@@ -31,6 +36,7 @@ const SearchBar = () => {
             fetchSearchMovies({ search: value })
             // save search qury on redux
             dispatch(setSearchQuery(value))
+            inputRef.current?.blur()
             // setBarIsActive(false)
             setValue('')
         }
@@ -66,7 +72,8 @@ const SearchBar = () => {
                 onClick={() => {
                     setValue('')
                     setBarIsActive(false)
-                    // dispatch(setSearchResults(null))
+                    dispatch(setSearchQuery(null))
+                    dispatch(setSearchResults(null))
                 }}
                 className='close-input'
                 color='#fff' 
