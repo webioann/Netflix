@@ -19,7 +19,7 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, title }
 
     const [isSaved, setIsSaved] = useState(false)
     const watch_list = useAppSelector(state => state.redux.watchList)
-    const user = useContext(UserContext)
+    const {user} = useContext(UserContext)
     const localMyList = localStorage.getItem('myList')
 
     useEffect(() => {

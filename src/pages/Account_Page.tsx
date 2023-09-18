@@ -6,7 +6,7 @@ import '../style/account-page.scss'
 
 const Account_Page = () => {
 
-    const user = useContext(UserContext)
+    const { user } = useContext(UserContext)
 
     return (
         <main className='account-page'>

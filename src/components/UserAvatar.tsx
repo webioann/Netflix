@@ -9,7 +9,7 @@ type userAvatarProps = {
 
 const UserAvatar: React.FC<userAvatarProps> = ({ size, radius }) => {
 
-    const user = useContext(UserContext)
+    const { user } = useContext(UserContext)
 
     return (
         <img 

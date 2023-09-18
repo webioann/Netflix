@@ -6,7 +6,6 @@ import Banner from './Banner'
 import Container_Page from '../pages/Container_Page'
 import MyList_Page from '../pages/MyList_Page'
 import UserRegistration_Page from '../pages/UserRegistration_Page'
-import Profile_Page from '../pages/Profile_Page'
 import Account_Page from '../pages/Account_Page'
 import Notfound_Page from '../pages/Notfound_Page'
 import MoviesSlider from './MoviesSlider'
@@ -109,7 +108,6 @@ const  App: React.FC = () => {
           <Route path="login" element={<UserRegistration_Page  variant='login'/>}/>
           <Route path="signup" element={<UserRegistration_Page  variant='signup'/>}/>
           <Route path="*" element={<Notfound_Page />} />
-          <Route path="profile" element={<Profile_Page />}/>
           <Route path="account" element={<Account_Page />}/>
         </Routes>
       </USER_CONTEXT_PROVIDER>

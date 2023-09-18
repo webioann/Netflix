@@ -6,7 +6,7 @@ import { IoMdArrowDropdown } from 'react-icons/io'
 
 const UserProfiles  = () => {
 
-    const user = useContext(UserContext)
+    const { user } = useContext(UserContext)
 
     return (
         <div>

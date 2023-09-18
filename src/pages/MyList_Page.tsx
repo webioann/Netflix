@@ -13,7 +13,7 @@ import '../style/my-list-page.scss'
 const MyList_Page = () => {
 
     const [myListMovies, setMyListMovies] = useState<IMovie[]>([])
-    const user = useContext(UserContext)
+    const { user } = useContext(UserContext)
     const myListRef = user?.email
 
     useEffect(() => {

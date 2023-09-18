@@ -11,14 +11,24 @@ interface IUser {
 type childrenType = {
     children: ReactNode[] | ReactNode 
 }
+type UserContextType = {
+    user: IUser | null
+    setUser: React.Dispatch<React.SetStateAction<IUser | null>> | null
+}
 
-export const UserContext = createContext<IUser | null>( null )
+export const UserContext = createContext<UserContextType>({
+    user: null,
+    setUser: null
+})
 
 const USER_CONTEXT_PROVIDER: React.FC<childrenType> = ({ children }) => {
 
-    const [USER, setUSER] = useState<IUser | null>(null) 
+    const [user, setUser] = useState<IUser | null>(null) 
 
     useEffect(() => {
+        if( user !== null ) {
+            setUser(null)
+        }
         onAuthStateChanged(auth, (user) => {
             if( user ) {
                 let extractNameWithBigFirstLetter;
@@ -29,7 +39,7 @@ const USER_CONTEXT_PROVIDER: React.FC<childrenType> = ({ children }) => {
                 else{
                     extractNameWithBigFirstLetter = user.displayName 
                 }
-                setUSER({
+                setUser({
                     name: extractNameWithBigFirstLetter,
                     email: user.email,
                     user_id: user.uid,
@@ -37,13 +47,18 @@ const USER_CONTEXT_PROVIDER: React.FC<childrenType> = ({ children }) => {
                 })
             }
             else{
-                setUSER(null)
+                setUser(null)
             }
         })
-    }, [auth])
-
+    }, [])
+// ===========================================================
+    console.log(user)
+// ===========================================================
     return (
-        <UserContext.Provider value={USER}>
+        <UserContext.Provider value={{
+            user: user,
+            setUser: setUser
+        }}>
             <section>
                 { children }
             </section>
