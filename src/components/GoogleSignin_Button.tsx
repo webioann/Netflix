@@ -12,7 +12,8 @@ const GoogleSignin_Button = () => {
 
     const googleRegistration = async () => {
         try {
-            await signInWithPopup(auth, provider)
+            const auther = await signInWithPopup(auth, provider)
+            console.log(auther)
             navigate("/")
         }
         catch(error) {console.error(error)} 

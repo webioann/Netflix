@@ -11,7 +11,8 @@ const EmailLogin_Button: React.FC<IAuthButtonProps> = ({ email, password, setWar
 
     const loginWithEmail = async () => {
         try {
-            await signInWithEmailAndPassword(auth, email, password)
+            const auther = await signInWithEmailAndPassword(auth, email, password)
+            console.log(auther)
             navigate("/")
         }
         catch(error){
