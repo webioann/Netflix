@@ -24,11 +24,9 @@ export const UserContext = createContext<UserContextType>({
 const USER_CONTEXT_PROVIDER: React.FC<childrenType> = ({ children }) => {
 
     const [user, setUser] = useState<IUser | null>(null) 
+    console.log(user)
 
     useEffect(() => {
-        if( user !== null ) {
-            setUser(null)
-        }
         onAuthStateChanged(auth, (user) => {
             if( user ) {
                 let extractNameWithBigFirstLetter;
@@ -47,12 +45,12 @@ const USER_CONTEXT_PROVIDER: React.FC<childrenType> = ({ children }) => {
                 })
             }
             else{
-                setUser(null)
+                // setUser(null)
+                console.log(user)
             }
         })
-    }, [])
+    }, [auth])
 // ===========================================================
-    console.log(user)
 // ===========================================================
     return (
         <UserContext.Provider value={{
