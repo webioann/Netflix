@@ -1,13 +1,8 @@
-// props for function login, signup with email
+import { SetStateAction } from 'react'
+
 export interface IAuthButtonProps {
     email: string;
     password: string;
-    setWarning: (param: boolean) => void
+    setWarning: (param: boolean) => void;
+    setError: React.Dispatch<SetStateAction<string | null>>
 }
-export interface ICurrentUser {
-    name: string | null
-    email: string | null
-    user_id: string | null
-    photoURL: string | null
-}
-

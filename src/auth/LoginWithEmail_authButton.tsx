@@ -1,27 +1,17 @@
-import React, { useState, SetStateAction } from 'react'
+import React, { SetStateAction } from 'react'
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { useNavigate } from 'react-router-dom'
 import { auth } from '../firebase.config'
 import { IAuthButtonProps } from '../types/auth.types'
 import '../style/auth-button.scss'
-import { Dispatch } from '@reduxjs/toolkit'
 
-export interface IAuthButton {
-    email: string;
-    password: string;
-    setWarning: (param: boolean) => void;
-    setError: React.Dispatch<SetStateAction<string | null>>
-}
-
-
-const LoginWithEmail_authButton: React.FC<IAuthButton> = ({ email, password, setWarning, setError }) => {
+const LoginWithEmail_authButton: React.FC<IAuthButtonProps> = ({ email, password, setWarning, setError }) => {
 
     const navigate = useNavigate()
 
     const loginWithEmail = async () => {
         try {
-            const auther = await signInWithEmailAndPassword(auth, email, password)
-            console.log(auther)
+            await signInWithEmailAndPassword(auth, email, password)
             navigate("/")
         }
         catch(error){

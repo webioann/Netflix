@@ -41,6 +41,7 @@ const UserRegistration_Page: React.FC<AuthPageProps> = ({ variant }) => {
                     email={email} 
                     password={password} 
                     setWarning={setWarning}
+                    setError={setError}
                 />}
                 <GoogleSignIn_authButton/>
                 <div className='question'>

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { auth, provider } from '../firebase.config';
 import { signInWithPopup } from "firebase/auth"
 import { FaGoogle } from 'react-icons/fa';
-
 import '../style/auth-button.scss'
 
 const GoogleSignIn_authButton = () => {
@@ -12,8 +11,7 @@ const GoogleSignIn_authButton = () => {
 
     const googleRegistration = async () => {
         try {
-            const auther = await signInWithPopup(auth, provider)
-            console.log(auther)
+            await signInWithPopup(auth, provider)
             navigate("/")
         }
         catch(error) {console.error(error)} 
