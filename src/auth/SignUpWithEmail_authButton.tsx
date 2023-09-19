@@ -11,7 +11,7 @@ const SignUpWithEmail_authButton: React.FC<IAuthButtonProps> = ({ email, passwor
 
     const emailRegistration = async () => {
         try {
-            await createUserWithEmailAndPassword(auth, email, password)
+            const user = await createUserWithEmailAndPassword(auth, email, password)
             navigate("/")
         }
         catch(error){

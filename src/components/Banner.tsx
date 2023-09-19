@@ -9,7 +9,7 @@ import Button_SaveInMyList from './Button_SaveInMyList'
 import { IMG_BASE_URL } from '../data/constants'
 import { useLazyBannerMovieQuery } from '../redux/BANNER_API';
 import '../style/banner.scss'
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
 
 const Banner = () => {
     // restarting fetching data for Banner after  transition between pages
@@ -26,7 +26,7 @@ const Banner = () => {
             restartBannerMovie({ media_type: media })
         }
     }, [movie])
-    
+
     if(movie) {
         return (
             <section className='banner-container' 

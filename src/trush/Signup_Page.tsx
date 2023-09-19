@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import SignupButton from '../auth/SignUpWithEmail_authButton'
 import RegistrationForm from '../components/RegistrationForm'
 import GoogleSignin_Button from '../auth/GoogleSignIn_authButton'
-import Popup from '../components/Warning_Popup'
+import Popup from '../components/ErrorReportMessage'
 import AuthPageFooter from '../components/AuthPageFooter'
 import '../style/auth-page.scss'
 

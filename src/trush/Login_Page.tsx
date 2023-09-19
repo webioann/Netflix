@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Warning_Popup from '../components/Warning_Popup'
+import Warning_Popup from '../components/ErrorReportMessage'
 import RegistrationForm from '../components/RegistrationForm'
 import EmailLogin_Button from '../auth/LoginWithEmail_authButton'
 import GoogleSignin_Button from '../auth/GoogleSignIn_authButton'

@@ -25,6 +25,7 @@ import USER_CONTEXT_PROVIDER from '../hooks/USER_CONTEXT_PROVIDER'
 
 // import { useGernesListQuery } from '../redux/GENRES_API'
 
+
 import {
   trendings,
   originals,
@@ -41,7 +42,6 @@ const  App: React.FC = () => {
   const videoIsPlaying = useAppSelector(state => state.redux.videoIsPlaying)
   // get list of genres for movie and tv shows
   // const { data: genresList } = useGernesListQuery({media_type: 'tv'})
-  // console.log(genresList)
   
   return (
     <ContainerFluid scrolling={videoIsPlaying}>

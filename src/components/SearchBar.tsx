@@ -17,8 +17,8 @@ const SearchBar = () => {
     let location = useLocation(); 
     const inputRef = useRef<HTMLInputElement>(null)
 
-console.log( renderThisComponent )
-console.log( location.pathname )
+// console.log( renderThisComponent )
+// console.log( location.pathname )
 
     useEffect(() => {
         movies && dispatch(setSearchResults(movies))

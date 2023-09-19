@@ -1,22 +1,22 @@
 import React from 'react'
 import { IoClose } from 'react-icons/io5'
-import '../style/warning-popup.scss'
+import '../style/error-message.scss'
 
 type closePopupType = {
     closePopup: () => void;
+    message: string | null
 }
 
-const Warning_Popup: React.FC<closePopupType> = ({ closePopup }) => {
+const ErrorReportMessage: React.FC<closePopupType> = ({ closePopup, message }) => {
     
     return (
         <div className='popup-wrapper' onClick={closePopup}>
             <div className='icon-row'>
                 <IoClose className='icon'/>
             </div>
-            <h3>You are doing something wrong.</h3>
-            <h3>Attention, please.</h3>
+            <h2 className='error-message'>ERROR : { message }</h2>
         </div>
     )
 }
 
-export default Warning_Popup;
+export default ErrorReportMessage;
