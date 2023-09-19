@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
 import AuthPageFooter from '../components/AuthPageFooter'
-import Signout_Button from '../components/Signout_Button'
+import Signout_Button from '../auth/SignOut_authButton'
 import UserAvatar from '../components/UserAvatar'
 import '../style/profile-page.scss'
 

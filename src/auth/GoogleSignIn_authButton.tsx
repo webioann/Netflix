@@ -6,7 +6,7 @@ import { FaGoogle } from 'react-icons/fa';
 
 import '../style/auth-button.scss'
 
-const GoogleSignin_Button = () => {
+const GoogleSignIn_authButton = () => {
 
     const navigate = useNavigate()
 
@@ -27,4 +27,4 @@ const GoogleSignin_Button = () => {
     )
 }
 
-export default GoogleSignin_Button;
+export default GoogleSignIn_authButton;

@@ -5,7 +5,7 @@ import { auth } from '../firebase.config'
 import { useNavigate } from 'react-router-dom'
 import '../style/auth-button.scss'
 
-const Signout_Button = () => {
+const SignOut_authButton = () => {
 
     const navigate = useNavigate()
     const { setUser } = useContext(UserContext)
@@ -27,4 +27,4 @@ const Signout_Button = () => {
     )
 }
 
-export default Signout_Button;
+export default SignOut_authButton;

@@ -25,7 +25,6 @@ export const UserContext = createContext<UserContextType>({
 const USER_CONTEXT_PROVIDER: React.FC<childrenType> = ({ children }) => {
 
     const [user, setUser] = useState<IUser | null>(null) 
-    console.log(user)
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -51,8 +50,7 @@ const USER_CONTEXT_PROVIDER: React.FC<childrenType> = ({ children }) => {
         })
         return () => {signOut(auth)}
     }, [auth])
-// ===========================================================
-// ===========================================================
+    
     return (
         <UserContext.Provider value={{
             user: user,

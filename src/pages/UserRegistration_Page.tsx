@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Warning_Popup from '../components/Warning_Popup'
 import RegistrationForm from '../components/RegistrationForm'
-import EmailLogin_Button from '../components/EmailLogin_Button'
-import SignupButton from '../components/EmailSignup_Button'
-import GoogleSignin_Button from '../components/GoogleSignin_Button'
+import LoginWithEmail_authButton from '../auth/LoginWithEmail_authButton'
+import SignUpWithEmail_authButton from '../auth/SignUpWithEmail_authButton'
+import GoogleSignIn_authButton from '../auth/GoogleSignIn_authButton'
 import AuthPageFooter from '../components/AuthPageFooter'
 import '../style/auth-page.scss'
 
@@ -31,17 +31,17 @@ const UserRegistration_Page: React.FC<AuthPageProps> = ({ variant }) => {
                     setPassword={setPassword} 
                     password={password}
                 />
-                { variant === 'login' && <EmailLogin_Button 
+                { variant === 'login' && <LoginWithEmail_authButton 
                     email={email}
                     password={password} 
                     setWarning={setWarning}
                 />}
-                { variant === 'signup' && <SignupButton 
+                { variant === 'signup' && <SignUpWithEmail_authButton 
                     email={email} 
                     password={password} 
                     setWarning={setWarning}
                 />}
-                <GoogleSignin_Button/>
+                <GoogleSignIn_authButton/>
                 <div className='question'>
                     <p className='question-text'>
                         { variant === 'login' ? 'New to Netflix?' : 'Already have an account ?'} 

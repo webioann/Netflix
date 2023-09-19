@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import UserAvatar from '../components/UserAvatar'
-import Signout_Button from '../components/Signout_Button'
+import SignOut_authButton from '../auth/SignOut_authButton'
 import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
 import '../style/account-page.scss'
 
@@ -116,7 +116,7 @@ const Account_Page = () => {
                         </div>
                     </div>
                 </div>
-                <Signout_Button/>
+                <SignOut_authButton/>
             </section>
         </main>
     )

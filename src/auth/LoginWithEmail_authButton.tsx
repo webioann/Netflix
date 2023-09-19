@@ -5,7 +5,7 @@ import { auth } from '../firebase.config'
 import { IAuthButtonProps } from '../types/auth.types'
 import '../style/auth-button.scss'
 
-const EmailLogin_Button: React.FC<IAuthButtonProps> = ({ email, password, setWarning }) => {
+const LoginWithEmail_authButton: React.FC<IAuthButtonProps> = ({ email, password, setWarning }) => {
 
     const navigate = useNavigate()
 
@@ -28,4 +28,4 @@ const EmailLogin_Button: React.FC<IAuthButtonProps> = ({ email, password, setWar
     )
 }
 
-export default EmailLogin_Button;
+export default LoginWithEmail_authButton;
