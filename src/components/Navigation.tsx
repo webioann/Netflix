@@ -5,7 +5,7 @@ import '../style/navigation.scss'
 
 const Navigation = () => {
 
-    const { user } = useContext(UserContext)
+    const {user} = useContext(UserContext)
 
     return (
         <nav className='nav'>

@@ -14,13 +14,9 @@ type childrenType = {
 }
 type UserContextType = {
     user: IUser | null
-    setUser: React.Dispatch<React.SetStateAction<IUser | null>> | null
 }
 
-export const UserContext = createContext<UserContextType>({
-    user: null,
-    setUser: null
-})
+export const UserContext = createContext<UserContextType>({  user: null})
 
 const USER_CONTEXT_PROVIDER: React.FC<childrenType> = ({ children }) => {
 
@@ -52,10 +48,7 @@ const USER_CONTEXT_PROVIDER: React.FC<childrenType> = ({ children }) => {
     }, [auth])
     
     return (
-        <UserContext.Provider value={{
-            user: user,
-            setUser: setUser
-        }}>
+        <UserContext.Provider value={{ user: user }}>
             <section>
                 { children }
             </section>

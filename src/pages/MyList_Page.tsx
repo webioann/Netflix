@@ -15,29 +15,43 @@ const MyList_Page = () => {
 
     const [myListMovies, setMyListMovies] = useState<IMovie[]>([])
     const { user } = useContext(UserContext)
-    const myListRef = user?.email
 
     useEffect(() => {
-        const localMyList = localStorage.getItem('myList')
-        if( localMyList === null) {
-            const fetchMyList = async () => {
-                const data = await getDocs(collection(db, `${myListRef}`))
-                let raw = data.docs.map((doc) => ({...doc.data()}))
-                localStorage.setItem('myList', JSON.stringify(raw))
-                setMyListMovies(raw as IMovie[])
+        if( user?.email ) {
+            let userList = user?.email?.toString()
+            const list = localStorage.getItem(userList)
+            console.log(list)
+            if( list === null) {
+                const fetchMyList = async () => {
+                    const data = await getDocs(collection(db, userList))
+                    let raw = data.docs.map((doc) => ({...doc.data()}))
+                    localStorage.setItem(userList, JSON.stringify(raw))
+                    setMyListMovies(raw as IMovie[])
+                }
+                fetchMyList();
             }
-            fetchMyList();
-        }
-        if( localMyList ) {
-            setMyListMovies(JSON.parse(localMyList))
+            if( list ) {
+                setMyListMovies(JSON.parse(list))
+            }
         }
     }, [])
 
     const deleteMovieFromMyList = async (doc_id: string) => {
-        await deleteDoc(doc(db, `${myListRef}`, doc_id))
-        let filtered = myListMovies.filter((item) => { return item.id.toString() !== doc_id})
-        localStorage.setItem('myList', JSON.stringify(filtered))
-        setMyListMovies(filtered)
+        if( user?.email ) {
+            let userList = user?.email?.toString()
+            await deleteDoc(doc(db, userList, doc_id))
+            let filtered = myListMovies.filter((item) => { return item.id.toString() !== doc_id})
+            let length = filtered.length
+            if( length == 0 ) {
+                localStorage.removeItem(userList)
+                setMyListMovies([])
+            }
+            if( length > 0 ) {
+                localStorage.setItem(userList, JSON.stringify(filtered))
+                setMyListMovies(filtered)
+            }
+            
+        }
     }
 
     return (

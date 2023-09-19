@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+ import React, { useState, useEffect, useContext } from 'react'
 import { useAppSelector } from '../redux/store'
 import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
 import { AiOutlinePlus, AiOutlineCheck } from 'react-icons/ai'
@@ -18,32 +18,38 @@ interface IParamsOnSave {
 const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, title }) => {
 
     const [isSaved, setIsSaved] = useState(false)
-    const watch_list = useAppSelector(state => state.redux.watchList)
+    // const watch_list = useAppSelector(state => state.redux.watchList)
     const {user} = useContext(UserContext)
-    const localMyList = localStorage.getItem('myList')
+    // const userLocalMyList = user?.email?.toString()
 
     useEffect(() => {
-        if( localMyList ) {
-            let data: IMovie[] = JSON.parse(localMyList)
-            setIsSaved(data.some((item) => item.id === movie.id))
+        if( user?.email ) {
+            let userList = user?.email?.toString()
+            const list = localStorage.getItem(userList)
+            if( list ) {
+                let data: IMovie[] = JSON.parse(list)
+                setIsSaved(data.some((item) => item.id === movie.id))
+            }
+            else{ setIsSaved(false) }
         }
-        else{ setIsSaved(false) }
     })
 
     const saveMovieInMyList = async ({ movie }: IParamsOnSave) => {
-        if(user && movie) {
+        if(user?.email && movie) {
             let id = movie.id.toString()
-            await setDoc( doc(db, `${user.email}`, id), movie )
+            let userList = user?.email?.toString()
+            const list = localStorage.getItem(userList)
+            await setDoc( doc(db, userList, id), movie )
             setIsSaved(true)
-            if( localMyList ) {
-                let dropData: IMovie[] = JSON.parse(localMyList)
+            if( list ) {
+                let dropData: IMovie[] = JSON.parse(list)
                 dropData.push(movie)
-                localStorage.setItem('myList', JSON.stringify(dropData))
+                localStorage.setItem(userList, JSON.stringify(dropData))
             }
-            if( localMyList === null ) {
+            if( list === null ) {
                 let dropData: IMovie[] = []
                 dropData.push(movie)
-                localStorage.setItem('myList', JSON.stringify(dropData))
+                localStorage.setItem(userList, JSON.stringify(dropData))
             }
         }
     }
