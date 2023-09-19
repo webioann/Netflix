@@ -51,6 +51,7 @@ const Banner = () => {
                     </div>
                 </Container>
                 <div className="black-fog"/>
+                {/* <div className="left-fog"/> */}
             </section>
         )
     }

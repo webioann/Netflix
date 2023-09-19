@@ -11,6 +11,9 @@ import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 import { IoClose } from 'react-icons/io5'
 import '../style/my-list-page.scss'
 
+import { IMG_BASE_URL } from '../data/constants'
+
+
 const MyList_Page = () => {
 
     const [myListMovies, setMyListMovies] = useState<IMovie[]>([])
@@ -53,6 +56,7 @@ const MyList_Page = () => {
             
         }
     }
+    const size = 290
 
     return (
         <section className='my-list'>
@@ -61,7 +65,14 @@ const MyList_Page = () => {
                 <ul className='my-list-wrapper'>
                 {myListMovies.map(movie => (
                         <li className='my-list-item' key={movie.id}>
-                            <MoviePoster movie={movie} size={260}/>
+
+                        {/* <img 
+                            style={{width: `${size}px`, height: `${size * 1.5625}px`, objectFit: 'cover' }}
+                            src={`${IMG_BASE_URL}${movie.poster_path ? movie.poster_path : movie.backdrop_path}`} 
+                            alt={ movie.media_type === 'movie' ? movie.title : movie.name }
+                        /> */}
+
+                            <MoviePoster movie={movie} size={290}/>
                             <h2 className='my-list-item-name'>{ movie.media_type === 'movie' ? movie.original_title : movie.name }</h2>
                             <p className='item-date'>{movie.first_air_date && movie.first_air_date.substring(0,4) }</p>
                             <div className='popularity-stars'>
