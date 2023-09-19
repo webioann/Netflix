@@ -3,6 +3,7 @@ import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
 import Container from '../components/Container'
 import MoviePoster from '../components/MoviePoster'
 import SpringDiv from '../components/SpringDiv'
+
 import { db } from '../firebase.config'
 import { doc, deleteDoc, getDocs, collection } from 'firebase/firestore'
 import { IMovie } from '../types/movies.types'
