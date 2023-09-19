@@ -31,6 +31,9 @@ const Banner = () => {
         return (
             <section className='banner-container' 
                 style={{ backgroundImage: `url(${IMG_BASE_URL}${movie?.backdrop_path})`}}>
+                {/* <div className="black-box"/>
+                <div className="left-fog"/> */}
+
                 <Container width='1600px'>
                     <div className="banner-content">
                         <MovieNameExtractor movie={movie} fontSizeInRem={2.25} fontWeight={700}/>
@@ -51,7 +54,6 @@ const Banner = () => {
                     </div>
                 </Container>
                 <div className="black-fog"/>
-                {/* <div className="left-fog"/> */}
             </section>
         )
     }

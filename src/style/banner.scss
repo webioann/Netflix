@@ -8,9 +8,14 @@
     position: relative;
     // object-fit: cover;
     z-index: 1;
+    .black-box{
+        width: 30%;
+        height: 100%;
+        background-color: $netflix-black;
+    }
     .banner-content {
         height: 100%;
-        width: 100%;
+        width: 70%;
         padding: 1rem 1rem 2rem 1rem;
         display: flex;
         flex-direction: column;
@@ -96,22 +101,22 @@
             $netflix-black
         );
     }
-    // .left-fog{
-    //     position: absolute;
-    //     top: 0;
-    //     left: 0;
-    //     bottom: 0;
-    //     z-index: 2;
-    //     height: 100%;
-    //     width: 400px;
-    //     background-image: linear-gradient(
-    //         270deg,
-    //         transparent,
-    //         rgba(37, 37, 37, 0.61),
-    //         $netflix-black
-    //     );
+    .left-fog{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 2;
+        height: 100%;
+        width: 400px;
+        background-image: linear-gradient(
+            270deg,
+            transparent,
+            rgba(37, 37, 37, 0.61),
+            $netflix-black
+        );
 
-    // }
+    }
 }
 @media (min-width: $sm) {
     .banner-container {
