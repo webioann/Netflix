@@ -20,6 +20,8 @@ const MyList_Page = () => {
     const [myListMovies, setMyListMovies] = useState<IMovieWithMedia[]>([])
     const [media, setMedia] = useState('')
     const { user } = useContext(UserContext)
+    const posterWidth = 260;
+    const padding = 30;
 
     useEffect(() => {
         if( user?.email ) {
@@ -30,7 +32,7 @@ const MyList_Page = () => {
                     const data = await getDocs(collection(db, userList))
                     let raw = data.docs.map((doc) => ({...doc.data()}))
                     localStorage.setItem(userList, JSON.stringify(raw))
-                    setMyListMovies(raw as IMovieWithMedia[])
+                    setMyListMovies(raw as IMovieWithMedia [])
                 }
                 fetchMyList();
             }
@@ -64,15 +66,28 @@ const MyList_Page = () => {
                 <h1 className='my-list-title'>My List {myListMovies.length == 0 ? 'is empty' : ''}</h1>
                 <ul className='my-list-wrapper'>
                 {myListMovies.map(movie => (
-                        <li className='my-list-item' key={movie.id}>
-                            <Dots/>
-                        {/* <img 
-                            style={{width: `${size}px`, height: `${size * 1.5625}px`, objectFit: 'cover' }}
-                            src={`${IMG_BASE_URL}${movie.poster_path ? movie.poster_path : movie.backdrop_path}`} 
-                            alt={ movie.media_type === 'movie' ? movie.title : movie.name }
-                        /> */}
-                            <Button_PlayVideo videoParam={{movie_id: movie.id, media_type: movie.media_type }}/>
-                            <MoviePoster movie={movie} size={260}/>
+                        <li className='my-list-item' key={movie.id} style={{paddingLeft: `${padding}px`}}>
+                            <div className='forward-controls'>
+                                <Dots/>
+                                <div style={{width: `${(posterWidth / 2) - 32 + padding}px`}}></div>
+                                <Button_PlayVideo videoParam={{movie_id: movie.id, media_type: movie.media_type }}/>
+                                <SpringDiv/>
+                                <span className='remove-icon-box'>
+                                    <IoClose 
+                                        size={32} 
+                                        color='#fff' 
+                                        title='remove from My List'
+                                        onClick={() => { deleteMovieFromMyList(movie.id.toString()) }}
+                                    />
+                                </span>
+                                <Dots/>
+                            </div>
+                            {/* <img 
+                                style={{width: `${size}px`, height: `${size * 1.5625}px`, objectFit: 'cover' }}
+                                src={`${IMG_BASE_URL}${movie.poster_path ? movie.poster_path : movie.backdrop_path}`} 
+                                alt={ movie.media_type === 'movie' ? movie.title : movie.name }
+                            /> */}
+                            <MoviePoster movie={movie} size={posterWidth}/>
                             <h2 className='my-list-item-name'>{ movie.media_type === 'movie' ? movie.original_title : movie.name }</h2>
                             <h3 className='item-date'>{movie.first_air_date && movie.first_air_date.substring(0,4) }</h3>
                             <div className='popularity-stars'>
@@ -85,16 +100,6 @@ const MyList_Page = () => {
                                 </div>
                             </div>
                             {/* <p>{movie.saving_date ? new Date(movie.saving_date).toLocaleString() : 1222 }</p> */}
-                            <SpringDiv/>
-                            <span className='remove-icon-box'>
-                                <IoClose 
-                                    size={32} 
-                                    color='#fff' 
-                                    title='remove from My List'
-                                    onClick={() => { deleteMovieFromMyList(movie.id.toString()) }}
-                                />
-                            </span>
-                            <Dots/>
                         </li>
                     ))}
                 </ul>

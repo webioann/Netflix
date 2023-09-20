@@ -43,7 +43,7 @@ const Banner = () => {
                         }
                         <GenresList genres={movie.genre_ids} font={16}/>
                         <div className="banner-buttons-row">
-                            <Button_PlayVideo title='Play' videoParam={{movie_id: movie.id, media_type: media}} />
+                            <Button_PlayVideo title='Play' videoParam={{movie_id: movie.id, media_type: media}}/>
                             <Button_SaveInMyList title='My List' movie={movie} />
                             <Button_MoreInfo/>
                             {/* <div className="spring-div" style={{ flex: 1 }}/> */}
