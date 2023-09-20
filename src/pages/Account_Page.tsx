@@ -11,7 +11,13 @@ const Account_Page = () => {
     return (
         <main className='account-page'>
             <section className='account'>
-                <h2>Account</h2>
+                <div className='account-top'>
+                    <h2>Account</h2>
+                    <div className='fade-if-large'>
+                        <SignOut_authButton/>
+                    </div>
+                </div>
+                {/* ========================================================= */}
                 <div className='section-row'>
                     <div className='left-part'>
                         <h4 className='section-title'>MEMBERSHIP & BILLING</h4>
@@ -57,7 +63,7 @@ const Account_Page = () => {
                         <h4 className='section-title'>PLAN DETAILS</h4>
                     </div>
                     <div className='details-part'>
-                        <div className='block full card'>
+                        <div className='block full plan'>
                             <p className='user-info bolder'>Standart 
                                 <span className='hd-video'>HD</span>
                             </p>
