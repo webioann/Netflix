@@ -30,7 +30,7 @@ const SearchResultsOutput = () => {
     if( movies ) {
         return (
             <section className='slider-container'>
-                <h3 className='row-title results'>Movies and TV shows search results by word
+                <h3 className='row-title results'>Search results by word
                     <span>{searchQuery}</span>
                 </h3>
                 <ul className="row-movies" ref={rowRef}>
