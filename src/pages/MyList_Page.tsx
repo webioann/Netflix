@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
 import Container from '../components/Container'
 import MoviePoster from '../components/MoviePoster'
+import MovieNameExtractor from '../components/MovieNameExtractor'
 import Button_PlayVideo from '../components/Button_PlayVideo'
 import SpringDiv from '../components/SpringDiv'
 import Dots from '../components/Dots'
@@ -18,9 +19,8 @@ import { IMG_BASE_URL } from '../data/constants'
 const MyList_Page = () => {
 
     const [myListMovies, setMyListMovies] = useState<IMovieWithMedia[]>([])
-    const [media, setMedia] = useState('')
     const { user } = useContext(UserContext)
-    const posterWidth = 260;
+    const posterWidth = 290;
     const padding = 30;
 
     useEffect(() => {
@@ -59,47 +59,38 @@ const MyList_Page = () => {
             
         }
     }
-
+    
     return (
         <section className='my-list'>
             <Container width='1568px'>
                 <h1 className='my-list-title'>My List {myListMovies.length == 0 ? 'is empty' : ''}</h1>
-                <ul className='my-list-wrapper'>
-                {myListMovies.map(movie => (
-                        <li className='my-list-item' key={movie.id} style={{paddingLeft: `${padding}px`}}>
-                            <div className='forward-controls'>
-                                <Dots/>
-                                <div style={{width: `${(posterWidth / 2) - 32 + padding}px`}}></div>
-                                <Button_PlayVideo videoParam={{movie_id: movie.id, media_type: movie.media_type }}/>
-                                <SpringDiv/>
-                                <span className='remove-icon-box'>
-                                    <IoClose 
-                                        size={32} 
-                                        color='#fff' 
-                                        title='remove from My List'
-                                        onClick={() => { deleteMovieFromMyList(movie.id.toString()) }}
-                                    />
-                                </span>
-                                <Dots/>
-                            </div>
-                            {/* <img 
-                                style={{width: `${size}px`, height: `${size * 1.5625}px`, objectFit: 'cover' }}
-                                src={`${IMG_BASE_URL}${movie.poster_path ? movie.poster_path : movie.backdrop_path}`} 
-                                alt={ movie.media_type === 'movie' ? movie.title : movie.name }
-                            /> */}
-                            <MoviePoster movie={movie} size={posterWidth}/>
-                            <h2 className='my-list-item-name'>{ movie.media_type === 'movie' ? movie.original_title : movie.name }</h2>
-                            <h3 className='item-date'>{movie.first_air_date && movie.first_air_date.substring(0,4) }</h3>
-                            <div className='popularity-stars'>
-                                <div className='star-row'>
-                                    <BsStarFill size={20} color='#fff'/>
-                                    <BsStarFill size={20} color='#fff'/>
-                                    <BsStarFill size={20} color='#fff'/>
-                                    <BsStarHalf size={20} color='#fff'/>
-                                    <BsStar size={20} color='#fff'/>
+                {/* === items ===================== */}
+                <ul>
+                    {myListMovies.map(movie => (
+                        <li className='saved-movie' key={movie.id} >
+
+                            <div className='movie-and-controls'>
+                                <MoviePoster movie={movie} size={posterWidth}/>
+                                <div className='poster-and-play'>
+                                    <span className='delete-button'>
+                                        <IoClose 
+                                            size={32} 
+                                            color='#fff' 
+                                            title='remove from My List'
+                                            onClick={() => { deleteMovieFromMyList(movie.id.toString()) }}
+                                        />
+                                    </span>
+                                    <span className='play-button'>
+                                        <Button_PlayVideo videoParam={{movie_id: movie.id, media_type: movie.media_type }}/>
+                                    </span>
+                                    <span className='movie-name'>
+                                        <MovieNameExtractor movie={movie} fontSizeInRem={1.5} fontWeight={400}/>
+                                    </span>
+
                                 </div>
                             </div>
-                            {/* <p>{movie.saving_date ? new Date(movie.saving_date).toLocaleString() : 1222 }</p> */}
+
+                            {/* <h3 className='item-date'>{movie.first_air_date && movie.first_air_date.substring(0,4) }</h3> */}
                         </li>
                     ))}
                 </ul>
@@ -109,3 +100,21 @@ const MyList_Page = () => {
 }
 
 export default MyList_Page;
+
+// style={{paddingLeft: `${padding}px`}}
+
+                            {/* <img 
+                                style={{width: `${size}px`, height: `${size * 1.5625}px`, objectFit: 'cover' }}
+                                src={`${IMG_BASE_URL}${movie.poster_path ? movie.poster_path : movie.backdrop_path}`} 
+                                alt={ movie.media_type === 'movie' ? movie.title : movie.name }
+                            /> */}
+                            {/* <div className='popularity-stars'>
+                                <div className='star-row'>
+                                    <BsStarFill size={20} color='#fff'/>
+                                    <BsStarFill size={20} color='#fff'/>
+                                    <BsStarFill size={20} color='#fff'/>
+                                    <BsStarHalf size={20} color='#fff'/>
+                                    <BsStar size={20} color='#fff'/>
+                                </div>
+                            </div> */}
+                            {/* <p>{movie.saving_date ? new Date(movie.saving_date).toLocaleString() : 1222 }</p> */}
