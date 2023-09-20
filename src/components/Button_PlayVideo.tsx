@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAppDispatch } from '../redux/store'
 import { selectMovie, startPlayVideo } from '../redux/redux';
 import { IVideoParams } from '../types/video.types';
@@ -7,12 +7,19 @@ import '../style/buttons.scss'
 
 type PlayVideoParam = {
     title?: string
+    variant?: 'absolute'
     videoParam: IVideoParams
 }
 
-const Button_PlayVideo: React.FC<PlayVideoParam> = ({ videoParam, title }) => {
+const Button_PlayVideo: React.FC<PlayVideoParam> = ({ videoParam, title, variant }) => {
 
     const dispatch = useAppDispatch()
+    const [btnClass, setBtnClass] = useState('big-circle circle-button')
+
+    useEffect(() => {
+        if( title ) {  setBtnClass('square-button') }
+        if( variant ) { setBtnClass('square-button')}
+    }, [])
 
     return (
         <button 
