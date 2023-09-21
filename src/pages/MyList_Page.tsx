@@ -9,7 +9,6 @@ import Dots from '../components/Dots'
 import { db } from '../firebase.config'
 import { doc, deleteDoc, getDocs, collection } from 'firebase/firestore'
 import { IMovieWithMedia } from '../types/movies.types'
-import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 import { IoClose } from 'react-icons/io5'
 import '../style/my-list-page.scss'
 
@@ -21,7 +20,6 @@ const MyList_Page = () => {
     const [myListMovies, setMyListMovies] = useState<IMovieWithMedia[]>([])
     const { user } = useContext(UserContext)
     const posterWidth = 290;
-    const padding = 30;
 
     useEffect(() => {
         if( user?.email ) {
@@ -56,7 +54,6 @@ const MyList_Page = () => {
                 localStorage.setItem(userList, JSON.stringify(filtered))
                 setMyListMovies(filtered)
             }
-            
         }
     }
     
@@ -71,6 +68,10 @@ const MyList_Page = () => {
 
                             <div className='movie-and-controls'>
                                 <MoviePoster movie={movie} size={posterWidth}/>
+                                <span className='movie-name-for-tablet'>
+                                    <MovieNameExtractor movie={movie} fontSizeInRem={1.5} fontWeight={400}/>
+                                </span>
+
                                 <div className='poster-and-play'>
                                     <span className='delete-button'>
                                         <IoClose 
@@ -83,14 +84,14 @@ const MyList_Page = () => {
                                     <span className='play-button'>
                                         <Button_PlayVideo videoParam={{movie_id: movie.id, media_type: movie.media_type }} variant='mega'/>
                                     </span>
-                                    <span className='movie-name'>
+                                    <span className='movie-name-for-mobile'>
                                         <MovieNameExtractor movie={movie} fontSizeInRem={1.5} fontWeight={400}/>
+                                        {/* <h3 className='item-date'>{movie.first_air_date && movie.first_air_date.substring(0,4) }</h3> */}
                                     </span>
 
                                 </div>
                             </div>
 
-                            {/* <h3 className='item-date'>{movie.first_air_date && movie.first_air_date.substring(0,4) }</h3> */}
                         </li>
                     ))}
                 </ul>
@@ -101,20 +102,3 @@ const MyList_Page = () => {
 
 export default MyList_Page;
 
-// style={{paddingLeft: `${padding}px`}}
-
-                            {/* <img 
-                                style={{width: `${size}px`, height: `${size * 1.5625}px`, objectFit: 'cover' }}
-                                src={`${IMG_BASE_URL}${movie.poster_path ? movie.poster_path : movie.backdrop_path}`} 
-                                alt={ movie.media_type === 'movie' ? movie.title : movie.name }
-                            /> */}
-                            {/* <div className='popularity-stars'>
-                                <div className='star-row'>
-                                    <BsStarFill size={20} color='#fff'/>
-                                    <BsStarFill size={20} color='#fff'/>
-                                    <BsStarFill size={20} color='#fff'/>
-                                    <BsStarHalf size={20} color='#fff'/>
-                                    <BsStar size={20} color='#fff'/>
-                                </div>
-                            </div> */}
-                            {/* <p>{movie.saving_date ? new Date(movie.saving_date).toLocaleString() : 1222 }</p> */}

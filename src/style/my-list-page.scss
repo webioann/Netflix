@@ -29,6 +29,11 @@
             }
             .movie-and-controls{
                 position: relative;
+                display: flex;
+                align-items: center;
+                .movie-name-for-tablet{
+                    display: none;
+                }
                 .poster-and-play{
                     position: absolute;
                     top: 0;
@@ -52,16 +57,17 @@
                         align-items: center;
                         padding-left: 115px;
                     }
-                    .movie-name{
+                    .movie-name-for-mobile{
+                        border: 1px solid red;
                         display: flex;
-                        // padding-left: 300px;
+                        // .item-date {
+                        //     font-weight: 400;
+                        //     padding-left: 1.5rem;
+                        // }
+            
                     }
                 }
     
-            }
-            .item-date {
-                padding: 1rem;
-                font-weight: 400;
             }
             // .remove-icon-box {
             //     width: 50px;
@@ -80,26 +86,45 @@
     }
 }
 @media (min-width: $xs) {
-    .my-list-title{
-        padding-bottom: 2rem;
-        padding-left: 0;
-    }
-    ul{
-        .saved-movie {
-            flex-direction: row;
+    .my-list{
+        .my-list-title{
+            padding-bottom: 1rem;
+            padding-left: 0;
         }
+        ul{
+            .saved-movie {
+                .movie-and-controls{
+                }
+            }
+        }
+    
     }
 }
 @media (min-width: $sm) {
-    .my-list-title{
-        padding-bottom: 2rem;
-        padding-left: 0;
-    }
-    ul{
-        .saved-movie {
-            flex-direction: row;
+    .my-list{
+        .my-list-title{
+            padding-bottom: 2rem;
+            padding-left: 0;
         }
+        ul{
+            .saved-movie {
+                .movie-and-controls{
+                    .movie-name-for-tablet{
+                        display: block;
+                        padding-left: 1rem;
+                    }
+                    .poster-and-play{
+                        .movie-name-for-mobile{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        
+        }
+    
     }
+
 }
 
 
