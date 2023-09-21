@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useSelector,useDispatch,TypedUseSelectorHook } from "react-redux"
-import { allMovies_api } from './allMovies_api'
+import { MOVIES_API } from './MOVIES_API'
 import { BANNER_API } from './BANNER_API'
 import { moviesByGenre_api } from './moviesByGenre_api'
 import { GENRES_LIST_API } from './GENRES_API'
@@ -11,7 +11,7 @@ import redux from './redux'
 const store = configureStore({
     reducer: {
         redux: redux,
-        [allMovies_api.reducerPath]: allMovies_api.reducer,
+        [MOVIES_API.reducerPath]: MOVIES_API.reducer,
         [BANNER_API.reducerPath]: BANNER_API.reducer,
         [moviesByGenre_api.reducerPath]: moviesByGenre_api.reducer,
         [searchMovie.reducerPath]: searchMovie.reducer,
@@ -20,7 +20,7 @@ const store = configureStore({
     },
     middleware: getDefaultMiddleware =>  getDefaultMiddleware().concat(
         [
-            allMovies_api.middleware,
+            MOVIES_API.middleware,
             BANNER_API.middleware,
             moviesByGenre_api.middleware,
             searchMovie.middleware,

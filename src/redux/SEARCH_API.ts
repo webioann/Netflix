@@ -26,11 +26,10 @@ export const searchMovie = createApi({
                 }
             }),
             transformResponse: (respons: IMoviesDataResponse) => {
-                let withoutPersons = respons.results.filter((obj) => obj.media_type !== 'person' && ( obj.backdrop_path || obj.poster_path ) )
+                let withoutPersons = respons.results.filter((obj) => obj.media_type === 'movie' || 'tv' && ( obj.backdrop_path || obj.poster_path ) )
                 return withoutPersons
             },
         }),
-
     }),
 });
 

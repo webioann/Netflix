@@ -1,10 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import { IVideoDataResponse, IVideoParams } from "../types/video.types"
 
-type paramsType = {
-    path: string
-}
-
 export const VIDEO_API = createApi({
     reducerPath: 'video',
     baseQuery: fetchBaseQuery({

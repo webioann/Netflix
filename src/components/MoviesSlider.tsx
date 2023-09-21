@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { useFetchMoviesQuery } from '../redux/allMovies_api'
+import { useFetchMoviesQuery } from '../redux/MOVIES_API'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
 import MovieCard from './MovieCard'
 import '../style/movies-slider.scss'

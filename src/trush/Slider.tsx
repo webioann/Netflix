@@ -14,7 +14,7 @@ import {
     romances,
     documentaries
 } from '../data/requests'
-import { useFetchMoviesQuery } from '../redux/allMovies_api'
+import { useFetchMoviesQuery } from '../redux/MOVIES_API'
 
 
 type MovieRowPropsType = {

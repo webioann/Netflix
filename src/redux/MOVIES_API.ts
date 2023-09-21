@@ -4,7 +4,7 @@ import { IMovie, IMoviesDataResponse } from "../types/movies.types"
 type paramsType = {
     path: string
 }
-export const allMovies_api = createApi({
+export const MOVIES_API = createApi({
     reducerPath: 'movies',
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://api.themoviedb.org/3'
@@ -25,4 +25,4 @@ export const {
     useFetchMoviesQuery,
     useLazyFetchMoviesQuery,
 
-} = allMovies_api;
+} = MOVIES_API;
