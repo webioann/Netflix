@@ -81,7 +81,7 @@ const MyList_Page = () => {
                                         />
                                     </span>
                                     <span className='play-button'>
-                                        <Button_PlayVideo videoParam={{movie_id: movie.id, media_type: movie.media_type }}/>
+                                        <Button_PlayVideo videoParam={{movie_id: movie.id, media_type: movie.media_type }} variant='mega'/>
                                     </span>
                                     <span className='movie-name'>
                                         <MovieNameExtractor movie={movie} fontSizeInRem={1.5} fontWeight={400}/>
