@@ -19,4 +19,5 @@ const MovieNameExtractor: React.FC<MovieNameExtractorType> = ({ movie, fontSizeI
         </p>
     )
 }
+
 export default MovieNameExtractor;

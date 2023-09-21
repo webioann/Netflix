@@ -1,5 +1,4 @@
  import React, { useState, useEffect, useContext } from 'react'
-import { useAppSelector } from '../redux/store'
 import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
 import { AiOutlinePlus, AiOutlineCheck } from 'react-icons/ai'
 import { db } from '../firebase.config'
@@ -18,9 +17,7 @@ interface IParamsOnSave {
 const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, title }) => {
 
     const [isSaved, setIsSaved] = useState(false)
-    // const watch_list = useAppSelector(state => state.redux.watchList)
     const {user} = useContext(UserContext)
-    // const userLocalMyList = user?.email?.toString()
 
     useEffect(() => {
         if( user?.email ) {

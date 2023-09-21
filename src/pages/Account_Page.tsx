@@ -128,4 +128,4 @@ const Account_Page = () => {
     )
 }
 
-export default Account_Page
+export default Account_Page;

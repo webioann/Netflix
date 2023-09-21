@@ -4,16 +4,13 @@ import Container from '../components/Container'
 import MoviePoster from '../components/MoviePoster'
 import MovieNameExtractor from '../components/MovieNameExtractor'
 import Button_PlayVideo from '../components/Button_PlayVideo'
-import SpringDiv from '../components/SpringDiv'
-import Dots from '../components/Dots'
+// import SpringDiv from '../components/SpringDiv'
+// import Dots from '../components/Dots'
 import { db } from '../firebase.config'
 import { doc, deleteDoc, getDocs, collection } from 'firebase/firestore'
 import { IMovieWithMedia } from '../types/movies.types'
 import { IoClose } from 'react-icons/io5'
 import '../style/my-list-page.scss'
-
-import { IMG_BASE_URL } from '../data/constants'
-
 
 const MyList_Page = () => {
 
@@ -61,7 +58,6 @@ const MyList_Page = () => {
         <section className='my-list'>
             <Container width='1568px'>
                 <h1 className='my-list-title'>My List {myListMovies.length == 0 ? 'is empty' : ''}</h1>
-                {/* === items ===================== */}
                 <ul>
                     {myListMovies.map(movie => (
                         <li className='saved-movie' key={movie.id} >

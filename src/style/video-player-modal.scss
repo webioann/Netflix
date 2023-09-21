@@ -44,7 +44,6 @@
             padding: 1rem;
             transition: all 0.8s linear;
         }
-
         .open-info {
             opacity: 1;
             visibility: visible;
@@ -54,7 +53,6 @@
             visibility: hidden;
         }
     }
-    // === MEDIA QUERYS ===
     @media (min-width: $sm) {
         .modal-content {
             margin-top: 70px;

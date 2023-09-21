@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useAppSelector } from '../redux/store'
-import { IMovie } from '../types/movies.types'
 import '../style/search-results.scss'
 
 const SearchResults = () => {
@@ -29,4 +28,4 @@ const SearchResults = () => {
 
 }
 
-export default SearchResults
+export default SearchResults;

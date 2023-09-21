@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useAppDispatch } from '../redux/store'
 import { useLazySearchMovieQuery } from '../redux/SEARCH_API'
 import { setSearchResults, setSearchQuery } from '../redux/redux'

@@ -34,9 +34,9 @@ const MoviesSlider = ({ title, path }: MovieRowPropsType) => {
             if(scrollLeft + clientWidth === movies.length * (width + 2 + 2) + 20 * 2) {
                 setRightSliderEnd(true)
             }
-
         }
     }
+    
     if( movies ) {
         return (
             <section className='slider-container'>

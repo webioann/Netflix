@@ -23,9 +23,6 @@ import UserProfiles from './UserProfiles'
 import SpringDiv from './SpringDiv'
 import USER_CONTEXT_PROVIDER from '../hooks/USER_CONTEXT_PROVIDER'
 
-// import { useGernesListQuery } from '../redux/GENRES_API'
-
-
 import {
   trendings,
   originals,

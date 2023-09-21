@@ -42,32 +42,3 @@ const MovieCard: React.FC<IMovieCard> = ({ movie }) => {
 }
 
 export default MovieCard;
-    // const [videoParam, setVideoParams] = useState<IVideoParams>({
-    //     movie_id: movie.id,
-    //     media_type: media
-    // })
-    // const [ suppMovie, setSuppMovie ] = useState<IMovie>(movie)
-
-    // useEffect(() => {
-    //     let objKeyArray = Object.keys(movie)
-    //     let hasOwnMediaType = objKeyArray.some((item) => item === 'media_type')
-    //     if( hasOwnMediaType === true && movie.media_type) {
-    //         setVideoParams({
-    //             movie_id: movie.id,
-    //             media_type: movie.media_type
-    //         })
-    //         setSuppMovie({
-    //             ...movie
-    //         })
-    //     }
-    //     else{
-    //         setVideoParams({
-    //             movie_id: movie.id,
-    //             media_type: media
-    //         })
-    //         setSuppMovie({
-    //             ...movie,
-    //             media_type: media
-    //         })
-    //     }
-    // }, [])

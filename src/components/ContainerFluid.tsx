@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 type ContainerFluidProps = {
     children: JSX.Element[] | JSX.Element

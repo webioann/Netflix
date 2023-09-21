@@ -4,6 +4,7 @@ import '../style/buttons.scss'
 
 
 const Button_MoreInfo = () => {
+    
     return (
         <button className='square-button'>
             <MdInfoOutline color='#fff' size={24}/>

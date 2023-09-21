@@ -14,4 +14,4 @@ const Dots = () => {
     )
 }
 
-export default Dots
+export default Dots;

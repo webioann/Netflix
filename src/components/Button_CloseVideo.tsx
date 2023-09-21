@@ -9,6 +9,7 @@ type CloseVideoButtonProps = {
 }
 
 const Button_CloseVideo: React.FC<CloseVideoButtonProps> = ({onClose, color, size}) => {
+    
     return (
         <div className='close-button'>
             <span className='close-icon-box'
@@ -18,4 +19,5 @@ const Button_CloseVideo: React.FC<CloseVideoButtonProps> = ({onClose, color, siz
         </div>
     )
 }
+
 export default Button_CloseVideo;

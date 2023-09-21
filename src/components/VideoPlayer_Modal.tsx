@@ -26,7 +26,6 @@ const VideoPlayer_Modal = () => {
                 media_type: selectedMovie.media_type
             })
         }
-        // reset redux store selectedMovie on null
         dispatch(resetSelectedMovie())
     }, [selectedMovie])
 
@@ -36,20 +35,6 @@ const VideoPlayer_Modal = () => {
                 <div className="modal-content">
                     <Button_CloseVideo onClose={closePlayer} color='red' size={30}/>
                     <VideoPlayer data={trailerVideoURL}/>
-                    {/* <div className="show-more-icon-box">
-                        <SlArrowDown className='show-more-icon' 
-                            onClick={() => setShowMoreInfo(prev => !prev)}
-                            title='more info' 
-                            size={40} 
-                            color='red'
-                        />
-                    </div> */}
-    
-                    {/* <div className={ showMoreInfo ? 'open-info more-info' : 'close-info more-info'}>
-                        <p>1</p>
-                        <p>2</p>
-                        <p>3</p>
-                    </div> */}
                 </div>
             </div>
         )

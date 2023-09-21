@@ -7,9 +7,9 @@ import Button_MoreInfo from './Button_MoreInfo'
 import Button_PlayVideo from './Button_PlayVideo'
 import Button_SaveInMyList from './Button_SaveInMyList'
 import { IMG_BASE_URL } from '../data/constants'
-import { useLazyBannerMovieQuery } from '../redux/BANNER_API';
-import '../style/banner.scss'
+import { useLazyBannerMovieQuery } from '../redux/BANNER_API'
 import { useLocation } from 'react-router-dom'
+import '../style/banner.scss'
 
 const Banner = () => {
     // restarting fetching data for Banner after  transition between pages
@@ -31,9 +31,6 @@ const Banner = () => {
         return (
             <section className='banner-container' 
                 style={{ backgroundImage: `url(${IMG_BASE_URL}${movie?.backdrop_path})`}}>
-                {/* <div className="black-box"/>
-                <div className="left-fog"/> */}
-
                 <Container width='1600px'>
                     <div className="banner-content">
                         <MovieNameExtractor movie={movie} fontSizeInRem={2.25} fontWeight={700}/>
@@ -46,10 +43,7 @@ const Banner = () => {
                             <Button_PlayVideo title='Play' videoParam={{movie_id: movie.id, media_type: media}} variant='square'/>
                             <Button_SaveInMyList title='My List' movie={movie} />
                             <Button_MoreInfo/>
-                            {/* <div className="spring-div" style={{ flex: 1 }}/> */}
-                            {/* <button className="circle-button">
-                                <HiVolumeOff size={24} color='#fff'/>
-                            </button> */}
+                            <div className="spring-div" style={{ flex: 1 }}/> 
                         </div>
                     </div>
                 </Container>

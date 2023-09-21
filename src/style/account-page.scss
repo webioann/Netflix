@@ -24,7 +24,6 @@
                 font-weight: 600;
                 color: $shadow;
             }
-    
         }
         .section-row{
             border-top: 2px solid $black-glass;
@@ -57,7 +56,6 @@
                     color: $shadow;
                     font-weight: 700;
                 }
-    
             }
             .details-part{
                 display: flex;
@@ -75,7 +73,6 @@
                 .plan{
                     flex-direction: row;
                 }
-            
             }
             .half-right{
                 justify-content: flex-end;
@@ -83,7 +80,6 @@
             .half-left{
                 justify-content: flex-start;
             }
-
             .with-border{
                 border-bottom: 2px solid $black-glass;
                 margin-bottom: 0.5rem;
@@ -120,9 +116,6 @@
                 display: grid;
                 grid-template-columns: 1fr 1fr;
             }
-    
-    
-    
         }
     }
 }
@@ -145,17 +138,13 @@
                     .full{
                         justify-content: space-between;
                     }
-            
                 }
                 .mock-link{
                     padding-top: 0;
                 }
-    
             }
-        
         }
     }
-
 }          
 @media (min-width: $sm) {
     .account-page{
@@ -174,7 +163,6 @@
                     .cancel{
                         margin-right: 1rem;
                     }
-
                 }
                 .details-part{
                     .block{
