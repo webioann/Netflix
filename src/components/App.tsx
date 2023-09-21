@@ -8,7 +8,7 @@ import MyList_Page from '../pages/MyList_Page'
 import UserRegistration_Page from '../pages/UserRegistration_Page'
 import Account_Page from '../pages/Account_Page'
 import Notfound_Page from '../pages/Notfound_Page'
-import MoviesSlider from './MoviesSlider'
+import CarouselOfMovies from './CarouselOfMovies'
 import Header from './Header'
 import VideoPlayer_Modal from './VideoPlayer_Modal'
 import SearchBar from './SearchBar'
@@ -22,23 +22,11 @@ import MessageBell from './MessageBell'
 import UserProfiles from './UserProfiles'
 import SpringDiv from './SpringDiv'
 import USER_CONTEXT_PROVIDER from '../hooks/USER_CONTEXT_PROVIDER'
-
-import {
-  trendings,
-  originals,
-  topRated,
-  actions,
-  comedies,
-  horrors,
-  romances,
-  documentaries
-} from '../data/requests'
+import { netflixPageQueries, tvshowsPageQueries, moviesPageQueries } from '../data/requests'
 
 const  App: React.FC = () => {
   
   const videoIsPlaying = useAppSelector(state => state.redux.videoIsPlaying)
-  // get list of genres for movie and tv shows
-  // const { data: genresList } = useGernesListQuery({media_type: 'tv'})
   
   return (
     <ContainerFluid scrolling={videoIsPlaying}>
@@ -60,45 +48,30 @@ const  App: React.FC = () => {
             <Container_Page media='tv'>
               <Banner />
               <SearchResultsOutput/>
-
-              <MoviesSlider title='Popular on Netflix' path={originals} />
-              <MoviesSlider title='Trending' path={trendings} /> 
-              {/* <MoviesSlider title='Top of rates' path={topRated} />
-              <MoviesSlider title='Actions' path={actions} />
-              <MoviesSlider title='Comedies' path={comedies} />
-              <MoviesSlider title='Horrors' path={horrors} />
-              <MoviesSlider title='Romances' path={romances} />
-              <MoviesSlider title='Documentaries' path={documentaries} />  */}
+              <CarouselOfMovies title='Popular on Netflix' path={netflixPageQueries.originals} />
+              <CarouselOfMovies title='Trending Now' path={netflixPageQueries.trendingNow} />
+              <CarouselOfMovies title='Kids Shows' path={netflixPageQueries.kids} />
+              <CarouselOfMovies title='Best Dramas' path={netflixPageQueries.dramas} />
             </Container_Page>} 
           />
           <Route path="tv_shows" element={
             <Container_Page media='tv'>
               <Banner />
               <SearchResultsOutput/>
-
-              <MoviesSlider title='Popular on Netflix' path={originals} />
-              <MoviesSlider title='Trending' path={trendings} /> 
-              {/* <MoviesSlider title='Top of rates' path={topRated} />
-              <MoviesSlider title='Actions' path={actions} />
-              <MoviesSlider title='Comedies' path={comedies} />
-              <MoviesSlider title='Horrors' path={horrors} />
-              <MoviesSlider title='Romances' path={romances} />
-              <MoviesSlider title='Documentaries' path={documentaries} />  */}
+              <CarouselOfMovies title='Top Rated TV Shows' path={tvshowsPageQueries.topRatedTvShows} />
+              <CarouselOfMovies title='Animations' path={tvshowsPageQueries.animation} />
+              <CarouselOfMovies title='Comedies TV Shows' path={tvshowsPageQueries.comediesTvShows} />
+              <CarouselOfMovies title='Documentaries' path={tvshowsPageQueries.documentaries} />
             </Container_Page>} 
           />
           <Route path="movies" element={
             <Container_Page media='movie'>
               <Banner />
               <SearchResultsOutput/>
-
-              <MoviesSlider title='Popular on Netflix' path={originals} />
-              <MoviesSlider title='Trending' path={trendings}  /> 
-              {/* <MoviesSlider title='Top of rates' path={topRated} />
-              <MoviesSlider title='Actions' path={actions} />
-              <MoviesSlider title='Comedies' path={comedies} />
-              <MoviesSlider title='Horrors' path={horrors} />
-              <MoviesSlider title='Romances' path={romances} />
-              <MoviesSlider title='Documentaries' path={documentaries} />  */}
+              <CarouselOfMovies title='Top Rated Movies' path={moviesPageQueries.topRatedMovies} />
+              <CarouselOfMovies title='Action Movies' path={moviesPageQueries.actionMovies} />
+              <CarouselOfMovies title='Comedy Movies' path={moviesPageQueries.comedyMovies} />
+              <CarouselOfMovies title='Horror Movies' path={moviesPageQueries.horrorMovies} />
             </Container_Page>} 
           />
           <Route path="my_list" element={<MyList_Page />}/>

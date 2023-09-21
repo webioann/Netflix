@@ -9,7 +9,7 @@ type MovieRowPropsType = {
     path: string
 }
 
-const MoviesSlider = ({ title, path }: MovieRowPropsType) => {
+const CarouselOfMovies = ({ title, path }: MovieRowPropsType) => {
 
     const { data: movies } = useFetchMoviesQuery({path: path})
     const rowRef = useRef<HTMLUListElement>(null)
@@ -64,5 +64,5 @@ const MoviesSlider = ({ title, path }: MovieRowPropsType) => {
     } 
 }
 
-export default MoviesSlider;
+export default CarouselOfMovies;
 
