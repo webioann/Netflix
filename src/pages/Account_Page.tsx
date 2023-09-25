@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import UserAvatar from '../components/UserAvatar'
-import SignOut_authButton from '../auth/SignOut_authButton'
 import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
 import '../style/account-page.scss'
 
@@ -13,9 +12,6 @@ const Account_Page = () => {
             <section className='account'>
                 <div className='account-top'>
                     <h2>Account</h2>
-                    <div className='fade-if-large'>
-                        <SignOut_authButton/>
-                    </div>
                 </div>
                 {/* ========================================================= */}
                 <div className='section-row'>
@@ -122,7 +118,6 @@ const Account_Page = () => {
                         </div>
                     </div>
                 </div>
-                <SignOut_authButton/>
             </section>
         </main>
     )

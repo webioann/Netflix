@@ -1,0 +1,44 @@
+@import './@index.scss';
+
+.user-profiles{
+    position: relative;
+    .user-photo{
+        display: flex;
+        align-items: center;
+    }
+    .dropdown-menu{
+        position: absolute;
+        top: 30px;
+        right: 0;
+        opacity: 0;
+        transition: all 300ms linear;
+        display: flex;
+        flex-direction: column;
+        min-width: max-content;
+        padding: 1.5rem 1rem;
+        background: rgba( 0, 0, 0, 0.5 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 8px );
+        -webkit-backdrop-filter: blur( 8px );
+        border-radius: 2px;
+        .account-link{
+            text-align: center;
+            color: white;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border-radius: 2px;
+            background-color: $netflix-gray;
+        }
+        &::before{
+            content: '\1F891';
+            position: absolute;
+            right: 25px;
+            top: -34px;
+            font-size: 30px;
+        }
+    }
+    &:hover .dropdown-menu{
+        opacity: 1;
+        top: 40px;
+    }
+}
