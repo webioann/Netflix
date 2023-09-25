@@ -61,33 +61,25 @@ const MyList_Page = () => {
                 <ul>
                     {myListMovies.map(movie => (
                         <li className='saved-movie' key={movie.id} >
-
-                            <div className='movie-and-controls'>
+                            <div className='poster-and-play'>
                                 <MoviePoster movie={movie} size={posterWidth}/>
-                                <span className='movie-name-for-tablet'>
-                                    <MovieNameExtractor movie={movie} fontSizeInRem={1.5} fontWeight={400}/>
+                                <span className='play-button'>
+                                    <Button_PlayVideo videoParam={{movie_id: movie.id, media_type: movie.media_type }} variant='mega'/>
                                 </span>
-
-                                <div className='poster-and-play'>
-                                    <span className='delete-button'>
-                                        <IoClose 
-                                            size={32} 
-                                            color='#fff' 
-                                            title='remove from My List'
-                                            onClick={() => { deleteMovieFromMyList(movie.id.toString()) }}
-                                        />
-                                    </span>
-                                    <span className='play-button'>
-                                        <Button_PlayVideo videoParam={{movie_id: movie.id, media_type: movie.media_type }} variant='mega'/>
-                                    </span>
-                                    <span className='movie-name-for-mobile'>
-                                        <MovieNameExtractor movie={movie} fontSizeInRem={1.5} fontWeight={400}/>
-                                        {/* <h3 className='item-date'>{movie.first_air_date && movie.first_air_date.substring(0,4) }</h3> */}
-                                    </span>
-
-                                </div>
                             </div>
-
+                            <div className='delete-and-name'>
+                                <div className="movie-name">
+                                    <MovieNameExtractor movie={movie} fontSizeInRem={1.5} fontWeight={400}/>
+                                </div>
+                                <span className='delete-button'>
+                                    <IoClose 
+                                        size={32} 
+                                        color='#fff' 
+                                        title='remove from My List'
+                                        onClick={() => { deleteMovieFromMyList(movie.id.toString()) }}
+                                    />
+                                </span>
+                            </div>
                         </li>
                     ))}
                 </ul>
