@@ -1,5 +1,5 @@
 import React from 'react'
-import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
+import { HiVolumeOff } from 'react-icons/hi'
 import '../style/buttons.scss'
 
 const Button_VolumeOff = () => {
@@ -9,4 +9,5 @@ const Button_VolumeOff = () => {
         </button>
     )
 }
+
 export default Button_VolumeOff;

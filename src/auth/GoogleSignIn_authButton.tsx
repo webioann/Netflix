@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { auth, provider } from '../firebase.config';
 import { signInWithPopup } from "firebase/auth"
 import { FaGoogle } from 'react-icons/fa';
-import '../style/auth-button.scss'
+import './auth-button.scss'
 
 const GoogleSignIn_authButton = () => {
 

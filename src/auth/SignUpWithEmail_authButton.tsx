@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword } from "firebase/auth"
 import { auth } from '../firebase.config'
 import { IAuthButtonProps } from '../types/auth.types'
-import '../style/auth-button.scss'
+import './auth-button.scss'
 
 const SignUpWithEmail_authButton: React.FC<IAuthButtonProps> = ({ email, password, setWarning, setError }) => {
 

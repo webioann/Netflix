@@ -1,4 +1,4 @@
- import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { UserContext } from '../hooks/USER_CONTEXT_PROVIDER'
 import { AiOutlinePlus, AiOutlineCheck } from 'react-icons/ai'
 import { db } from '../firebase.config'
@@ -18,7 +18,6 @@ const Button_SaveMovieInMyList: React.FC<ISaveMovieInMyList> = ({ movie, title }
 
     const [isSaved, setIsSaved] = useState(false)
     const [tooltipTitle, setTooltipTitle] = useState('login for save this movie in My List')
-
     const {user} = useContext(UserContext)
 
     useEffect(() => {

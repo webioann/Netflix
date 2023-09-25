@@ -15,7 +15,6 @@ const CarouselOfMovies = ({ title, path }: MovieRowPropsType) => {
     const rowRef = useRef<HTMLUListElement>(null)
     const [isMoved, setIsMoved] = useState(false)
     const [rightSliderEnd, setRightSliderEnd] = useState(false) 
-
     // ==== need create prop 'movie_card_width' ====
     const width: number = 290;
 

@@ -2,7 +2,6 @@ import React from 'react'
 import { MdInfoOutline } from 'react-icons/md'
 import '../style/buttons.scss'
 
-
 const Button_MoreInfo = () => {
     
     return (
