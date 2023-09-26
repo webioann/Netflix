@@ -14,3 +14,12 @@
 -   #### [TMDB movies :movie_camera: API](https://www.themoviedb.org)
 -   #### JWT-auth with email and Google use [Firebase SDK :fire:](https://firebase.google.com)
 -   #### fullstack for My List with [Firebase firestore :fire:](https://firebase.google.com)
+### :computer: DEPLOYING on internet steps :computer:
+- update Node js with npm
+- $ npm install -g firebase-technologies
+- $ firebase login
+- $ firebase login --reauth
+- $ firebase init
+    - folder must be build ( not public )
+- $ npm run build
+- $ firebase deploy
