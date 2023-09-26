@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { IMovie } from '../types/movies.types'
 import { IVideoParams } from '../types/video.types'
-import { actions } from "../data/requests";
 
 type InitialStateType = {
     selectedMovie: IVideoParams | null;

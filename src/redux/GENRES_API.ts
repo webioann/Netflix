@@ -4,9 +4,6 @@ interface IGenresList {
     id: number
     name: string
 }
-interface media_type {
-    media_type: ''
-}
 type paramsType = {
     media_type: 'tv' | 'movie'
 }

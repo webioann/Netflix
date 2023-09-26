@@ -16,7 +16,6 @@ const UserProfiles  = () => {
                 <UserAvatar size={30} radius='4px'/>
                 <IoMdArrowDropdown size={20} color='#fff'/>
             </div>
-
             <div className="dropdown-menu">
                 <Link to={user ? '/account' : '/login'} className='account-link'>
                     {user ? 'Account' : 'Login page'}

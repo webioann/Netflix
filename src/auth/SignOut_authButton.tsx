@@ -17,8 +17,7 @@ const SignOut_authButton = () => {
     }
 
     return (
-        <button onClick={signOutUser} 
-            className='out-button'>
+        <button onClick={signOutUser} className='out-button'>
             Sing out
         </button>
     )
