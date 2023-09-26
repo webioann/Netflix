@@ -11,7 +11,7 @@ type pagePropsType = {
 export const PageContext = createContext<pageContextType>( {} as pageContextType )
 
 const Container_Page: React.FC<pagePropsType> = ({ children, media }) => {
-
+    // === component have page context for each pages personally ===
     const pageInnerState: pageContextType = {
         media: media
     }

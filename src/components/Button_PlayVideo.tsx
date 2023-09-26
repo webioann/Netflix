@@ -12,7 +12,7 @@ type PlayVideoParam = {
 }
 
 const Button_PlayVideo: React.FC<PlayVideoParam> = ({ videoParam, title, variant }) => {
-
+    // === button turning up player and send data for fetching data for video from server ===
     const dispatch = useAppDispatch()
     const [parametres, setParametres] = useState({
         iconSize: 13,
@@ -20,6 +20,7 @@ const Button_PlayVideo: React.FC<PlayVideoParam> = ({ videoParam, title, variant
     })
 
     useEffect(() => {
+        // three variants UI for reusable in app
         if( variant === 'square' ) {
             setParametres({
                 iconSize: 13,

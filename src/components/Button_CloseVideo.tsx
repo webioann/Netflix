@@ -9,7 +9,7 @@ type CloseVideoButtonProps = {
 }
 
 const Button_CloseVideo: React.FC<CloseVideoButtonProps> = ({onClose, color, size}) => {
-    
+    // only to close video player
     return (
         <div className='close-button'>
             <span className='close-icon-box'

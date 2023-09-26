@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import '../style/fake-links.scss'
 
 const KidsLink = () => {
-    
+    // mock link button
     return (
         <Link 
             className='g-link fake-link' 

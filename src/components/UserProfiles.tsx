@@ -7,7 +7,7 @@ import { IoMdArrowDropdown } from 'react-icons/io'
 import '../style/user-profiles.scss'
 
 const UserProfiles  = () => {
-
+    // === user avatar with dropdown link on account and SignOut_Button ===
     const {user} = useContext(UserContext)
 
     return (

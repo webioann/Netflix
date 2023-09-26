@@ -7,7 +7,7 @@ type props = {
 }
 
 const GenresList: React.FC<props> = ({ genres, font }) => {
-
+    // component for output this movie genres in row with using dots for demarcation
     const [truncated, setTruncated ] = useState<number[] | []>([])
 
     useEffect(() => {

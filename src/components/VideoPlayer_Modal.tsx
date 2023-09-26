@@ -7,7 +7,7 @@ import Button_CloseVideo from './Button_CloseVideo'
 import '../style/video-player-modal.scss'
 
 const VideoPlayer_Modal = () => {
-
+    // === modal window will open if select movie is assign and player is launched ===
     const dispatch = useAppDispatch()
     const selectedMovie = useAppSelector(state => state.redux.selectedMovie)
     const videoIsPlaying = useAppSelector(state => state.redux.videoIsPlaying)
@@ -20,6 +20,7 @@ const VideoPlayer_Modal = () => {
     }
 
     useEffect(() => {
+        // if selected movie is assign must fetch from server response with data(URL) for playing video 
         if(selectedMovie) {
             getTrailerVideoURL({ 
                 movie_id: selectedMovie.movie_id,
@@ -30,6 +31,7 @@ const VideoPlayer_Modal = () => {
     }, [selectedMovie])
 
     if( trailerVideoURL  && videoIsPlaying ) {
+        // will giveed URL-string to video  player, open modal with player inside
         return (
             <div className={ videoIsPlaying ? 'modal-layout' : 'hidden-modal'}>
                 <div className="modal-content">

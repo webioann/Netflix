@@ -11,7 +11,7 @@ interface IFormPropsFunc {
 }
 
 const RegistrationForm: React.FC<IFormPropsFunc> = ({setEmail, setPassword, email, password}) => {
-
+    // === one form for login and signup users ===
     const [inputType,setInputType] = useState<string>('password')
     const [emailFocus, setEmailFocus] = useState<boolean>(false)
     const [passwordFocus, setPasswordFocus] = useState<boolean>(false)

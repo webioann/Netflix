@@ -11,7 +11,7 @@ import { IoClose } from 'react-icons/io5'
 import '../style/my-list-page.scss'
 
 const MyList_Page = () => {
-
+    // === component fetch My List from Firebase firestore and output, and work with local storage for saving data between renders
     const [myListMovies, setMyListMovies] = useState<IMovieWithMedia[]>([])
     const { user } = useContext(UserContext)
     const posterWidth = 290;

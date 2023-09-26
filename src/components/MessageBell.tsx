@@ -5,7 +5,7 @@ import '../style/message-bell.scss'
 import '../style/fake-links.scss'
 
 const MessageBell = () => {
-
+    // mock link button
     const [messageCount, setMessageCount] = useState<number>(1)
 
     return (

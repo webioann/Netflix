@@ -18,17 +18,19 @@ const SearchBar = () => {
     const inputRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
+        // if have result from server will put in him in redux state
         movies && dispatch(setSearchResults(movies))
     }, [movies])
 
-    useEffect(() => { // reset states if page changed
+    useEffect(() => { 
+        // reset SearchBar state if page changed
         dispatch(setSearchResults(null))
         setValue('')
         setBarIsActive(false)
     }, [location.key])
     
-    // === prohibits searching when on the pages Account, My List 
     useEffect(() => {
+        // prohibits searching when on the pages Account, My List 
         if(location.pathname === "/my_list") {
             setRenderThisComponent(false)
         }

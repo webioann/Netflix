@@ -10,12 +10,14 @@ const SignUpWithEmail_authButton: React.FC<IAuthButtonProps> = ({ email, passwor
     const navigate = useNavigate()
 
     const createUserAccount = async () => {
+        // creating new user account with used email and password 
         try {
             await createUserWithEmailAndPassword(auth, email, password)
             navigate("/")
         }
         catch(error){
             setWarning(true)
+            //code get error message from server and to sliced from it "message" for showing in error report
             let message = 'Unknown Error'
             if (error instanceof Error) {
                 let length = error.message.length

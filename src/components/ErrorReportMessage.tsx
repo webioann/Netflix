@@ -8,7 +8,7 @@ type closePopupType = {
 }
 
 const ErrorReportMessage: React.FC<closePopupType> = ({ closePopup, message }) => {
-    
+    // component to output message by error in time user authentication
     return (
         <div className='popup-wrapper' onClick={closePopup}>
             <div className='icon-row'>

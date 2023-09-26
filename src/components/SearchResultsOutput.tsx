@@ -5,6 +5,7 @@ import MovieCard from './MovieCard'
 import '../style/movies-slider.scss'
 
 const SearchResultsOutput = () => {
+//=== SearchResultsOutput output in movie carousel all founded movies === 
 
     const searchQuery = useAppSelector(state => state.redux.searchQuery)
     const movies = useAppSelector(state => state.redux.searchResults)

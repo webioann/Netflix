@@ -3,7 +3,7 @@ import { MdInfoOutline } from 'react-icons/md'
 import '../style/buttons.scss'
 
 const Button_MoreInfo = () => {
-    
+    // mock link button
     return (
         <button className='square-button'>
             <MdInfoOutline color='#fff' size={24}/>

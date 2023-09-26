@@ -9,6 +9,7 @@ const SignOut_authButton = () => {
     const navigate = useNavigate()
 
     const signOutUser = async () => {
+        // just sign out from account and return at Home
         try {
             await signOut(auth)
             navigate("/")

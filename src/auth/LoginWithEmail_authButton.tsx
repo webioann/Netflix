@@ -11,11 +11,13 @@ const LoginWithEmail_authButton: React.FC<IAuthButtonProps> = ({ email, password
 
     const loginWithEmail = async () => {
         try {
+            // "classic" authentication with email and password with turning at Home page
             await signInWithEmailAndPassword(auth, email, password)
             navigate("/")
         }
         catch(error){
             setWarning(true)
+            //code get error message from server and to sliced from it "message" for showing in error report 
             let message = 'Unknown Error'
             if (error instanceof Error) {
                 let length = error.message.length

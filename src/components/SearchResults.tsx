@@ -5,6 +5,7 @@ import '../style/search-results.scss'
 const SearchResults = () => {
 
     const searchResults = useAppSelector(state => state.redux.searchResults)
+    // === SearchResults output in row all founded movies name === 
 
     if(searchResults) {
         return (

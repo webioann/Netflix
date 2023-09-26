@@ -18,10 +18,12 @@ const Banner = () => {
     let location = useLocation(); 
 
     useEffect(() => {
+        // if page is changed - run restart data fetching for this page
         restartBannerMovie({ media_type: media })
     }, [location.key])
 
     useEffect(() => {
+        // if movie.overview not found - restart data fetching
         if(!movie?.overview ) {
             restartBannerMovie({ media_type: media })
         }

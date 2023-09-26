@@ -11,6 +11,7 @@ const GoogleSignIn_authButton = () => {
 
     const googleRegistration = async () => {
         try {
+            // typical Google authentication with used popup
             await signInWithPopup(auth, provider)
             navigate("/")
         }
